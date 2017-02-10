@@ -1,0 +1,9 @@
+delimiter $
+create procedure getAllStudentsInfo()
+begin
+	select * from students_info;
+end$
+
+delimiter ;
+
+call getAllStudentsInfo();

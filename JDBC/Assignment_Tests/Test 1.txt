@@ -1,0 +1,12 @@
+Write a Java Program which accepts "regno"
+& "password" via command line arguments 
+& authenticates. 
+
+If we pass valid credentials then it 
+should print "Valid User Name / Password" 
+otherwise "In-Valid User Name / Password" 
+
+Assumptions:
+args[0] ---> regno
+args[1] ---> password
+DB  	---> MySQL (BJM25_DB)

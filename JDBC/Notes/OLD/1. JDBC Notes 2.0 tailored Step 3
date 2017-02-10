@@ -1,0 +1,1044 @@
+Java Data Base Connectivity (JDBC)
+===================================
+> Java Data Base Connectivity is an API, as the 
+  name implies, it helps to achieve the 
+  connectivity between Java Programs & Database
+  
+> Note: Servlets & JSPs are also Java Programs
+
+> If we have a Web Application & if it has a DB, 
+  then it needs to interact with DB to read / 
+  modify the data
+
+> JDBC helps to do this & in the world of Java, 
+  JDBC is the "One & Only API" that helps to 
+  interact with RDBMS (DB) Application
+  
+> Also JDBC is "DB Independent" i.e. using JDBC 
+  we can interact with any RDBMS Applications 
+  exist in the world
+  
+  
+  
+  
+  
+  
+  
+JDBC Pre-requirements:
+=========================
+1.	Install the Any RDBMS Application (MySQL 5.5)
+2.	Create a "Database (Schema)" by name 
+    "BECME89_DB"
+3.	Create a table by name "STUDENTS_INFO"
+    in the above "Database"
+4.	Insert some data into the above table
+
+SQl Queries for MySQL RDBMS Application:-
+==========================================
+create database BECME89_DB;
+
+create table students_info
+( regno int(10) not null,
+  firstname varchar(50),
+  middlename varchar(50),
+  lastname varchar(50),
+  primary key(regno)
+);
+
+insert into students_info
+values (1, 'Praveen', 'NA', 'D');
+
+Some Usefull Queries:
+========================
+1. To connect to database:-
+----------------------------
+   use BECME89_DB;
+   
+2. To get the list of databases:-
+---------------------------------
+	show databases;
+	
+3. To get the list of tables:-
+------------------------------
+	show tables;
+   
+4. To know the table structure:-
+------------------------------
+	describe table_name;
+    Example: describe students_info;
+   
+   
+   
+   
+   
+Necessary Steps to Work with JDBC
+==================================
+1.	Load the "Driver"
+2.	Get the "DB Connection" via "Driver"
+3.	Issue "SQL Queries" via "Connection"
+4.	"Process the Results" returned by "SQL Queries"
+5.	Close All "JDBC Objects"
+
+My First JDBC Program :-
+=======================
+
+Note:-
+------
+> "java.sql.*" is the Package Representaion of JDBC
+> i.e. Any Class / Interface belongs to this package
+  means it’s part of JDBC
+
+  
+  
+  
+  
+  
+  
+Computer Name : QSP-SHMUTT-PC / 192.168.1.101
+Port Number	  : 3306
+User Name 	  : root / j2ee
+Password	  : root / j2ee
+Database Name : BECME89_DB
+
+jdbc:mysql://QSP-SHMUTT-PC:3306/BECME89_DB?user=root&password=root
+
+	
+		
+Drivers:
+===========		
+Image:
+------
+> Driver is an additional software component 
+   required by JDBC to interact with RDBMS Application
+
+> Drivers are provided by DB Vendor & they are 
+  "DB Dependent"
+   
+> i.e. using My-SQL Driver we can ONLY with My-SQL
+  RDBMS Application & 
+  Using DB2 Driver we can ONLY with DB2 RDBMS 
+  Application
+
+> DB Vendor providers Driver Software in the form
+ of "JAR File" 
+
+> "Driver" helps us to establish DB Connection, 
+  transfers the DB query and results between Java
+  program and RDBMS Application 
+
+JAR (Java ARchieve) File:
+==========================
+> It's a Collection of ".class" files
+  + Other Necessary Resources 
+ (Text File, XML, Property Files, etc.,)
+
+> JAR file helps us to transfer the "Java files /
+  .class files / Java Application" from one 
+  location to an another location
+  
+> JAR File will have ".jar" file extension & 
+  functionality wise it's similler to "ZIP" file
+
+Steps to Create JAR File :-
+----------------------------
+1. Right Click on the Java Project, which we want
+   to tranfer, select "Export..."
+
+2. Select "JAR File" option present under "Java" 
+   & click on "Next"
+
+3. Provide the "Destination & File Name", click
+   on "Finish"
+
+Steps to Make Use of JAR File :-
+----------------------------------
+1. Right Click on the Java Project, where we want
+   to make use of JAR File, select "Build Path" & 
+   click on "Add External Archieves..."
+
+2. Select the "JAR File" & Click on "Open"
+
+3. We see JAR File under "Referenced Libraries"
+   
+   
+   
+   
+Driver Class
+=============   
+> “Driver Class” is a Concrete Class, present in 
+  driver JAR file, is the one that implements the
+  "java.sql.Driver" interface
+
+> This interface is present in JDBC API & every 
+  JDBC driver provider has to implement this 
+  Interface
+
+> "Driver" helps us to establish DB Connection, 
+  transfers the DB query and results between Java
+  program and RDBMS Application
+  
+Steps to Load the "Driver Class" into the Program
+--------------------------------------------------
+There are 2 ways to load the Driver Class
+
+1.  By invoking "registerDriver()" method present
+    in "java.sql.DriverManager" Class by passing an 
+	instance of "Driver Class"
+	
+Syntax :
+========
+public void DriverManager
+           .registerDriver(java.sql.Driver driverRef) 
+throws SQLException
+
+Code for MySQL Driver :
+=======================
+com.mysql.jdbc.Driver ref 
+	           = new com.mysql.jdbc.Driver();
+   
+DriverManager.registerDriver(ref);
+   
+   
+   
+   
+ 
+   
+> Second approach to Load the Driver Class is with 
+  the help of Java's "Class.forName()" Method
+
+For Example:
+------------
+Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+> This is the most common approach to register a 
+  Driver Class which helps us to pass "Driver Class
+  Name at Runtime" 
+  
+> But if we create an instance of a driver class 
+  using new operator, then driver class name can't 
+  be passed at Runtime
+
+
+  
+  
+  
+  
+  
+
+Driver Types
+===============
+There are 4 types of Drivers
+
+1. Type 1 : JDBC-ODBC Bridge
+2. Type 2 : Native-API Driver
+3. Type 3 : Network-Protocol Driver
+4. Type 4 : Native-Protocol Driver
+
+ODBC = Open Data Base Connectivity
+
+
+
+
+
+JDBC Step 1 Summary:-
+======================
+1. About Driver
+	- Who provides the Driver
+	- JAR File
+	- How to Create & Make use of JAR file
+2. Driver Class
+3. Steps to load the Driver Class
+4. Driver Types
+
+
+
+Database Uniform Resource Locator (DB URL)
+==========================================
+> DB URL, as the name implies, it uniquely 
+  identifies Database OR a RDBMS Application 
+  in the Network
+
+> The structure of DB URL is
+  <Protocol>:<Subprotocol>:<Subname>
+
+  
+  
+  
+1. Protocol     
+============
+> It's a Mandatory Information
+> In case of Java, Protocol is always "jdbc"
+
+
+
+
+
+
+
+
+
+
+
+2. Subprotocol
+==============
+> It's a Mandatory Information
+
+> It identifies the "DB Connectivity 
+  Mechanisam" used to Connect to DB
+  
+> This information is provided by DB Vendor 
+  & we have to refer the Driver Manual to get
+  this information
+
+> In case of MySQL, Subprotocol is "mysql"
+
+
+
+
+
+3. Subname
+===========
+> It's a Mandatory Information
+
+> It Consists of,
+	1. Host Name (Computer Name / IP Address)
+	2. Port Number
+	3. Database Name / Schema Name
+	4. User Name & Password
+	
+> Arrangement of Subname varies from driver 
+  to driver, we have to refer the manual & 
+  arrange accordingly
+  
+> Port Number:
+  ============
+  - It uniquely identifies an application in 
+    an Operating System
+  
+  - In case of DB URL, it uniquely identifies
+    a RDBMS Application
+  
+JDBC URL - Few Examples:-
+==========================
+Oracle:
+--------
+jdbc:oracle:thin:scott/tiger@myhost:1521:orcl
+
+
+
+  
+  
+  
+  
+  
+  
+Computer Name 	: QSP-SHMUTT-PC
+IP Address 		: 192.168.0.150
+Port No 		: 3306
+DB Name			: BECM4_DB
+UN				: root / j2ee
+Password		: root / j2ee
+
+jdbc:mysql://QSP-SHMUTT-PC:3306/BECM4_DB?user=j2ee&password=j2ee
+
+
+	
+	
+	
+jdbc:mysql://QSP-SHMUTT-PC:3306/BJM24_DB?user=j2ee&password=j2ee
+jdbc:mysql://192.168.1.4:3306/BJM24_DB?user=j2ee&password=j2ee
+jdbc:mysql://localhost:3306/BJM24_DB?user=j2ee&password=j2ee	
+	
+	
+	
+		
+
+
+
+java.sql.DriverManager 
+==========================
+> DriverManager is a "Concrete Class" present 
+  in JDBC API & as the name implies, it manages 
+  the drivers
+  
+> It helps us to establish the connection to DB 
+  & for that it requires following two critical 
+  informations
+  1. Driver Class 
+  2. DB URL 
+
+> Using "registerDriver()" we can provide an 
+  "Object of Driver Class"
+  
+> Using "getConnection()" we can provide "DB URL" 
+
+> DriverManager’s getConnection() method helps 
+  us to establish the connection to the DB.  
+  This method
+  - throws SQLException if it is unable to 
+    establish the connection to DB
+	
+	OR
+	
+  - returns an object of "Connection" if it is 
+    able to establish the connection to DB
+  
+> "java.sql.Connection" is an interface & It's an
+  "Object representation of Physical DB 
+   Connection" that is used by Java program to 
+   communicate with DB
+  
+  
+  
+  
+  
+  
+  
+> DriverManager consist of only one constructor 
+  which is "Private Default" in nature 
+  
+> Hence it cannot be inherited or instantiated. 
+  So whatever the methods it exposes to outside
+  world, they "should be public static" in 
+  nature  
+  
+
+  
+  
+  
+> DriverManager has overloaded versions of 
+  getConnection() methods. They are,
+
+1. Connection getConnection(String dbUrl) 
+   throws SQLException
+----------------------------------------------------
+ String dbUrl = 
+ "jdbc:mysql://localhost:3306/BECME89_DB
+ 			         ?user=root&password=root";
+ 			
+ Connection con = DriverManager.getConnection(dbUrl);
+
+
+2. Connection getConnection(String dbUrl, 
+							String userNM, 
+							String password) 
+  throws SQLException
+-----------------------------------------------------
+ String dbUrl  = 
+			"jdbc:mysql://localhost:3306/BECME89_DB";
+ String userNM = "root";
+ String pass   = "root";
+				
+ Connection con 
+ = DriverManager.getConnection(dbUrl, userNM, pass);
+
+
+ 
+ 
+ 
+	 
+
+
+
+Static SQL Queries
+===================
+> SQL queries 
+  - "without conditions" OR 
+  - "with harcoded condition values" 
+  are called as "Static SQL Queries"
+ 
+> Example :
+---------------
+ 1. select * from ABC;
+ 2. create database DB_NAME;
+ 3. select * from ABC where X = 1;
+ 4. insert into ABC values (1, 'Praveen');
+  
+Note : ABC = Table Name
+
+Dynamic SQL Queries
+======================
+> SQL Queries which 
+  - MUST have conditions & 
+  - One/More condition values get decided at runtime 
+  are known as "Dynamic SQL Queries" 
+
+Examples:
+--------
+1. select * from ABC where X=? and Y=?;
+2. select * from ABC where X=1 and Y=?;
+3. insert into ABC values (?, 'Praveen');
+ 
+NOTE : 
+------
+1. ABC = Table Name
+2. Dynamic SQL Query MUST Contain One/More Question
+   Marks
+ 
+  
+  
+  
+JDBC Statements
+====================
+> JDBC Statements send SQL queries to RDBMS and 
+  retrieve the data from RDBMS Application
+  
+> There are 3 different types of JDBC Statements
+  1. java.sql.Statement
+  2. java.sql.PreparedStatement
+  3. java.sql.CallableStatement
+
+> Once we create JDBC Statement object (any of the 
+  above type), then we MUST invoke any one of the 
+  below method to issue SQL queries to DB
+
+1. int executeUpdate() throws SQLException
+---------------------------------------------------
+> This method is used to execute "Other than SELECT" 
+  SQL Queries
+ 
+> This method returns "No. of Rows Affected Count" in
+  the form of Integer
+
+2. ResultSet executeQuery() throws SQLException
+----------------------------------------------------   
+> This method is used to execute "ONLY SELECT" SQL 
+  Queries   
+   
+> This method returns "DB Results" in the form of 
+  "ResultSet" Object  
+   
+3. boolean execute() throws SQLException
+---------------------------------------------------
+> This method is used to execute "ANY SQL Query 
+  including SELECT"
+
+> This method 
+- returns "true", if result is of type "DB Results"
+- returns "false", if result is of type 
+  "Integer Count"
+
+> If we use this method then we must make use 
+  - "getResultSet()" 
+     OR 
+  - "getUpdateCount()" 
+  methods to get the actual results
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+java.sql.Statement
+=====================
+> Its an interface & an Object of Statement is used 
+  to execute "Static SQL Queries"
+
+> Statement Object can be created by invoking 
+  "createStatement()" method on "Connection" Object
+
+Syntax:
+-------
+Statement Connection.createStatement() 
+throws SQLException  
+
+Example:
+--------
+Statement stmt = con.createStatement();
+
+where "con" is the Object reference of 
+"java.sql.Connection" Object
+  
+
+
+  
+  
+java.sql.PreparedStatement
+==================================
+> Its an interface & an Object of PreparedStatement 
+  is used to execute "Dynamic SQL Queries"
+
+> PreparedStatement Object can be created by 
+  invoking "prepareStatement()" method on 
+  "Connection" Object
+
+Syntax:
+-------
+PreparedStatement Connection
+				  .prepareStatement(String query) 
+throws SQLException
+
+Example:
+--------
+String query = " select * from students_info " 
+			   +" where regno=? ";
+			
+PreparedStatement pstmt 
+				= con.prepareStatement(query);
+
+where "con" is the Object reference of 
+"java.sql.Connection" Object
+
+> PreparedStatements MUST be used with query 
+  parameters (?) & these query parameters needs to be
+  set using proper setXXX() method before executing 
+  the dynamic SQL query
+
+Syntax: 
+-------
+void setXXX( Postiton of ? as Int Value,
+             Corresponding Runtime Value ) 
+throws SQLException
+		
+where XXX = Java Data Type corresponding to 
+            DB Column Data Type
+			
+> PreparedStatements are also known as “Precompiled 
+  Statements” & they helps us to achieve "high 
+  performance"
+
+  
+  
+  
+  
+  
+  
+Stored Procedures
+==================
+> Stored Procedures are group of SQL queries that 
+  perform a particular task (functionality wise they
+  are similer to Java Methods)
+  
+> As its name implies, they are stored at RDBMS 
+  Application / DB side
+
+> Stored Procedures helps to achieve "Reusability"
+ 
+> Query to Get the List of Procedures avilable in 
+  MySQL Database is :
+
+  SHOW PROCEDURE STATUS WHERE DB = DATABASE(); 
+ 
+Stored Procedure 1 :-
+=======================
+1. delimiter &
+
+2. create procedure getAllStudents()
+	begin
+		select * from students_info;
+	end&
+
+3. delimiter ;
+
+4. call getAllStudents(); 
+ 
+ 
+ 
+ 
+ 
+
+Stored Procedure 2 :-
+=======================
+1. delimiter $
+
+2. create procedure getStudentInfo(IN in_regno INT)    
+	begin 
+		select * from students_info
+		where regno = in_regno;
+	end$
+
+3. delimiter ;
+
+4. call getStudentInfo(1); 
+ 
+ 
+ 
+ 
+ 
+Stored Procedure 3 :-
+=======================
+1. delimiter @
+
+2.	create procedure studentUpSert
+	(IN in_regno INT,
+	 IN in_fnm VARCHAR(50),
+	 IN in_mnm VARCHAR(50),
+	 IN in_lnm VARCHAR(50)
+	 )    
+	begin
+		declare regno_count int;
+		
+		select count(*) into regno_count
+		from students_info
+		where regno = in_regno;
+		
+		if regno_count>0 then
+		  update students_info
+		  set firstname = in_fnm,
+		  	  middlename = in_mnm,
+		  	  lastname = in_lnm
+		  where regno = in_regno;
+		else
+		  insert into students_info
+		  values (in_regno, in_fnm, in_mnm, in_lnm);
+		end if;
+	end@
+
+3. delimiter ;
+
+4. call studentUpSert(10, 'AAA', 'BBB', 'CCC');
+  
+ 
+ 
+ 
+ 
+java.sql.CallableStatement:
+-----------------------------
+> Its an interface & an Object of CallableStatement 
+  is used to execute "Stored Procedures"
+
+> CallableStatement Object can be created by invoking 
+  "prepareCall()" method on "Connection" Object
+
+Syntax:
+-------
+CallableStatement Connection.prepareCall(String query) 
+throws SQLException
+
+Example:
+--------
+String query = "call storedProcedureNM()";
+CallableStatement ctmt = con.prepareCall(query);
+
+where "con" is an Object reference of 
+"java.sql.Connection Object"
+
+> While invoking the Procedure, which takes input 
+  arguments
+  - Either we can "hardcode the condition values"
+  or
+  - These condition values may get decided at Runtime
+  
+> If condition values get decided at Runtime then we 
+  should have Question Mark (?) while constructing 
+  SQL Query
+  
+> Stored Procedures, by nature, reduces the number of 
+  DB Calls
+
+> Hence CallableStatement, which helps us to execute 
+  Stored Procedures, increases the "Peformace of the 
+  Application"
+  
+
+
+
+
+
+
+Processing the Results returned by SQL Queries :-
+================================================
+> Whenever we issue SQL Queries to RDBMS Application 
+  via JDBC there are two kinds of results expected 
+  out of RDBMS Application
+	1. No. of Rows Affected Count 
+	2. DB Results 
+	
+> JDBC returns 
+  - "No. of Rows Affected Count" as a "Integer Value" 
+  - "DB Results" in the form of "ResultSet Object" 
+  
+java.sql.ResultSet
+===================
+> Its an interface & an Object of ResultSet is an 
+  "Object representation of DB Results" produced by 
+  Select SQL Query
+
+> ResultSet object is produced by invoking
+  "executeQuery()" Method on any of the JDBC 
+  Statement Objects
+  
+> ResultSet consists of N number of Rows with each 
+  row containing N number of Columns
+
+> Number of rows and columns in Resultset directly 
+  depends on "where condition" & "column list" 
+  respectively in "Select SQL Query"
+
+> ResultSet object may consist of "Zero/More" OR 
+  "Zero/One" rows 
+
+> If ResultSet consist of zero/more rows of data then
+  we must use "while loop"
+
+> If ResultSet consist of zero/one row of data then 
+  we can use either "while loop" or "if block"
+  (preferred)
+
+> Once the ResultSet is produced, data from ResultSet
+  can be extracted as follows
+
+1. Move to desired Row by calling necessary ResultSet
+   methods
+   For Ex : next(), first(), last(), etc
+	        ------
+2. Retrieve the desired column value using
+
+   getXXX(< Position of the Column in SQL Query
+			as Integer Value >);
+   OR
+   getXXX("< Column Name as String Value >");
+   ----------------------------------------
+	
+   where XXX = Java Data Type corresponding to DB 
+               Table column data type
+	  
+NOTE : getXXX() methods are the ONLY way to retrieve 
+       data from ResultSet object		  
+		  
+		  
+	
+	
+	
+	
+
+	
+Why we need to Close Necessary JDBC Objects:-
+==============================================
+> JDBC Objects such as 
+  - Connection
+  - JDBC Statements and 
+  - ResultSet 
+  make use of memory 
+ 
+> In case of Connection Object, further RDBMS
+  Application resources are consumed
+
+> Also memory consumed by ResultSet object is 
+  comparatively more compared to other JDBC Objects
+  
+> Hence forgetting to close any of the JDBC objects 
+  "will heavily impact the application performance"
+  and "Garbage Collection" should not be relied upon
+  
+> So it's important to close any of the JDBC Object 
+  as soon as their job is done
+
+> To close any of the JDBC Objects invoke "close()" 
+  method
+
+Syntax:
+----------		  
+public void close() throws SQLException
+
+
+
+
+
+Summary:
+---------
+> While makeing use of JDBC we MUST follow 5 steps
+  and out of 5, ONLY Once 
+  - We need to load the Driver (Step 1)
+  - We have to get the DB Connection (Step 2)
+  - We have to Close JDBC Objects (Step 5)
+  
+> But, Step 3 & 4 (i.e. Issuing SQL Queries & 
+  Processing Results) can happen "N" number of times
+  depending on our use
+
+> Steps 1 to 4 will be in "try block" and step 5 will
+  be in "finally block"
+  
+> Commonly used JDBC Objects are   
+  1. java.sql.DriverManager
+  2. java.sql.Connection
+  3. java.sql.Statement
+  4. java.sql.PreparedStatement
+  5. java.sql.CallableStatement
+  6. java.sql.ResultSet
+  7. java.sql.SQLException
+
+> Out of these aprat from DriverManager & SQLException
+  rest of them are "Interfaces". Where as DriverManager
+  & SQLException are "Concrete Classes"
+
+> SQLException is a Concrete Class which extends
+  "java.lang.Exception" & its a "Checked Exception"
+
+
+
+
+
+
+		  
+		  
+Transactions:-  
+===============	
+> A transaction is a "Group of SQL Queries" that are 
+  executed as a unit. So either all of the SQL 
+  Queries get executed successfully or none of them 
+  get executed
+
+> Transactions helps us to achieve "Data Consistency"
+
+> Following steps are followed to make use of 
+  Transactions in JDBC
+
+1. Begin the transaction by disabling AutoCommit Mode
+   [ con.setAutoCommit(false) ]
+
+2. Issue One/More SQL Queries
+   [ Generally "more than one" Insert/Update/Delete 
+     SQL Queries ]
+
+3. If No Exception, then "Commit" the transaction
+   [ con.commit() ]
+
+4. If Exception occurs, then "Rollback" the transaction 
+   [ con.rollback() ]
+
+Methods Syntax :-
+=================
+1. void Connection.setAutoCommit(boolean disable) 
+   throws SQLException   
+
+2. void Connection.commit() 
+   throws SQLException
+
+3. void Connection.rollback() 
+   throws SQLException
+
+   
+   
+   
+   
+Note: 
+======
+1. Transactions can also be used with one or more 
+   Select SQL Queries but it’s of no use
+
+2. Transactions can also be used with ONLY ONE 
+   Insert/Update/Delete SQL Query but it’s of no use 
+
+3. Whenever there is a scenario to execute 
+  "More than One Insert/Update/Delete" SQL Queries 
+  then "we must make use of Transactions"
+
+4. Transactions Steps 1 to 3 we write inside "try 
+   block" & Transaction Step 4 (Rollback the Txn) we
+   write inside "catch block"
+
+
+
+
+
+
+
+
+5.	If there is more than one "catch block", then we 
+    have to write the Rollback statement in all the 
+	catch blocks
+
+
+
+
+
+
+
+
+
+
+
+6. We can also have rollback in the "finally 
+   block" but this impacts the performance. 
+
+   Since Rollback/Commit is an expensive operation,
+   we should make use of Rollback/Commit whenever 
+   there is a need. i.e. "At any instant of time we
+   should issue either Commit/Rollback but not both"
+
+
+   
+   
+   
+   
+TransactionExample :-
+====================
+public class TransactionExample {
+public static void main(String[] args) {
+	Connection con = null;
+	PreparedStatement pstmt1 = null;
+	PreparedStatement pstmt2 = null;
+	PreparedStatement pstmt3 = null;
+	
+try {
+	//1. Load the Driver
+	//2. Get the DB Connection via Driver
+	/*
+	 * I. Begin the Txn
+	 */
+	con.setAutoCommit(false);
+	/*
+	 * II. issue one/more SQL Queries
+	 */
+	//3. Issue SQL Queries via Connection
+	String query1 = " insert into students_info " 
+					+" values (?,?,?,?) ";
+	
+	pstmt1 = con.prepareStatement(query1);
+	pstmt1.setInt(1, Integer.parseInt(args[0]) );
+	pstmt1.setString(2, args[1]);
+	pstmt1.setString(3, args[2]);
+	pstmt1.setString(4, args[3]);
+	int count1 = pstmt1.executeUpdate();
+	System.out.println("SI Rows Affected:"+count1);
+	
+	String query2 = " insert into guardian_info " 
+					+" values (?,?,?,?) ";
+	pstmt2 = con.prepareStatement(query2);
+	pstmt2.setInt(1, Integer.parseInt(args[0]) );
+	pstmt2.setString(2, args[4]);
+	pstmt2.setString(3, args[5]);
+	pstmt2.setString(4, args[6]);
+	int count2 = pstmt2.executeUpdate();
+	System.out.println("GI Rows Affected:"+count2);
+	
+	String query3 = " insert into students_otherinfo " 
+					+" values (?,?,?) ";
+	pstmt3 = con.prepareStatement(query3);
+	pstmt3.setInt(1, Integer.parseInt(args[0]) );
+	pstmt3.setString(2, args[7]);
+	pstmt3.setString(3, args[8]);
+	//Runtime Exception Simulation
+	//int i = 100/0;
+	int count3 = pstmt3.executeUpdate();
+	System.out.println("SOI Rows Affected:"+count3);
+	/*
+	 * III. No Exception; Commit the Txn
+	 */
+	con.commit();
+	//4. Process the Results returned by SQL Queries
+	System.out.println("Profile Created");
+} catch (Exception e) {
+	/*
+	 * Exception!!! Rollback the Txn
+	 */
+	try {
+		con.rollback();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	System.err.println("Profile NOT Created");
+	e.printStackTrace();
+} finally{
+	//5. Close ALL JDBC Objects
+	//Close all 3 PreparedStatement Objects
+}//End of outer try catch block
+}//End of Main
+}//End of Class
+
+
+
+		  

@@ -1,0 +1,240 @@
+Servlet Container :
+===================
+> Servlet Container is a sub-component 
+  of web server that helps both web 
+  server & servlet to communicate with 
+  each other
+  
+> As the name implies, all Servlets of 
+  dynamic web application are directly 
+  under the control of the Servlet 
+  Container
+
+How Servlet Container Works :
+==============================
+1. Whenever request comes, web 
+   server hand over the complete 
+   request to servlet container
+   
+2. Container by looking at the URL 
+   present in the request & referring 
+   web.xml it comes to know about the 
+   servlet which handles that request
+   
+3. Container then creates an instance 
+   of that servlet
+	
+4. Once Instance creation is successful
+   then it converts the raw HTTP Request
+   to a Java Object of type 
+   “HttpServletRequest” & then create 
+   "HttpServletResponse" object
+   
+5. Depending on the HTTP Method present 
+   in the request container invokes 
+   corresponding doXXX() method by 
+   passing these request & response 
+   objects
+   
+6. Once doXXX() method execution is 
+   over, container converts the response
+   object to Raw HTTP Response & gives 
+   it back to web server
+   
+7. Once the response has been give back,
+   Servlet Container garbage collects 
+   the request & response objects
+   
+   
+   
+   
+   
+8. In otherwords for every request 
+   container creates new request & 
+   response objects 
+   
+9. i.e. the Life Span of these Objects 
+   is "they get created once request 
+   comes to a Servlet & they get garbage 
+   collected once response is given 
+   back"
+
+   
+   
+Advantages of Servlet Container
+================================
+
+1. Communication Support :
+--------------------------
+Container helps both web server 
+& servlets to communicate with each other 
+
+
+2. Multi-Threading Support :
+-----------------------------
+Container automatically creates 
+a new thread for every incoming request 
+
+
+
+
+
+
+
+
+
+
+3. Declarative Support :
+------------------------
+With "web.xml" which is used by Servlet
+container, we can change the behaviour 
+of web application without changing 
+anything in the Servlet/JSP Code
+
+4. Life Cycle Management :
+-------------------------
+Container manages/controls the 
+"Life Cycle of a Servlet"
+
+5. JSP Support :
+----------------
+Container takes care of converting JSP
+into a Servlet
+
+
+
+*************			
+Assignment 1:
+*************
+> Create a HTML Form as shown below
+  
+  FormExample.html
+  -------------------
+
+
+javax.servlet.http.HttpServletRequest
+======================================
+> "HttpServletRequest" object, in short called
+   as "Request Object", is an Object
+  representation of "Raw HTTP Request"
+ 
+> We should make use of this object to get 
+  Information from Request
+  
+> HttpServletRequest is an Interface & it
+  extends an another Interface by name
+  "javax.servlet.ServletRequest"
+
+  
+  
+  
+> Methods "getParameter()" & 
+  "getParameterValues()" which are present
+  in ServletRequest interface helps us to
+  get the information from "Request Object"
+  
+> Both these methods return NULL if the 
+  parameter name does not exist
+  
+Syntax:
+===========
+1. String ServletRequest
+			.getParameter(String name)
+
+2. String[] ServletRequest
+			.getParameterValues(String name)
+
+			
+			
+			
+
+
+
+
+			
+			
+javax.servlet.http.HttpServletResponse	
+=======================================		
+> "HttpServletResponse" Object, in short called
+  as "Response Object", is an Object
+  representation of "Raw HTTP Response"
+  
+> We should make use of this object to send 
+  Response Information
+  
+> HttpServletResponse is an Interface & it 
+  extends an another Interface by name   
+  "javax.servlet.ServletResponse"
+			
+> "setContentType()" Method present in 
+  Response Object helps us to provide the 
+  Content Type information in the response
+
+Syntax :
+========
+void ServletResponse
+	   .setContentType(String contentType)
+
+
+	   
+	   
+> To provide "Actual Content", we should get 
+  "java.io.PrintWriter" from Response Object
+  by invoking a method by name "getWriter()"
+
+Syntax :
+=========
+PrintWriter ServletResponse.getWriter() 
+throws IOException  
+
+> PrintWriter has a method by name "print() 
+  / println()" which helps us to add Actual
+  Content to Response Object  
+
+Syntax
+========
+void PrintWriter.println(String response)		
+void PrintWriter.print(String response)
+
+NOTE : 
+------
+> PrintWriter is a "Concreate Class" but
+  we SHOULD NOT create our own instance of this
+  class, instead we SHOULD get it from Response 
+  Object
+  
+> Between "print()" & "println()" methods print()
+  reduces the size of the Actual Content there by
+  increases the Performance
+
+
+  
+  
+  
+  
+*************			
+Assignment 2:
+*************
+
+> Create a HTML Form as shown below
+  
+  CreateProfile.html
+  -------------------
+  
+  
+  
+  
+  
+  
+> Create Servelt by name CreateProfileServlet, 
+  which gets the request from this form,
+1. Get the Form Data
+2. Store the Form Data into Corresponding Tables
+3. generate Proper Response (Success / Error Message)
+						
+						
+						
+						
+						
+						
+						

@@ -1,0 +1,377 @@
+Servlet Lifecycle:-
+===================
+Lifecycle of a Servlet is controlled by 
+Servlet Container & it has following phases
+
+1. Instantiation Phase
+2. Initialization Phase
+3. Service Phase
+4. Destruction Phase
+
+1. Instantiation Phase
+=======================
+> Whenever request comes to a container, 
+  by looking at the URL & referring 
+  web.xml container tries to find the 
+  Servlet name
+
+> If NO Servlet found, then it returns
+  "404 Error Response" 
+
+> If Servlet found, then Container creates 
+  an instance of the Servlet by invoking 
+  "Public Default Constructor ONLY"
+
+2. Initialization Phase
+========================
+
+Version 1 :
+----------------
+public void init(ServletConfig config) 
+throws ServletException
+{
+	super.init(config);
+	//Initialization Code Goes Here
+}
+	
+Version 2 :
+----------------
+public void init() 
+throws ServletException 
+{
+	//Initialization Code Goes Here
+}
+
+> After Successfully creating an instance, 
+  Container automatically invokes 
+  "init(ServletConfig)" Method
+	
+> init(SC) method gives us a chance to 
+  initialize the Servlet before handling 
+  the requests. Like, opening a Text File 
+  or reading the data from a 
+  Property File, etc.,
+
+> This method is called ONLY ONCE in 
+  Servlet Lifecycle
+
+> We may/maynot override this method. If we
+  don't override then default implemetation
+  present in GenericServlet is invoked.
+
+> The first line of the Version 1 init 
+  method should be "super.init(config)"
+	
+	
+	
+	
+	
+> During initialization Servlet has access 
+  to following two key objects
+	1. javax.servlet.ServletContext
+	2. javax.servlet.ServletConfig
+	
+	
+	
+	
+	
+	
+	
+	
+> Can we use Constructor for Initialization ?
+  ------------------------------------------
+  - We can also make use of Constructor for 
+    initialization but this approch is not 
+	so common
+	
+  - Also, init method has access to
+    ServletContext & ServletConfig objects 
+    where as Constructor don't
+	
+  - Hence we generally make use of init 
+    method for initialization
+
+> Once Instantiation & Initialization is successful, 
+  container caches the Servlet Instance
+
+3. Service Phase
+====================	
+	
+public void service(ServletRequest req, 
+					ServletResponse res)
+throws ServletException, IOException
+
+> After Instantiation & Initialization, 
+Container creates Request & Response Objects,
+invokes service(SR, SR) method by passing
+these objects.
+
+> This method is called "for every request" 
+  i.e. one/more times in Servlet Lifecycle 
+
+> If a Servlet is a sub-class of GenericServlet
+  then we MUST override this method
+  
+> If a Servlet is a sub-class of HttpServlet
+  then we SHOULD NOT override this method & 
+  our job is to override doXXX() methods 
+  
+4. Destruction Phase
+======================	
+public void destroy() 
+{
+	//Clean-up Code Goes Here
+}
+	
+> Whenever container wants to remove the cached
+Servlet Instance from it's memory then it invokes
+destroy() method "before removing"
+
+> This method is called ONLY ONCE in Servlet
+Lifecycle
+
+> We may/maynot override this method. If we
+don't override then default implemetation
+present in GenericServlet is invoked.	
+	
+NOTE:-
+--------
+NO Matter how we create a Servlet, 
+Container ALWAYS invokes below Lifecycle 
+Methods on that Servlet
+
+1. Public Default Constructor
+2. void init(ServletConfig)
+3. void service(ServletRequest, ServletResponse)
+4. void destroy()
+	
+	
+	
+	
+About <load-on-startup> Tag
+==============================
+> Generally Servlets are instantiated & 
+  initialized for the First Request. 
+  
+> Therefore time taken to generate the response 
+  for first request is more compared to 
+  subsequent requests
+  
+> This can be avioded by pre-loading the servlet
+  at server startup with the help of 
+  <load-on-startup> tag by specifying a value
+ "Greater Than or Equal to Zero Integer"
+
+ For Example:
+ ------------
+  <servlet>
+  	<servlet-name>servletNM</servlet-name>
+  	<servlet-class>pkgNM.ClassNM</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+
+> Order in which Servlets are pre-loaded depends 
+  on value present in <load-on-startup> tag
+ 
+Few Interview Questions related to Servlet Lifecycle
+===================================================== 
+Explain Servlet Lifecycle?
+
+Can we use Constructor for initialization?
+
+How many versions of init method exists & 
+Which init method to override?
+
+Can we override service(SR, SR) method?
+
+Can we invoke destroy() method inside init()
+method ?
+
+
+NOTE:
+======
+
+> Any Class which extends  
+   - javax.servlet.http.HttpServlet
+     OR
+   - javax.servlet.GenericServlet
+   then its clalled as a "Servlet"
+
+   
+   
+   
+   
+   
+   
+   
+   
+> In otherwords  Servlet MUST be an Object 
+   of type "javax.servlet.Servlet" interface
+
+   
+   
+   
+   
+   
+   
+   
+   
+> If a class extends either HttpServlet or 
+   GenericServlet & a "subclass of that class 
+   is also be called as Servlet"     
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+> Servlets (for which we configure a URL in web.xml) 
+  must be a "concrete class" otherwise they fail at 
+  runtime i.e. during the "Instantiation Phase"
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+> Servlets MUST have public default (i.e. no argument) 
+   constructor or combination of any other constructor 
+   along with public default constructor
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+> There is only one instance exist for any servlet. 
+   i.e. Servlets are "Singleton in nature"   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+>  Servlets are protocol independent in nature, 
+   but are most often used with HTTP & HTTPS
+   protocols   
+
+   
+   
+
+   
+
+   
+> Servlets can have
+	1. Local Variables (Static / Non-Static)
+	2. Block of Code (Static / Non-Static)
+	3. Innner Classes
+	4. It's own Methods (Static / Non-Static 
+							but NO abstract)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+> We can have "main() method" in the servlet
+  but its of no use. Container will not 
+  execute main method in any phases of 
+  Servlet Lifecycle
+
+
+
+
+
+
+
+
+
+
+> At any point of time there will be 
+  multiple threads acting on servlet 
+  instance
+  
+> Hence by default servlets are Multi 
+  Threaded in Nature. In other words 
+  Dynamic Web Applications are Multi 
+  Threaded envionmemnt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Single Threaded Servlets :
+==========================
+> We Know that, by default servlets 
+  are Multi Threaded in Nature. Hence
+  following are the 2 ways to 
+  create Single Threaded Servlet  
+  
+1. By Implementing 
+   "javax.servlet.SingleThreadModel" 
+   Marker Interface
+
+2. By Synchronizing Service Method
+
+> SingleThreadModel is a Marker Interface
+  which ensures that servlets handle only 
+  one request at a time
+ 
+> This interface is "Deprecated" in 
+  Servlet API 2.4
+  
+Example :-
+==========
+public class MyServlet 
+extends HttpServlet / GenericServlet
+implements SingleThreadModel
+{
+	//Servlet Code Goes Here
+}
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	

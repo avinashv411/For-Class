@@ -1,0 +1,8 @@
+> Write a Java Program, whenever we run this
+  program, it should interact with DB to get
+  "ALL Students Data"
+  ( combination of data present in 
+  	students_info,
+  	guardian_info & 
+  	students_otherinfo tables )
+  & print that data in the Console

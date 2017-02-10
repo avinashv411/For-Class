@@ -1,0 +1,1407 @@
+Java Server Pages (JSP)
+===========================
+> Its an API of J2EE which accepts the Request
+  & generates "Dynamic Response"
+
+> With Respect to functionality, both Servlets & 
+  JSP's are one & the same because JSP get 
+  "translated to a Servlet" at runtime
+
+> JSP Separates "Business Logic" from "Presentation 
+  Logic" however these two are tightly coupled in 
+  case of Servlets
+  
+> With this separation different people can work on 
+  different tasks
+1. "Web Designer" can develop "Presentation Logic"
+2. "Web Developer" can develop "Business Logic" 
+    
+Business Logic : 
+-----------------------
+Logic/Java Code to generate the Dynamic Data 
+using JDBC / Hibernate / Design Patterns, etc.,
+
+Presentation Logic : 
+-----------------------
+Logic to Present the Dynamic Data in Browser using 
+HTML, CSS, JavaScript, JQuery, NodeJS, AngularJS, etc.,
+             
+> Whenever First Request comes to JSP, 	
+1. Translate the JSP into a Servlet (i.e. ".java" file)
+2. Compiles the Servlet (i.e. ".class" file)
+3. This ".class" file is used to Generate the Response
+ 
+All these things are done by Container & it happens 
+behind the scene at runtime
+
+> Hence time taken to generate the response for First 
+  Request is more compared to Subsequent Requests
+
+> JSP File will have ".jsp" file extension & hence it 
+  should be created under "WebContent" folder of 
+  Dynamic Web Project
+
+> There are two ways to access JSP
+  1. By using the JSP File Name directly in Web URL
+  2. By configuring URL for a JSP in "web.xml" 
+     & using this configured URL in Web URL
+
+> Second Approch helps us to achieve "Security" 
+  & "Maintainablity" 
+
+> "javax.servlet.jsp.*" is the package representation
+  of JSP API
+
+> By default JSP handles ONLY HTTP / HTTPS Protocols
+  i.e. by default JSP API is "Protocol Dependent"
+  where as Servlet API is "Protocol Independent"
+  
+MyFirstJSP.jsp
+==============
+
+<%@page import="java.util.Date"%>
+
+<%
+  //Java Code to Generate Current Date & Time
+  Date dateRef = new Date();
+  String currDate = dateRef.toString();
+%>
+	
+<html>
+<body>
+	Current Date & Time is : 
+	<font color="red"><%= currDate %></font>
+</body>
+</html>
+
+Configuring URL for JSP in web.xml :-
+======================================
+<servlet>
+	<servlet-name>myFirstJsp</servlet-name>
+	<jsp-file>/MyFirstJSP.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>myFirstJsp</servlet-name>
+	<url-pattern>/currentDateJsp</url-pattern>
+</servlet-mapping>
+
+URL's to Access JSP :
+========================
+
+1. Using JSP File Name
+-----------------------
+http://localhost:8080/studentsApp/MyFirstJSP.jsp
+
+2. Using Configured URL
+-----------------------
+http://localhost:8080/studentsApp/currentDateJsp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+JSP Lifecycle
+==============
+Lifecycle of a JSP is controlled by Servlet Container
+and it has following phases
+
+1. Translation & Instantiation Phase
+2. Initialization Phase
+3. Service Phase
+4. Destruction Phase
+
+1. Translation & Instantiation Phase :-
+=======================================
+> Whenever the First Request comes to JSP, Container,
+ 1. Parses the JSP (i.e. Syntax Check)
+ 2. Translates JSP into a Servlet (i.e. ".java" file)
+ 3. Compiles the Servlet (i.e. ".class" file)
+
+> Once Translation & Compilation is successful, 
+  Container creates an instance of the Translated 
+  Servlet by invokeing "Public Default Constructor" 
+  ONLY
+  
+2. Initialization Phase
+========================
+Syntax
+-------
+public void jspInit() 
+{
+	//Initialization Code goes here
+}
+
+> After successful Instantiation, container invokes 
+  "init(ServletConfig)" method which inturn invokes 
+  "jspInit()" Method
+
+> jspInit() Method is called ONLY ONCE in JSP 
+  Lifecycle
+
+> We May / May Not override this method. If we don't 
+  override then default implementation from 
+  "HttpJspBase" is invoked 
+  
+> After successful Initialization, container caches 
+  the Translated Servlet Instance
+
+3. Service Phase
+====================
+Syntax
+--------
+public void _jspService(HttpServletRequest request, 
+						HttpServletResponse response) 
+throws ServletException, IOException
+	
+> Whenever request comes, container invokes 
+  "service(SR, SR)" Method which inturn inovkes 
+  "_jspService(HSR, HSR)"
+  
+> This method is called One / More times in JSP 
+  Lifecycle i.e. equal to number of requests
+
+> This method is also responsible for generating 
+  response for all HTTP methods
+  
+> We cannot override this method. Whatever we write 
+  inside a JSP becomes part of this method at the 
+  time of translation
+  
+4. Destruction Phase
+=======================	
+Syntax
+-------	
+public void jspDestroy() 
+{
+	//Clean-up Code goes here
+}
+
+> If container wants to remove the cached servlet 
+  instance, then it invokes destroy() Method which 
+  inturn invokes jspDestroy() Method
+
+> jspDestroy() Method is called ONLY ONCE in JSP 
+  Lifecycle
+
+> We May / May Not override this method. If we don't 
+  override then default implementation from 
+  "HttpJspBase" is invoked
+
+
+  
+  
+  
+  
+  
+Use of <load-on-startup> Tag in JSP Life Cycle
+====================================================
+> Generally JSP get Parsed, Translated, Compiled, 
+  Instantiated & Initialized for the First Request
+  
+> Hence time taken to generate the response for first 
+  request is more compared to subsequent requests
+  
+> This can be avioded by pre-loading the JSP during
+  server startup with the help of <load-on-startup> 
+  tag by specifying a value "Greater Than or Equal 
+  to Zero Integer"
+
+For Example:
+------------
+<servlet>
+	<servlet-name>someNM</servlet-name>
+	<jsp-file>/JSPfileNM.jsp</jsp-file>
+	<load-on-startup>1</load-on-startup>
+</servlet>
+
+NOTE:
+======
+> Servlet get created by 
+  1. Extending GenericServlet
+  2. Extending HttpServlet or
+  3. Got created because of the JSP
+     
+> No Matter how Servlet get created, container always 
+  invokes below Lifecycle Methods in that Servlet
+  1. public default constructor
+  2. init(SC)
+  3. service(SR, SR)
+  4. destroy()
+  
+> In other words, From "Container Perspective" 
+  LifeCycle methods remains same however from 
+  "Developer Perspective" LifeCycle methods are 
+  different depending on what we are creating 
+  i.e. Servelt / JSP
+
+MyFirstJSP.jsp with LifeCycle Methods :-
+========================================
+<%@page import="java.util.Date"%>
+
+<%!
+	public void jspInit() {
+		System.out.println("Inside jspInit()...");
+	}
+
+	public void jspDestroy() {
+		System.out.println("Inside jspDestroy()...");
+	}
+%>
+
+<%
+	System.out.println("Inside _jspService()...");
+
+	//Java Code to Generate Date & Time
+	Date dateRef = new Date();
+	String currentDate = dateRef.toString();
+%>
+
+<html>
+<body>
+	Current Date & Time is : 
+	<font color="green">
+		<%= currentDate %>
+	</font>
+</body>
+</html>
+
+
+
+
+
+
+  
+Example:
+========
+
+<%!
+  public void jspInit() {
+	System.out.println("Inside jspInit() Method");
+  }
+  public void jspDestroy() {
+	System.out.println("Inside jspDestroy() Method");
+  }
+%>
+<html>
+<body>
+<% 
+  System.out.println("Inside _jspService() Method");
+%>
+<h1>JSP LifeCycle Example ...</h1>
+</body>
+</html>
+
+
+
+
+
+
+Differences Between Servlets & JSP
+======================================
+
+====================================================
+|	Servlets                |     JSP       	   |
+====================================================
+
+
+
+
+
+
+
+1.  Servlets are Protocol Independent
+
+	By default JSP is protocol dependent 
+    i.e. it handles ONLY HTTP & HTTPS Protocols	
+	
+	
+	
+	
+	
+	
+
+2. In case of Servlets, Business Logic is tightly 
+   coupled with Presentation Logic i.e "HTML inside 
+   Java"
+
+   In case of JSP, Business Logic is kept separate 
+   from Presentation Logic i.e "Java inside the HTML"
+   
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+3. In case of Servlets, Already compiled ".class" 
+  files are used to generate the response 
+   
+   In case of JSP, it get converted into Servlet, it 
+   get compiled & the compiled ".class" file is used 
+   to generate the response
+
+   
+   
+   
+   
+   
+   
+4. Hence time to take generate the response for 1st 
+   Request is Less (as compared to JSP)
+   
+   But in case of JSP, time to take generate the 
+   response for 1st Request is More
+   
+   
+   
+   
+   
+   
+   
+5. Servlets are accessed ONLY by using the configured
+   URL present in web.xml
+   
+  JSP can be accessed 
+  - either by using the file name directly in the URL or 
+  - using the configured URL present in web.xml	   
+   
+   
+   
+   
+   
+   
+   
+   
+6. Servlets extends either "GenericServlet" or 
+   "HttpServlet"
+	
+   In case of JSP, "Translated Servlet extends 
+   HttpJspBase" which in turn extends "HttpServlet"	 
+
+
+   
+   
+   
+   
+   
+   
+7. In case of Servlets (which extends HttpServlet) 
+   Container invokes corresponding doXXX(HSR, HSR) 
+   method depending on the HTTP Method present in 
+   the request
+
+   Container invokes _jspService(HSR, HSR) method 
+   irrespective of the HTTP Method present in 
+   the request	
+   
+
+
+
+
+
+8. Servelts has "*.java" file extension
+
+   JSP has "*.jsp" file extension
+
+
+9. Implicit Objects are NOT avilable & we have to
+   explicitly define them
+	
+   Implicit Objects are available	
+	
+	
+	
+
+	
+	
+	
+Comments in JSP :-
+==================
+> There is only one type of Comment avilable in JSP 
+  API
+
+> Container ignores whatever we write inside this tag
+  at the time of Translation
+	
+Syntax :	<%-- My JSP Comment --%>
+--------
+	
+Note : 	
+=======	
+<!-- HTML Comment --> is a HTML Comment. 
+Hence there is nothing called as "Hidden Comment" 
+OR "Output Comment" as per JSP Specification
+
+
+
+
+
+JSP Objects:
+=============
+> We know that, JSP get translated to Java (Servlet)
+  & in Java we can create Objects
+  
+> Also, JSP's are handled by 2 parties
+  1. Developer who creates the JSP
+  2. Container who translates JSP into Servelt
+  
+> Hence Developer as well as Container can create 
+  Objects in JSP 
+
+> Hence Objects in JSP are grouped into 2 Groups
+  1. Implicit Objects (Created by Container)
+  2. Explicit Objects (Created by Developer)
+
+> Every Object in JSP SHOULD have a Scope. There are 
+  4 different types of scopes
+  1. Page Scope (it's Default)
+  2. Request Scope
+  3. Session Scope
+  4. Application Scope
+
+1. Page Scope :
+================
+JSP Object with "Page Scope" can be accessed only 
+within the same JSP(like "private" variables in Java)
+
+2. Request Scope :
+==================
+> JSP Object with "Request Scope" can be accessed 
+  from ANY JSP which serves that request (more than 
+  one JSP can serve a single request)
+
+> Once Response is given back this object get Garbage
+  Collected
+  
+3. Session Scope :
+==================
+> JSP Object with "Session Scope" can be accessed in 
+  ANY JSP's within the same session
+
+> Once Session is Invalidated, this object get
+  Garbage Collected
+  
+4. Application Scope : 
+======================
+> JSP Object with "Application Scope" can be accessed
+  in ANY JSP's across the application till the 
+  application up & running
+
+> Once Application/Web Server goes down, this object 
+  get Garbage Collected
+
+  
+  
+  
+  
+Implicit Objects :
+==================
+> Implicit objects are the objects that are "created 
+  by the container"
+  
+> Since container creates these objects it uses
+  standard variable names
+  
+> Hence we SHOULD make use of the same variable
+  names while using implicit objects in JSP
+  
+> There are 9 implicit objects
+
+
+
+
+
+
+
+
+======================================================================
+| Variable 	  |	Of Type			| Scope    | Description	         |
+======================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+| request	  |	javax.servlet.http.HttpServletRequest  | request     |
+| response 	  |	javax.servlet.http.HttpServletResponse | request     |
+| session	  |	javax.servlet.http.HttpSession         | session     |
+| config	  |	javax.servlet.ServletConfig            | page        |
+| application |	javax.servlet.ServletContext	       | application |
+
+
+These Objects Functionality is as same as corresponding 
+Servlet Objects
+
+
+
+
+
+
+
+| out   | javax.servlet.jsp.JspWriter  | page  |
+
+> This Object helps to print the data in Browser
+
+> Functionality wise its similar to 
+  "java.io.PrintWriter" Object which we use in
+  Servelts to print the data in Browser
+
+  
+  
+  
+  
+  
+  
+
+| page	| java.lang.Object  | page	|
+
+> This Object holds the Object reference 
+  of Translated Servlet Instance 
+  
+> Functionality is as same as "this"
+
+
+
+
+
+| pageContext | javax.servlet.jsp.PageContext | page |
+
+> PageContext acts like a Single API to manage all 
+  the other Implicit Objects
+
+
+  
+  
+  
+  
+  
+| exception | java.lang.Throwable  | page	|
+
+> This implicit Object is only available to the
+  pages where "isErrorPage" page directive is 
+  set to "true"
+  
+  <%@page isErrorPage="true" %>
+			
+
+			
+			
+			
+			
+			
+JSP Tags:-
+==========
+> We know that JSP is like a Java inside HTML & "JSP 
+  tags  helps us to write Java code inside JSP"
+  
+> Every JSP tag has its own functionality. Also, we 
+  cannot make use of one tag inside an another tag 
+  (excluding Action Tag)
+  
+> JSP comes with set of "Pre-defind" tags & 
+  they are grouped into 5 groups 
+  1. Declaration Tag 
+  2. Expression Tag 
+  3. Scriptlet Tag
+  4. Action Tag
+  5. Directive Tag
+
+Code Word :  DEADS
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+1. Declaration Tag [ <%!        %> ]
+====================================
+> Declaration Tag helps us to declare
+1. Variable (static / non-static)
+2. Block of Code (static / non-static)
+3. Methods (static / non-static but non-abstract) &
+4. Inner Classes inside a JSP
+
+> We can have "Zero / One / More" Declaration 
+  Tag & Declaration Tag can be present "Anywhere 
+  inside a JSP" (Preferred is to keep at the begining 
+  of the JSP)
+
+> Code present inside this tag will be kept as a 
+  first lines of translated servlet at the time of 
+  Translation  
+  
+> Hence code present within this tag will be present 
+  outside of "_jspService()" Method
+
+> So if we declare a variable using Declaration Tag 
+  then it becomes "Class Level Variable" 
+
+  
+  
+  
+  
+  
+2. Expression Tag [ <%=        %> ]
+===================================
+> This tag helps us to print Dynamic Value in the 
+  Browser
+
+> Code placed with in this tag should not end with 
+  Semicolon
+
+> Functionality of this tag is similler to  printing 
+  the dynamic data using out.print() in case of 
+  Servlets
+
+
+
+
+
+
+
+
+
+
+
+3. Scriptlet Tag [ <%        %> ]
+===================================
+> In Servlets we write business logic (Java Code)
+  inside service() method
+  
+> We also know that, JSP get translated to Servlet 
+  at runtime & hence "we can also write business 
+  logic (Java Code) inside JSP using Scriptlet Tag"
+  
+> Code placed with in this tag becomes part of 
+  _jspService() Method at runtime and get executed 
+  for every request
+  
+> If we declare a variable using this tag then it 
+  becomes "Method Level Variable" and accessable only
+  within _jspService() Method
+
+Example for Declaration, Expression & Scriptlet 
+Tags :
+=================================================  
+<%!
+	private int age = 100;
+	public String name = "Rajani Kanth";
+	public int getAge()	{
+		return age;
+	}
+	public String getName()	{
+		return name;
+	}
+	public String getName(String givenNM){
+		return "Given name is - "+givenNM;
+	}
+%>
+<html>
+<body>
+	<h1>JSP Tags Example</h1>
+	Name 1 : <%= name %>
+	Name 2 : <%= getName() %>
+	Name 3 : <%= getName("Praveen")%>
+	Name 4 : <%= getName()+getName("Praveen")%>
+	Age 1 : <%= age %>
+	Age 2 : <%= getAge() %>
+	<%
+		int j=100;
+		for(int i=0; i<5; i++)
+		{
+	%>
+			Name : <%= name %>
+	<%		
+		}
+	%>
+</body>
+</html>
+  
+   
+   
+   
+   
+
+4. Action Tag [ <jsp:action_name  action_attributes /> ]
+========================================================
+Action Tag helps us to perform following actions in JSP
+I.   Forward Action
+II.  Include Action
+III. UseBean Action
+
+I. Forward Action [<jsp:forward  page="relativeURL" />]
+-------------------------------------------------------	
+This tag helps us to Forward the Request to an another
+Intenal Resource (static / dynamic i.e Servlet or JSP)
+
+Example :
+---------
+<%-- Forward : Static Resource --%> 
+<jsp:forward page="index.html" />
+
+<%-- Forward : Dynamic Resource - Servlet --%> 
+<jsp:forward page="currentDate" />
+
+<jsp:forward page="currentDate?fname=ABC&lname=XYZ"/>
+
+<jsp:forward page="currentDate">
+	<jsp:param name="fname" value="123" />
+	<jsp:param name="lname" value="456" />
+</jsp:forward>
+
+<%-- Forward : Dynamic Resource - JSP --%> 
+<jsp:forward page="MyFirstJSP.jsp" />
+
+<jsp:forward page="currentDateJsp" />
+	
+Note :	
+------
+> We can Forward the request to ONLY ONE resource at a 
+  time
+> Only incase of Action Tag we can make use of other JSP 
+  Tags
+
+For Example :
+--------------
+<% 
+	String url = "currentDate";
+%>
+
+<jsp:forward page="<%= url %>" />
+	
+	
+	
+	
+II. Include Action [<jsp:include  page="relativeURL" />]
+----------------------------------------------------------	
+This tag helps us to Include the Response of an another
+Internal Resource (static / dynamic i.e Servlet or JSP) 
+into JSP
+
+Example :
+---------
+
+111111111111111111111
+
+<jsp:include page="index.html"	/>
+
+222222222222222222222
+
+<jsp:include page="currentDate?fname=AAA&lname=BBB"/>
+
+3333333333333333333333
+
+<jsp:include page="currentDate">
+	<jsp:param name="fname" value="XXX" />
+	<jsp:param name="lname" value="YYY" />
+</jsp:include>
+
+4444444444444444444444
+
+<jsp:include page="currentDateJsp">
+	<jsp:param name="fname" value="123" />
+	<jsp:param name="lname" value="456" />
+</jsp:include>
+
+55555555555555555555555
+
+
+
+
+
+III. UseBean Action
+----------------------------------------------------
+Syntax:
+------- 
+<jsp:useBean 
+   id="referenceNM"
+   class="pkgNM.classNM"
+   scope="page | request | session | application"/>
+
+> This tag helps us to create Explicit Objects in JSP	
+
+> Container first search for an Existing Object by 
+  using "id" & "scope" attributes present in this tag
+  - If found, then it makes use of that Object
+  - Otherwise, 
+	* it creates a "New Object" using "Public Default 
+	  Constructor"  & 
+	* set that object to the corresponding scope
+
+> Since web application is Multi Threaded in Nature, the 
+  above logic is "synchronized"	in Translated Servelt
+  
+> We know that, Java Bean helps us to tranfer the data 
+  in the form of Object from one Java program to other. 
+  Hence using this tag "we can ONLY create an instance 
+  of Java Bean" & for noraml Java Classes we should use 
+  "Scriptlet Tag"
+  
+Example:
+=========  
+<jsp:useBean 
+    id="ref"
+    class="com.jspiders.studentsapp.dao.StudentInfoBean"
+    scope="application"
+/>
+
+Reg. No. Value is :
+<jsp:getProperty name="ref" property="regno" />
+
+Changing the Value of Reg. No.
+<jsp:setProperty name="ref" property="regno" value="10"/>
+
+New Reg. No. Value is :
+<jsp:getProperty name="ref" property="regno" />	   
+		   
+		   
+		   
+		   
+		   
+		   
+ 
+5. Directive Tag [ <%@directive_name   directive_attributes %> ]
+================================================================
+There are 3 Types of Directive Tags
+I.   Include Directive
+II.  TagLib Directive
+III. Page Directive
+
+I. Include Directive [ <%@include   file="resourceFileNM" %> ]
+---------------------------------------------------------------
+> Include Directive includes the content of Physical File 
+  OR Static Resource into JSP at the time of translation
+
+> Hence compared to Include Action (for Static Resource), 
+  Include Directive is faster in nature
+
+NOTE: 	Use Include Action for Dynamic Resources &
+-----	Use Include Directive for Static Resources
+
+Example:-
+---------
+111111111111111111111
+
+<%@include file="index.html" %>
+
+222222222222222222222
+<%-- 
+	 Not Possible !!! We cannot include Dynamic Resource
+     using Include Directive 
+--%>
+<%-- <%@include file="currentDate" %> --%>
+<%-- <%@include file="currentDateJsp" %> --%>
+
+II. Taglib Directive
+------------------------
+Syntax:
+------- 
+	<%@ taglib uri="URI of the Tag Library"
+			  prefix="prefix of the Tag Library" %>
+
+> TagLib Directive helps us to make use of "Custom Tags" 
+  in JSP
+
+> The functionality of these custom tags are defind in 
+  "Tag Library Descriptor (TLD)" file	   
+	
+> Tag Library Descriptor file will have ".tld"	file
+  extension & it will present inside WEB-INF folder
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		
+
+
+
+
+		
+III. Page Directive [ <%@page   attributes %> ]
+--------------------------------------------------
+> Page Directive has 11 Optional Attribute that provides 
+  some processing information to Servlet Container
+  
+=======================================================
+|   Attribute 	|	Syntax			|   Description    |
+=======================================================
+
+
+
+
+
+
+| info			| <%@page info="My First JSP" %>			|			 |
+
+> This attribute is used to provide documentation 
+  information for a JSP
+  
+> Details such as Author, Version, Copyright, Date, 
+  etc., are placed inside this tag
+  
+  
+
+  
+  
+
+| language		| <%@page language="java" %>				|			 |
+
+> Language denotes the "Scripting Language" used in 
+  Declaration, Expression & Scriptlet tags
+
+> Default language is "java"
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+| contentType	| <%@ page contentType="text/html" %>		|			 |
+|				|	OR  									|			 |
+|				| <%@ page contentType="text/html; 			|			 |
+|				|          charset=ISO-8859-1"%>		  	|			 |
+|				|										    |			 |
+
+> This attribute specifies the Content Type and 
+  Character Set for JSP Response
+  
+> Default Contnet Type is "text/html" &
+  Default Character Set is "ISO-8859-1"
+  
+  
+
+
+
+
+
+
+| import   | <%@page import="pkg1.class1, pkg2.*, .."%>| 			 |
+|          | OR                                        | 			 |
+| 	       | <%@page import="pkg1.class1"%>            | 			 |
+| 		   | <%@page import="pkg2.*"%>                 | 			 |
+
+
+> Functionality is similar to Java "import" statement
+
+
+
+
+
+
+
+
+| extends	| <%@page extends="pkgNM.classNM"%>		|			 |		
+
+
+> Functionality is similler to Java "extends" statement
+
+
+
+
+
+
+
+
+
+
+
+| buffer		| <%@page buffer="none | sizeInKB"%>		|			 |
+
+> This attribute set the Buffer Size in KB
+
+> The default size is 8KB
+
+> To turn off the buffered output the value should be 
+  "none"
+
+
+
+
+
+
+
+
+
+
+
+
+| autoFlush		| <%@page autoFlush="true | false"%>		| 			 |
+
+> This attribute controls the behaviour of Buffer
+
+> If "true" (it's default), the buffer will be flused
+  automatically when it's full
+  
+> If "false" then an exception is thrown when the Buffer
+  is full
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+| session	| <%@page session="true | false"%>		|			 |
+
+
+> If "true" (it's default), then "session" implicit
+  object is avilable in JSP & it refers to Current / 
+  New Session
+  
+> If "false", then "session" implicit object will NOT 
+  be avilable in JSP
+
+
+
+
+
+
+
+
+| isThreadSafe  | <%@page isThreadSafe="true | false"%>		|			 |
+
+
+> If "true" (it's default), then JSP becomes 
+  "Multi Threaded" in nature
+  
+> If "false", then JSP becomes "Single Threaded" 
+  in nature
+
+
+
+
+
+
+
+
+
+| isErrorPage	| <%@page isErrorPage="true | false"%> 		|			 |		
+
+
+> If "true", then "exception" implicit object is 
+  avilable in JSP
+  
+> If "false" (it's default), then "exception" implicit 
+  object will NOT be avilable in JSP
+
+
+
+  
+  
+  
+  
+  
+
+
+| errorPage		| 		<%@page errorPage="relativeURL"%>		|
+
+> This attribute defines the "Error Page" for a JSP
+
+> While processing the request for a JSP, if an exception 
+  occurs then request automatically get forwarded to the
+  "Specified Error Page" 
+  
+> The value of "errorPage" attribute is URL of the 
+  Static / Dynamic Resource
+  
+==========================================================================	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+NOTE:
+=======	
+1. We can have Zero / More Page Directive in JSP & 
+   they can be present anywhere inside a JSP (Preferred
+   is to keep at the begining of the JSP)
+   
+2. We can club multiple Page Directive Attributes 
+   into one page directive as shown below
+
+   <%@page errorPage="JSPErrorPage.jsp" 
+		   import="java.util.Date" %>
+	
+	which is equal to 
+	
+	<%@page errorPage="JSPErrorPage.jsp" %>
+	<%@page import="java.util.Date" %>
+
+3. Declaration Tag & Page Directive Tag can be  present 
+   at the begining of the JSP (Preferred). So between 
+   these two, Page Directive Tag should be present first
+   followed by Declaration Tag
+   
+4. Apart from the above 11 Page Attributes, there are 
+   few more attributes like 
+   "isELIgnored", 
+   "pageEncoding", etc.,
+	
+5. Code Word : 	
+	
+	
+	
+
+
+
+
+	
+Exception Handling in JSP
+==========================
+In JSP we can handle exception scnerios with the help of
+"errorPage" & "isErrorPage" page directive attributes
+
+Example :-
+-----------
+MyJSP.jsp
+---------
+<%@page errorPage="JSPErrorPage.jsp"%>
+
+<html>
+<body>
+	Exception Simulation ....
+	<%
+		int i = 100/0;
+	%>
+</body>
+</html>
+
+JSPErrorPage.jsp
+-----------------
+<%@page isErrorPage="true"%>
+
+<html>
+<body>
+	Exception Occurred !!! Exception is :
+	<font color="red">
+		<%= exception.getMessage() %>
+	</font>
+</body>
+</html>			   
+			   
+Single Threaded JSP :
+=====================
+We can create JSP, single threaded in nature, with the 
+help of "isThreadSafe" Page Directive attribute			   
+
+Example:
+--------
+<%@page isThreadSafe="false" %>
+
+<html>
+<body>
+	<h1>My Single Threaded JSP</h1>
+</body>
+</html>			   
+			   
+			   
+			   
+			   
+			   
+			   
+JSP Redirect Example:
+========================
+<%-- Don't Generate the Response, Instead Redirect the
+     Request --%>
+	
+<% 
+	String url = "http://www.gmail.com";
+	response.sendRedirect(url); 
+%>			   
+
+
+================= END of JSP ==============
+################# End of J2EE ##############
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Protocol Independent JSP:
+============================
+> By Default JSP is "Protocol Dependent" i.e. it handles 
+  ONLY HTTP & HTTPS protocols
+  
+> It's possible to create a JSP which is "Protocol 
+  Independent" in nature by Overriding service(SR, SR)
+  method in JSP with the help of Declaration Tag
+
+
+<%@page import="java.io.PrintWriter"%>
+<%@page import="java.io.IOException"%>
+
+<%!
+	public void service(ServletRequest req, 
+	                    ServletResponse resp)
+	throws ServletException, IOException 
+	{
+		resp.setContentType("text/html");
+		PrintWriter out = resp.getWriter();
+		out.println("Inside My Protocol Independent JSP");
+	}
+%>
+
+================= END of JSP ==============
+################# End of J2EE ##############
+
+
+
+
+
+
+	
+	
+
+	
+
+
+
+
+			
+			
+			
+
+			
+			
+			
+
+			
+
+   
+   
+   
+   
+
+
+	
+	
+	
+	
+
+
+
+
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+

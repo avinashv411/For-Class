@@ -1,0 +1,61 @@
+1. Statement
+=============
+
+Statement stmt = con.createStatement();
+
+ResultSet rs 
+= stmt.executeQuery("<Select Static SQL Query>");
+
+int count 
+= stmt.executeUpdate("<Other than Select Static SQL Query>");
+
+boolean isDBResults
+= stmt.execute("<Any Type of SQL Query including Select>");
+
+2. PreparedStatement
+=====================
+
+PreparedStatement pstmt 
+= con.prepareStatement("SQL Query With Question Mark");
+
+pstmt.setXXX(<Question Mark Position> , <Dynamic Value>);
+
+//For Select SQL Query
+ResultSet rs = pstmt.executeQuery();
+
+//Other than Select SQL Query
+int count = pstmt.executeUpdate();
+
+//Any type of SQL Query including Select
+boolean isDBResults = pstmt.execute();
+
+3. CallableStatement
+=====================
+
+//S.P without any input arguments
+String query = "{ call SPName() }";
+
+//S.P with hard coded input arguments
+String query = "{ call SPName(10, 'ABC') }";
+
+//S.P with dynamic input arguments
+String query = "{ call SPName(?, ?) }";
+
+//S.P with combination of dynamic input arguments
+//and hard coded input arguments
+String query = "{ call SPName(10, ?) }";
+
+CallableStatement cstmt = con.prepareCall(query);
+
+//If Query Contains Question Mark
+cstmt.setXXX(<Question Mark Position> , <Dynamic Value>);
+
+//If S.P returns ONLY DB Results
+ResultSet rs = cstmt.executeQuery();
+
+//If S.P returns ONLY integer count
+int count = cstmt.executeUpdate();
+
+//If S.P returns either DB Results OR integer count based on
+//the logic it has
+boolean isDBResults = cstmt.execute();

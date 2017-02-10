@@ -1,0 +1,116 @@
+Steps to Configure Driver :-
+=====================================
+Step 1 : Configure Project Build Path
+--------------------------------------
+> Download MySQL Driver ZIP file & 
+  extract it to some location
+  
+> Goto Eclipse, right click on the 
+  Project, Select "Build Path", click
+  on "Add External Archieves"
+
+> Select "MySQL Driver JAR" file & 
+  click on Open
+
+JAR (Java ARchieve) File:
+==========================
+> It's a Collection of ".class" files
+  + Other Necessary Resources 
+(Text File, XML, Property Files, etc.,)
+
+> JAR file helps us to transfer the 
+  "Java files / Java Application" from 
+  one location to an another location
+
+Step 2 : Load the "Driver Class" into 
+         the Program
+-----------------------------------------
+There are 2 ways to load the Driver Class
+
+1.  By invoking "registerDriver()" method 
+    present in "java.sql.DriverManager" 
+	Class by passing an instance of 
+	"Driver Class"
+	
+Syntax :
+========
+public void 
+  DriverManager
+   .registerDriver(java.sql.Driver driverRef) 
+throws SQLException
+
+Code for MySQL Driver :
+=======================
+com.mysql.jdbc.Driver ref 
+	           = new com.mysql.jdbc.Driver();
+   
+DriverManager.registerDriver(ref);
+   
+   
+   
+   
+ 
+   
+> Second approach to Load the Driver Class
+   is with the help of Java's "Class.forName()" 
+   Method
+
+For Example:
+------------
+Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+> This is the most common approach to register a 
+  Driver Class which helps us to pass Driver Class
+  Name at Runtime 
+  
+> But if we create an instance of a driver class 
+  using new operator, then driver class name can't 
+  be passed at Runtime
+  
+  
+  
+
+The main advantage with Class.forName is, 
+  it can accept the class name as a String argument 
+  so that we can pass the driver class name 
+  dynamically.
+the driver's class file into memory & automatically registers it. 
+
+
+
+
+
+
+
+
+
+
+
+Driver Types
+===============
+There are 4 types of Drivers
+
+1. Type 1 : JDBC-ODBC Bridge
+2. Type 2 : Native-API Driver
+3. Type 3 : Network-Protocol Driver
+4. Type 4 : Native-Protocol Driver
+
+ODBC = Open Data Base Connectivity
+
+
+
+
+
+
+
+public void DriverManager
+             .registerDriver(java.sql.Driver driverClassRef) 
+throws SQLException
+
+
+
+
+java.sql.Connection
+
+
+

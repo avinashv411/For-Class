@@ -1,0 +1,297 @@
+Session Introduction
+======================
+> J2EE helps us to develop "Dynamic Web Application"
+  & thre are 2 types of Dynamic Web Application
+  1. User Dependent Dynamic Web Applications 
+  2. User Independent Dynamic Web Applications
+
+1. User Dependent Dynamic Web Applications  :-
+----------------------------------------------
+> These are the Web Applications where "Response Data 
+  is specific to a User"
+  
+  For Ex:- Gamil, Facebook, Twitter, Linked-In, etc.,
+
+> Login & Logout is "Must" for these Web Applications
+
+
+2. User Independent Dynamic Web Applications :-
+--------------------------------------------------
+> These are the Web Applications where "Response Data 
+  is independent of the User"
+
+  For Ex:- Google Search, Google Maps, Youtube, 
+           Any Company Related Web Application 
+		   (www.jspiders.com)  etc.,
+
+> Login & Logout is "Optional" for these Web Applications
+		   
+		   
+Thumb Rule :-
+--------------
+> If we must need to Login & Logout to access the 
+  web application then, it MUST be a "User Dependent 
+  Dynamic Web Application"		   
+		   
+		   
+Why HttpSession (a.k.a Session) Functionality ?
+===============================================
+> HTTP is a "stateless protocol" i.e. it doesn't 
+  maintain a relationship/state between requests.
+  Each request is un-related to any previous 
+  requests
+  
+> Also HTTP don't help web application to 
+  uniquely identify the user
+  
+> Hence even if user sends sequence of requests 
+  to web application then it will not able to 
+  identify, those are from the same user. 
+  Also web application will not be able to 
+  relate them
+
+> To address to this problem, Servlet API 
+  provides "HttpSession functionality". With 
+  HttpSession we can overcome the above problems
+
+Thumb Rule:  
+-----------
+Any web application which has Login page 
+requirement then we MUST make use of HttpSession 
+functionality	   
+	
+
+	
+		   
+		   
+HttpSession
+============
+> A session w.r.t web application is a time 
+difference between Login & Logout. 
+
+> "HttpSession" is a functionality provided by 
+Servlet API which helps web application to
+
+1. uniquely identify the user
+2. It maintain "State / Relationship" between 
+   requests with the help of Session Attributes
+3. Avoids Authenticattion for each Request
+4. Tightly couples the different pages of the 
+   web application
+   
+
+   
+   
+   
+
+> HttpSession uses one of the following two 
+  mechanisms to handle session: 
+1.	Cookies (it’s default)
+2.	URL Re-Writing 
+
+
+
+
+
+
+
+HttpSession Related Methods
+============================
+
+1. HttpSession HttpServletRequest.getSession()
+ 
+2. HttpSession    
+    HttpServletRequest.getSession(boolean create)
+ 
+ 
+Creating a New Session Object Means:
+--------------------------------------
+A. Container generates Unique ID 
+B. Container maintains the Status of this ID as 
+   "Active" @ Server Side
+C. Container sends this Unique ID to User in the 
+   form of Cookie where, 
+   Cookie Name = "JSESSIONID"
+   Cookie Value = "Unique_ID"
+D. Container caches this Session Object in it's 
+   Cache where,
+   Key is "Unique_ID" &
+   Value is "Corresponding Session Object"
+
+NOTE:
+===== 
+Container does All the above steps when we create 
+HttpSession Object [ i.e. when we invoke getSession() 
+or getSession(true) ] & it happens behind the Scene 
+ 
+ 
+   
+ 
+ 
+ 
+3. void HttpSession
+		 .setMaxInactiveInterval(int timeInterval)
+---------------------------------------------------
+> Specifies the valid session time, in seconds 
+
+> A negative time indicates the session should 
+  never timeout
+ 
+> This method helps us to set different 
+  Session Time Out for different types of users
+ 
+
+ 
+ 
+ 
+ 
+4. void HttpSession.invalidate()
+----------------------------------- 
+> Invalidates the current session & garbage collects 
+  the associated session object
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+5. String HttpSession.getId()
+--------------------------------------- 
+> This method returns the unique identifier generated 
+  for each session
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+6. String HttpServletResponse.encodeURL(String url)
+					
+7. String HttpServletResponse
+			         .encodeRedirectURL(String url)
+----------------------------------------------------
+> Both methods encodes the specified URL by appending
+  session ID to it
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+8. Refer "Attributes Section" for Attributes 
+   related Methods
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+Steps to Handle HttpSession
+============================ 
+1. Create the Session :-
+------------------------
+Whenever user login & after sucessfull authentication,
+create session for the First Time.
+
+HttpSession session = req.getSession(true);
+OR
+HttpSession session = req.getSession();
+	
+2. Validate the Session
+==========================
+Once Session is created, for subsequent requests 
+validate the session
+
+Note: 
+======
+Any Servlet/JSP which get the request from Browser, 
+then it shoud have "Session validation logic"  
+
+//Get the Current Session Object
+HttpSession session = req.getSession(false);
+if(session == null)
+{
+// Invalid Session !!! 
+// Generate "Login Page With Error Info as Response"
+}else{
+//Valid Session ... 
+//Generate "Proper Response"
+}
+	
+3. In-Validate the Session :-
+------------------------------
+A Session get Invalidated in Following ways
+I.  When Application / Server goes down
+II. When user logout of the application
+	
+   When user wants to logout of the application, 
+   then invoke invalidate() method on the Current 
+   Session Object
+	
+   //Get the Current Session Object
+   HttpSession session = req.getSession(false);
+   if(session != null)
+   {
+	  session.invalidate();
+   }
+   //Generate "Login Page with Success Message"
+   //as a Response
+	
+III. When user is in-active for configured amount 
+     of time	
+	   
+	 There are two ways to configure session 
+	 time out
+	
+	i. In web.xml
+	--------------
+		
+	<session-config>
+		<!-- Time in Min (ex: 7 Days)-->
+		<session-timeout>10080</session-timeout> 
+	</session-config>
+	
+	ii. In Program
+	---------------
+		
+	HttpSession session = req.getSession(true);
+	//Time in Seconds, ex: 7 Days
+	session.setMaxInactiveInterval(7*24*60*60);
+	
+URL Rewriting
+=================	
+> While handling user session "URL Rewriting" 
+  comes into picture ONLY if we encode the 
+  URL's with "Session ID" 
+
+> If we encode the URL's, then Container ALWAYS 
+  first attempt to use the Cookies to get Session
+  ID & fall back to URL Rewriting only if Cookie 
+  approch fails
+  
+NOTE:
+=====
+We cannot make use of URL Rewriting methods in 
+"Static Pages (i.e. HTML)"
+  
+	
+	
+	
+	
+	
+	

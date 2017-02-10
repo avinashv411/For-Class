@@ -1,0 +1,44 @@
+1. RequestDispatcher  
+   ServletRequest.getRequestDispatcher(String url)
+	
+	//Internal Resource - Dynamic
+	String url = "currentDate";
+	
+	//Internal Resource - Static
+	String url = "index.html";
+	
+	//We Cannot forward the request to 
+	//External Resource
+	//String url = "http://www.gmail.com";
+		
+	RequestDispatcher dispatcher 
+			= req.getRequestDispatcher(url);
+	dispatcher.forward(req, resp);
+	
+	
+	
+2. RequestDispatcher 
+   ServletContext.getRequestDispatcher(String url)
+
+   String url = "/currentDate";
+   
+   ServletContext context = getServletContext();
+   RequestDispatcher dispatcher 
+			= context.getRequestDispatcher(url);
+			
+   dispatcher.forward(req, resp);
+	
+   NOTE : In this case URL MUST start with "/"
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

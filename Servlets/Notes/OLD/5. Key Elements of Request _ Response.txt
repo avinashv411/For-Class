@@ -1,0 +1,41 @@
+For Example :
+--------------
+1. Status Code 200 
+	= Server Successfully Handled the Request
+	
+2. Status Code 404
+    = Requested Resource is NOT FOUND at 
+	  Server Side
+	
+3. Status Code 500
+    = Internal Server Error
+	
+	
+	
+	
+	
+	
+	
+	
+Multi-purpose Internet Mail Extensions (MIME) Type
+==================================================
+
+"text/html"
+
+1. text/html
+2. application/pdf
+3. video/quicktime
+4. image/jpeg
+5. application/x-zip 
+6. Many More 
+
+
+
+
+
+
+
+
+
+
+

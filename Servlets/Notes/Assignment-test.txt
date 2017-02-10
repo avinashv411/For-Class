@@ -1,0 +1,58 @@
+> Assume that there is a Table by name "Library" 
+  with the following structure
+
+  No.		Coloumn Name	DataType
+  =================================
+  1.		Student_NM		VARCHAR
+  2.		Book_NM			VARCHAR
+  
+  NOTE: There is NO PK in this table
+
+
+Sample Data
+============================
+| Student_NM  |   Book_NM  |
+==============|=============
+| abc		  |	 Core Java | 
+| abc		  |	 JDBC      |
+| abc 		  |  Servlets  |
+| def		  |	 Core Java |
+| ghi		  |	 Core Java |
+| ghi		  |	 JDBC      |
+| xyz		  |	 Core Java |
+| xyz 		  |  JDBC      |
+| xyz		  |	 Servlets  |
+| xyz		  |	 JSP       |
+| xyz		  |	 Hibernate |
+| xyz		  |	 Springs   |
+==============|=============                 
+
+> Create a Form as shown below
+
+  Library.html
+  -------------
+  
+  
+  
+  
+  
+  
+  
+  
+  
+> Create Servelt by name "LibrarySearchServlet", 
+  which gets the request from this form,
+1. Get the Form Data
+2. Get the Students Name (s) information by interacting 
+   with above table
+3. Generate Proper Response(Success / Error Message)
+
+
+
+
+
+
+	  
+  
+  
+  

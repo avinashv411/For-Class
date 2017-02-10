@@ -1,0 +1,50 @@
+Implement "Remember User Name" functionality in
+"studentsApp" web application
+
+Solution
+---------
+> Modify the "Login.html" to have a "Remember username"
+  Checkbox
+  
+> Modify the "LoginServlet" 
+  - 1. Check user has "Checked the Checkbox"
+  - 2. If NO; Don't do anything
+  - 3. If YES; Create a "Persistent Cookie" with the
+       age of "5 Years" by name "alwaysRemember" & 
+	   value as the incoming "Reg.No."
+  - 4. Send this Persistent Cookie as part of the
+       response (either "Login Page with Error Info"
+	   or "Home Page" response)
+  
+> Create a Servlet by name "LoginPageServlet", which 
+  1. Checks request has Cookies
+  2. If NO; generate the Login Page
+  3. If YES; Check request has "alwaysRemember" Cookie
+  4. If NO; generate the Login Page
+  5. If YES; get the Cookie value & generate the Login
+     page by auto populating "Reg. No." with the 
+	 Cookie Value
+	 
+> NOTE: After this assignment, we should make use of
+  LoginPageServlet url to login to "studentsApp"
+  web application
+
+
+
+	 
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,156 @@
+*************			
+Assignment 3:
+*************
+
+> Create a HTML Form as shown below
+  
+  Search.html
+  -------------------
+  
+  
+  
+  
+  
+> Create Servelt by name StudentSearchServlet, 
+  which gets the request from this form,
+1. Get the Form Data
+2. Check this Reg. No. exists in BECM6_DB DataBase 
+3. If No, Print the Error Message in the Browser
+4. If Yes, Get the corresponding Reg. No. Data from 
+   BECM6_DB DataBase 
+   ( Combination of Data Present in 
+     students_info & 
+	 guardian_info Tables), 
+   and display the Data in the Browser as shown below 
+  
+  
+
+
+
+Deployment Descriptor (DD)  :-
+==============================
+> It’s kind of "instruction sheet" to Servlet 
+  Container & container always refer this to 
+  handle imcoming requests 
+  
+> It MUST 
+  - be a XML file 
+  - have the name “web.xml” 
+  - be present inside WEB-INF folder 
+
+> Hence every dynamic web application must 
+  have ONLY ONE web.xml
+  
+1. <welcome-file-list> Tag:-
+=============================
+> This tag is used to configure default page 
+  for the web application. 
+
+> If no resource name is specified in URL Path,
+  then container searches the resources present
+  in this tag in the order they have declared
+
+Example:-
+---------
+<welcome-file-list>
+	<!-- Static Resource -->
+	<welcome-file>index.html</welcome-file>
+	<!-- Dynamic Resource -->
+	<welcome-file>currentDate</welcome-file>
+</welcome-file-list>  
+
+2. Configuring a URL for a Servlet :-
+======================================
+> Servlets must be accessed via URL & web.xml 
+  defines mappings between URL paths and the 
+  servlets that handle those requests. 
+  
+> Container uses this information to identify 
+  a specific servlet to handle a given request 
+
+Example:-
+---------
+<!-- Declaring the Servlet -->
+<servlet>
+  <servlet-name>someName</servlet-name>
+  <servlet-class>pkgNM.ServletNM</servlet-class>
+</servlet>
+  
+<!-- 1. Exact Matching -->
+<servlet-mapping>
+  <servlet-name>someName</servlet-name>
+  <url-pattern>/firstUrl</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+  <servlet-name>someName</servlet-name>
+  <url-pattern>/secondUrl</url-pattern>
+</servlet-mapping>
+  
+<!-- 2. Directory Matching -->
+<servlet-mapping>
+  <servlet-name>someName</servlet-name>
+  <url-pattern>/abc/*</url-pattern>
+</servlet-mapping>  
+  
+<!-- 3. Extension/Pattern Matching -->
+<servlet-mapping>
+  <servlet-name>someName</servlet-name>
+  <url-pattern>*.do</url-pattern>
+</servlet-mapping>
+
+Order of Preference :
+--------------------
+1. Exact Match
+2. Directory Match
+3. Extension/Pattern Match
+
+
+3. Customizing Server Response incase of 
+   Error Scnerios :-
+============================================
+> In web.xml, we can customize server response
+  in case of Error Scenarios. The server can 
+  display an alternate page in such cases 
+  
+Example:-
+---------
+<error-page>
+  <error-code>404</error-code>
+  <location>/404Error.html</location>
+</error-page>
+
+<error-page>
+  <error-code>500</error-code>
+  <location>/500Error.html</location>
+</error-page>
+
+<error-page>
+  <exception-type>java.lang.Throwable</exception-type>
+  <location>/javaExceptionPage</location>
+</error-page>
+
+NOTE :  
+------
+<location> Tag can have either Static/Dynamic Resource URL
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

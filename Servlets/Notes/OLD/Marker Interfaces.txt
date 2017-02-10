@@ -1,0 +1,16 @@
+JDK
+=======
+1. java.io.Serializable
+2. java.lang.Cloneable
+3. java.util.RandomAccess
+4. java.util.EventListener
+5. java.rmi.Remote
+
+Servlet
+========
+1. javax.servlet.SingleThreadModel
+
+EJB (Enterprise Java Bean)
+==============================
+1. javax.ejb.EnterpriseBean
+

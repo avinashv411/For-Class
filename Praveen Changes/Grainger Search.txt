@@ -1,0 +1,21 @@
+> Create a HTML Form as shown below
+
+  GraingerSearch.html
+  ---------------------
+  
+> Create a Servlet by name "GraingerSearchServlet"
+  which gets the "Keyword" information for this 
+  form , interact with "www.grainger.com" & 
+  display search information for that "Keyword" 
+  in "www.grainger.com"
+
+
+
+-------------------
+
+
+
+
+
+
+

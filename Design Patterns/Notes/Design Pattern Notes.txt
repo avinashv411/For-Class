@@ -1,0 +1,233 @@
+1. Singletone Design Pattern
+2. Object Pool Design Pattern
+3. Model View Controller (MVC) Design Pattern
+4. Data Transfer Object (DTO) Design Pattern
+   OR Value Objects (VO) Design Pattern
+5. Data Access Object (DAO) Design Pattern
+6. Factory Design Pattern
+
+
+
+
+Model View Controller (MVC) Design Pattern :-
+============================================
+
+
+
+
+
+
+
+
+
+
+
+
+> This design pattern divides entire request & 
+  response flow into three components & it 
+  defines the interactions between them
+  1. Model
+  2. View
+  3. Controller
+  
+1. Model (Data Model) :-
+========================
+> It’s the core part of the application & consists
+  of application business logic
+
+> In J2EE application "Plain Java Classes" are 
+  used as models
+  
+2.	View :-
+===========
+> The View captures the data from the user & also
+  displays the data to the user 
+  
+> It does not worry about what that data means, or
+  where to store that data etc., 
+
+> In J2EE applications "HTML / JSP’s" are used
+  as Views
+  
+3. Controller :-
+=================
+> Controller controls both model & view. In 
+  otherwords it controls the entire request and 
+  response flow
+  
+> It takes the request from View, calls the Model
+  to get some data and passes the data to the View
+  for displaying to the user
+
+MVC Design Pattern Advantages :-
+================================ 
+> MVC Design Patter helps us in achieving 
+  - Readability
+  - Maintainability
+  - Flexibility
+  - Reuseablity and 
+  - Scalability 
+  of the Web Application
+ 
+> Hence MVC Design Pattern is most widely used
+  Design Pattern to develop Web Applications
+  
+> For Example, Struts & Spring Frameworks 
+  internally uses MVC Design Pattern 
+
+  
+  
+  
+  
+  
+  
+  
+Java Bean / Plain Old Java Object (POJO) :-
+============================================
+> If a Java class follow the below rules 
+  then it is called as Java Bean 
+  1. Should have "Public Default Constructor" 
+  2. Should have "Private class level variables"
+  3. Should have "Public Getters & Setters" and 
+  4. Should NOT have "any other methods other 
+     than Getters & Setters"
+	
+> The "one & only" use of a Java Bean is to 
+  transfer the data from One Java Program to 
+  Another Program in loosely-coupled fashion
+
+  
+  
+  
+  
+  
+  
+Data Transfer Object (DTO) Design Pattern :- 
+===========================================
+
+
+
+
+
+
+
+
+
+
+
+> It's also known as "Value Objects (VO)" Design 
+  Pattern, helps us the transfer the data 
+  between One Java Program to Another in the form
+  of Java Object using "Java Beans or POJO"
+  
+> This way of passing the data is easy as 
+  compared to other ways like, Arrays, ArrayList, 
+  HashMap etc.,
+  
+> Also this design pattern helps us to write 
+  "error / bug free" data transfer code in 
+  loosely coupled fashion
+
+  
+  
+  
+
+  
+Data Access Object (DAO) Design Pattern:
+=========================================
+
+
+
+
+
+
+
+
+
+
+> The purpose of DAO's is to help us to interact 
+  with database
+  
+> This design pattern defines data access methods
+  in an Interface & corresponding implementation 
+  logic will be present in a "Concrete Class" which
+  implement this interface
+  
+> Therefore we can have “N” number of implementation 
+  class to align with different type of data access 
+  mechanism we want to use
+  
+> For example, 
+  - One implementation class uses JDBC
+  - other one uses Hibernate
+  - One more uses Spring-JDBC,etc.,
+
+> As shown in the diagram, the DAO interface exposes 
+  only the relevant data access methods to the other 
+  programs by hiding implementation details 
+  
+> With DAO design pattern it is quite easy to swap 
+  from one implementation to another with minimal 
+  impact on application because the interface exposed
+  by the DAO to other programs does not change when 
+  the underlying data handling logic changes
+
+
+  
+  
+  
+  
+Factory Design Pattern:
+============================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+> Factory design pattern helps us to create an 
+  object without exposing the instantiation logic 
+  to the other programs 
+
+> Hence other programs are totally decoupled from
+  the implementation details 
+  
+> This pattern is one of most commonly used design
+  pattern in Java & provides one of the best ways
+  to create an object  
+  
+> For ex: In JDBC creating the Connection Object 
+  makes use of Factory design pattern 
+  
+  Connection con 
+		= DriverManager.getConnection(“dbURL”); 
+  Where 
+   - Connection is an Interface
+   - DriverManager is a concrete class with only 
+     one private default constructor
+   - getConnection() is a public static method
+ 
+> Whenever other programs needs an object, instead
+  of creating it directly using the new operator, 
+  it approaches the factory for an object 
+  
+> The factory creates an object and then returns 
+  to the other programs by up-casting it to it's 
+  interface type
+
+
+  
+  
+  
+  
+  

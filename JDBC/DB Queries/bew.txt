@@ -1,0 +1,64 @@
+create table students_otherinfo
+( regno int(10) not null,
+  isadmin varchar(1),
+  password varchar(50),
+  primary key(regno)
+);
+
+insert into students_otherinfo
+values (1, 'Y', 'qwerty');
+
+
+create table guardian_info
+( regno int(10) not null,
+  gfirstname varchar(50),
+  gmiddlename varchar(50),
+  glastname varchar(50),
+  primary key(regno)
+);
+
+
+insert into guardian_info
+values (1, 'ABC', 'NA', 'XYZ');
+
+insert into guardian_info
+values (5, 'ABC', 'NA', 'XYZ');
+
+
+
+select * from 
+students_info si, guardian_info gi, students_otherinfo soi
+where si.regno = gi.regno
+and si.regno = soi.regno
+and soi.regno = 2
+and soi.password = 'qwerty';
+
+select * from 
+students_info si, guardian_info gi, students_otherinfo soi
+where si.regno = gi.regno
+and si.regno = soi.regno
+and soi.regno = 2
+and soi.password = 'qwerty123';
+
+select * from 
+students_info si, guardian_info gi
+where si.regno = gi.regno
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

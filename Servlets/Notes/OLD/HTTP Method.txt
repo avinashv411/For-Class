@@ -1,0 +1,320 @@
+*******************************************************
+Give the background of Thread & also exlain how server
+handles the request i.e. invoking doXXX() method as
+well as sending the response at this point of time
+Also list down the differences between GET & POST
+*******************************************************
+
+HTTP Method:
+=============
+> It’s a mandatory information present in the header 
+  of the HTTP Request
+
+> HTTP Method is the first component in the HTTP 
+  Request header
+
+> HTTP 1.0 had 3 Methods & in HTTP 1.1, Five new 
+  Methods got introduced so in total HTTP 1.1 has 
+  8 different methods & every Http Request should 
+  consist of "ONE of the 8 HTTP Methods"
+  
+  1. HEAD   	(was present in HTTP 1.0)
+  2. TRACE
+  3. PUT
+  4. DELETE
+  5. OPTIONS
+  6. POST		(was present in HTTP 1.0)	
+  7. GET		(was present in HTTP 1.0)
+  8. CONNECT
+  
+  Code Word : HTPP DOG C
+  
+> Servlet API has "Default Implementation" for these 
+  methods (excluding CONNECT method) 
+  
+> All these default implementations are present in 
+  the Servlet API class by name 
+  “javax.servlet.http.HttpServlet”
+
+> So whenever we create a Servlet by extending 
+  HttpServlet
+  - we can inherit all these default implementations 
+	OR 
+  - we can override all of them 
+	OR 
+  - we can override couple of them
+
+> Depending on the HTTP method present in the request, 
+  Webserver invokes the corresponding doXXX(HSR, HSR) 
+  method 
+  
+> In otherwords, HTTP method indicates the desired 
+  action to be performed on the Dynamic Web Resource 
+  i.e. Servlet
+
+==============================================================
+| HTTP Method | Related Servlet Method                        |
+==============================================================
+| 1. HEAD		protected void doHead(HttpServletRequest req, 
+			                         HttpServletResponse resp)
+	            throws ServletException, IOException
+-----------------------------------------------------------------
+| 2. TRACE	    protected void doTrace(HttpServletRequest req, 
+			                         HttpServletResponse resp)
+	            throws ServletException, IOException	
+-----------------------------------------------------------------
+| 3. PUT		protected void doPut(HttpServletRequest req, 
+			                         HttpServletResponse resp)
+	            throws ServletException, IOException
+-----------------------------------------------------------------
+| 4. DELETE		protected void doDelete(HttpServletRequest req, 
+			                          HttpServletResponse resp)
+	            throws ServletException, IOException
+-----------------------------------------------------------------
+| 5. OPTIONS	protected void doOptions(HttpServletRequest req, 
+			                          HttpServletResponse resp)
+	            throws ServletException, IOException
+-----------------------------------------------------------------
+| 6. POST  	    protected void doPost(HttpServletRequest req, 
+			                          HttpServletResponse resp)
+	            throws ServletException, IOException
+-----------------------------------------------------------------
+| 7. GET  	    protected void doGet(HttpServletRequest req, 
+			                         HttpServletResponse resp)
+	            throws ServletException, IOException
+-----------------------------------------------------------------
+| 8. CONNECT    NO Implementation
+-----------------------------------------------------------------
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+protected void doXXX(HttpServletRequest req, 
+					 HttpServletResponse resp)
+throws ServletException, IOException  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+ 
+ 
+ 
+POST Method :
+================
+> If this method present in the Request then Webserver 
+  invokes doPost(HSR, HSR) Method in that Servlet
+  
+> This method allows user to Post the data of 
+  unlimited size to the server using HTML form 
+  (i.e. Form Data)
+  
+> POST requests have a body 
+
+> Hence data sent using the POST is present in the 
+  body of HTTP Request
+
+GET	Method
+==================
+> If this method present in the Request then Webserver
+  invokes doGet(HSR, HSR) Method in that Servlet
+  
+> This method allows us to get the data from server 
+  
+> It’s a default method
+
+> GET requests "do not have a body" OR "have empty 
+  body" 
+
+> Hence the data sent using the GET method is present
+  in the Header part of HTTP Request "in the form of 
+  Query String"
+
+What determines whether Browser sends GET or POST 
+requests:
+============================================================
+1. Typing a URL in Browser makes request to contain 
+   GET method
+   
+2. Clicking on a Hyper link in Browser makes request 
+   to contain GET method 
+ 
+3. Submitting the form with method="get" form 
+   attribute in Browser makes request to contain 
+   "GET" method  
+
+4. Submitting the form with method="post" form 
+   attribute in Browser makes request to contain 
+   "POST" method    
+ 
+5. Submitting the form "without method form 
+   attribute declaration" in Browser makes request 
+   to contain "GET" method    
+ 
+ 
+NOTE :
+------ 
+> Depending on the HTTP method present in the request
+  corresponding doXXX() method get executed at 
+  Servlet side
+
+> If a form collects 
+  - "Sensitive Data" like Password 
+    (ex: Gmail Login Page / Profile Creation Page) 
+	OR 
+  - Very Large Data like sending mail 
+    (ex: Gmail Compose Mail option) 
+  
+  then that form should use method="post"
+  
+> If a form collects "In-Sensitive Data" like search 
+  words (ex:Google Search) then that form may use 
+  method="post" or method="get"
+  
+> Hence whenever Servlet gets a request via 
+  Submitting the form then generally we override 
+  doPost() method & for rest of the cases, we have 
+  to override doGet() method
+  
+  
+  
+  
+  
+Differences between GET/doGet() &  POST/doPost()
+------------------------------------------------
+  
+=========================================
+| GET / doGet()    |    POST / doPost() |
+=========================================
+
+
+
+
+
+GET method allows to get the data from server 
+
+POST method allows to Post data of unlimited size 
+to the server
+
+
+
+
+
+
+
+
+
+It’s a default method
+
+
+It’s not default. 
+We have to explicitly declare method=”post” 
+in the HTML form
+
+
+
+
+
+
+
+GET requests "do not have a Body" OR 
+"have Empty Body"
+
+
+POST requests "do have a Body"
+
+
+
+
+
+
+Hence Data sent using GET will be present in 
+the HTTP Request Header in the form of Query String
+
+
+
+Data sent using post will be present in the 
+HTTP Request Body
+
+
+
+
+
+
+
+Insecure; because form data get exposed to the 
+outside world
+
+
+
+Secure; because form data will be present in 
+the Body & hence it will not be exposed to 
+the outside world
+
+
+
+
+
+
+
+The amount of data sent using GET is restricted 
+becuase URL can contain Only 1024 characters
+
+
+
+There is no restriction on the amount of data 
+send using the POST
+
+
+
+
+
+We cannot send the files using GET 
+
+
+
+we can send entire files using POST
+For Ex: Resume Upload, Video Files upload, etc.,
+
+
+
+
+
+"idempotent"
+
+
+
+
+
+
+
+
+
+
+
+GET requests, by default, they are “idempotent”. 
+i.e. we can perform the same operation again 
+& again without any side effects
+
+
+
+POST requests are Non-idempotent in nature
+
+
+
+
+

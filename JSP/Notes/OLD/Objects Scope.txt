@@ -1,0 +1,150 @@
+JSP Objects:
+=============
+> Objects in JSP are grouped into 2 Groups
+1. Implicit Objects
+2. Explicit Objects
+
+> Every Object in JSP SHOULD have a Scope.
+  There are 4 different types of scopes
+  1. Page Scope (it's Default)
+  2. Request Scope
+  3. Session Scope
+  4. Application Scope
+
+1. Page Scope :
+================
+JSP Object with "Page Scope" can be accessed
+only with in the same JSP (like "private" 
+variables in Java)
+
+2. Request Scope :
+==================
+> JSP Object with "Request Scope" can be 
+ accessed from ANY JSP which serves that request
+(more than one JSP can serve a single request)
+
+> Once Response is given back this object get
+  Garbage Collected
+  
+3. Session Scope :
+==================
+> JSP Object with "Session Scope" can be 
+accessed in ANY JSP's within the same session
+
+> Once Session is Inavlidated this object get
+  Garbage Collected
+  
+4. Application Scope : 
+======================
+> JSP Object with "Application Scope" can be 
+accessed in ANY JSP's across the application
+till the application up & running
+
+> Once Application/Web Server goes down this 
+  object get Garbage Collected
+
+  
+  
+  
+Implicit Objects :
+==================
+> Implicit objects are the objects that 
+  are created by the container
+  
+> These objects use standard variable 
+  names. Hence we SHOULD use same variable
+  names while using these objects in JSP.
+  
+> There are 9 implicit objects
+
+
+
+
+======================================================================
+| Variable 	  |	Of Type			| Scope    | Description	         |
+======================================================================
+
+| request	  |	javax.servlet.http.HttpServletRequest  | request     |
+| response 	  |	javax.servlet.http.HttpServletResponse | request     |
+| session	  |	javax.servlet.http.HttpSession         | session     |
+| config	  |	javax.servlet.ServletConfig            | page        |
+| application |	javax.servlet.ServletContext	       | application |
+
+These Objects Functionality is as same as corresponding Servlet 
+Objects
+
+
+| out   | javax.servlet.jsp.JspWriter  | page  |
+
+> This Object helps to print the data in Browser
+
+> Functionality wise its similar to 
+  "java.io.PrintWriter" Object which we use in
+  Servelts to print the data in Browser
+
+
+| page	| java.lang.Object  | page	|
+
+> This Object holds the Object reference 
+  of Translated Servlet Instance. 
+  
+> Functionality is as same as "this"
+
+
+
+
+
+
+
+
+| pageContext | javax.servlet.jsp.PageContext | page |
+
+> PageContext acts like a Single API to manage 
+  all the other Implicit Objects
+
+
+| exception | java.lang.Throwable  | page	|
+
+> This implicit Object is only avilable to the
+  pages where "isErrorPage" page directive is 
+  set to "true"
+  <%@page isErrorPage="true" %>
+			
+
+
+
+
+
+			
+			
+			
+Out object is used to write dynamic data to the output stream. 
+Operation is similar to Servlet’s HttpServletRequest Object
+Operation is similar to Servlet’s HttpServletResponse Object
+Operation is similar to Servlet’s ServletConfig Object
+Operation is similar to Servlet’s ServletContext Object
+Operation is similar to Servlet’s HttpSession Object
+This is as same as “this” 
+
+Pagecontext acts like a single API to manage all the other implicit objects.  
+
+               out = pageContext.getOut();
+               request = pageContext.getRequest()
+               response= pageContext.getResponse()
+               config = pageContext.getServletConfig();
+               application = pageContext.getServletContext();
+               session = pageContext.getSession();
+               exception = pageContext.getException()
+               page = pageContext.getPage()
+
+	This API is extensively used if we are implementing JSP custom tag handlers. 
+
+	A typical use of the pageContext is to include another resource or forward the request to another resource. Thus the following would forward from the current page to menu.jsp
+
+<% pageContext.forward("menu.jsp"); %>
+
+			
+			
+			
+
+			

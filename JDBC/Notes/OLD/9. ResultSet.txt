@@ -1,0 +1,88 @@
+
+1. No. of Rows Affected Count OR
+2. DB Results
+
+
+"ResultSet Object"
+
+
+
+
+
+
+
+java.sql.ResultSet
+===================
+
+"executeQuery()" Method on 
+any of the JDBC Statement 
+Objects
+
+N number of Rows and each row
+consist of N number of Columns
+
+condition & column list in 
+Select SQL Query
+
+"Zero/More" OR "Zero/One" rows
+of data which depends on the 
+query condition
+
+"while loop"
+
+"while loop" or "if block"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Move to desired Row by calling necessary
+   ResultSet methods
+
+   For Ex : next(), first(), last(), etc
+	        ------
+
+2. Retrieve the desired column value using
+
+  getXXX(<Position of the Column in SQL Query
+			as Integer Value>);
+   OR
+   getXXX("<Column Name as String Value>");
+   ----------------------------------------
+	
+where XXX = Java Data Type corresponding to 
+			DB Table column data type
+	  
+NOTE : getXXX() methods are the ONLY way to 
+	   retrieve data from ResultSet object		  
+		  
+		  
+	
+
+	
+Syntax:
+----------		  
+public void close() throws SQLException
+
+
+
+
+
+
+
+
+
+
+		  
+		  
+		  

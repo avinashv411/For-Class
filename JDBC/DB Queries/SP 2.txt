@@ -1,0 +1,11 @@
+delimiter &
+create procedure 
+getStudentInfo(IN in_regno INT)
+begin
+	select * from students_info
+	where regno = in_regno;
+end&
+
+delimiter ;
+
+call getStudentInfo(1);

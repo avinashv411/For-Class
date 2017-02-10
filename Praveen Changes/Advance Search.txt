@@ -1,0 +1,24 @@
+> Create a HTML Form as shown below
+
+  AdvanceSearch.html
+  ------------------
+  
+  
+  
+  
+  
+  
+  
+  
+> Create a Servlet by name "AdvanceSearchServlet"
+  - which gets the "Keyword" & "Search Site" 
+    information for this form 
+  - interact with corresponding "Search Site" & 
+  - display search information for that "Keyword"
+    in "Search Site"
+  
+  
+  
+  
+  
+  

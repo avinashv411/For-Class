@@ -1,0 +1,7 @@
+D:\Praveen\SourceCode\BJM22_Workspace\studentsApp
+
+WAR
+studentsApp.war
+
+D:\Praveen\apache-tomcat-6.0.18
+

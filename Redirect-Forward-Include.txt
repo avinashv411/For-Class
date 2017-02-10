@@ -1,0 +1,254 @@
+Redirect Example :
+====================
+String url = null;
+
+//Redirect - External URL
+url = "http://www.gmail.com";
+
+//Redirect - Internal URL - Dynamic Resource
+url = "http://localhost:8080/studentsApp/currentDate";
+url = "currentDate";
+
+//Redirect - Internal URL - Static Resource
+url = "http://localhost:8080/studentsApp/index.html";
+url = "index.html";
+
+resp.sendRedirect(url);
+
+
+
+
+
+
+
+
+
+Forward Example :
+====================
+
+1. RequestDispatcher  
+	  ServletRequest.getRequestDispatcher(String url)
+
+//Internal Resource - Dynamic
+String url = "currentDate";
+
+//Internal Resource - Static
+String url = "index.html";
+
+//We Cannot forward the request to External Resource
+//String url = "http://www.gmail.com";
+	
+RequestDispatcher dispatcher 
+		= req.getRequestDispatcher(url);
+dispatcher.forward(req, resp);
+
+-----------------------------------------------------
+
+2. RequestDispatcher 
+	  ServletContext.getRequestDispatcher(String url)
+
+String url = "/currentDate";
+
+ServletContext context = getServletContext();
+RequestDispatcher dispatcher 
+		= context.getRequestDispatcher(url);
+		
+dispatcher.forward(req, resp);
+
+NOTE : In this case URL MUST start with "/"
+
+
+
+
+
+
+
+Differences between Redirect & Forward :-
+----------------------------------------
+
+=============================================
+|	Redirect   		 |		Forward         |
+=============================================
+
+1. Redirect happens at "Browser side"	
+   
+   Forward happens at "Server side"
+
+   
+   
+   
+   
+2. URL in the browser changes	
+
+   It does not change 
+
+   
+   
+   
+   
+   
+   
+   
+   
+3. We can Redirect the request to "both Internal 
+   & External URL"	
+
+
+   We can forward the request "ONLY to Internal 
+   URL"
+
+   
+   
+
+4. Redirect contains "More Than One" request & 
+   response cycle
+
+   Forward contains "ONLY ONE" request & response
+   cycle
+
+   
+   
+5. In case of Redirect, "more than one set of 
+   Request & Response Objects" get created
+
+   In case of Forward, "ONLY ONE set of Request 
+   & Response Object" get created   
+   
+   
+   
+   
+   
+6. Slower in operation	
+
+   Faster in operation
+
+
+   
+   
+   
+   
+7. Redirect makes request to contain GET  method 
+  & hence it ALWAYS invokes doGet() method at 
+  destination 	
+
+  When we forward the request, it will invoke 
+  the corresponding doXXX() method at 
+  destination.
+  If the corresponding overridden version of 
+  doXXX() method doesn't exist then it invokes 
+  the inherited / default doXXX() method
+
+
+
+  
+8. To redirect the Request invoke sendRedirect() 
+   method present in "Response Object"
+
+
+   To Forward the Request invoke forward() method 
+   present in RequestDispatcher Object, which can
+   be obtained by using either "Request Object"
+   or "ServletContext Object" 
+
+
+
+
+NOTE:
+======
+1. If URL in Browser Changes means it 
+   MUST be a Redirect
+   
+2. For Internal URL either we can make use 
+   of Redirect / Forward but most preferred 
+   approach is Forward
+   
+3. For External URL we left with no choice
+   we MUST make use of Redirect
+
+4. In otherwords, If one web application wants 
+   to communicate with another, then Redirect 
+   is the ONLY Way. In this case both the web
+   applications transfer the data using "Query 
+   Parameters"
+   
+5. We cannot Redirect / Forward the request 
+   to more than one URL at a time
+
+
+
+
+
+
+
+Include :
+=========
+> RequestDispatcher is an Interface which has
+  following 2 abstract Methods 
+  
+  1. public abstract void forward(ServletRequest req, 
+							   ServletResponse resp) 
+      throws ServletException, IOException
+  
+  2. public abstract void include(ServletRequest req, 
+							   ServletResponse resp) 
+      throws ServletException, IOException
+
+> An Object of RequestDispatcher helps us to perform 
+  either Forward / Include Operation
+  
+> "forward() Method" helps us to Forward the Request 
+   from One Servlet to Another Internal Resource 
+   (Static / Dynamic)
+
+> "include() Method" helps us to Include the Response 
+   of Another Internal Resource (Static / Dynamic)
+   into Servlet
+  
+  
+  
+  
+  
+  
+> When we Include the content of one servlet into 
+  an another, it will include the response of 
+  "corresponding overridden version of doXXX() 
+  method" in that servlet  
+
+> If corresponding overridden version of doXXX() 
+  methods does not exists, then Container "DOES NOT 
+  give any Compilation Error / Runtime Exception". 
+  In this case it just ignore the include statement.
+
+Example :
+=========
+RequestDispatcher dispatcher = null;
+
+out.println("1111111111111");
+
+//Internal Resource - Static
+String url = "index.html";
+dispatcher = req.getRequestDispatcher(url);
+dispatcher.include(req, resp);
+
+out.println("2222222222222");
+
+//Internal Resource - Dynamic
+String url2 = "currentDate?fname=Praveen&lname=D";
+dispatcher = req.getRequestDispatcher(url2);
+dispatcher.include(req, resp);
+
+out.println("33333333333333");
+
+NOTE:
+======
+> We Cannot Include the response of "External Resource"
+into the Servlet
+
+> Include helps us to reuse the Internal Resources 
+  with that its "easy to maintain the Web Application"
+  along with reducing the development time 
+  
+
+
+
+

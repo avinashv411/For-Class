@@ -1,0 +1,59 @@
+> Create "guardian_info" & "students_otherinfo"
+  Tables in "BECM45_DB" database whith the 
+  following structure
+
+	"guardian_info"
+	==============================
+	1. regno 		int(10)(PK)
+	2. gfirstname	varchar(50)
+	3. gmiddlename	varchar(50)
+	4. glastname	varchar(50)
+
+	"students_otherinfo"
+	==============================
+	1. regno 		int(10)(PK)
+	2. isadmin		varchar(1)
+	3. password		varchar(50)
+
+> Insert regno 1 to 5 data into above tables. 
+While inserting data into "students_otherinfo" 
+table make regno 1 "isadmin" value as "Y" 
+and rest as "N"
+  
+  
+  
+  
+  
+  
+Queries :
+===========
+create table guardian_info
+( regno int(10) not null,
+  gfirstname varchar(50),
+  gmiddlename varchar(50),
+  glastname varchar(50),
+  primary key(regno)
+);
+
+
+
+
+
+create table students_otherinfo
+( regno int(10) not null,
+  isadmin varchar(1),
+  password varchar(50),
+  primary key(regno)
+);
+
+
+  
+  
+  
+  
+  
+
+
+  
+  
+  

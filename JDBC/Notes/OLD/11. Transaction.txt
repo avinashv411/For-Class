@@ -1,0 +1,165 @@
+Transactions:-  
+===============	
+> A transaction is a "Group of SQL Queries" 
+that are executed as a unit. So either all 
+of the SQL Queries get executed successfully 
+or none of them get executed
+
+> Transactions helps us to achieve "Data 
+  Consistency"
+
+> Following steps are followed to make use of 
+  Transactions in JDBC
+
+1. Begin the transaction by disabling AutoCommit Mode
+   [ con.setAutoCommit(false) ]
+
+2. Issue One/More SQL Queries
+   [ Generally "more than one" Insert/Update/Delete 
+     SQL Queries ]
+
+3. If No Exception, then "Commit" the transaction
+   [ con.commit() ]
+
+4. If Exception occurs, then "Rollback" the transaction 
+   [ con.rollback() ]
+
+Methods Syntax :-
+=================
+
+1. void Connection.setAutoCommit(boolean disable) 
+   throws SQLException   
+
+2. void Connection.commit() 
+   throws SQLException
+
+3. void Connection.rollback() 
+   throws SQLException
+
+   
+   
+   
+   
+Note: 
+======
+1. Transactions can also be used with one or more 
+   Select SQL Queries but it’s of no use
+
+2. Transactions can also be used with ONLY ONE 
+   Insert/Update/Delete SQL Query but it’s of no use 
+
+3. Whenever there is a scenario to execute 
+  "More than One Insert/Update/Delete" SQL Queries 
+  then we must make use of Transactions
+
+
+
+
+
+
+
+
+
+4.	If there is more than one "catch block", 
+    then we have to write the Rollback statement 
+    in all the catch blocks
+
+
+
+
+
+
+
+
+
+
+
+5. We can also have rollback in the "finally 
+   block" but this impacts the performance. 
+
+   Since Rollback/Commit is an expensive operation,
+   we should make use of Rollback/Commit whenever 
+   there is a need. 
+
+
+   
+   
+   
+   
+TransactionExample :-
+====================
+public class TransactionExample {
+public static void main(String[] args) {
+	Connection con = null;
+	PreparedStatement pstmt1 = null;
+	PreparedStatement pstmt2 = null;
+	PreparedStatement pstmt3 = null;
+	
+try {
+	//1. Load the Driver
+	//2. Get the DB Connection via Driver
+	/*
+	 * I. Begin the Txn
+	 */
+	con.setAutoCommit(false);
+	/*
+	 * II. issue one/more SQL Queries
+	 */
+	//3. Issue SQL Queries via Connection
+	String query1 = " insert into students_info " 
+					+" values (?,?,?,?) ";
+	
+	pstmt1 = con.prepareStatement(query1);
+	pstmt1.setInt(1, Integer.parseInt(args[0]) );
+	pstmt1.setString(2, args[1]);
+	pstmt1.setString(3, args[2]);
+	pstmt1.setString(4, args[3]);
+	int count1 = pstmt1.executeUpdate();
+	System.out.println("SI Rows Affected:"+count1);
+	
+	String query2 = " insert into guardian_info " 
+					+" values (?,?,?,?) ";
+	pstmt2 = con.prepareStatement(query2);
+	pstmt2.setInt(1, Integer.parseInt(args[0]) );
+	pstmt2.setString(2, args[4]);
+	pstmt2.setString(3, args[5]);
+	pstmt2.setString(4, args[6]);
+	int count2 = pstmt2.executeUpdate();
+	System.out.println("GI Rows Affected:"+count2);
+	
+	String query3 = " insert into students_otherinfo " 
+					+" values (?,?,?) ";
+	pstmt3 = con.prepareStatement(query3);
+	pstmt3.setInt(1, Integer.parseInt(args[0]) );
+	pstmt3.setString(2, args[7]);
+	pstmt3.setString(3, args[8]);
+	//Runtime Exception Simulation
+	//int i = 100/0;
+	int count3 = pstmt3.executeUpdate();
+	System.out.println("SOI Rows Affected:"+count3);
+	/*
+	 * III. No Exception; Commit the Txn
+	 */
+	con.commit();
+	//4. Process the Results returned by SQL Queries
+	System.out.println("Profile Created");
+} catch (Exception e) {
+	/*
+	 * Exception!!! Rollback the Txn
+	 */
+	try {
+		con.rollback();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	System.err.println("Profile NOT Created");
+	e.printStackTrace();
+} finally{
+	//5. Close ALL JDBC Objects
+	//Close all 3 PreparedStatement Objects
+}//End of outer try catch block
+}//End of Main
+}//End of Class
+
+
+

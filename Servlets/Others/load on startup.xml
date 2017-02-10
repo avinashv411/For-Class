@@ -1,0 +1,9 @@
+ <load-on-startup>
+ 
+  <servlet>
+    <servlet-name>myFirstServlet</servlet-name>
+    <servlet-class>
+		com.jspiders.studentsapp.servlets.MyFirstServlet
+	</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>

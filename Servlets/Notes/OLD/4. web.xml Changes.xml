@@ -1,0 +1,39 @@
+ web.xml Changes :-
+ =================
+ Below Lines should be Present After 
+ </welcome-file-list> But Before </web-app>
+  
+  <servlet>
+  	<servlet-name>myServlet</servlet-name>
+	<servlet-class>
+	com.jspiders.studentsapp.servlets.MyFirstServlet
+	</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>myServlet</servlet-name>
+  	<url-pattern>/currentDate</url-pattern>
+  </servlet-mapping>
+  
+Note: 
+-----
+1. XML Tags are case sensitive for example
+    <Servlet> or <SERVLET> is different as 
+	compared to <servlet>
+
+2. If data present between opening & ending tag 
+   in XML contains spaces then, spaces will be 
+   considered. 
+   
+   Hence 
+   <servlet-name> myFirstServlet </servlet-name> 
+   
+   is different as compared to 
+   
+   <servlet-name>myFirstServlet</servlet-name>
+     
+	 
+	 
+	 
+	 
+	 

@@ -1,0 +1,371 @@
+=================================
+Servlets Introduction
+=================================
+
+Web Browser :
+===============
+> It's a "Desktop Application" which helps us to
+  interact with Web Applications
+  
+> Browser is the One & Only application
+  understands contetnt/data present in HTML and 
+  display accordingly
+
+
+
+
+
+
+
+
+
+
+
+
+Web Resources :
+================
+> Resources present inside a web application are
+  called as Web Resources
+  
+> There are two types of web resources
+
+I.	Static Web Resources: 
+------------------------------
+- These resources "does present at web 
+  application" side before making the request 
+  
+- Content of these resources "does not change" 
+  for every user
+  
+- Few Examples:
+  1. Any Songs Download
+  2. Any Video/Movie files Download
+  3. Any Softwares Download
+  4. Any Books(PDF, MS-Word, etc.,) Download
+	
+II.	Dynamic Web Resources:	
+------------------------------
+- These resources "does not present at web 
+  application" side before making the request 
+  & they get generated at the time of request 
+
+- Content of these resources "Will Change" for 
+  every user
+	
+- Few Examples:
+---------------
+1. HDFC Transaction Statement Download (PDF file)
+2. Any Post Paid Connection Statement 
+   Download (PDF file)
+3. Google Search Page (HTML Page)
+4. Gmail Inbox Page (HTML Page)
+5. Facebook Home Page (HTML Page)
+6. Gmail "Download All Attachements" (ZIP File)
+
+    
+
+
+
+  
+  
+  
+  
+  
+
+	  
+Web Application :
+===================	
+> Web Application is an application which is 
+  accessed over the network with the help of 
+  web browser
+  
+> Web application a collection of web resources
+
+> If a web application consists of "ONLY static 
+  resources" then it is called as 
+  "Static Web Application"
+  
+> If a web application consists of "one / more
+  dynamic resources" then it is called as 
+  "Dynamic Web Application"	
+  
+  Examples : Gmail, Facebook, Twiter, 
+	         FlipKart, etc., 
+			 
+> J2EE helps us to develop "Dynamic Web 
+  Applications"
+  
+  
+  
+  
+  
+Web Server :
+==============
+> Like any other application (Adobe Reader, 
+  Media Player, etc.,), Webserver is also an 
+  application which runs on Operating System
+  
+> Webserver as the name implies “Serves requests 
+  to a Web Applications”. 
+  
+> In otherwords, it helps both web browser & 
+  web application to interact with each other 
+  
+> Hence every web application (Static / Dynamic)
+  is directly under the control of webserver
+  
+> Few Examples of Webservers :
+	1. Apache Tomcat
+	2. Apache JBOSS
+	3. Oracle WebLogic
+	4. IBM WebSphere
+	5. etc.,
+
+	
+	
+	
+	
+	
+Steps to Install Tomcat Web Server:
+============================================
+> Download the Apache Tomcat (ZIP version) 
+  & extract it into some directory
+  
+> Set the Following 2 Environment Varibales
+  1. JAVA_HOME 
+  2. CATALINA_HOME 
+
+For Example :
+=============
+JAVA_HOME = 
+C:\Program Files\Java\jdk1.6.0_27
+
+CATALINA_HOME = 
+C:\Praveen\apache-tomcat-6.0.26
+  
+Note: 
+=====
+- Both paths SHOULD NOT point to "lib / bin" folder
+- JAVA_HOME SHOULD consist of "Java Installation"
+  path not the "java exe" location path
+  
+> Go to "<Tomcat_Location>\bin" folder & double 
+  click on "startup.bat" OR "startup" file
+  
+> After the above step, Server should start without 
+  throwing any exception in the Console
+  
+> If Server throws an exception, then it means that 
+  server started in "Error Mode"
+  
+> In this case most likely there is a problem in 
+  setting up the Environment Variables 
+  (i.e. Point #2)
+
+  
+  
+  
+  
+  
+  
+Different ways to interact with Web Applications :
+================================================= 
+1. By Typing an URL in Browser
+2. By Clicking on the Hyperlink 
+3. By Submiting the HTML Form
+
+
+
+
+
+
+
+
+Web URL
+========
+> Web URL, uniquely identifies a web resource 
+  inside a web application 
+  
+> Hence every web resource (Static / Dynamic)
+  must need to have its unique address in 
+  the form of "Web URL" 
+
+NOTE:
+------
+In case of Static Web Resources, URL Consist of 
+Resource File Name
+
+
+  
+  
+  
+Servlets
+==========
+> J2EE helps us to develop Dynamic web applications. 
+  Hence Servlets & JSP acts like a Dynamic web 
+  Resources 
+  
+> Servlets is an API of J2EE, it accepts web request 
+  from web server & generates "Dynamic Response"
+  
+> In the world of Java, Servlets are the "One and 
+  Only API" that accepts web request and generate 
+  "Dynamic Response" 
+  
+  
+  
+  
+  
+  
+> Since Servlets are like Dynamic Resources & 
+  hence Servlets must have its unique address in 
+  the form of "Web URL"
+
+> i.e. Servlets are Java Programs, when we 
+  create Servlets we should not run like normal
+  Java Programs instead we should access via 
+  using corresponding Web URL 
+  
+  
+  
+
+index.html
+==========
+<html>
+<body>
+	<h1 align="center">
+		Current Date & Time is:
+		<BR>
+		<font color="red">
+			6-Jul-2016 11:13 AM
+		</font>
+	</h1>
+</body>
+</html>
+
+Java Code to Generate Current Date & Time :
+============================================
+public class MainMethodClass 
+{
+  public static void main(String[] args) 
+  {
+	 //Java Code to Generate Current Date & Time
+	 java.util.Date dateRef = new java.util.Date();
+	 String currDate = dateRef.toString();
+	 System.out.println("Current Date & Time : ");
+	 System.out.println(currDate);
+  }//End of Main
+}//End of Class	  
+
+
+=====================================  
+Steps to Create My First Servlet
+=====================================  
+  
+ 
+MyFirstServlet
+-----------------
+package com.jspiders.studentsapp.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class MyFirstServlet extends HttpServlet
+{
+	@Override
+	protected void doGet(HttpServletRequest req, 
+						 HttpServletResponse resp)
+	throws ServletException, IOException 
+	{
+		//1. Java Code to Generate Current Date & Time
+		Date dateRef = new Date();
+		String currDate = dateRef.toString();
+		
+		//2. Generate HTML Response
+		String htmlRes = "<html>" 
+						+"<body>"
+						+"<h1>"
+						+"Current Date & Time is :"
+						+"<font color=\"red\">"
+						+currDate
+						+"</font>"
+						+"</h1>"
+						+"</body>"
+						+"</html>";
+		
+		//3. Send HTML Response to Browser
+		resp.setContentType("text/html");
+		PrintWriter out = resp.getWriter();
+		out.println(htmlRes);
+		
+	}//End of doGet
+}//End of Class
+  
+Configuring URL for MyFirstServlet :-
+=======================================
+In web.xml, below Lines should be Present After 
+</welcome-file-list> But Before </web-app>
+  
+  <servlet>
+  	<servlet-name>myServlet</servlet-name>
+	<servlet-class>
+	com.jspiders.studentsapp.servlets.MyFirstServlet
+	</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>myServlet</servlet-name>
+  	<url-pattern>/currentDate</url-pattern>
+  </servlet-mapping>
+  
+Note: 
+-----
+1. XML Tags are case sensitive for example
+    <Servlet> or <SERVLET> is different as 
+	compared to <servlet>
+
+2. If data present between opening & ending tag 
+   in XML contains spaces then, spaces will be 
+   considered. 
+   
+   Hence 
+   <servlet-name> myFirstServlet </servlet-name> 
+   is different as compared to 
+   <servlet-name>myFirstServlet</servlet-name>
+     
+	 
+	 
+	 
+	 
+Summary 
+----------
+1. Web Browser
+2. Web Resources - (Static & Dynamic)
+3. Web Application - (Static & Dynamic) 
+4. Web Server - (Installed Tomcat Server)
+5. Different ways to interact with Web Applications
+6. Web URL - Introduction
+7. Servlets
+8. Java Code to Generate Current Date & Time
+9. Dynamic Web Project
+10. How to Create a Servlet
+11. Servlet API Package Representation
+12. Build Process
+13. WAR File
+14. Deployment Process
+15. Web Path
+16. Webserver behaviour with WAR File
+17. Static Page - Content Doesn't Change
+18. Dynamic Page - Content May Change  	 
+	 
+	   
+	   
+	   
+	   
+	   

@@ -1,0 +1,110 @@
+Java Server Pages (JSP)
+===========================
+> Its an API of J2EE which accepts the Request
+  & generates "Dynamic Response"
+
+> With Respect to functionality, both Servlets & 
+  JSP are one & the same because JSP get "translated
+  to a Servlet" at runtime
+
+> JSP Separates "Business Logic" from "Presentation 
+  Logic" however these two are tightly coupled in 
+  case of Servlets
+  
+> With this separation different people can work on 
+  different tasks
+1. "Web Designer" can develop "Presentation Logic"
+2. "Web Developer" can develop "Business Logic" 
+    
+Business Logic : 
+-----------------------
+Logic/Java Code to generate the Dynamic Data 
+using JDBC / Hibernate / Design Patterns, etc.,
+
+Presentation Logic : 
+-----------------------
+Logic to Present the Dynamic Data in Browser using 
+HTML, CSS, Java Script, etc.,
+             
+> Whenever First Request comes to JSP, 	
+  1. Translate the JSP into a Servlet (i.e. ".java" file)
+  2. Compiles the Servlet (i.e. ".class" file)
+  3. This ".class" file is used to Generate the Response
+     
+  All these things are done by Container & it happens 
+  behind the scene at runtime
+
+> Hence time taken to generate the response for First 
+  Request is more compared to Subsequent Requests
+
+> There are two ways to access JSP
+  1. By using the JSP File Name directly in URL
+  2. By configuring URL for a JSP in "web.xml" 
+     & using this configured URL in Web URL
+
+> Second Approch helps us to achieve "Security" 
+  & "Maintainablity" 
+
+> "javax.servlet.jsp.*" is the package representation
+  of JSP API
+
+> By default JSP handles ONLY HTTP / HTTPS Protocols
+  i.e. by default JSP API is "Protocol Dependent"
+  where as Servlet API is "Protocol Independent"
+  
+MyFirstJSP.jsp
+==============
+
+<%@page import="java.util.Date"%>
+
+<html>
+<body>
+	<%
+	  //Java Code to Generate Current Date & Time
+	  Date dateRef = new Date();
+	  String currDate = dateRef.toString();
+    %>
+	<h1>
+		Current Date & Time is : 
+		<font color="red"><%= currDate %></font>
+	</h1>
+</body>
+</html>
+
+Configuring URL for JSP in web.xml :-
+======================================
+<servlet>
+	<servlet-name>myFirstJsp</servlet-name>
+	<jsp-file>/MyFirstJSP.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>myFirstJsp</servlet-name>
+	<url-pattern>/currentDateJsp</url-pattern>
+</servlet-mapping>
+
+URL's to Access JSP :
+========================
+
+1. Using JSP File Name
+-----------------------
+http://localhost:8080/studentsApp/MyFirstJSP.jsp
+
+
+2. Using Configured URL
+-----------------------
+http://localhost:8080/studentsApp/currentDateJsp
+
+
+
+
+
+
+
+
+
+
+
+
+
+

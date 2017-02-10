@@ -1,0 +1,12 @@
+
+JDBC					:	25 Hours 
+Servlets				:	45 Hours 
+JSP					    :	10 Hours 
+========================================================									 
+Grand Total			    :	80 Hours
+No. of Hours / day 	    :	2 Hours
+No. of Classes for J2EE	:  (80/2) = 40 Classes
+
+							
+							
+							

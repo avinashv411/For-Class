@@ -1,0 +1,9 @@
+> Enhance Assignment 7 in such a way that 
+  if Credentilas are valid then rather than 
+  printing "Valid User Name / Password" 
+  in the console print that register number
+  data in the console 
+  ( combination of data present in 
+	 students_info,
+	 guardian_info & 
+	 students_otherinfo tables )  

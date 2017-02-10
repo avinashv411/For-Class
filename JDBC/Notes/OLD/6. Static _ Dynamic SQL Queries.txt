@@ -1,0 +1,60 @@
+Static SQL Queries
+===================
+ 1. select * from ABC;
+ 
+ 2. create database DB_NAME;
+	
+ 3. select * from ABC
+    where X = 1;
+ 
+ 4. insert into ABC 
+    values (1, 'Praveen');
+  
+  Note : ABC = Table Name
+ 
+
+
+ 
+Dynamic SQL Queries
+===================
+1. select * from ABC
+   where X = ?
+   and Y = ? ;
+
+2. select * from ABC
+   where X = 1
+   and Y = ? ;
+ 
+3. insert into ABC values (?, 'Praveen');
+ 
+  NOTE : 
+  ------
+  1. ABC = Table Name
+  2. Dynamic SQL Query MUST Contain 
+     One / More Question Marks
+ 
+ 
+ 
+  "Query Parameters (?)"
+
+  
+  
+  "setXXX()"
+ 
+   [ XXX = Java Data Type corresponding to
+           DB Column Data Type ]
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+  "Pre-compiled Statements"   
+	   
+	   
+	   
+	   
+	   
+	   
+	   

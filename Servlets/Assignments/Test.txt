@@ -1,0 +1,10 @@
+> Create a HTML page as shown below 
+> Create a servlet which gets the 
+  request, whenever user clicks on 
+  "click here" hyperlink, interacts 
+  with DB, get all student data 
+  present in DB (combined data of 
+       student_info, 
+       guardian_info &
+	   student_otherinfo)
+  and generate response 

@@ -1,0 +1,3187 @@
+=================================================
+Servlets Introduction
+=================================================
+
+Web Browser :
+===============
+> It's a "Desktop Application" which helps us to
+  interact with Web Applications
+  
+> Browser is the One & Only application which 
+  understands contetnt/data present in HTML and 
+  display accordingly
+
+
+
+
+
+
+
+
+
+
+
+
+Web Resources :
+================
+> Resources present inside a web application are
+  called as Web Resources
+  
+> There are two types of web resources
+
+I.	Static Web Resources: 
+------------------------------
+- These resources "are present at web application"
+  before making the request 
+  
+- Content of these resources "does not change" 
+  for every request (Static Response)
+
+- In otherwords, resources which generates "static 
+  response" is called as Static Web Resources
+  
+- Few Examples:
+  1. Any Songs/Video/Movie files Download
+  2. Any Softwares Download
+  3. Any Books(PDF, MS-Word, etc.,) Download
+ 
+	
+II.	Dynamic Web Resources:	
+------------------------------
+- These resources "does not present at web 
+  application" before making the request & they get 
+  generated at the time of request 
+
+- Content of these resources "May Change" for 
+  every request (Dynamic Response)
+
+- In otherwords, resources which generates "dynamic 
+  response" is called as Dynamic Web Resources
+  
+- Few Examples:
+---------------
+1. Any NetBanking Web Application Transaction 
+   Statement Download (PDF file)
+2. Any PostPaid Connection Statement 
+   Download (PDF file)
+3. Google Search Page (HTML Page)
+4. Gmail Inbox Page (HTML Page)
+5. Facebook Home Page (HTML Page)
+6. Gmail "Download All Attachements" (ZIP File)
+
+NOTE:
+=====
+Both Static & Dynamic Response can be "HTML" or 
+"Non-HTML" in nature
+
+  
+  
+  
+  
+  
+
+	  
+Web Application :
+===================	
+> Web Application is an application which is 
+  accessed over the network with the help of browser
+  
+> Web application is a collection of web resources
+
+> If a web application consists of "ONLY static web
+  resources" then it is called as 
+  "Static Web Application"
+  
+> If a web application consists of "one / more
+  dynamic web resources" then it is called as 
+  "Dynamic Web Application"	
+  
+Example: Gmail, Facebook, Twiter, FlipKart, etc., 
+			 
+> J2EE helps us to develop "Dynamic Web Applications"
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Web Server :
+==============
+> Like any other application (Adobe Reader, Media 
+  Player, etc.,), Webserver is also an application 
+  which runs on Operating System
+  
+> Webserver as the name implies “Serves requests 
+  to a Web Applications”. 
+  
+> In otherwords, it helps both web browser & 
+  web application to interact with each other 
+  
+> Hence every web application (Static / Dynamic)
+  is directly under the control of webserver
+  
+> Few Examples of Webservers :
+	1. Apache Tomcat
+	2. Red Hat JBOSS
+	3. IBM WebSphere
+	4. Oracle WebLogic
+	5. Oracle GlassFish & Many More ...
+
+> Webserver Image:-	
+	
+	
+	
+	
+Steps to Install Apache Tomcat Web Server:
+================================================
+> Download the Apache Tomcat (ZIP version) & extract
+  it into some directory
+  
+> Set the Following 2 Environment Varibales
+  1. JAVA_HOME 
+  2. CATALINA_HOME 
+
+For Example :
+=============
+JAVA_HOME = C:\Program Files\Java\jdk1.6.0_27
+CATALINA_HOME = C:\Praveen\apache-tomcat-6.0.26
+  
+Note: 
+=====
+- Both paths SHOULD NOT point to "lib / bin" folder 
+- JAVA_HOME SHOULD consist of "Java Installation"
+  path not the "java exe" location path
+  
+> Go to "<Tomcat_Location>\bin" folder & double click
+  on "startup.bat" OR "startup" file
+  
+> After the above step, Server should start without 
+  throwing any exception in the Console
+  
+> If Server throws an exception, then it means that 
+  server started in "Exception Mode"
+  
+> In this case most likely there is a problem in 
+  setting up the Environment Variables 
+  (i.e. Point #2)
+
+  
+  
+  
+  
+  
+  
+Different ways to interact with Web Applications :
+==================================================== 
+1. By Typing an URL in Browser
+2. By Clicking on the Hyperlink 
+3. By Submiting the HTML Form
+
+
+
+
+
+
+
+
+Web URL
+========
+> Web URL, uniquely identifies a perticular web 
+  resource inside a web application 
+  
+> In otherwords, every web resource (Static/Dynamic)
+must have its unique address in the form of "Web URL" 
+
+NOTE:
+------
+In case of Static Web Resources, URL Consist of 
+Resource File Name
+
+
+
+
+
+index.html
+==========
+<html>
+<body>
+	<h1>
+		Current Date & Time is :
+		<BR>
+		<font color="red">
+			23-Sep-2016 9:53 AM
+		</font>
+	</h1>
+</body>
+</html>
+
+
+
+Java Code to Generate Current Date & Time :
+============================================
+public class MainMethodClass 
+{
+  public static void main(String[] args) 
+  {
+	 //Java Code to Generate Current Date & Time
+	 java.util.Date dateRef = new java.util.Date();
+	 String currDate = dateRef.toString();
+	 System.out.print("Current Date & Time : ");
+	 System.out.print(currDate);
+  }//End of Main
+}//End of Class	    
+  
+  
+Servlets
+==========
+> Servlets is an API of J2EE, it accepts web request 
+  from Browser via web server & generates "Dynamic 
+  Response" i.e response is getting generated at the 
+  time of Request
+  
+> Hence Servlets & JSP acts like a Dynamic web 
+  Resources 
+  
+> Since, J2EE helps us to develop Dynamic web 
+  applications, Servlets & JSP acts like a Dynamic 
+  web Resources 
+
+> Hence "Dynamic Web Application(Java EE)" MUST have
+  atleast ONE Servlet/JSP
+  
+> The Dynamic Response, may be a "HTML response" or
+  "Non-HTML Response"
+  
+For Example:
+------------
+1. Any NetBanking Web Application, Transaction 
+ Statement Download (PDF file) is a Non-HTML Response
+2. Google Search Page (HTML Page) is a HTML Response
+3. Gmail "Download All Attachements" (ZIP File)
+   is a Non-HTML Response
+  
+> In the world of Java, Servlets are the "One and 
+  Only API" that accepts web request and generate 
+  "Dynamic Response"   
+  
+> However HTML helps to generate "Static Response"  
+  
+> Since Servlets are like Dynamic Resources & hence
+  Servlets must have its unique address in the form
+  of "Web URL"
+
+> i.e. Even though Servlets are Java Programs, we 
+  should not run them like normal Java Programs 
+  instead we should access via using corresponding 
+  Web URL with the help of Web Browser
+  
+  
+  
+
+
+
+
+
+
+
+=====================================  
+Steps to Create My First Servlet
+=====================================  
+  
+ 
+MyFirstServlet
+-----------------
+package com.jspiders.studentsapp.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class MyFirstServlet extends HttpServlet
+{
+	@Override
+	protected void doGet(HttpServletRequest req, 
+						 HttpServletResponse resp)
+	throws ServletException, IOException 
+	{
+	 //1. Java Code to Generate Current Date & Time
+	 Date dateRef = new Date();
+	 String currDate = dateRef.toString();
+	
+	 //2. Generate HTML Response
+	 String htmlRes =    "<html>" 
+						+"<body>"
+						+"<h1>"
+						+"Current Date & Time is :"
+						+"<font color=\"red\">"
+						+currDate
+						+"</font>"
+						+"</h1>"
+						+"</body>"
+						+"</html>";
+	
+	//3. Send HTML Response to Browser via Webserver
+	  resp.setContentType("text/html");
+	  PrintWriter out = resp.getWriter();
+	  out.print(htmlRes);
+	
+	}//End of doGet
+}//End of Class
+  
+Configuring URL for MyFirstServlet :-
+=======================================
+In web.xml, below Lines should be Present After 
+</welcome-file-list> But Before </web-app>
+  
+<servlet>
+  <servlet-name>myServlet</servlet-name>
+  <servlet-class>
+    com.jspiders.studentsapp.servlets.MyFirstServlet
+  </servlet-class>
+</servlet>
+  
+<servlet-mapping>
+  <servlet-name>myServlet</servlet-name>
+  <url-pattern>/currentDate</url-pattern>
+</servlet-mapping>
+  
+Note: 
+-----
+1. XML Tags are case sensitive for example <Servlet> 
+   or <SERVLET> is different as compared to <servlet>
+
+2. If data present between opening & ending tag 
+   contains spaces then, spaces will be considered 
+   
+   Hence 
+   
+   <servlet-name>   myServlet  </servlet-name> 
+   
+   is different as compared to 
+   
+   <servlet-name>myServlet</servlet-name>
+     
+	 
+	 
+	 
+	 
+	 
+Part 1 - Summary 
+-------------------------------------------------------
+1. Web Browser
+2. Web Resources - (Static & Dynamic)
+3. Web Application - (Static & Dynamic) 
+4. Web Server - (Installed Tomcat Server)
+5. Different ways to interact with Web Applications
+6. Web URL - Introduction
+7. Servlets
+8. Java Code to Generate Current Date & Time
+9. Dynamic Web Project
+10. How to Create a Servlet
+11. Servlet API Package Representation
+12. Build Process
+13. WAR File
+14. Deployment Process
+15. Web Path
+16. Webserver behaviour with WAR File
+17. Static Response  - Content doesn't change
+18. Dynamic Response - Content get generated @ the time 
+                        of request & it may change  	 
+	 
+	 
+
+	   
+	   
+	   
+	   
+Web URL (Web Uniform Resource Locator's) :
+===========================================
+> Every web resource (static OR dynamic) should have
+  its unique address in the form of Web URL
+
+> Max. number of characters allowed in Web URL is 1024  
+  
+Web URL Structure:	
+------------------
+Protocol://Domain:Port/Path?QueryString#FragmentID
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Protocol: 
+==========
+> When one application wants to communicate with 
+  other (in our case browser & server), there needs 
+  to be a common language which both application 
+  understands & that language should have set of 
+  rules and instructions 
+  
+> This common language is known as “Protocol” where 
+  protocol is a "Set of Rules"
+  
+> Web Browser & Web Server applicatins communicate 
+  using 
+  1. Hyper Text Transfer Protocol (HTTP) 
+  2. Hyper Text Transfer Protocol Secure (HTTPS)
+  
+> HTTPS encrypts any data which is shared between 
+  browser & server 
+  
+> As the name implies most of the time HTTP Response 
+  contain HTML
+  
+> In URL it’s an optional information & default 
+  protocol is HTTP
+
+
+
+
+
+
+
+Domain: 
+========
+> It uniquely identifies a computer in a network in 
+  which web application is present
+
+> Domain consists of Computer Name / IP address of 
+  the computer in which web application is present
+  
+> In URL it is a Mandatory Information
+
+
+
+
+
+
+
+
+
+Port: 
+========
+> Port number in Web URL uniquely identifies web 
+  server application
+  
+> Default port number for HTTP  is 80 & 
+						  HTTPS is 443
+						  
+> In URL this is an optional information
+
+> When it's not used default port number is used 
+  depending on the protocol present in Web URL 
+
+> In Tomcat Webserver, default port number
+  for HTTP is changed from 80 to 8080
+  and default port number
+  for HTTPS is changed from 443 to 8443
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+Path: 
+======
+> We know that web application is a collection of web 
+  resources (Static / Dynamic) & also Web server can 
+  consist of one/more web applications
+  
+> Path is the full path of the web  resource at web 
+  application side
+  
+> It consists of,
+    Web Application Name 
+    + ( File Name in case of Static Resource 
+        OR 
+	    Configured URL in case of Dynamic Resource )
+
+> "Web Application Name" uniquely identifies One
+  web applciation inside webserver
+  
+> "File Name" uniquely identifies Static web resource 
+  inside that web applciation 
+
+> "Configured URL" uniquely identifies Dynamic web 
+  resource inside that web applciation 
+  
+> In URL, it’s an optional Information
+
+
+
+
+
+
+
+
+
+Query String: 
+==============
+> Query String is a name & value string pair which 
+  passes information ONLY to Dynamic Resources such 
+  as Servlets & JSPs
+  
+> In URL, It’s an optional information and if present,
+ it starts with question mark followed by one or more
+ name-value pair which are separated by an 
+ ampersand(&)
+
+Examples:	
+---------
+www.google.com/search?q=Praveen
+
+https://www.google.co.in/search
+?q=ABC&sitesearch=www.youtube.com
+
+http://localhost:8080/studentsApp/currentDate
+?fname=Praveen&lname=D
+
+Servlet Code to get Query String Information :-
+----------------------------------------------
+
+String fnmVal = req.getParameter("fname");
+String lnmVal = req.getParameter("lname");
+
+Where,
+req = Object reference of HttpServletRequest
+
+
+
+
+
+Fragment ID 
+============
+> A Fragment ID or Fragment Identifier, as the name 
+  implies, it refers to a particular section within 
+  a web page
+ 
+> In URL, It’s an optional information & if present,
+  it begins with a hash (#) character followed by an
+  identifier
+
+Example:
+---------	
+http://tomcat.apache.org/tomcat-6.0-doc/
+manager-howto.html#Introduction
+
+
+
+
+
+jdbc:mysql://localhost:3306/BECM78_DB?user=root&password=root
+
+
+
+*************************************************
+* Add Static Web Resources (PDF, ZIP & Video) to
+* Web Application & show how to access them
+*************************************************
+
+
+
+
+
+
+
+
+HTTP Structure:
+===============
+> Like HTML, HTTP protocol also has a structure
+  and it consist of Header Part & Body Part
+
+> Both Header Part & Body Part are separated by a
+  "Single Empty Line"
+
+
+
+
+
+
+
+Key Elements of HTTP Request & HTTP Response :-
+=============================================
+
+Status Code:
+============
+> Status code represents the status of HTTP Request. 
+  For example, 
+
+|--------------------------------------------------|
+| Status code |	   Description					   |
+|--------------------------------------------------|
+| 200		  |	Server Successfully handled the    |
+|			  | request						       |
+|--------------------------------------------------|                                    |
+| 404		  |	 Requested Resource(static/dynamic)|
+|			  |	 is Not Found at server side       |
+|--------------------------------------------------|                                    |
+| 500		  |	Server encountered an unexpected   |
+|			  |	condition which prevented it from  |
+|			  |	fulfilling the request             |
+----------------------------------------------------
+	   
+> It’s a Mandatory information & it will be present 
+  in Header of HTTP Response
+  
+> Generally Webserver provides "Status Code" info in 
+  HTTP Response
+  
+
+
+
+
+
+
+
+
+Content Type OR MIME Type:
+===========================
+> Content Type OR Multipurpose Internet Mail 
+  Extensions (MIME) Type, tells the browser that what
+  type of content it’s going to receive so that it 
+  can prepare itself to handle the response data 
+  
+> For example, 
+  - open an Adobe Reader to handle PDF content 
+  - Open Media Player to handle media content etc.,
+
+> It’s a Mandatory information & it will be present 
+  in Header of HTTP Response
+  
+> The default content type is “text/html”
+
+> Few Examples : 
+	text/html
+	application/pdf
+	video/quicktime
+	image/jpeg
+	application/zip
+    Many More ....
+
+
+
+
+Actual Content:
+===================
+> It’s a Mandatory information & it will be present 
+  in Body of HTTP Response
+  
+> In case of static resource, content of the resource
+  becomes the “Actual Content” 
+  
+> In case of dynamic resource, content present in 
+  servlets / JSP becomes the “Actual Content”
+  
+> In case of Error Scenarios webserver generates  
+  error information & it becomes the “Actual Content”  
+
+
+
+
+
+  
+
+Web URL:
+=========
+> Web application is a "Collection of Web Resources" 
+  & every web resource (static / dynamic) should have
+  its unique address in the form of web URL
+  
+> Hence every request should consist of  Web URL 
+  (Mandatory information) & it will be present in 
+  Header of HTTP Request
+
+
+
+
+
+
+
+
+Form Data:
+===========
+> Data collected using HTML form is called as Form 
+  Data 
+  
+> i.e. Whenever we make request by Submitting Form, 
+  then ONLY HTTP Request will have Form Data  
+  
+> Hence in HTTP Request it’s an Optional Information
+  
+> If Present, it may be present in either Header or 
+  Body of the HTTP Request which depends on HTTP 
+  Method present in the Request  
+	  
+	  
+	  
+	  
+
+
+
+
+
+
+*******************************************************
+Give the background of Thread & also exlain how server
+handles the request i.e. invoking doXXX() method as
+well as sending the response at this point of time
+Also list down the differences between GET & POST
+*******************************************************
+
+HTTP Method:
+=============
+> It’s a mandatory information present in the header 
+  of the HTTP Request
+
+> HTTP Method is the first component in the HTTP 
+  Request header
+
+> HTTP 1.0 had 3 Methods & in HTTP 1.1, Five new 
+  Methods got introduced. So in total HTTP 1.1 has 
+  8 different methods & every Http Request should 
+  consist of "ONE of the 8 HTTP Methods"
+  
+  1. HEAD   	(was present in HTTP 1.0)
+  2. TRACE
+  3. PUT
+  4. DELETE
+  5. OPTIONS
+  6. POST		(was present in HTTP 1.0)	
+  7. GET		(was present in HTTP 1.0)
+  8. CONNECT
+  
+  Code Word : HTPP DOG C
+  
+  
+  
+  
+> Servlet API has "Default Implementation" for these 
+  methods "excluding CONNECT method"
+  
+> All these default implementations are present in 
+  the Servlet API class by name 
+  “javax.servlet.http.HttpServlet”
+
+> So whenever we create a Servlet by extending 
+  HttpServlet
+  - we can inherit all these default implementations 
+	OR 
+  - we can override all of them 
+	OR 
+  - we can override couple of them
+    (Generally we override doGet() / doPost() Method)
+	
+> Depending on the HTTP method present in the request, 
+  Webserver invokes the corresponding doXXX(HSR, HSR) 
+  method 
+  
+> In otherwords, HTTP method indicates the desired 
+  action to be performed on the Dynamic Web Resource 
+  i.e. Servlet
+
+==========================================================
+| HTTP       |     Related Servlet Method                |
+| Method     |                                           |
+==========================================================
+| 1. HEAD	 | protected void doHead
+|			 |					(HttpServletRequest req, 
+|			 |                  HttpServletResponse resp)
+|	         | throws ServletException, IOException
+----------------------------------------------------------------
+| 2. TRACE	 | protected void doTrace
+|            |                 (HttpServletRequest req, 
+|			 |                  HttpServletResponse resp)
+|	         | throws ServletException, IOException	
+----------------------------------------------------------------
+| 3. PUT	 |	protected void doPut
+|            |                  (HttpServletRequest req, 
+|			 |                   HttpServletResponse resp)
+|	         | throws ServletException, IOException
+----------------------------------------------------------------
+| 4. DELETE	 |	protected void doDelete
+|            |                  (HttpServletRequest req, 
+|			 |                   HttpServletResponse resp)
+|	         | throws ServletException, IOException
+----------------------------------------------------------------
+| 5. OPTIONS |	protected void doOptions
+|            |                 (HttpServletRequest req, 
+|			 |                  HttpServletResponse resp)
+|	         | throws ServletException, IOException
+----------------------------------------------------------------
+| 6. POST  	 | protected void doPost
+|            |                 (HttpServletRequest req, 
+|			 |                  HttpServletResponse resp)
+|	         | throws ServletException, IOException
+----------------------------------------------------------------
+|   	     | protected void doGet
+|            |                 (HttpServletRequest req, 
+| 7. GET	 |                  HttpServletResponse resp)
+|	         |  throws ServletException, IOException
+----------------------------------------------------------------
+| 8. CONNECT |  NO Implementation
+-----------------------------------------------------------------
+ 
+NOTE:
+------
+Since method signature is same apart from Method name,
+these methods in general called as doXXX(HSR, HSR) methods
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+protected void doXXX(HttpServletRequest req, 
+					 HttpServletResponse resp)
+throws ServletException, IOException  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+ 
+ 
+ 
+
+What determines whether Browser sends GET or POST 
+requests:
+============================================================
+1. Typing a URL in Browser makes request to contain 
+   GET method
+   
+2. Clicking on a Hyper link in Browser makes request 
+   to contain GET method 
+ 
+3. Submitting the form with method="get" form 
+   attribute in Browser makes request to contain 
+   "GET" method  
+
+4. Submitting the form with method="post" form 
+   attribute in Browser makes request to contain 
+   "POST" method    
+ 
+5. Submitting the form "without method form 
+   attribute declaration" in Browser makes request 
+   to contain "GET" method    
+ 
+NOTE :
+------ 
+> Depending on the HTTP method present in the request
+  corresponding doXXX() method get executed at 
+  Servlet side
+
+> If a form collects 
+  - "Sensitive Data" like Password 
+    (ex: Gmail Login Page / Profile Creation Page) 
+	OR 
+  - Very Large Data like sending mail 
+    (ex: Gmail Compose Mail option) 
+  
+  then that form "SHOULD" use method="post"
+  
+> If a form collects "In-Sensitive Data" like search 
+  words (ex:Google Search) then that form may use 
+  method="post" or method="get"
+  
+> Hence whenever Servlet gets a request via 
+  Submitting the form then generally we override 
+  doPost() method & for rest of the cases, we have 
+  to override doGet() method
+  
+Differences between GET/doGet() &  POST/doPost()
+------------------------------------------------
+=========================================
+| GET / doGet()    |    POST / doPost() |
+=========================================
+1. GET is a default method
+
+   POST is not default. We have to explicitly 
+   declare method=”post” in the HTML form
+
+2. GET requests "do not have a Body" OR 
+   "have Empty Body"
+
+   POST requests "do have a Body"
+
+3. Hence incase of GET, Form Data will be present 
+   in Header in the form of Query String
+
+   Incase of POST, Form Data will be present in Body
+
+4. Insecure; because form data get exposed to the 
+   outside world
+
+   Secure; because form data will be present in Body,
+   hence it will not be exposed to the outside world
+
+5. The amount of data sent using GET is restricted 
+   becuase URL can contain Only 1024 characters
+
+   There is no restriction on the amount of data 
+   sent using the POST
+
+6. We cannot send the files using GET 
+
+   we can send entire files using POST
+   For Ex: Resume Upload, Video Files upload, etc.,
+
+7. We "can bookmark" the GET requests
+
+   We "cannot bookmark" POST requests
+
+
+
+
+
+
+
+Part 2 - Summary 
+-------------------
+
+
+
+
+
+Servlet Container :
+===================
+> Servlet Container is a sub-component of web 
+  server that helps both web server & servlet 
+  to communicate with each other
+  
+> As the name implies, all Servlets of dynamic 
+  web application are directly under the control
+  of Servlet Container
+
+How Servlet Container Works :
+==============================
+1. Whenever request comes, web server hand over 
+   the complete request to servlet container
+   
+2. Container by looking at the URL present in 
+   the request & referring web.xml it comes to 
+   know the servlet which handles that request
+   
+3. Container then "creates an instance" of that 
+   Servlet
+	
+4. Once Instance creation is successful then it 
+   converts the "Raw HTTP Request" to a Java 
+   Object of type “HttpServletRequest” & also 
+   creates "HttpServletResponse" object
+   
+5. Depending on the HTTP Method present in the 
+   request, container invokes corresponding 
+   doXXX() method by passing these request & 
+   response objects
+   
+6. Once doXXX() method execution is over, 
+   container converts the response object to 
+   "Raw HTTP Response" & gives it back to web 
+   server
+   
+7. Once the response has been give back, Servlet
+   Container garbage collects the request & 
+   response objects
+   
+   
+   
+   
+   
+8. In otherwords for every request, container 
+   creates new request & response objects 
+   
+9. i.e. the Life Span of these Objects is 
+   Created:  once request comes to Servelt
+   Destroyed: once response is given back
+   
+Advantages of Servlet Container
+================================
+
+1. Communication Support :
+--------------------------
+Container helps both web server & servlets to 
+communicate with each other 
+
+
+
+
+
+
+2. Multi-Threading Support :
+-----------------------------
+Container automatically creates a new thread for every incoming request 
+
+
+
+
+
+
+
+
+
+
+3. Declarative Support :
+------------------------
+With "web.xml", which is used by Servlet container, 
+we can change the behaviour of web application 
+without changing anything in Servlet/JSP Code
+
+4. Life Cycle Management :
+-------------------------
+Container manages/controls the "Life Cycle of a 
+Servlet"
+
+5. JSP Support :
+----------------
+Container takes care of converting JSP into a 
+Servlet
+
+
+
+*************			
+Assignment 1:
+*************
+  
+  
+  
+  
+
+javax.servlet.http.HttpServletRequest
+======================================
+> "HttpServletRequest" object, in short called as 
+  "Request Object",is an Object representation of 
+  "Raw HTTP Request"
+ 
+> We should make use of this object to get Info from
+  "Raw Http Request"
+  
+> HttpServletRequest is an Interface & it extends 
+  an another Interface by name
+  "javax.servlet.ServletRequest"
+
+>  Request Object has many "Getter Methods" which 
+   helps us to get the information from "Raw Http 
+   Request"
+   
+   
+   
+   
+   
+   
+Some Methods which are part of "Request Object" are:
+====================================================
+1. String HttpServletRequest.getMethod()
+----------------------------------------------
+> This method return the HTTP Method present in the 
+  request as a String Value
+
+2. StringBuffer HttpServletRequest.getRequestURL() 
+---------------------------------------------------  
+> This method return the URL present in the request
+  as a StringBuffer
+
+3. String ServletRequest.getProtocol()
+---------------------------------------
+> This method return the Protocol present in the 
+  request as a String Value
+
+  
+  
+  
+4. String ServletRequest.getParameter(String name)
+
+5. String[] ServletRequest
+				   .getParameterValues(String name)
+---------------------------------------------------
+> Both the above Methods helps us to get the "Form 
+  Data / Query String information" from "Request 
+  Object"
+  
+> Both these methods return NULL if the parameter 
+  name does not exist
+  
+		
+			
+			
+
+
+
+
+			
+			
+javax.servlet.http.HttpServletResponse	
+=======================================		
+> "HttpServletResponse" Object, in short called as 
+  "Response Object", is an Object representation of 
+  "Raw HTTP Response"
+  
+> We should make use of this object to send Info as 
+  part of "Raw HTTP Response"
+  
+> HttpServletResponse is an Interface & it extends 
+  an another Interface by name   
+  "javax.servlet.ServletResponse"
+
+> Response Object has Methods which helps us to 
+  send the information as part of "Raw HTTP 
+  Response" 
+
+  
+  
+Methods in Response Object :-
+============================
+
+1. void ServletResponse.setContentType
+						      (String contentType)
+---------------------------------------------------
+ 
+> This Method helps us to set Content Type info to 
+  Response Object
+
+
+  
+  
+  
+  
+  
+  
+2. PrintWriter ServletResponse.getWriter() 
+   throws IOException 
+   
+3. void PrintWriter.println(String response)		
+   void PrintWriter.print(String response)
+-----------------------------------------------
+
+> These methods helps us to provide "Actual Content"
+  info in Reponse Object
+
+> First we should get "java.io.PrintWriter" Object 
+  from Response Object by invoking a method by name 
+  "getWriter()"
+
+> PrintWriter has "print()/ println()" methods which
+  helps us to add Actual Content to Response Object  
+
+NOTE : 
+------
+> PrintWriter is a "Concreate Class" but we SHOULD 
+  NOT create our own instance of this class, instead
+  we SHOULD get it from Response Object
+  
+> Between "print()" & "println()" methods print()
+  reduces the size of the Actual Content there by
+  increases the Performance
+
+4. void HttpServletResponse
+		   .sendError(int statusCode, String errMsg) 
+   throws IOException   
+----------------------------------------------------  
+  
+> This method helps us to send the Error Response
+
+
+ 
+  
+  
+  
+  
+  
+*************			
+Assignment 2:
+*************
+
+	
+eXtensible Markup Language (XML) Introduction :-
+==================================================
+> As the name implies it's an extension of HTML
+  & this Language helps to Transfer the Data between 
+  different Applications  						
+
+> XML looks similar to HTML but it’s not a HTML
+
+Comparision Between HTML & XML
+---------------------------------------						
+====================================================													
+|   HTML 				|			 XML           |
+====================================================							
+1. HTML helps to display the Data in the Browser
+   XML helps to Transfer the Data between 
+   Applications   						
+						
+2. HTML has Pre-defind Tags
+   XML has User-defind Tags
+
+3. HTML Tags are "Case In-Sensitive"   
+   XML Tags are "Case Sensitive"
+
+4. First Line of HTML is 
+   <!DOCTYPE html ----- >
+   
+   First Line of XML is 
+   <?xml version="1.0" encoding="UTF-8" ?>
+   
+5. HTML is "Not Strictly Typed" Language
+   XML is "Strictly Typed" Language
+   
+6. File extension of HTML is ".html / .htm" 
+   File extension of XML is ".xml"     
+
+NOTE:
+-----
+> Hence XML file should have
+  - ".xml" has file extension &
+  - first line of that file should be    
+    <?xml version="1.0" encoding="UTF-8" ?>
+
+> Since XML consist of User-defind Tags, these
+  tags information is defind in an another file 
+  by name "XML Schema Document (XSD)"  
+
+> XSD file will have ".xsd" as a file extension
+
+> Hence every application must obey the rules
+  defind in XSD file while constructing the XML
+  file & reading the data from XSD file
+
+
+  
+  
+
+
+
+
+Deployment Descriptor (DD)  :-
+==============================
+> It’s kind of "instruction sheet" to a Servlet 
+  Container & container always refer this to handle
+  imcoming requests 
+  
+> It MUST 
+  - be a XML file 
+  - have the name “web.xml” 
+  - be present inside WEB-INF folder 
+
+> Hence every dynamic web application must have ONLY
+  ONE web.xml
+  
+  
+  
+  
+  
+1. <welcome-file-list> Tag:-
+=============================
+> This tag is used to configure default page for the
+  web application
+
+> If no resource name is specified in URL Path, then
+  container searches the resources present in this 
+  tag in the order they have declared
+
+Example:-
+---------
+<welcome-file-list>
+	<!-- Static Resource -->
+	<welcome-file>index.html</welcome-file>
+	<!-- Dynamic Resource -->
+	<welcome-file>currentDateTime</welcome-file>
+</welcome-file-list>  
+
+2. Configuring a URL for a Servlet :-
+======================================
+> Every Servlet must have a URL & web.xml helps to 
+  configure a URL for a Servlet 
+  
+> Container uses this information to identify a 
+  specific servlet to handle a given request 
+
+> There must be a atleast ONE URL configured for a 
+  Servlet. Also Servlet can have "More than One" URL
+  
+> Below are the different ways to configure the URL
+  for a Servelt
+  1. Exact Matching
+  2. Directory Matching
+  3. Extension/Pattern Matching
+  
+Example:-
+---------
+<!-- I. Declaring the Servlet -->
+<servlet>
+  <servlet-name>someName</servlet-name>
+  <servlet-class>pkgNM.ServletNM</servlet-class>
+</servlet>
+
+<!-- II. Configuring URL for a Servlet -->  
+<!-- 1. Exact Matching -->
+<servlet-mapping>
+  <servlet-name>someName</servlet-name>
+  <url-pattern>/firstUrl</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+  <servlet-name>someName</servlet-name>
+  <url-pattern>/secondUrl</url-pattern>
+</servlet-mapping>
+  
+<!-- 2. Directory Matching -->
+<servlet-mapping>
+  <servlet-name>someName</servlet-name>
+  <!-- <url-pattern>/abc/*</url-pattern> -->
+  <url-pattern>/abc/someUrl</url-pattern>
+</servlet-mapping>  
+  
+<!-- 3. Extension/Pattern Matching -->
+<servlet-mapping>
+  <servlet-name>someName</servlet-name>
+  <url-pattern>*.do</url-pattern>
+</servlet-mapping>
+
+Order of Preference :
+--------------------
+1. Exact Match
+2. Directory Match
+3. Extension/Pattern Match
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+Part 3 - Summary
+----------------------------------------------------
+
+  
+
+*************			
+Assignment 3:
+*************
+
+  
+  
+  
+  
+
+  
+javax.servlet.GenericServlet
+===============================
+> It's an abstract class, part of Servlet API &  
+  a sub-class of GenericServlet is called as 
+  Servlet & it can handle "ANY Protocols" 
+  including HTTP & HTTPS protocols
+  
+> In other words, It becomes 
+  "Protocol-Independent Servlet"
+
+> GenericServlet has "one abstract method", by 
+  name service(), hence it's an "abstract class" 
+
+Syntax:
+--------
+public abstract void service(ServletRequest req, 
+						    ServletResponse res)
+throws ServletException, IOException;
+
+> Hence whenever we create a Servelt by extending
+  GenericServlet we MUST provide an implementation
+  for service(SR, SR) method
+
+Example:
+=========
+import java.io.PrintWriter;
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class MyGenericServlet 
+extends GenericServlet
+{
+	@Override
+	public void service(ServletRequest req, 
+					    ServletResponse resp)
+	throws ServletException, IOException 
+	{
+	  resp.setContentType("text/html");
+	  PrintWriter out = resp.getWriter();
+	  out.print("Inside My Generic Servlet");
+	}//End of service
+}//End of Class
+
+
+
+
+*************			
+Assignment 4:
+*************
+
+
+
+
+
+
+javax.servlet.http.HttpServlet
+=================================
+> A sub-class of HttpServlet is called as 
+  Servlet & it can handle ONLY HTTP & HTTPS 
+  protocols. 
+  
+> In other words, It becomes "Protocol-Dependent
+  Servlet"
+  
+> It’s an abstract class but none of the methods
+  in this class are declared as abstract 
+  
+> Hence this class MUST provide an Implementation
+  for GenericServlet abstract method 
+  i.e. service(SR, SR)
+
+> The implementation is 
+  - it checks whether request came via HTTP / 
+    HTTPS protocol
+  - If NO, then it throws an ServeltException
+	with "non-HTTP request or response" 
+	exception message
+  - If YES, then it invokes "Overloaded version
+    of service method i.e. service(HSR, HSR)"
+*/
+> Implementation present in service(HSR, HSR) is
+  - it gets the HTTP Method Present in the 
+    Request Object
+  - invkoes one of the corresponding doXXX(HSR, HSR)
+    method by passing request &	response objects
+  - If request has HTTP Method as CONNECT, then this
+    method return "Method is not supported by the 
+	Servlet API" error response
+
+> A subclass of HttpServlet can override any of the 
+  below service() method
+ 
+1. public void service(ServletRequest req, 
+					   ServletResponse res)
+	throws ServletException, IOException
+	
+2. public void service(HttpServletRequest req, 
+                       HttpServletResponse res)
+	throws ServletException, IOException
+	
+3. protected void doXXX(HttpServletRequest req, 
+                        HttpServletResponse res)
+	throws ServletException, IOException	
+	
+	
+	
+	
+	
+	
+> We should not override the first two versions 
+  of service methods & Our job is to override 
+  one / more doXXX(HSR, HSR) method(s)
+
+> All the 7 doXXX(HSR, HSR) methods in HttpServlet 
+  has the logic of Generating "405 Error Response"
+  
+> If we won’t override doXXX() methods, then 
+  default implementation from HttpServlet is 
+  invoked  which in turn return "405 Error 
+  Response" 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Why HttpServlet is an Abstract Class?
+======================================
+> HttpServlet does not have any abstract methods. 
+  But being "abstract", we are forced to subclass 
+  
+> So Subclass can either 
+  - inherit  doXXX(HSR, HSR) methods OR
+  - override doXXX(HSR, HSR) methods
+  
+> It's Servlet Developer choice & this choice is
+  avilable "ONLY being an abstract Class with Zero 
+  methods as abstract"  
+ 
+> Thus, to force us to implement our own servlet 
+  class, the HttpServlet class is marked as 
+  abstract.
+
+Difference between GenericServlet & HttpServlet
+=================================================
+|	GenericServlet    | 	HttpServlet         |
+=================================================	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+1. Protocol Independent	
+
+   Protocol Dependent. Supports only HTTP & HTTPS 
+   protocols	
+	
+	
+	
+	
+	
+	
+	
+	
+2. Abstract Class; because service() method is 
+   declared as abstract	
+   
+   Abstract class; but none of the methods are 
+   declared as abstract
+	
+	
+	
+	
+	
+	
+	
+3. If we extend the GenericServlet then we must  
+   provide an implementation for service() method	
+   
+   There is NO restriction on overriding any version
+   of the service method but generally we override 
+   one or more doXXX() methods
+   
+   
+   
+   
+   
+   
+4. GenericServlet does not extend any other Servlet 
+   API related class	
+   
+   HttpServlet extends GenericServlet which is part 
+   of Servlet API   
+   
+5. GenericServlet implements Servlet API related 
+   interfaces such as "Servlet" & "ServletConfig"	
+   
+   HttpServlet does not implements any Servlet API 
+   related interfaces  
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+  
+  
+Servlet Lifecycle:-
+===================
+Lifecycle of a Servlet is controlled by Servlet 
+Container & it has following phases
+1. Instantiation Phase
+2. Initialization Phase
+3. Service Phase
+4. Destruction Phase
+
+1. Instantiation Phase
+=======================
+> Whenever request comes to a container, by looking 
+  at the URL & referring web.xml container tries to 
+  find the Servlet name
+
+> If NO Servlet found, then it returns "404 Error 
+  Response" 
+
+> If Servlet found, then Container creates an 
+  instance of the Servlet by invoking "Public 
+  Default Constructor ONLY"
+
+2. Initialization Phase
+========================
+Version 1 :
+----------------
+public void init(ServletConfig config) 
+throws ServletException
+{
+	super.init(config);
+	//Initialization Code Goes Here
+}
+	
+Version 2 :
+----------------
+public void init() 
+throws ServletException 
+{
+	//Initialization Code Goes Here
+}
+
+> After Successfully creating an instance, Container
+  automatically invokes "init(ServletConfig)" 
+  Method
+	
+> init(SC) method gives us a chance to initialize 
+  the Servlet before handling the requests. Like, 
+  - Opening a Text File or
+  - Reading the data from a Property File, etc.,
+
+> This method is called ONLY ONCE in Servlet 
+  Lifecycle
+
+> We may/maynot override this method. If we don't 
+  override then default implemetation present in 
+  GenericServlet is invoked
+
+> The first line of the Version 1 init method should
+  be "super.init(config)"
+	
+> During initialization Servlet has access to 
+  "javax.servlet.ServletContext" object
+	
+	
+	
+	
+	
+	
+	
+	
+> Can we use Constructor for Initialization ?
+  ---------------------------------------------
+ - We can make use of Constructor for initialization
+   "ONLY if initialization code is independent of 
+   ServletContext / ServletConfig Objects
+  
+ - If initialization code is dependent on 
+   ServletContext / ServletConfig Objects then "we
+   left with no choice" of using init method for
+   initialization purpose
+	
+ - Also in case of constructor, we must make use of
+   "Public Default Constructor"	
+
+  - Hence we generally make use of init method for 
+    initialization purpose (dependent / independent 
+	of ServletContext / ServletConfig Objects) 
+	without touching constructor
+	
+> Once Instantiation & Initialization is successful, 
+  container caches the Servlet Instance
+
+3. Service Phase
+====================	
+public void service(ServletRequest req, 
+					ServletResponse res)
+throws ServletException, IOException
+
+> After Instantiation & Initialization, Container 
+  creates Request & Response Objects, invokes 
+  service(SR, SR) method by passing these objects
+
+> This method is called "for every request" i.e. 
+  one/more times in Servlet Lifecycle 
+
+> Inside service(SR, SR) method we write any Java
+  Code which needs to be executed for every request
+  
+> If a Servlet is a sub-class of GenericServlet then
+  we MUST override this method
+  
+> If a Servlet is a sub-class of HttpServlet then 
+  we SHOULD NOT override this method & our job is 
+  to override one/more doXXX() methods 
+  
+4. Destruction Phase
+======================	
+public void destroy() 
+{
+	//Clean-up Code Goes Here
+}
+	
+> Whenever container wants to remove the cached
+  Servlet Instance from it's memory then it invokes
+  destroy() method "before removing"
+
+> destroy() method gives us a chance to perfrom 
+  any clean-up activity such as Closing a File etc.,
+  
+> This method is called ONLY ONCE in Servlet
+  Lifecycle
+
+> We may/maynot override this method. If we don't 
+  override then default implemetation present in 
+  GenericServlet is invoked	
+	
+NOTE:-
+--------
+NO Matter how we create a Servlet, Container ALWAYS 
+invokes below Lifecycle Methods on that Servlet
+1. Public Default Constructor
+2. void init(ServletConfig)
+3. void service(ServletRequest, ServletResponse)
+4. void destroy()
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+Important Points:
+=================
+> Any Class which extends any one of the below class
+  is clalled as a "Servlet" 
+  1. javax.servlet.http.HttpServlet
+  2. javax.servlet.GenericServlet
+   
+> In otherwords  Servlet MUST be an Object 
+   of type "javax.servlet.Servlet" interface
+
+   
+   
+   
+   
+   
+   
+   
+   
+> If a class extends either HttpServlet or 
+   GenericServlet & a "subclass of that class 
+   is also be called as Servlet"     
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+> Servlets (for which we configure a URL in web.xml) 
+  must be a "concrete class" otherwise they fail at 
+  runtime i.e. during the "Instantiation Phase"
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+> Servlets MUST have public default Constructor OR 
+  combination of any other constructor along with 
+  public default constructor
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+> There is only one instance exist for any servlet. 
+   i.e. Servlets are "Singleton in nature"   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+>  Servlets are protocol independent in nature, 
+   but are most often used with HTTP & HTTPS
+   protocols   
+
+   
+   
+
+   
+   `	
+
+   
+> Servlets can have
+	1. Local Variables (Static / Non-Static)
+	2. Block of Code (Static / Non-Static)
+	3. Innner Classes
+	4. It's own Methods (Static / Non-Static 
+							but non-abstract)
+Note: 
+-----
+- If we declare abstract method(s) in servlet then 
+  we are forced to declare that servlet as 
+  "Abstract Class" & we MUST sub-class it
+  
+- Otherwise it fails at runtime during Instantiation
+	  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+> We can have "main() method" in the servlet but its
+  of "no use". Servlets are directly under the 
+  control of Container & Container will not execute 
+  main method in any phases of Servlet Lifecycle
+
+
+
+
+
+
+
+
+
+
+> At any point of time there will be multiple 
+  threads acting on servlet instance
+  
+> Hence by default servlets are Multi Threaded in 
+  Nature. In other words Dynamic Web Applications 
+  are "Multi Threaded envionmemnt"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Single Threaded Servlets :
+==========================
+> We Know that, by default servlets are Multi 
+  Threaded in Nature. Hence following are the 2 ways
+  to create Single Threaded Servlet  
+  
+1. By Implementing "javax.servlet.SingleThreadModel" 
+   Marker Interface OR
+2. By Synchronizing Service Method
+
+> SingleThreadModel is a Marker Interface which 
+  ensures that servlets handle only one request 
+  at a time i.e. Container start handling the 
+  requests "Synchronously"
+ 
+ 
+ 
+ 
+ 
+> This interface is "Deprecated" in Servlet API 2.4
+  
+Example :-
+==========
+public class MyServlet 
+extends HttpServlet / GenericServlet
+implements SingleThreadModel
+{
+	//Servlet Code Goes Here
+}
+
+
+
+Note:
+========
+List of Marker Interfaces
+==========================
+Java / JDK
+-------------
+1. java.io.Serializable
+2. java.lang.Cloneable
+3. java.util.RandomAccess
+4. java.util.EventListener
+5. java.rmi.Remote
+
+Servlet API
+-------------
+1. javax.servlet.SingleThreadModel
+
+
+
+
+Part 4 - Summary
+=================
+
+	
+	
+	
+	
+	
+	
+	
+	  
+	  
+	  
+Differences between ServletContext & ServletConfig :-
+-----------------------------------------------------
+=================================================
+|    ServletContext    |      ServletConfig		|
+=================================================
+1. ServletContext is an Interface and "an Object 
+   of ServletContext" is used by container to pass 
+   information to ALL the servlets which are part 
+   of an application
+
+   ServletConfig is an Interface and "an Object 
+   of ServletConfig" used by a container to pass 
+   information to a particular Servlet 
+   
+2. ServletContext Object is created at the time 
+   of Server Startup & Garbage collected during 
+   the server shutdown
+
+   ServletConfig Object is created during the 
+   "Initialization Phase" of Servlet Lifecycle & 
+   Garbage collected during "Destruction Phase"
+   
+3. So there will be "ONLY ONE Instnace of 
+   ServletContext object exists per webapplication"
+
+   There will be "ONLY ONE Instnace of ServletConfig 
+   object exists per Servlet"
+
+4. Hence "Singleton" in Nature
+
+   "Non-Singleton" in Nature
+
+5. ServletContext object is obtained by calling 
+   “getServletContext()” method which we inherit 
+   from GenericServlet
+   
+   ServletContext context = getServletContext();
+
+   --------------------------------------------
+   
+  ServletConfig object is obtained by calling 
+  "getServletConfig()” method which we inherit 
+  from "GenericServlet"
+  
+  ServletConfig config = getServletConfig();
+
+  
+6. In web.xml, context parameters are declared under
+   <context-param> tag (one / more)
+
+   In web.xml, servlet config parameters are 
+   declared under <init-param> tag (one / more) 
+   which is a subtag of <servlet> tag
+
+   
+   
+   
+   
+
+   
+7. ServletContext object "does not" holds the object 
+   reference of ServletConfig
+
+   ---------------------------------------------------
+   
+   ServletConfig object holds the object reference 
+   of ServletContext
+   
+   ServletConfig config = getServletConfig();
+   ServletContext context = config.getServletContext();
+   
+=========================================================
+NOTE:
+=======
+1. Both ServletContext & ServletConfig objects has a 
+   method by name getInitParameter() which helps us 
+   to get parameter value information from web.xml
+
+   Syntax :
+   --------
+   String getInitParameter(String paramName)
+
+2. We can ONLY get ServletContext & ServletConfig 
+   parameters at Runtime but "we can not set them"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Example :-
+===========
+
+Context & Config Parameters Declaration in web.xml :-
+------------------------------------------------------
+<!-- Context Parameters : Begin -->
+<context-param>
+	<param-name>movie</param-name>
+	<param-value>DDLJ</param-value>
+</context-param>
+<!-- Context Parameters : End -->
+
+<servlet>
+	<servlet-name>servletName</servlet-name>
+	<servlet-class>pkgname.ServletNM</servlet-class>
+	<!-- Config Parameters : Begin-->
+	<init-param>
+		<param-name>actor</param-name>
+		<param-value>Akshay Kumar</param-value>
+	</init-param>
+	<!-- Config Parameters : End-->
+</servlet>
+
+Getting Context & Config Parameters in Servlet :-
+=================================================
+//Getting Context Parameters
+ServletContext context = getServletContext(); 
+String movieVal = context.getInitParameter("movie");
+
+//Getting Config Parameters
+ServletConfig config = getServletConfig();
+String actorVal = config.getInitParameter("actor");
+
+
+
+
+
+
+
+	  
+	  
+Redirect :
+==========	  
+Image:
+------
+> Using Browser, user makes the request to a servlet
+
+> Servlet redirects that request to another resource 
+  (Internal / External). In this case Browser gets 
+  the URL as a response
+
+> "Browser makes a New Request to this URL". 
+  Incase of redirected request, HTTP Method present
+  in that request will always be a "GET" 
+  
+> Browser displays the whatever the response given 
+  by new URL
+  
+> Redirect happens at Browser side & incase of 
+  Redirect "URL in the browser changes"
+  
+> To redirect the request call sendRedirect() on 
+  HttpServletResponse object
+
+Syntax:-
+--------
+void HttpServletResponse.sendRedirect(String url) 
+throws IOException	  
+	  
+Example :-
+---------
+String url = null;
+//Redirect - External URL (Can be Static / Dynamic)
+url = "http://www.gmail.com";
+//Redirect - Internal URL - Dynamic Resource
+url = "http://localhost:8080/studentsApp/currentDate";
+url = "currentDate";
+//Redirect - Internal URL - Static Resource
+url = "http://localhost:8080/studentsApp/index.html";
+url = "index.html";
+
+resp.sendRedirect(url);
+
+
+
+
+
+
+	  
+Forward :
+==========
+Image:
+-------	  
+
+> Using Browser, user makes a request to a servlet
+
+> Servlet internally forwards that request to another 
+  Internal Resource (Static/Dynamic) by passing Request 
+  & Response objects
+
+> This internal resource handles that request & gives 
+  back the response
+
+> Browser displays the response. In this case Browser 
+  will not have any clue on what went behind the scene
+  (i.e. forward happens at Server side) 
+
+> Also, URL in the browser doesn't change.
+
+> To forward the request call forward() on  
+  RequestDispatcher object
+
+Syntax 
+-------
+void RequestDispatcher.forward(ServletRequest req, 
+                               ServletResponse resp) 
+throws ServletException, IOException
+
+> We can get the "RequestDispatcher" Object, by invoking 
+  "getRequestDispatcher()" Method on "Request" Object
+
+Syntax 
+-------
+RequestDispatcher  
+	   ServletRequest.getRequestDispatcher(String url)
+
+Example :
+============
+RequestDispatcher dispatcher = null;
+String url = null;
+
+url = "currentDate";    //Internal Resource - Dynamic
+url = "index.html";		//Internal Resource - Static
+
+dispatcher = req.getRequestDispatcher(url);
+dispatcher.forward(req, resp);
+
+NOTE:
+=====
+> We Cannot forward the request to External Resources
+  
+  For Example:
+  --------------
+  /* In this case Browser gets "404 Resource Not Found" 
+   * Error Response from Server
+   */
+  String url = "http://www.gmail.com";
+  dispatcher = req.getRequestDispatcher(url);
+  dispatcher.forward(req, resp);
+
+
+
+  
+  
+  
+Differences between Redirect & Forward :-
+----------------------------------------
+
+=============================================
+|	Redirect   		 |		Forward         |
+=============================================
+
+1. Redirect happens @ "Browser side"	
+   Forward happens @ "Server side"
+
+2. URL in the browser changes	
+   URL does not change 
+
+3. We can Redirect the request to "both Internal 
+   & External Web Resources"	
+
+   We can forward the request "ONLY to Internal 
+   Web Resources"
+
+4. Redirect contains "More Than One" request & 
+   response cycle
+
+   Forward contains "ONLY ONE" request & response
+   cycle
+
+5. In case of Redirect, "more than one set of 
+   Request & Response Objects" get created
+
+   In case of Forward, "ONLY ONE set of Request 
+   & Response Object" get created   
+   
+6. Slower in operation	
+   Faster in operation
+
+7. Redirect makes request to contain GET  method & hence
+   it ALWAYS invokes doGet() method at destination 	
+
+  When we forward the request, it will invoke the 
+  corresponding doXXX() method at destination
+
+8. Redirect happens on "Response Object"
+   Forward happens on "Request Object"  
+  
+
+  
+  
+  
+  
+  
+NOTE:-
+-------- 
+In both the case, if the corresponding overridden
+version of doXXX() method doesn't exist then 
+container invokes  inherited / default doXXX() 
+method
+
+
+
+  
+
+
+
+
+
+
+   
+   
+   
+   
+   
+   
+NOTE:
+======
+1. If URL in Browser Changes means it MUST be a Redirect
+   (especially Domain Name)
+   
+2. For Internal URL either we can make use of Redirect OR
+   Forward but "Forward" is preferred
+   
+3. For External URL we left with no choice we MUST make 
+   use of Redirect
+
+4. In otherwords, If one web application wants to 
+   communicate with another, then Redirect is the ONLY 
+   Way. In this case both the web applications can 
+   transfer the data using "Query Parameters"
+   
+5. We cannot Redirect / Forward the request to more than 
+   one URL at a time  
+  
+
+
+
+
+
+
+
+Include :
+=========
+> RequestDispatcher is an Interface which has following 
+  2 abstract Methods 
+  
+  1. public abstract void forward(ServletRequest req, 
+							      ServletResponse resp) 
+      throws ServletException, IOException
+  
+  2. public abstract void include(ServletRequest req, 
+							      ServletResponse resp) 
+      throws ServletException, IOException
+
+> An Object of RequestDispatcher helps us to perform 
+  either Forward / Include Operation
+  
+> "forward() Method" helps us to Forward the Request 
+   from One Servlet to any other Internal Resource 
+   (Static / Dynamic)
+
+   
+   
+   
+   
+   
+   
+> "include() Method" helps us to Include the Response 
+   of an another Internal Resource (Static / Dynamic)
+   into Servlet
+  
+> When we Include the content of one servlet into an 
+  another, it will include the response of "corresponding
+  overridden version of doXXX() method" in that servlet  
+
+> If corresponding overridden version of doXXX() methods
+  does not exists, then Container "DOES NOT give any 
+  Compilation Error / Runtime Exception". 
+  In this case it just ignore the include statement.
+
+Example :
+-----------
+RequestDispatcher dispatcher = null;
+
+out.print("1111111111111");
+
+//Internal Resource - Static
+dispatcher = req.getRequestDispatcher("index.html");
+dispatcher.include(req, resp);
+
+out.print("2222222222222");
+
+//Internal Resource - Dynamic
+String url = "currentDate?fname=Praveen&lname=D";
+dispatcher = req.getRequestDispatcher(url);
+dispatcher.include(req, resp);
+
+out.print("33333333333333");
+
+NOTE:
+======
+> We Cannot Include the response of "External Resource"
+  into the Servlet
+
+> Unlike Redirect & Forward, we can include more than
+  one resource/URL at a time
+
+> Include helps us to reuse the Internal Resources 
+  with that its "easy to maintain the Web Application"
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+Cookies
+========
+> Cookies are little piece of information in the
+  form of name-value string pair exchanged between 
+  browser & server
+  
+> Cookies are 
+  - Created @ Server/Servlet side but 
+  - Present @ Browser side  
+  Hence Cookies are "Browser Dependent"
+
+> To Create a Cookie @ Servlet side, simply create
+  an instance of "javax.servlet.http.Cookie" by 
+  passing name & value as String to the constructor
+  
+Ex:
+----
+Cookie nameCookie = new Cookie("myName","Praveen");
+
+> To send a Cookie as part of the Response, invoke
+  addCookie() method on Response Object
+  
+  Ex:
+  ----
+  resp.addCookie(nameCookie);
+  
+  where, "resp" is an Object reference of 
+         "HttpServletResponse"
+
+> To get Cookies from Request, invoke getCookies()
+  method on Request Object
+  
+  Cookie[] receviedCookies = req.getCookies();
+  where, "req" is an Object reference of 
+          "HttpServletRequest"
+	  
+> Cookies are the One & Only way in Servlet API, 
+  If we want to store any information in "User 
+  Browser" 
+
+> Browser before sending the Request, it performs 
+  the below activities (automatically)
+  1. it takes "Domain Name" from request 
+  2. looks out for Cookies within it's own memory
+  3. If present, it attaches cookies to Request
+  4. If NOT present, it simply sends the Request to 
+     Server without Cookies
+
+> Hence Cookies "optional" both in HTTP Request & 
+  Response	 
+  
+> There are two types of cookies,
+  1. Non-Persistent Cookie
+  2. Persistent Cookie
+
+  
+  
+  
+  
+  
+  
+
+  
+
+
+
+
+
+1. Non-Persistent Cookie (it's default) :-
+------------------------------------------
+> Non-Persistent Cookie lives as long as Browser
+  is kept open. Once the Browser is closed 
+  cookie disapears
+  
+2. Persistent Cookie :-
+---------------------
+> Persistent Cookie will be present in Browser 
+  even after Browser is Closed
+
+Cookie Related Methods :-
+=========================
+
+1. public Cookie(String name, String value)
+ 
+> It's the ONE & ONLY constructor avilable in 
+  "javax.servlet.http.Cookie" Concrete Class
+  
+> It creates the Cookie Object with specified name & 
+  value
+  
+> Name can contain only "Alphanumeric Character" but 
+  should not contain 
+  - comma
+  - white space
+  - semicolons and 
+  - should not begin with "$" 
+  
+> Cookie name "cannot be changed" after creation
+
+> Value can be anything & it "can be changed" after 
+  creation
+  
+  
+  
+  
+  
+  
+
+
+2. void HttpServletResponse.addCookie(Cookie cookieObj)
+========================================================
+> This method add the specified Cookie to the Response
+> This method can be called "Multiple Times" to set more
+  than one Cookie to the Response
+ 
+3. Cookie[] HttpServletRequest.getCookies()
+=============================================
+> This method returns 
+  - an "Array containing all the Cookie Objects" 
+  OR 
+  - returns "NULL" if request does not have Cookies
+
+4. String Cookie.getName()
+============================
+> This method returns the Name of the Cookie
+
+5. String Cookie.getValue()
+==============================
+> This method returns the Value of the Cookie
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+6. void Cookie.setMaxAge(int expiry)
+=====================================
+> set's the max age of the Cookie in "Seconds" 
+> +ve Value makes Cookie "Persistent" 
+> Any -ve Value makes Cookie "Non-Persistent"
+> 0 Value makes Cookie (Persistent / Non-Persistent) 
+  to be "Deleted Immediately" from Browser 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Examples :
+=============
+1. Create Cookie
+------------------
+//Non-Persistent Cookie
+Cookie myNameCookie 
+		= new Cookie("myName", "Praveen D");
+
+//Persistent Cookie
+Cookie myLocationCookie 
+		= new Cookie("myLocation", "Bangalore");
+//Time in Seconds		
+myLocationCookie.setMaxAge(7*24*60*60);
+
+//Send the above Cookies in the Response
+resp.addCookie(myNameCookie);
+resp.addCookie(myLocationCookie);
+
+out.print("Cookies Created ...");
+
+2. Read Cookie
+------------------
+//Get Cookies From Request
+Cookie[] receivedCookies = req.getCookies();
+
+if(receivedCookies == null) {
+  out.print("Cookies are NOT present");
+}else{
+  out.print("Cookies are present");
+	
+  for(Cookie rcvdCookie : receivedCookies){
+	//Print the Cookie Info(Name & Value) in Browser
+	out.print("Cookie Name:"+rcvdCookie.getName());
+	out.print("Cookie Value:"+rcvdCookie.getValue());
+  }
+}//End of if-else
+
+3. Delete Cookie
+------------------
+//Get Cookies From Request
+Cookie[] receivedCookies = req.getCookies();
+
+if(receivedCookies == null){
+  out.print("Cookies are NOT Present");
+}else{
+  out.print("Cookies are present");
+   for(Cookie rcvdCookie : receivedCookies) {
+	 String name = rcvdCookie.getName();
+	 //Delete ONLY 'myLocation' Cookie
+	 if(name.equals("myLocation"))
+	 {
+	   rcvdCookie.setMaxAge(0);
+	   resp.addCookie(rcvdCookie);
+	   out.print("Deleted 'myLocation' Cookie");
+	   break;
+	 }
+	}//End of for
+}//End of if-else
+
+
+Attributes :-
+==============
+> Attributes helps us to pass information in the form of 
+  "name = value" pair where name is a "String" & value 
+  is "java.lang.Object" 
+
+> Which means that, any java object can be an attribute 
+  value
+  
+> Attributes are the one and only way, in Servlet API, 
+  to pass information in the form of "Java object" from 
+  one servlet/JSP to another servlet/JSP
+  
+> Attributes are of 3 types
+  1. Context Attributes (Application Scope)
+  2. Request Attributes (Request Scope)
+  3. Session Attributes (Session Scope)
+
+> These 3 attributes can be get / set by using following 
+  Objects respectively
+  1. javax.servlet.ServletContext
+  2. javax.servlet.ServletRequest
+  3. javax.servlet.http.HttpSession
+ 
+> Following methods are present in above Three Objects, 
+  which can be used to "get, set or remove" attributes
+  
+1. public void setAttribute(String name, Object value)
+=======================================================
+> Sets an Object to a given attribute name
+
+> If an attribute with the given name already exists 
+  then this method will replace the existing object with
+  the new Object
+  
+2. public Object getAttribute(String name)
+========================================================
+> This method returns an attribute value as 
+  java.lang.Object with the given name OR returns NULL 
+  if there is no attribute by that name exists
+
+3. public void removeAttribute(String name)
+========================================================
+> This method removes an attribute with the given name
+  
+> After removal, subsequent calls to getAttribute() with
+  the same name returns NULL
+
+NOTE:
+======
+> Following are the different ways of passing information
+  to Servlets
+  1. Using Query String
+  2. Using Context & Config Parameters
+  3. Using HTML Form
+  4. Using Cookies
+  5. Attributes
+
+> Apart from Attributes rest are name=value pair where 
+  both name & value are "String"
+  
+> Where as Attributes are name=value pair where name is 
+  a "String" but value is an "Object" 
+
+> Hence if one Servlet wants to pass information to an
+  another in the form of "Java Object" then "Attributes"
+  are the One & Only way
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Attributes Summarized :-
+========================================================================================================================
+|	 No.         | ServletContext                   | ServletRequest                    | HttpSession                  |
+========================================================================================================================
+| 1. Instance    | One Per Application              | One Per Request & Response Cycle  | One Per User OR Login/Logout |
+------------------------------------------------------------------------------------------------------------------------
+| 2. Lifespan    | Created during Server Start up   | Create When Request Comes         | Create When User Login       |
+|                | Destroyed during Server shutdown | Destroyed When Response is Given  | Destroyed When User Logout   |
+------------------------------------------------------------------------------------------------------------------------
+| 3. Scope       | Application                      | Request & Response Cycle          | Session                      |
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+|		           | All the Above 3 Objects has 
+|				   | private HashMap<String, Object> 
+| 4. Functionality | & 3 Public Methods to Operate 
+|                  | on this HashMap i.e. 
+|				   | 1. void setAttribute(String, Object)
+|				   | 2. Object getAttribute(String) 
+|				   | 3. void removeAttribute(String)
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Example :
+=========
+
+First Servlet:
+--------------
+/*
+ * Setting the Context Attributes
+ */
+ServletContext context = getServletContext();
+context.setAttribute("contextKey", new Object());
+
+/*
+ * Setting the Request Attributes
+ */
+req.setAttribute("reqKey", "My Request Attribute");
+
+/*resp.setContentType("text/html");
+PrintWriter out = resp.getWriter();
+out.print("Added the Attributes ...");*/
+
+RequestDispatcher dispatcher
+	= req.getRequestDispatcher("second");
+dispatcher.forward(req, resp);
+  
+Second Servlet  : 
+-----------------
+/*
+ * Getting the Context Attribute
+ */
+ServletContext context = getServletContext();
+Object obj = context.getAttribute("contextKey");
+
+if(obj==null){
+  out.print("Context Attribute Not Present");
+}else{
+  out.print("Context Attribute Present");
+  out.print("Value:"+obj.toString());
+}
+/*
+ * Getting the Request Attribute
+ */
+String str = (String)req.getAttribute("reqKey");
+
+if(str==null){
+ out.print("Request Attribute Not Present");
+}else{
+	out.print("Request Attribute Present");
+	out.print("Value:"+str);
+}  
+  
+   
+  
+  
+   
+
+Application
+|
+|------> Desktop
+|
+|------> Web Application
+			|
+			|------> Static
+			|
+			|------> Dynamic
+						|
+						|------> User Dependent
+						|
+						|------> User In-Dependent
+
+
+
+
+
+Session Introduction
+======================
+> J2EE helps us to develop "Dynamic Web Application"
+  & there are 2 types of Dynamic Web Application
+  1. User Dependent Dynamic Web Applications 
+  2. User Independent Dynamic Web Applications
+
+1. User Dependent Dynamic Web Applications  :-
+----------------------------------------------
+> These are the Web Applications where "Response 
+  Data is specific to a User"
+  For Ex:- Gamil, Facebook, Twitter, Linked-In, etc.,
+
+> Login & Logout is "Must" for these Web 
+  Applications
+
+> Also these webapplications MUST know "from which 
+  User it's getting the request"
+  
+2. User Independent Dynamic Web Applications :-
+--------------------------------------------------
+> These are the Web Applications where "Response 
+  Data is independent of the User"
+  For Ex:- Google Search, Google Maps, Youtube, 
+		   Grepcode, Any Company Related Web 
+		   Applications (www.jspiders.com) etc.,
+
+> Login & Logout is "Optional" for these Web 
+  Applications
+
+> Also these webapplications Need Not know "from 
+  which User it's getting the request"		   
+		   
+Thumb Rule :-
+--------------
+> If we must need to Login & Logout to access the 
+  web application then, it MUST be a "User 
+  Dependent Dynamic Web Application"		   
+		   
+		   
+		   
+		   
+		   
+Why HttpSession (a.k.a Session) Functionality ?
+===============================================
+> HTTP is a "Stateless Protocol" i.e. it doesn't 
+  maintain a relationship/state between requests.
+  Each request is un-related to any previous 
+  requests
+  
+> Also HTTP don't help web application to uniquely 
+  identify the user
+  
+> Hence even if user sends sequence of requests 
+  to web application then it will not able to 
+  identify, those are from the same user. Also web 
+  application will not be able to relate them
+
+> To address to this problem, Servlet API provides 
+  "HttpSession functionality". With HttpSession we 
+  can overcome the above problems
+
+Thumb Rule:  
+-----------
+Any web application which has Login & Logout 
+then we MUST make use of HttpSession functionality	   
+	
+
+	
+		   
+		   
+HttpSession
+============
+> A session, w.r.t web application, is a time 
+  difference between Login & Logout
+  
+> "HttpSession" is a functionality provided by 
+  Servlet API which helps web application to
+  1. Uniquely identify the user
+  2. It maintain "State / Relationship" between 
+  requests with the help of "Session Attributes"
+  3. Avoids Authenticattion for each Request
+  4. Tightly couples the different pages of the 
+     web application
+	 
+> To make use of "HttpSession" functionality we
+  must follow 3 Steps
+1. Create a Session (Only Once; during Login)
+2. Validate a Session (Many Times; for every request)
+3. Invalidate a Session (Only Once; during Logout)
+
+> HttpSession uses one of the following two 
+  mechanisms to handle session: 
+  1. Cookies (it’s default)
+  2. URL Re-Writing 
+
+  
+  
+  
+  
+  
+  
+  
+  
+HttpSession Related Methods
+============================
+
+1. HttpSession HttpServletRequest.getSession()
+ 
+2. HttpSession    
+    HttpServletRequest.getSession(boolean create)
+ 
+ 
+ 
+ 
+ 
+ 
+Creating a New Session Object Means:
+--------------------------------------
+> Container generates Unique ID 
+
+> Container maintains the Status of this ID as 
+  "Active" @ Server Side
+   
+> Container sends this Unique ID to User in the 
+  form of Cookie along with the Response where, 
+  Cookie Name = "JSESSIONID"
+  Cookie Value = "Unique_ID"
+   
+> Container caches this Session Object in it's 
+  cache where,
+  Key is "Unique_ID" &
+  Value is "Corresponding Session Object"
+
+NOTE:
+===== 
+- Container does All the above steps when we 
+  create HttpSession Object [ i.e. when we invoke 
+  getSession() or getSession(true) ] & it happens 
+  behind the scene 
+ 
+3. void HttpSession.invalidate()
+----------------------------------- 
+> Invalidates the current session & garbage 
+  collects the associated session object
+ 
+4. String HttpSession.getId()
+--------------------------------------- 
+> This method returns the unique identifier 
+  generated for each session 
+ 
+ 
+ 
+ 
+5. void HttpSession
+		 .setMaxInactiveInterval(int timeInterval)
+---------------------------------------------------
+> Specifies the valid session time, in seconds 
+
+> A negative time indicates the session should 
+  never timeout
+ 
+> This method helps us to set different 
+  Session Time Out for different types of users
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+6. String HttpServletResponse.encodeURL(String url)
+					
+7. String HttpServletResponse
+			         .encodeRedirectURL(String url)
+----------------------------------------------------
+> Both methods encodes the specified URL by 
+  appending session ID to it
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+8. Refer "Attributes Section" for Attributes 
+   related Methods
+ 
+ 
+Steps to Handle HttpSession
+============================ 
+1. Create the Session :-
+------------------------
+Whenever user login & after sucessfull authentication,
+create session for the First Time.
+
+HttpSession session = req.getSession(true);
+OR
+HttpSession session = req.getSession();
+	
+2. Validate the Session
+==========================
+Once Session is created, for subsequent requests 
+validate the session
+
+Note: 
+======
+Any Servlet/JSP which get the request from Browser, 
+after successful login, then it shoud have "Session 
+validation logic"  
+
+//Get the Current Session Object
+HttpSession session = req.getSession(false);
+if(session == null)
+{
+//Invalid Session !!! 
+//Generate "Login Page With Error Info as Response"
+}else{
+//Valid Session ... 
+//Generate "Proper Response"
+}
+	
+3. In-Validate the Session :-
+------------------------------
+A Session get Invalidated in Following ways
+I.  When Application / Server goes down
+II. When user logout of the application
+	
+   When user wants to logout of the application, 
+   then invoke invalidate() method on the Current 
+   Session Object
+	
+   //Get the Current Session Object
+   HttpSession session = req.getSession(false);
+   if(session != null)
+   {
+	  session.invalidate();
+   }
+   //Generate "Login Page with Success Message"
+   //as a Response
+	
+III. When user is in-active for configured amount 
+     of time	
+	   
+	There are two ways to configure session time out
+	
+	i. In web.xml
+	--------------
+		
+	<session-config>
+		<!-- Time in Min (ex: 7 Days)-->
+		<session-timeout>10080</session-timeout> 
+	</session-config>
+	
+	ii. In Program
+	---------------
+		
+	HttpSession session = req.getSession(true);
+	//Time in Seconds, ex: 7 Days
+	session.setMaxInactiveInterval(7*24*60*60);
+	
+URL Rewriting
+=================	
+> While handling user session "URL Rewriting" comes 
+  into picture ONLY if we encode the URL's with 
+  "Session ID" 
+
+> If we encode the URL's, then Container ALWAYS 
+  first attempt to use the Cookies to get Session
+  ID & fall back to URL Rewriting only if Cookie 
+  approch fails
+  
+
+
+  
+
+  NOTE:
+=====
+We cannot make use of URL Rewriting methods in 
+"Static Pages (i.e. HTML)"
+  
+	
+	
+	
+	
+	
+  
+  
+Part 5 - Summary
+=================
+> ServletContext & ServletConfig
+> Redirect, Forward & Include
+  - Differences between Redirect & Forward
+  - When to use Redirect & When to use Forward
+  - Use of Include
+> Attributes
+	- Types
+	- Scope
+	- When to Use What Type of Attributes
+> Cookies
+	- Why Cookies
+	- How to Create Cookies
+	- How to Send Cookies to Browser
+	- Types of Cookies
+	- How to Create Persistent Cookie
+> HttpSession
+	- Types of Dynamic Web Applications
+	- Limitations of HTTP Protocol
+	- Why HttpSession
+	- HttpSession Steps 
+	- URL Rewriting
+
+  
+  
+  
+  > When we invoke this method on Current Session 
+  Object, below things happens behind the scene
+  - Status of Unique ID get changed to In-Active
+  - 

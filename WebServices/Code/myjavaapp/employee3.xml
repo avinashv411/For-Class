@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<company>
+    <company-name>JSpiders</company-name>
+    <info>
+        <entry>
+            <key>company-type</key>
+            <value>Teaching</value>
+        </entry>
+        <entry>
+            <key>company-location</key>
+            <value>Bangalore</value>
+        </entry>
+    </info>
+    <employee-list>
+        <employee id="1">
+            <name>Vimal Jaiswal</name>
+            <salary>50000.0</salary>
+            <employee-address>
+                <address type="present">
+                    <house-number>12</house-number>
+                    <address-1>3rd A Cross, 18th Main, ABC Layout</address-1>
+                    <address-2>Bangalore</address-2>
+                    <landmark>Near School</landmark>
+                    <pincode>123456</pincode>
+                </address>
+                <address type="permanent">
+                    <house-number>14</house-number>
+                    <address-1>4th B Cross, 20th Main, ABC Layout</address-1>
+                    <address-2>Bangalore</address-2>
+                    <landmark>Near School</landmark>
+                    <pincode>123456</pincode>
+                </address>
+            </employee-address>
+            <phone-numbers>
+                <number>2234567890</number>
+                <number>1234567890</number>
+                <number>3234567890</number>
+            </phone-numbers>
+        </employee>
+        <employee id="2">
+            <name>Praveen D</name>
+            <salary>60000.0</salary>
+            <employee-address>
+                <address type="present">
+                    <house-number>12</house-number>
+                    <address-1>3rd A Cross, 18th Main, ABC Layout</address-1>
+                    <address-2>Bangalore</address-2>
+                    <landmark>Near School</landmark>
+                    <pincode>123456</pincode>
+                </address>
+                <address type="permanent">
+                    <house-number>14</house-number>
+                    <address-1>4th B Cross, 20th Main, ABC Layout</address-1>
+                    <address-2>Bangalore</address-2>
+                    <landmark>Near School</landmark>
+                    <pincode>123456</pincode>
+                </address>
+            </employee-address>
+            <phone-numbers>
+                <number>2234567890</number>
+                <number>1234567890</number>
+                <number>3234567890</number>
+            </phone-numbers>
+        </employee>
+    </employee-list>
+</company>

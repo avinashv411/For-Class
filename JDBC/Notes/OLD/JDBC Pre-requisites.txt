@@ -1,0 +1,33 @@
+JDBC Pre-requisites
+=======================
+1. Install MySQL DB Server
+2. Create a DB by name "BECM3"
+3. Create a Table by name 
+   "students_info" in the above DB
+4. Insert Some Data into above Table
+
+create database becm3;
+
+create table students_info
+( regno int(10) not null,
+  firstname varchar(50),
+  middlename varchar(50),
+  lastname varchar(50),
+  primary key(regno)
+);
+
+insert into students_info
+values (1, 'Praveen', 'NA', 'D');
+
+select * from students_info;
+
+
+
+
+
+
+
+
+
+
+

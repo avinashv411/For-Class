@@ -1,0 +1,563 @@
+
+
+
+  
+  
+
+> Write a Java Program which updates Reg. No. 1 
+  data with following information
+  First Name: XXX 
+  Middle Name: YYY
+  Last Name: ZZZ
+  
+  
+
+
+
+
+
+
+*************			
+Assignment 1:
+*************
+> Write a Java Program which deletes Reg. No. 6 
+  data from "students_info" table
+
+
+
+
+
+*************			
+Assignment 2:
+*************
+
+> Write a Java Program which takes following input 
+  arguments via Commond Line in the "same order" & 
+  insert the data into "students_info" table
+	1. Reg No. 
+	2. First Name
+	3. Middle Name
+	4. Last Name
+  
+  
+*************			
+Assignment 3:
+*************
+> Create "guardian_info" & "students_otherinfo"
+  Tables in "BECME89_DB" database whith the 
+  following structure
+
+	"guardian_info"
+	==============================
+	1. regno 		int(10)(PK)
+	2. gfirstname	varchar(50)
+	3. gmiddlename	varchar(50)
+	4. glastname	varchar(50)
+
+	"students_otherinfo"
+	==============================
+	1. regno 		int(10)(PK)
+	2. isadmin		varchar(1)
+	3. password		varchar(50)
+
+
+  
+  
+  
+  
+  
+  
+  
+Queries :
+===========
+create table guardian_info
+( regno int(10) not null,
+  gfirstname varchar(50),
+  gmiddlename varchar(50),
+  glastname varchar(50),
+  primary key(regno)
+);
+
+
+
+
+
+create table students_otherinfo
+( regno int(10) not null,
+  isadmin varchar(1),
+  password varchar(50),
+  primary key(regno)
+);  
+  
+*************			
+Assignment 4:
+*************  
+> Write a Java Program to insert regno 1 to 5 data 
+  into "guardian_info" table
+
+  
+  
+  
+  
+  
+  
+  
+*************			
+Assignment 5:
+************* 
+> Write a Java Program to insert regno 1 to 5 data 
+  into "students_otherinfo" table
+
+> While inserting data into "students_otherinfo" 
+  table make regno 1 "isadmin" value as "Y" 
+  and rest as "N"
+
+
+*************			
+Assignment 6:
+*************	
+> Write a Java Program which accepts following input 
+  arguments in the "same order" 
+  1. Reg No. 
+  2. Current Password
+  3. New Password
+  
+> This Program first check whether Reg No. & Current 
+  Password is matching
+  
+> If NO, then print the "Error Message" in Console
+  
+> If YES, then print the "Success Message" in Console 
+  along with updating the password for that Reg No.
+
+
+
+  
+  
+
+
+update students_otherinfo
+set password = ?
+where regno = ?
+and password = ?
+
+
+  
+> Create Servelt by name "CreateProfileServlet", 
+  which gets the request from this form,
+1. Get the Form Data
+2. Store the Form Data into Corresponding Tables
+3. generate Proper Response(Success / Error Message)
+	
+	
+	
+	
+Note:-
+======
+> Create "CreateProfileServlet"	 by extending ""
+
+
+
+
+
+
+*************			
+Assignment 3:
+*************
+
+> Create a HTML Form as shown below
+  
+  Search.html
+  -------------------
+  
+  
+  
+  
+  
+  
+  
+  
+> Create Servelt by name "StudentSearchServlet", 
+  which gets the request from this form,
+1. Get the Form Data
+2. Check this Reg. No. exists in BECM78_DB DataBase 
+3. If No, Print the Error Message in the Browser
+4. If Yes, Get the corresponding Reg. No. Data from 
+   BECM78_DB DataBase 
+   ( Combination of Data Present in 
+     students_info & 
+	 guardian_info Tables), 
+  and display the Data in the Browser as shown below 
+  
+  	
+SQL Query:-
+-----------
+select * from 
+students_info si, guardian_info gi
+where si.regno = gi.regno 
+and si.regno = ?	
+	
+	
+	
+*************			
+Assignment 4:
+*************
+
+> Create a HTML Form as shown below
+  
+  ChangePassword.html
+  -------------------
+  
+  
+  
+  
+  
+  
+  
+  
+  
+> Create Servelt by name "ChangePasswordServlet" which 
+  gets the request from this form,
+  1. Gets the Form Data
+  2. Checks "New Password" & "Retype New Password"
+     are matching
+  3. If NO, then display Error Message in the Browser
+  4. If YES, then check Reg. No. & Current Password 
+     are valid by interacting with BECM78_DB DataBase
+  5. If In-Valid, then display 
+     "Invalid Reg. No. & Current Password" 
+	 Error Message in the Browser
+  6. If Valid, update the "Current Password" with 
+     "New Password" and Print Success Message in the 
+     Browser
+ 	
+	
+	
+*************			
+Assignment 5:
+*************	
+
+> Create a HTML Form as shown below
+  
+  Login.html
+  ----------
+
+
+
+
+
+> Create Servelt by name "LoginServlet" which gets 
+  the request from this form,
+  1. Gets the Form Data
+  2. Authenticate the Credentials by interacting 
+     with BECM78_DB DataBase
+  3. If In-Valid Credentials, then display "In-Valid 
+     User Name / Password" Error Message in Browser
+  4. If Valid, then display corresponding Reg. No. 
+     Data ( Combination of Data Present in 
+            students_info & 
+	        guardian_info Tables), 
+     in the Browser as shown below
+	 
+
+
+
+SQL Query:-
+-----------
+select * from 
+students_info si, 
+guardian_info gi,
+students_otherinfo soi
+where si.regno = gi.regno 
+and si.regno = soi.regno 
+and soi.regno = ?	
+and soi.password = ?
+
+
+
+
+
+
+
+
+
+
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 > Write a Java Program which takes following input 
+  arguments via Commond Line in the "same order" & 
+  insert the data into corresponding tables
+	1. Reg No. 
+	2. First Name
+	3. Middle Name
+	4. Last Name
+	5. Guardian First Name 
+	6. Guardian Middle Name 
+	7. Guardian Last Name 
+	8. isadmin & 
+	9. Password
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.jspiders.jdbc.common;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class TransactionExample 
+{
+	public static void main(String[] args) 
+	{
+		Connection con = null;
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
+		
+		try 
+		{
+			//1. Load the Driver
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			
+			//2. Get the DB Connection via Driver
+			String dbUrl = "jdbc:mysql://localhost:3306/BECM4_DB?user=j2ee&password=j2ee";
+			con = DriverManager.getConnection(dbUrl);
+			
+			//3. Issue SQL Queries via Connection
+			String query1 = " insert into students_info " 
+							+" values (?,?,?,?) ";
+			
+			pstmt1 = con.prepareStatement(query1);
+			pstmt1.setInt(1, Integer.parseInt(args[0]) );
+			pstmt1.setString(2, args[1]);
+			pstmt1.setString(3, args[2]);
+			pstmt1.setString(4, args[3]);
+			int count1 = pstmt1.executeUpdate();
+			System.out.println("Rows Affected Count for SI : "+count1);
+			
+			String query2 = " insert into guardian_info " 
+							+" values (?,?,?,?) ";
+			pstmt2 = con.prepareStatement(query2);
+			pstmt2.setInt(1, Integer.parseInt(args[0]) );
+			pstmt2.setString(2, args[4]);
+			pstmt2.setString(3, args[5]);
+			pstmt2.setString(4, args[6]);
+			int count2 = pstmt2.executeUpdate();
+			System.out.println("Rows Affected Count for GI : "+count2);
+			
+			String query3 = " insert into students_otherinfo " 
+							+" values (?,?,?) ";
+			pstmt3 = con.prepareStatement(query3);
+			pstmt3.setInt(1, Integer.parseInt(args[0]) );
+			pstmt3.setString(2, args[7]);
+			pstmt3.setString(3, args[8]);
+			
+			int count3 = pstmt3.executeUpdate();
+			System.out.println("Rows Affected Count for SOI : "+count3);
+	
+			//4. Process the Results returned by SQL Queries
+			System.out.println("Successfully Created the Profile ...");
+			
+		} catch (Exception e) {
+			System.err.println("Unable to Create the Profile !!!");
+			e.printStackTrace();
+		} finally{
+			//5. Close ALL JDBC Objects
+			try 
+			{
+				if(con!=null){
+					con.close();
+				}
+				if(pstmt1!=null){
+					pstmt1.close();
+				}
+				if(pstmt2!=null){
+					pstmt2.close();
+				}
+				if(pstmt3!=null){
+					pstmt3.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}//End of outer try catch block
+	}//End of Main
+}//End of Class
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+> Write a Java Program which accepts following 
+  input arguments in the same order 
+  1. Reg No. 
+  2. Current Password
+  3. New Password
+  
+> This Program first check whether Reg No. & 
+  Current Password is matching
+  
+> If NO, then print the "Error Message" 
+  in Console
+  
+> If YES, then print the "Success Message" in
+  Console along with updating the password for 
+  that Reg No.
+
+
+
+
+
+update students_otherinfo
+set password = ?
+where regno = ?
+and password = ?
+
+
+
+
+
+
+package com.jspiders.jdbc.common;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class ChangePasswordExample 
+{
+	public static void main(String[] args) 
+	{
+		String regNum = args[0];
+		String currentPass = args[1];
+		String newPass = args[2];
+			
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try 
+		{
+			//1. Load the Driver
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			
+			//2. Get the DB Connection via Driver 
+			String dbUrl = "jdbc:mysql://localhost:3306/BECM4_DB?user=j2ee&password=j2ee";
+			con = DriverManager.getConnection(dbUrl);
+			
+			//3. Issue SQL Queries via Connection 
+			String query = " update students_otherinfo " 
+							+" set password = ? " 
+							+" where regno = ? " 
+							+" and password = ? ";
+			
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, newPass);
+			pstmt.setInt(2, Integer.parseInt(regNum) );
+			pstmt.setString(3, currentPass);
+			
+			int count = pstmt.executeUpdate();
+			
+			//4. Process the Results returned by SQL Queries
+			if(count>0)
+			{
+				System.out.println("Password Change Successful");
+			}else{
+				System.err.println("Invalid Reg. No. / Password");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			//5. Close All JDBC Objects
+			try 
+			{
+				if(con!=null){
+					con.close();
+				}
+				if(pstmt!=null){
+					pstmt.close();
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}//End of outer try-catch block
+	}//End of Main
+}//End of Class
+  
+  
+Assignment [Test] 7
+=======================
+> Assume that there is a table by name "Library" 
+  with the following structure
+  
+ 	"Library"
+	==============================
+	1. student_nm 		varchar(50)
+	2. book_nm	        varchar(50)
+	
+	NOTE: None of the above columns are Primary Key
+	
+> Write a Java Program which prints student name & 
+  corresponding	number of books in the Console
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ select student_nm, count(*) as books_taken from library
+group by book_nm; 
+  

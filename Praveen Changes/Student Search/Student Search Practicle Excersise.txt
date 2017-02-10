@@ -1,0 +1,28 @@
+*************			
+Student Search Practicle Excersise 3:
+*************
+
+> Create a HTML Form as shown below
+  
+  Search.html
+  -------------------
+  
+  
+  
+  
+  
+  
+  
+  
+> Create Servelt by name "StudentSearchServlet", 
+  which gets the request from this form,
+1. Get the Form Data
+2. Check this Reg. No. exists in BECE67_DB DataBase 
+3. If No, Print the Error Message in the Browser
+4. If Yes, Get the corresponding Reg. No. Data from 
+   BECE67_DB DataBase 
+   ( Combination of Data Present in 
+     students_info & 
+	 guardian_info Tables), 
+  and display the Data in the Browser as shown below 
+ 

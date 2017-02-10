@@ -1,0 +1,594 @@
+JSP Tags:-
+==========
+> We know that JSP is like a Java 
+  inside HTML & "JSP tags  helps us 
+  to write Java code inside JSP"
+  
+> Every JSP tag has its own 
+  functionality. We cannot make use
+  of one tag inside an another tag
+  (excluding some cases)
+  
+> JSP comes with set of "Pre-defind"
+  tags & they are grouped in to 5 
+  groups. They are   
+1. Declaration Tag 
+2. Expression Tag 
+3. Scriptlet Tag
+4. Action Tag
+5. Directive Tag
+
+Code Word :  DEADS
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+1. Declaration Tag [ <%!        %> ]
+====================================
+> Declaration Tag helps us to declare
+	1. variable (static / non-static),
+	2. block of code (static / non-static),
+	3. methods 
+	   (static / non-static but non-abstract) &
+	4. inner Classes 
+  inside a JSP
+
+> We can have "Zero / One / More" Declaration 
+  Tag in a JSP & Declaration Tag can be present 
+  "Anywhere inside a JSP"
+
+> Code present inside this tag will be kept as a 
+  first lines of translated servlet at the time
+  of Translation  
+  
+> Hence code present within this tag will be 
+  presnet outside of "_jspService()" Method
+
+> Hence if we declare a variable using 
+  Declaration Tag then it becomes 
+  "Class Level Variable" 
+
+  
+  
+2. Expression Tag [ <%=        %> ]
+===================================
+> This tag helps us to print Dynamic Value 
+  to Output Stream
+
+> Code placed with in this tag should not 
+  end with Semicolon
+
+> Functionality of this tag is similler to
+  printing the dynamic data using
+  out.println() in case of Servlets
+
+
+
+
+
+
+
+
+
+
+
+3. Scriptlet Tag [ <%        %> ]
+===================================
+> This tag helps us to write any amount of 
+  Java Code inside a JSP
+  
+> Code placed with in this tag will becomes
+  part of _jspService() Method
+  
+> Hence if we declare a variable using this
+  tag then it becomes "Method Level Variable"
+
+Example for Declaration, Expression 
+& Scriptlet Tags :
+=============================================  
+<%!
+	private int age = 100;
+	public String name = "Rajani Kanth";
+
+	public int getAge()	{
+		return age;
+	}
+	
+	public String getName()	{
+		return name;
+	}
+	
+	public String getName(String givenNM){
+		return "Given name is - "+givenNM;
+	}
+%>
+<html>
+<body>
+	<h1>JSP Tags Example</h1>
+	Name 1 : <%= name %>
+	Name 2 : <%= getName() %>
+	Name 3 : <%= getName("Praveen")%>
+	Name 4 : <%= getName()+getName("Praveen")%>
+	Age 1 : <%= age %>
+	Age 2 : <%= getAge() %>
+	<%
+		int j=100;
+		for(int i=0; i<5; i++)
+		{
+	%>
+			Name : <%= name %>
+	<%		
+		}
+	%>
+</body>
+</html>
+  
+   
+   
+   
+   
+
+4. Action Tag [ <jsp:action_name  action_attributes /> ]
+========================================================
+Action Tag helps us to perform following actions in JSP
+I.   Forward Action
+II.  Include Action
+III. UseBean Action
+
+I. Forward Action [<jsp:forward  page="relativeURL" />]
+-------------------------------------------------------	
+
+This tag helps us to Forward the Request to an another
+Intenal Resource (static / dynamic i.e Servlet or JSP)
+
+Example :
+---------
+<%-- Forward : Static Resource --%> 
+<jsp:forward page="index.html" />
+
+<%-- Forward : Dynamic Resource - Servlet --%> 
+<jsp:forward page="currentDate" />
+<jsp:forward page="currentDate?fname=ABC&lname=XYZ"/>
+<jsp:forward page="currentDate">
+	<jsp:param name="fname" value="123" />
+	<jsp:param name="lname" value="456" />
+</jsp:forward>
+
+<%-- Forward : Dynamic Resource - JSP --%> 
+<jsp:forward page="MyFirstJSP.jsp" />
+<jsp:forward page="currentDateJsp" />
+	
+Note :	
+------
+Only incase of Action Tag we can make use of 
+other JSP Tags.
+
+For Example :
+--------------
+<% 
+	String url = "currentDate";
+%>
+
+<jsp:forward page="<%= url %>" />
+	
+	
+	
+	
+II. Include Action [<jsp:include  page="relativeURL" />]
+----------------------------------------------------------	
+This tag helps us to Include the Response of an another
+Internal Resource (static / dynamic i.e Servlet or JSP) 
+into JSP
+
+Example :
+---------
+
+111111111111111111111
+
+<jsp:include page="index.html"	/>
+
+222222222222222222222
+
+<jsp:include page="currentDate?fname=AAA&lname=BBB"/>
+
+3333333333333333333333
+
+<jsp:include page="currentDate">
+	<jsp:param name="fname" value="XXX" />
+	<jsp:param name="lname" value="YYY" />
+</jsp:include>
+
+4444444444444444444444
+
+<jsp:include page="currentDateJsp">
+	<jsp:param name="fname" value="123" />
+	<jsp:param name="lname" value="456" />
+</jsp:include>
+
+55555555555555555555555
+
+
+III. UseBean Action
+----------------------------------------------------
+Syntax:
+------- 
+<jsp:useBean 
+   id="referenceNM"
+   class="pkgNM.classNM"
+   scope="page | request | session | application"/>
+
+> This tag helps us to create Explicit Objects in JSP	
+
+> Container first search for an Existing Object by 
+  using "id" & "scope" attributes present in this tag
+  - If found, then it makes use of that Object
+  - Otherwise, it creates a New Object using 
+    "Public Default Constructor"  & set that object
+	to the corresponding scope
+
+Example:
+=========  
+<jsp:useBean 
+ id="ref"
+ class="com.jspiders.studentsapp.dao.StudentInfoBean"
+ scope="application"
+/>
+
+Reg. No. Value is :
+<jsp:getProperty name="ref" property="regno" />
+
+Changing the Value of Reg. No.
+<jsp:setProperty name="ref" property="regno" value="10"/>
+
+New Reg. No. Value is :
+<jsp:getProperty name="ref" property="regno" />	   
+		   
+		   
+		   
+		   
+		   
+		   
+ 
+5. Directive Tag [ <%@directive_name   directive_attributes %> ]
+================================================================
+There are 3 Types of Directive Tags
+
+I.   Include Directive
+II.  TagLib Directive
+III. Page Directive
+
+I. Include Directive [ <%@include   file="resourceFileNM" %> ]
+----------------------------------------------------------------
+> Include Directive includes the content of Physical File 
+  OR Static Resource into JSP at the time of translation
+
+> Hence compared to Include Action (for Static Resource), 
+  Include Directive is faster in nature
+
+NOTE: 	Use Include Action for Dynamic Resources &
+-----	Use Include Directive for Static Resources
+
+Example:-
+---------
+111111111111111111111
+
+<%@include file="index.html" %>
+
+222222222222222222222
+<%-- 
+	 Not Possible !!! We cannot include Dynamic Resource
+     using Include Directive 
+--%>
+<%-- <%@include file="currentDate" %> --%>
+<%-- <%@include file="currentDateJsp" %> --%>
+
+II. Taglib Directive
+------------------------
+Syntax:
+------- 
+	<%@taglib uri="URI of the Tag Library"
+			  prefix="prefix of the Tag Library" %>
+
+> TagLib Directive helps us to make use of 
+  "Custom Tags" in JSP
+
+> The functionality of these custom tags are defind 
+  in "Tag Library Descriptor (TLD)" file	   
+	
+> Tag Library Descriptor file will have ".tld"	file
+  extension & it will present inside WEB-INF folder
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+			   
+III. Page Directive [ <%@page   attributes %> ]
+--------------------------------------------------
+> Page Directive has 11 Optional Attribute that provides 
+  some processing information to Servlet Container
+  
+=======================================================
+| Attribute 	|	Syntax			|Description      |
+=======================================================
+
+| language		| <%@page language="java" %>				|			 |
+
+> Language denotes the "Scripting Language" used in 
+  Declaration, Expression & Scriptlet tags
+
+> Default language is "java"
+
+
+| info			| <%@page info="My First JSP" %>			|			 |
+
+> This attribute is used to provide documentation 
+  information for a JSP
+  
+> Details such as Author, Version, Copyright, Date, 
+  etc., are placed inside this tag
+
+
+
+
+  
+
+
+| contentType	| <%@page contentType="text/html" %>		|			 |
+|				|	OR  									|			 |
+|				| <%@page contentType="text/html; 			|			 |
+|				|          charset=ISO-8859-1" %>		  	|			 |
+|				|										    |			 |
+
+> This attribute specifies the Content Type and 
+  Character Set for JSP Response
+  
+> Default Contnet Type is "text/html" &
+  Default Character Set is "ISO-8859-1"
+  
+  
+
+
+
+
+
+
+| import   | <%@page import="pkg1.class1, pkg2.*, .."%>| 			 |
+|          | OR                                        | 			 |
+| 	       | <%@page import="pkg1.class1"%>            | 			 |
+| 		   | <%@page import="pkg2.*"%>                 | 			 |
+
+
+> Functionality is similler to Java "import" statement
+
+
+
+| extends	| <%@page extends="pkgNM.classNM"%>		|			 |		
+
+
+> Functionality is similler to Java "extends" statement
+
+
+
+
+| buffer		| <%@page buffer="none | sizeInKB"%>		|			 |
+
+> This attribute set the Buffer Size in KB
+
+> The default size is 8KB
+
+> To turn off the buffered output the value should be 
+  "none"
+
+
+
+
+
+
+
+
+
+
+
+
+| autoFlush		| <%@page autoFlush="true | false"%>		| 			 |
+
+
+> This attribute controls the behaviour of Buffer
+
+> If "true" (it's default), the buffer will be flused
+  automatically when it's full
+  
+> If "false" then an exception is thrown when the Buffer
+  is full
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+| session	| <%@page session="true | false"%>		|			 |
+
+
+> If "true" (it's default), then "session" implicit
+  object is avilable in JSP & it refers to Current / 
+  New Session
+  
+> If "false", then "session" implicit object will NOT 
+  be avilable in JSP
+
+
+
+
+
+
+
+
+| isThreadSafe  | <%@page isThreadSafe="true | false"%>		|			 |
+
+
+> If "true" (it's default), then JSP becomes "Multi Threaded"
+  in nature
+  
+> If "false", then JSP becomes "Single Threaded" in nature
+
+
+
+
+
+
+
+
+
+| isErrorPage	| <%@page isErrorPage="true | false"%> 		|			 |		
+
+
+> If "true", then "exception" implicit object is avilable in JSP
+  
+> If "false" (it's default), then "exception" implicit object 
+  will NOT be avilable in JSP
+
+
+
+
+
+| errorPage		| <%@page errorPage="relativeURL"%>		|			 |
+
+> This attribute defines the "Error Page" for a JSP
+
+> While processing the request for a JSP, if an exception occurs
+  then request automatically get forwarded to the "Specified 
+  Error Page" 
+==========================================================================	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+NOTE:
+=======	
+1. We can have Zero / More Page Directive in JSP & 
+   they can be present anywhere inside a JSP
+   
+2. We can club multiple Page Directive Attributes 
+   into one page directive as shown below
+
+   <%@page errorPage="JSPErrorPage.jsp" 
+		   import="java.util.Date" %>
+	
+	
+	
+	
+	
+	
+	
+	
+Exception Handling in JSP
+==========================
+In JSP we can handle exception scnerios with 
+the help of "errorPage" & "isErrorPage" page 
+directive attributes
+
+Example :-
+-----------
+MyJSP.jsp
+---------
+<%@page errorPage="JSPErrorPage.jsp"%>
+
+<html>
+<body>
+	Exception Simulation ....
+	<%
+		int i = 100/0;
+	%>
+</body>
+</html>
+
+JSPErrorPage.jsp
+-----------------
+<%@page isErrorPage="true"%>
+
+<html>
+<body>
+	Exception Occurred !!! Exception is :
+	<font color="red">
+		<%= exception.getMessage() %>
+	</font>
+</body>
+</html>			   
+			   
+Single Threaded JSP :
+=====================
+We can create JSP, single threaded in nature,
+with the help of "isThreadSafe" Page 
+Directive attribute			   
+
+Example:
+--------
+<%@page isThreadSafe="false" %>
+
+<html>
+<body>
+	<h1>My Single Threaded JSP</h1>
+</body>
+</html>			   
+			   
+JSP Redirect Example:
+========================
+<%-- Do Not Generate the Response 
+     Instead Redirect the Request --%>
+	
+<% 
+	String url = "http://www.gmail.com";
+	response.sendRedirect(url); 
+%>			   
+
+
+================= END of JSP ==============
+################# End of J2EE ##############
+
+
+
+
+
+
+	
+	
+
+	
+	
+	
+> At the time of traslation, if container 
+  comes to know that JSP has one / more 
+  declaration tag then, it copies the 
+  content present in declaration tag & 
+  paste as the first lines of translated 
+  servlet class

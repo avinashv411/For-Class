@@ -1,0 +1,9 @@
+> Write a Java Program which accepts "regno"
+  & "password" via command line arguments,
+  interacts with DB & authenticates these 
+  credentials. 
+
+> If you pass valid credentials then program 
+  should print "Valid User Name / Password" 
+  in the console otherwise it should print 
+  "In-Valid User Name / Password" 

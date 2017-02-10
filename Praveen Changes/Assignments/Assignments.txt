@@ -1,0 +1,51 @@
+1.Assignment 1
+Create a form as shown below
+-create a servlet which gets the request from the form, get the form data, 
+store the the form data into corresponding table and 
+generate success or error message and send it to browser.
+
+
+
+2. Assignment 2
+Create a form as shown below
+-create a servlet which gets request 
+from this form and get from data,
+validate the form data, if reg. no. 
+and current password is matching with
+ new password otherwise, print the error
+ message in browser 
+
+3. Assignment 3Create a form show below
+- create a servlet, which gets request from this form
+interact with DB, gets the data from DB( combination 
+of data present in student_info, guardian
+-info, student_otherinfo) and print it in a browser.
+if reg. no. is not available, then print error message
+ in browser
+4. Assignment 4
+-create a servlet which gets the request,whenever user 
+clicks on this hyperlink,(click here) interacts with 
+database, get all student data present in database
+(combined data of student_info, guardian_info,student_otherinfo)
+and generate response to this data and print in browser.
+
+==============================================
+Assignment 5 :-
+---------------
+
+> Create a form show below
+
+> Create a Servlet, which gets request from 
+  this form interact with DB, gets the data 
+  from DB( combination of data present in 
+			student_info, guardian_info
+			and student_otherinfo) 
+  and print in a browser
+  
+> If reg. no. is not available, then print error 
+  message in browser
+
+=================================================
+
+
+

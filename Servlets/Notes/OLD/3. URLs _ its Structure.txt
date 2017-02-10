@@ -1,0 +1,651 @@
+Web URL (Web Uniform Resource Locator's) :
+===========================================
+> We know that Web Application is a collection
+  of web resources(static / dynamic) & Web URL 
+  uniquely identifies these web resources in a 
+  web applciation
+  
+> In other words, every web resource 
+  (static / dynamic)  should have its unique 
+  address in the form of Web URL
+
+Web URL Structure:	
+------------------
+Protocol://Domain:Port/Path?QueryString#FragmentID
+
+
+
+
+
+
+
+
+
+
+
+
+Protocol: 
+==========
+> When one application wants to communicate 
+  with other (in our case browser & server), 
+  there needs to be a common language which 
+  both application understands & that language 
+  should have set of rules and instructions. 
+  
+> This common language is known as “Protocol” 
+  where protocol is a "Set of Rules"
+  
+> Web Browser & Web Server applicatins 
+  communicate using 
+1. Hyper Text Transfer Protocol (HTTP) 
+2. Hyper Text Transfer Protocol Secure (HTTPS)
+  
+> HTTPS encrypts any data which is shared 
+  between browser & server 
+  
+> As the name implies most of the time 
+  HTTP Response contain HTML
+  
+> In URL it’s an optional information & 
+  default protocol is HTTP
+
+
+
+
+
+
+
+Domain: 
+========
+> It uniquely identifies a computer in a
+  network in which web application 
+  is present
+
+> Domain consists of Computer Name / 
+  IP address of the computer in which 
+  web application is present
+  
+> In URL it is a Mandatory Information
+
+
+
+
+
+
+
+
+
+Port: 
+========
+> Port number in Web URL uniquely identifies 
+  web server application
+  
+> Default port number for HTTP  is 80 & 
+						  HTTPS is 443
+						  
+> In URL this is an optional information
+
+> When it's not used default port number is used 
+  depending on the protocol present in Web URL 
+
+> In Tomcat Webserver, default port number
+  for HTTP is changed from 80 to 8080
+  and default port number
+  for HTTPS is changed from 443 to 8443
+
+
+
+
+
+
+
+Path: 
+======
+> We know that web application is a collection
+  of web resources (Static / Dynamic) & also
+  Web server can consist of one/more web 
+  applications
+  
+> Path is the full path of the web  resource 
+  at web application side
+  
+> It consists of,
+    Web Application Name 
+    + ( File Name in case of Static Resource 
+        OR 
+	    Configured URL in case of Dynamic Resource )
+
+> "Web Application name" uniquely identifies One
+  web applciation inside webserver
+  
+> "File Name or Configured URL" uniquely 
+  identifies Static / Dynamic web resource inside 
+  that web applciation 
+  
+> In URL It’s an optional Information
+
+> In Short, Path uniquely identifies One
+  web applciation & One web resource inside that
+  web applciation
+
+
+
+
+
+
+
+Query String: 
+==============
+> Query String is a name & value string pair 
+  which passes information ONLY to Dynamic 
+  Resources such as Servlets & JSPs
+  
+> In URL, It’s an optional information and 
+  if present, it starts with question mark 
+  followed by one or more name-value pair 
+  which are separated by an ampersand (&)
+
+Examples:	
+---------
+www.google.com/search?q=Praveen
+
+http://localhost:8080/studentsApp/currentDate
+?fname=Praveen&lname=D
+
+Servlet Code to get Query String Information :-
+----------------------------------------------
+
+String fnmVal = req.getParameter("fname");
+String lnmVal = req.getParameter("lname");
+
+Where,
+req = Object reference of HttpServletRequest
+
+
+
+
+
+Fragment ID 
+============
+> A Fragment ID or Fragment Identifier, as the 
+  name implies, it refers to a particular section
+  within a web page
+ 
+> In URL, It’s an optional information & 
+  if present, it begins with a hash (#) 
+  character followed by an identifier
+
+Example:
+---------	
+http://tomcat.apache.org/tomcat-6.0-doc/
+manager-howto.html#Session_Statistics
+
+
+
+
+
+HTTP Structure:
+===============
+
+Key Elements of HTTP Request & HTTP Response :-
+=============================================
+
+Status Code:
+============
+> Status code represents the status of the 
+   HTTP Request. For example, 
+   
+1.	Status code 200 
+    = Server Successfully handled the request
+	
+2.	Status code 404 
+    = Requested Resource (static / dynamic) is 
+	  Not Found at server side
+	  
+3.	Status code 500 
+    =  Server encountered an unexpected condition 
+	   which prevented it from fulfilling the 
+	   request.
+	   
+> It’s a Mandatory information & it will be 
+  present in Header of HTTP Response
+  
+> Generally Webserver provides "Status Code"  
+  information in HTTP Response
+  
+
+
+
+
+
+
+
+
+Content Type:
+==============
+> Content Type OR 
+  Multipurpose Internet Mail Extensions (MIME) Type, 
+  tells the browser that what type of content it’s 
+  going to receive so that it can prepare itself 
+  to handle the response data. 
+  
+> For example, 
+- open an Adobe Reader to handle PDF content 
+- Open Media Player to handle media content etc.
+
+> It’s a Mandatory information & it will be 
+  present in Header of HTTP Response
+  
+> The default content type is “text/html”
+
+> Few Examples : 
+	text/html
+	application/pdf
+	video/quicktime
+	image/jpeg
+	application/zip
+
+
+
+
+
+Actual Content:
+===================
+> It’s a Mandatory information & it will be 
+  present in Body of HTTP Response
+  
+> In case of static resource, the content of 
+  the resource becomes the “Actual Content” 
+  
+> In case of dynamic resource the content 
+  present in the servlets / JSP becomes 
+  the “Actual Content”
+  
+> In case of Error Scenarios webserver 
+  generates the error information it 
+  becomes the “Actual Content”  
+
+
+
+
+
+
+Web URL:
+=========
+> Web application is a "Collection of 
+  Web Resources" & every web resource 
+  (static / dynamic) should have its 
+  unique address in the form of web URL
+  
+> Hence every request should consist of 
+  Web URL (Mandatory information) & it will 
+  be present in Header of HTTP Request
+
+
+
+
+
+
+
+
+Form Data:
+===========
+> Data collected using HTML form is 
+  called as Form Data 
+  
+> i.e. Whenever we make request by Submitting 
+  Form, then ONLY HTTP Request will have 
+  Form Data  
+  
+> Hence in HTTP Request it’s an Optional 
+  Information
+  
+> If present then the form data will be 
+  present either in Header or in Body 
+  depending on the HTTP Method present 
+  in the Request
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+HTTP Method:
+=============
+> It’s a mandatory information present in 
+  the header of the HTTP Request
+  
+> HTTP method indicates the desired action 
+  to be performed on the Dynamic Web Resource
+  i.e. Servlet
+  
+> HTTP 1.1 has 8 different methods & Every 
+  Http Request should consist of one of the 
+  8 HTTP Method
+
+> HTTP Method is the first component in the
+  header part of HTTP Request
+  
+> Servlet API has "Default Implementation" 
+  for these methods (excluding one method) 
+  
+> All these default implementations are 
+  present in the Servlet API class by 
+  name “javax.servlet.http.HttpServlet”
+
+
+
+
+
+
+
+========================================================
+| HTTP Method | Related Servlet Method |   Description |
+========================================================
+
+
+
+
+
+
+
+
+
+
+1. HEAD		|		doHead		|
+
+This method makes webserver to send only the 
+header part in the response
+
+
+
+
+
+
+
+
+
+
+2. TRACE	|		doTrace			|
+
+This method makes Webserver to "echoe the 
+received request", so that a User can see 
+changes (if any) happened to the request
+
+
+
+
+
+
+
+
+
+3. PUT		|		doPut			|
+
+> This method allows user to place a file 
+  in the server 
+  
+> Functionality is similar to sending a file 
+  by FTP
+
+
+
+
+
+
+4. DELETE		|		doDelete		|
+
+This method allows user to remove a file 
+from the server
+
+
+
+
+
+
+
+5. OPTIONS  	|	   doOptions		|
+
+This method determines which HTTP methods 
+that server supports and returns an 
+appropriate header with this information
+
+
+
+
+
+
+
+
+
+6. POST   		|     doPost		|
+
+> This method allows user to Post the data 
+  of unlimited size to the server using 
+  HTML form
+  
+> POST requests have a body 
+
+> Hence data sent using the POST is present
+  in the body of the HTTP Request
+
+
+
+
+
+
+
+
+7. GET			|		doGet		|
+
+> This method allows us to get the data 
+  from server 
+  
+> It’s a default method
+
+> GET requests "do not have a body" or 
+  "have empty body" 
+
+> Hence the data sent using the GET method 
+  is present in the Header part of 
+  HTTP Request "in the form of Query String"
+
+  
+
+8. CONNECT
+
+
+
+
+
+
+
+
+
+8. CONNECT | NO Implementation | NO Implementation
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+protected void doXXX(HttpServletRequest req, 
+					 HttpServletResponse resp)
+throws ServletException, IOException  
+ 
+ 
+ 
+ 
+
+HTPP DOG C
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+What determines whether Browser 
+sends GET or POST requests:
+-----------------------------
+ 
+1. Typing a URL in Browser makes 
+   request to contain GET method
+   
+2. Clicking on a Hyper link in Browser 
+   makes request to contain GET method 
+ 
+3. Submitting the form with method="get" 
+   form attribute in Browser makes 
+   request to contain GET method  
+
+4. Submitting the form with method="post" 
+   form attribute in Browser makes 
+   request to contain POST method    
+ 
+5. Submitting the form with "NO method  
+   form attribute declaration" in Browser 
+   makes request to contain GET method    
+ 
+NOTE :
+------ 
+> Depending on the HTTP method present 
+  in the request, corresponding doXXX() 
+  method get executed at Servlet side
+
+> Hence whenever Servlet gets a request 
+  via Submitting the form then generally 
+  we override doPost() method & for rest 
+  of the cases, we have to override doGet()
+  method
+  
+  
+  
+  
+  
+Differences between GET/doGet() &  POST/doPost()
+------------------------------------------------
+  
+=========================================
+| GET / doGet()    |    POST / doPost() |
+=========================================
+
+GET method allows us to get the data from server 
+POST method allows user to Post data of unlimited size to the server
+
+It’s a default method
+It’s not default. We have to explicitly declare method=”post” in the HTML form
+
+
+GET requests "do not have a Body" OR "have Empty Body"
+POST requests "do have a Body"
+
+Hence Data sent using GET will be present in 
+the header part of HTTP Request in the form 
+of query string
+
+Data sent using post will be present in the 
+body part of the HTTP Request
+
+Insecure; because the form data get exposed 
+to the outside world
+
+Secure; because form data will be present in the Body 
+& hence it will not be exposed to the outside world
+
+
+
+
+
+
+
+The amount of data  we can send using GET is 
+restricted becuase URL can contain Only 
+1024 characters
+
+There is no restriction on the amount of data 
+send using the POST
+
+
+
+
+We cannot send the files using GET 
+For Ex: Resume Upload, Video Files upload, etc.,
+
+
+we can send entire files using POST
+
+
+
+
+
+
+"idempotent"
+
+
+
+
+
+
+
+
+GET requests, by default, they are “idempotent”. 
+i.e. we can perform the same operation again 
+& again without any side effects
+
+POST requests are Non-idempotent in nature
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+We can bookmark the GET requests
+We cannot bookmark POST requests
+
+
+
+
+Summary 
+----------
+1. Web URL Structure - Domain & Query String
+2. HTTP Structure
+3. Key Elements of HTTP Request & HTTP Response
+4. HTTP Methods - GET & POST
+5. What determines whether Browser sends 
+   GET or POST requests
+
+
+
+
+
+
+
+

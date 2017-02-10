@@ -1,0 +1,193 @@
+Cookies
+========
+> Cookies are little piece of information 
+  in the form of name-value string pair 
+  exchanged between browser & server
+  
+> Cookies are created by server and Maintained 
+  by browser & hence Cookies are 
+  "Browser Dependent"
+
+> Cookies are the One & Only way in Servlet API, 
+  If we want to store any information in
+  "User Browser" 
+  
+> There are two types of cookies,
+	1. Non-Persistent Cookie
+	2. Persistent Cookie
+
+
+
+
+
+
+
+
+1. Non-Persistent Cookie (it's default) :-
+------------------------------------------
+> Non-Persistent Cookie lives as long as
+  Browser is kept open. Once the Browser
+  is closed cookie disapears
+  
+2. Persistent Cookie :-
+---------------------
+> Persistent Cookie will be present in 
+  Browser even after Browser is Closed
+
+Cookie Related Methods :-
+=========================
+
+1. public Cookie(String name, String value)
+ 
+> It's the ONE & ONLY constructor avilable in 
+  "javax.servlet.http.Cookie" Concrete Class
+  
+> It creates the Cookie Object with specified 
+  name & value
+  
+> Name can contain only "Alphanumeric 
+  Character" but should not contain comma, 
+  white space, semicolons and should not 
+  begin with "$" 
+  
+> Cookie name "cannot be changed" after 
+  creation
+
+> Value can be anything & it "can be changed" 
+  after creation
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+2. String Cookie.getName()
+============================
+> This method returns the Name of the Cookie
+
+
+
+3. String Cookie.getValue()
+==============================
+> This method returns the Value of the Cookie
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+4. void HttpServletResponse.addCookie(Cookie cookieObj)
+========================================================
+> This method add the specified Cookie to the Response
+> This method can be called Multiple times to set more
+  than one Cookie to the Response
+  
+  
+  
+5. Cookie[] HttpServletRequest.getCookies()
+=============================================
+> This method returns 
+  - an "Array containing all the Cookie Objects" 
+  OR 
+  - returns "NULL" if request does not have Cookies
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+6. void Cookie.setMaxAge(int expiry)
+=====================================
+> set's the max age of the Cookie in "Seconds" 
+> +ve Value makes Cookie "Persistent" in nature
+> -ve Value makes Cookie "Non-Persistent" in nature
+> 0 Value makes Cookie to be "Deleted Immediately"
+ 
+ 
+ 
+ 
+ 
+Examples :
+=============
+1. Create Cookie
+------------------
+//Non-Persistent Cookie
+Cookie myNameCookie 
+		= new Cookie("myName", "Praveen D");
+
+//Persistent Cookie
+Cookie myLocationCookie 
+		= new Cookie("myLocation", "Bangalore");
+//Time in Seconds		
+myLocationCookie.setMaxAge(7*24*60*60);
+
+//Send the above Cookies in the Response
+resp.addCookie(myNameCookie);
+resp.addCookie(myLocationCookie);
+
+out.println("Cookies Created ...");
+
+2. Read Cookie
+------------------
+//Get Cookies From Request
+Cookie[] receivedCookies = req.getCookies();
+
+if(receivedCookies == null) {
+  out.println("Cookies are NOT present");
+}else{
+  out.println("Cookies are present");
+	
+  for(Cookie rcvdCookie : receivedCookies){
+	//Print the Cookie Info (Name & Value) in Browser
+	out.println("Cookie Name:"+rcvdCookie.getName());
+	out.println("Cookie Value:"+rcvdCookie.getValue());
+  }
+}//End of if-else
+
+3. Delete Cookie
+------------------
+//Get Cookies From Request
+Cookie[] receivedCookies = req.getCookies();
+
+if(receivedCookies == null){
+  out.println("Cookies are NOT Present");
+}else{
+  out.println("Cookies are present");
+   for(Cookie rcvdCookie : receivedCookies) {
+	 String name = rcvdCookie.getName();
+	 //Delete ONLY 'myLocation' Cookie
+	 if(name.equals("myLocation"))
+	 {
+	   rcvdCookie.setMaxAge(0);
+	   resp.addCookie(rcvdCookie);
+	   out.println("Deleted 'myLocation' Cookie");
+	   break;
+	 }
+	}//End of for
+}//End of if-else
+
+
+
+
+
+
+
+Oops! Your browser seems to have cookies disabled. 
+Make sure cookies are enabled or try opening a new browser window. 
+
+
+
+

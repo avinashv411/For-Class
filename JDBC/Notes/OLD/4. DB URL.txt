@@ -1,0 +1,83 @@
+Database Uniform Resource Locator (DB URL)
+==========================================
+> DB URL, as the name implies, it 
+  uniquely identifies Database OR
+  RDBMS Application in a Network
+
+> The structure of DB URL is
+<Protocol>:<Subprotocol>:<Subname>
+
+1. Protocol     
+============
+> It's a Mandatory Information
+> In case of Java, Protocol is always "jdbc"
+
+
+2. Subprotocol
+==============
+> It's a Mandatory Information
+
+> It identifies the "DB Connectivity
+  Mechanisam" used to Connect to DB
+  
+> This information is provided by
+  DB Vendor & we have to refer the
+  Driver Manual to get this information
+
+> In case of MySQL, Subprotocol is "mysql"
+
+
+
+
+
+3. Subname
+===========
+> It's a Mandatory Information
+
+> It Consists of,
+	1. Host Name
+	2. Port Number
+	3. Database Name / Schema Name
+	4. User Name & Password
+	
+> Arrangement of Subname varies from driver 
+  to driver, we have to refer the manual & 
+  arrange accordingly
+  
+> Port Number:
+  ============
+  - It uniquely identifies an application in 
+  an Operating System
+  
+  - In case of DB URL, it uniquely identifies
+  RDBMS Application
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Computer Name 	: QSP-SHMUTT-PC
+IP Address 		: 192.168.0.150
+Port No 		: 3306
+DB Name			: BECM4_DB
+UN				: root / j2ee
+Password		: root / j2ee
+
+jdbc:mysql://QSP-SHMUTT-PC:3306/BECM4_DB?user=j2ee&password=j2ee
+
+
+	
+	
+	
+jdbc:mysql://QSP-SHMUTT-PC:3306/BJM24_DB?user=j2ee&password=j2ee
+jdbc:mysql://192.168.1.4:3306/BJM24_DB?user=j2ee&password=j2ee
+jdbc:mysql://localhost:3306/BJM24_DB?user=j2ee&password=j2ee	
+	
+	
+	
+	

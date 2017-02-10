@@ -1,0 +1,59 @@
+> While learning JSP always refer "Translated Servlet"
+
+> Recap J2EE Architecture
+
+> Recap MVC Architecture
+
+> JDBC is part of JDK & not part of J2EE
+
+> JDBC is DB Dependent?
+
+> Take the Source Code, Practice & continue J2EE 
+  Practicle Classes & Library Management Web 
+  Application Developement, where you learn other
+  technologies & also you can add this to Resume
+
+> Start Building your own Web applicaion use 
+  uploading files, sending files in PDF etc.,  
+  
+> Update your Resume Accordingly
+
+> This is not the End of J2EE 
+  (there are other topics as well like, 
+    CallableStatements, Stored Procedures,
+	Transactions,
+    Filters, 
+	JSP Expression Language, etc.,)
+
+> Rgulalry come to JSpiders. Continue Frameworks, repeate
+  J2EE if needed, continue practicle classes, get engaged
+  by taking backup, Mock, etc.,
+	
+> Did J2EE helped to enhace your Java Knowledge?
+
+> No. of Classes taken for J2EE
+
+> Watch Famous Failures & other motivational videos
+
+> Scolding 
+
+> Enjoy life along with Studying
+
+> Hope you have enjoyed J2EE Classes
+	
+> Please vote in elections
+
+> Take the J2EE feedback ONLY
+
+> Maintain the relationships espicially with "Family 
+  Members"
+
+
+
+> Frameworks Introdution
+
+
+
+
+
+

@@ -1,0 +1,177 @@
+Differences between ServletContext & ServletConfig :-
+-----------------------------------------------------
+
+=====================================================
+|    ServletContext      |      ServletConfig		|
+=====================================================
+
+
+
+
+
+
+
+
+
+1. ServletContext is an Interface and "an Object 
+   of ServletContext" is used by container to pass 
+   information to ALL the servlets which are part 
+   of an application
+
+   ServletConfig is an Interfaceand "an Object 
+   of ServletConfig"  used by a container to pass 
+   information to a particular Servlet 
+   
+   
+   
+2. ServletContext Object get created at the time 
+   of Server Startup & get Garbage collected during 
+   the server shutdown
+
+   ServletConfig Object get created during the 
+   "Initialization Phase" of Servlet Lifecycle & 
+   get Garbage collected during "Destruction Phase"
+
+   
+   
+   
+   
+   
+   
+3. So there will be "ONLY ONE Instnace of 
+   ServletContext object exists per webapplication"
+
+   
+   There will be "ONLY ONE Instnace of ServletConfig 
+   object exists per Servlet"
+
+   
+   
+   
+   
+   
+   
+4. Hence "Singleton" in Nature
+
+
+   "Non-Singleton" in Nature
+
+   
+   
+   
+   
+   
+   
+   
+   
+5. ServletContext object is obtained by calling 
+   “getServletContext()” method which we inherit 
+   from GenericServlet.
+   
+   ServletContext context = getServletContext();
+
+   
+  ServletConfig object is obtained by calling 
+  "getServletConfig()” method which we inherit 
+  from "GenericServlet"
+  
+  ServletConfig config = getServletConfig();
+
+  
+  
+6. In web.xml, context parameters are declared under
+   <context-param> tag (one / more)
+
+   
+   
+   In web.xml, servlet config parameters are declared 
+   under <init-param> tag (one / more) which is a sub
+   tag of <servlet> tag
+
+   
+   
+   
+   
+   
+7. ServletContext object does not holds the reference 
+   of ServletConfig
+
+   
+   
+   ServletConfig object does holds the reference of 
+   ServletContext
+   
+   ServletConfig config = getServletConfig();
+   ServletContext context = config.getServletContext();
+
+
+   
+   
+   
+   
+NOTE:
+=======
+1. Both ServletContext & ServletConfig objects 
+   has a method by name getInitParameter() which 
+   helps us to get parameter value information 
+   from web.xml
+
+   Syntax :
+   --------
+   String getInitParameter(String paramName)
+
+2. We can ONLY get ServletContext & 
+   ServletConfig parameters at Runtime but 
+   "we can not set them"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Example :-
+===========
+
+Context & Config Parameters Declaration in web.xml :-
+------------------------------------------------------
+<!-- Context Parameters : Begin -->
+<context-param>
+	<param-name>movie</param-name>
+	<param-value>DDLJ</param-value>
+</context-param>
+<!-- Context Parameters : End -->
+
+<servlet>
+	<servlet-name>servletName</servlet-name>
+	<servlet-class>pkgname.ServletNM</servlet-class>
+	<!-- Config Parameters : Begin-->
+	<init-param>
+		<param-name>actor</param-name>
+		<param-value>Akshay Kumar</param-value>
+	</init-param>
+	<!-- Config Parameters : End-->
+</servlet>
+
+Getting Context & Config Parameters in Servlet :-
+=================================================
+//Getting Context Parameters
+ServletContext context = getServletContext(); 
+String movieVal = context.getInitParameter("movie");
+
+//Getting Config Parameters
+ServletConfig config = getServletConfig();
+String actorVal = config.getInitParameter("actor");
+
+
+
+
+
+

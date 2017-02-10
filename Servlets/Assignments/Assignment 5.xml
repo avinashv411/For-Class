@@ -1,0 +1,13 @@
+Write a JDBC Program which accepts following input arguments
+in the same order & insert the data into
+"Corresonding Tables"
+
+1. Reg No. 
+2. First Name
+3. Middle Name
+4. Last Name
+5. Guardian First Name 
+6. Guardian Middle Name 
+7. Guardian Last Name 
+8. isadmin & 
+9. Password

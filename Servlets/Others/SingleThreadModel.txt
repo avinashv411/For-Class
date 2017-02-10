@@ -1,0 +1,7 @@
+
+public class MyFirstServlet 
+extends HttpServlet
+implements SingleThreadModel
+{
+	//Servlet Code Goes Here
+}

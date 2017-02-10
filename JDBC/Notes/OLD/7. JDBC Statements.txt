@@ -1,0 +1,288 @@
+Static SQL Queries
+===================
+> SQL queries "without conditions" OR
+  "with harcoded condition values" are
+  called as "Static SQL Queries"
+ 
+> Example :
+---------------
+ 1. select * from ABC;
+ 2. create database DB_NAME;
+ 3. select * from ABC where X = 1;
+4. insert into ABC values (1, 'Praveen');
+  
+Note : ABC = Table Name
+
+Dynamic SQL Queries
+======================
+> SQL Queries which must have conditions 
+  & one or more condition values get 
+  decided at runtime are known as 
+  "Dynamic SQL Queries" 
+
+Examples:
+--------
+1. select * from ABC where X=? and Y=?;
+2. select * from ABC where X=1 and Y=?;
+3. insert into ABC values (?, 'Praveen');
+ 
+NOTE : 
+------
+1. ABC = Table Name
+2. Dynamic SQL Query MUST Contain One / More
+   Question Marks
+ 
+  
+  
+JDBC Statements
+====================
+> JDBC Statements send SQL queries to 
+  DB and retrieve the data from database
+  
+> There are 3 different types of 
+  JDBC Statements
+1.	java.sql.Statement
+2.	java.sql.PreparedStatement
+3.	java.sql.CallableStatement
+
+> Once we create JDBC Statement object 
+  (any of the above type), then we MUST 
+  invoke any one of the below method to 
+  issue SQL queries to DB
+
+1. int executeUpdate()
+   throws SQLException
+--------------------------------
+> This method is used to execute
+ "Other than SELECT" SQL Queries
+ 
+> This method returns 
+ "No. of Rows Affected Count" 
+ in the form of Integer
+
+
+2. ResultSet executeQuery()
+   throws SQLException
+--------------------------------   
+> This method is used to execute
+ "ONLY SELECT" SQL Queries   
+   
+> This method returns "DB Results"
+  in the form of "ResultSet" Object  
+   
+    
+3. boolean execute()
+   throws SQLException
+----------------------------------
+> This method is used to execute
+  "ANY SQL Query including SELECT"
+
+> This method 
+- returns "true", 
+  if result is of type "DB Results"
+- returns "false", 
+  if result is of type "Integer Count"
+
+> If we use this method then we must 
+  make use 
+  - "getResultSet()" OR 
+  - "getUpdateCount()" 
+  methods to get the actual results
+ 
+ 
+java.sql.Statement
+=====================
+> Its an interface & an Object of 
+  Statement is used to execute "Static
+  SQL Queries"
+
+> Statement Object can be created by 
+  invoking "createStatement()" method
+  on "Connection" Object
+
+Syntax:
+-------
+Statement Connection.createStatement() 
+throws SQLException  
+
+Example:
+--------
+Statement stmt = con.createStatement();
+
+where "con" is the Object reference of 
+java.sql.Connection Object
+  
+
+
+  
+  
+java.sql.PreparedStatement
+==================================
+> Its an interface & an Object of 
+  PreparedStatement is used to execute "Dynamic
+  SQL Queries"
+
+> PreparedStatement Object can be created by 
+  invoking "prepareStatement()" method
+  on "Connection" Object
+
+Syntax:
+-------
+PreparedStatement Connection
+				  .prepareStatement(String query) 
+throws SQLException
+
+Example:
+--------
+String query = " select * from students_info " 
+			   +" where regno=? ";
+			
+PreparedStatement pstmt 
+				= con.prepareStatement(query);
+
+where "con" is the Object reference of 
+java.sql.Connection Object
+
+> PreparedStatements MUST be used with 
+  query parameters (?) & these query 
+  parameters needs to be set using proper 
+  setXXX() method before executing the 
+  dynamic SQL query
+
+Syntax: 
+-------
+void setXXX( Postiton of ? as Int Value,
+             Corresponding Runtime Value ) 
+throws SQLException
+		
+where XXX = Java Data Type corresponding to 
+            DB Column Data Type
+			
+> PreparedStatements are also known as 
+  “Precompiled Statements” & they helps us to
+  achieve "high performance"
+
+  
+  
+  
+  
+  
+  
+Stored Procedures
+==================
+> Stored Procedures are group of SQL queries that 
+  perform a particular task (functionality wise they
+  are similer to Java Methods)
+  
+> As its name implies, they are stored at RDBMS 
+  Application / DB side
+
+> Stored Procedures helps to achieve "Reusability"
+ 
+> Query to Get the List of Procedures avilable in 
+  MySQL Database is :
+
+  SHOW PROCEDURE STATUS WHERE DB = DATABASE(); 
+ 
+Stored Procedure 1 :-
+=======================
+1. delimiter &
+
+2. create procedure getAllStudents()
+	begin
+		select * from students_info;
+	end&
+
+3. delimiter ;
+
+4. call getAllStudents(); 
+ 
+
+Stored Procedure 2 :-
+=======================
+1. delimiter $
+
+2. create procedure getStudentInfo(IN in_regno INT)    
+	begin 
+		select * from students_info
+		where regno = in_regno;
+	end$
+
+3. delimiter ;
+
+4. call getStudentInfo(1); 
+ 
+ 
+ 
+ 
+ 
+Stored Procedure 3 :-
+=======================
+1. delimiter @
+
+2.	create procedure studentUpSert
+	(IN in_regno INT,
+	 IN in_fnm VARCHAR(50),
+	 IN in_mnm VARCHAR(50),
+	 IN in_lnm VARCHAR(50)
+	 )    
+	begin
+		declare regno_count int;
+		
+		select count(*) into regno_count
+		from students_info
+		where regno = in_regno;
+		
+		if regno_count>0 then
+		
+			update students_info
+			set firstname = in_fnm,
+				middlename = in_mnm,
+				lastname = in_lnm
+			where regno = in_regno;
+		else
+			insert into students_info
+			values (in_regno, 
+					in_fnm, 
+					in_mnm, 
+					in_lnm);
+		end if;
+	end@
+
+3. delimiter ;
+
+4. call studentUpSert(10, 'AAA', 'BBB', 'CCC');
+  
+ 
+ 
+ 
+java.sql.CallableStatement:
+-----------------------------
+> Its an interface & an Object of CallableStatement 
+  is used to execute "Stored Procedures"
+
+> CallableStatement Object can be created by invoking 
+  "prepareCall()" method on "Connection" Object
+
+Syntax:
+-------
+CallableStatement Connection.prepareCall(String query) 
+throws SQLException
+
+Example:
+--------
+String query = "call storedProcedureNM()";
+CallableStatement ctmt = con.prepareCall(query);
+
+where "con" is the Object reference of 
+java.sql.Connection Object
+ 
+> Stored Procedures, by nature, reduces the number 
+  of DB Calls
+
+> Hence CallableStatement, which helps us to execute 
+  Stored Procedures, increases the "Peformace of the 
+  Application"
+  
+  
+  

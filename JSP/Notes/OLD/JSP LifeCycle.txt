@@ -1,0 +1,169 @@
+Life cycle of a JSP is controlled by Servlet 
+Container and it has following phases
+
+1. Translation & Instantiation Phase
+2. Initialization Phase
+3. Service Phase
+4. Destruction Phase
+
+1. Translation & Instantiation Phase :-
+=======================================
+> Whenever the First Request comes to JSP, 
+Container,
+1. Parses the JSP (i.e. Syntax Check)
+2. Translate the JSP into Servlet 
+	(i.e. ".java" file)
+3. Compiles the Servlet (i.e. ".class" file)
+
+> Once Translation & Compilation is successful, 
+  Container creates an instance of the 
+  Translated Servlet by invokeing "Public 
+  Default Constructor" ONLY
+  
+2. Initialization Phase
+========================
+Syntax
+-------
+public void jspInit() 
+{
+	//Initialization Code goes here
+}
+
+> After successful Instantiation, container 
+  invokes "init(ServletConfig)" method which 
+  inturn invokes "jspInit()" Method
+
+> jspInit() Method is called ONLY ONCE 
+  in JSP Lifecycle
+
+> We May / May Not override this method. 
+  If we don't override then default 
+  implementation from "HttpJspBase"
+  is invoked 
+  
+> After successful Initialization, container 
+  caches the Translated Servlet Instance
+
+3. Service Phase
+====================
+Syntax
+--------
+public void _jspService(HttpServletRequest request, 
+						HttpServletResponse response) 
+throws ServletException, IOException
+	
+> Whenever request comes, container invokes 
+  "service(SR, SR)" Method which inturn inovkes 
+  "_jspService(HSR, HSR)"
+  
+> This method is called One / More times in 
+  JSP Lifecycle i.e. equal to number of requests
+
+> This method is also responsible for generating 
+  response for all HTTP methods
+  
+> We cannot override this method. Whatever we 
+  write inside a JSP becomes part of this method 
+  at time of translation
+  
+4. Destruction Phase
+=======================	
+Syntax
+-------	
+public void jspDestroy() 
+{
+	//Clean-up Code goes here
+}
+
+> If container wants to remove the cached 
+  servlet instance, then it invokes destroy() 
+  Method which inturn invokes jspDestroy() Method
+
+> jspDestroy() Method is called ONLY ONCE 
+  in JSP Lifecycle
+
+> We May / May Not override this method. 
+  If we don't override then default 
+  implementation from "HttpJspBase" is invoked
+  
+NOTE:
+======
+Servlet get created by 
+1. Extending GenericServlet
+2. Extending HttpServlet
+3. Got created because of the JSP
+   
+No Matter how Servlet get created, container 
+always invokes below Lifecycle Methods in 
+that Servlet
+   
+1. public default constructor
+2. init(SC)
+3. service(SR, SR)
+4. destroy()
+
+Example:
+========
+
+<%!
+	public void jspInit() 
+	{
+		System.out.println("Inside jspInit() Method");
+	}
+
+	public void jspDestroy() 
+	{
+		System.out.println("Inside jspDestroy() Method");
+	}
+%>
+<html>
+<body>
+  <% 
+	 System.out.println("Inside _jspService() Method");
+  %>
+  <h1>JSP LifeCycle Example ...</h1>
+</body>
+</html>
+
+
+
+
+
+
+
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

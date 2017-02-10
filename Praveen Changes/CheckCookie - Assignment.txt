@@ -1,0 +1,14 @@
+> Create a Servlet by name "CheckCookieServlet" which 
+  checks whether request has Cookies or Not
+ 
+> If No; then it should print the "Error Message" in 
+ he Browser
+ 
+> If Yes; then it should print the "Success Message" in 
+  the Browser
+
+  
+  
+  
+  
+  

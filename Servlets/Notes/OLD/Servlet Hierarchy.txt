@@ -1,0 +1,223 @@
+javax.servlet.GenericServlet
+===============================
+> It's an abstract class, part of Servlet API,  
+  a sub-class of GenericServlet is called as 
+  Servlet & it can handle "ANY Protocols" 
+  including HTTP & HTTPS protocols
+  
+> In other words, It becomes 
+  "Protocol-Independent Servlet"
+  
+> GenericServlet has "one abstract method", by 
+  name service(), hence it's an "abstract class" 
+
+Syntax:
+--------
+public abstract void service(ServletRequest req, 
+						   ServletResponse res)
+throws ServletException, IOException;
+
+Example:
+=========
+import java.io.PrintWriter;
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class MyGenericServlet 
+extends GenericServlet
+{
+	@Override
+	public void service(ServletRequest req, 
+					    ServletResponse resp)
+	throws ServletException, IOException 
+	{
+	  resp.setContentType("text/html");
+	  PrintWriter out = resp.getWriter();
+	  out.println("Inside My Generic Servlet");
+	}//End of service
+}//End of Class
+
+
+
+*************			
+Assignment 4:
+*************
+
+> Create a HTML Form as shown below
+  
+  ChangePassword.html
+  -------------------
+  
+  
+  
+  
+  
+> Create Servelt by name ChangePasswordServlet, 
+  which gets the request from this form,
+Get the Form Data
+Checks "New Password" & "Retype New Password"
+are matching. If NO, then display Error Message 
+in the Browser
+If YES, then check Reg. No. & Current Password 
+are valid by interacting with BECM6_DB DataBase
+If In-Valid, then display "Invalid Reg. No. & 
+Current Password" Error Message in the Browser
+If Valid, update the "Current Password" with 
+"New Password" and Print Success Message in the 
+Browser
+  
+  
+
+
+
+
+
+javax.servlet.http.HttpServlet
+=================================
+> A sub-class of HttpServlet is called as 
+  Servlet & it can handle ONLY HTTP & HTTPS 
+  protocols. 
+  
+> In other words, It becomes 
+  "Protocol-Dependent Servlet"
+  
+> It’s an abstract class but none of the
+  methods in this class are declared as 
+  abstract. Hence this class must be sub 
+  classed to handle HTTP requests
+
+> A subclass of HttpServlet can override 
+  any of the below service() method
+ 
+1. public void service(ServletRequest req, 
+					   ServletResponse res)
+	throws ServletException, IOException
+	
+2. public void service(HttpServletRequest req, 
+                       HttpServletResponse res)
+	throws ServletException, IOException
+	
+3. protected void doXXX(HttpServletRequest req, 
+                        HttpServletResponse res)
+	throws ServletException, IOException	
+	
+> We should not override the first two versions 
+  of service methods. Our job is to override 
+  one / more doXXX() method
+  
+> If we won’t override doXXX() methods, then 
+  default implementation from HttpServlet is 
+  invoked  which in turn return "405 Error 
+  Response" 
+  
+Why HttpServlet is an Abstract Class?
+======================================
+> HttpServlet does not have any abstract methods. 
+  But being Abstract, we are forced to subclass 
+  it.
+ 
+> Thus, to force us to implement our own servlet 
+  class, the HttpServlet class is marked as 
+  abstract.
+
+Difference between GenericServlet & HttpServlet
+=================================================
+|	GenericServlet    | 	HttpServlet         |
+=================================================	
+	
+1. Protocol Independent	
+
+   Protocol Dependent. Supports only HTTP & HTTPS 
+   protocols	
+	
+	
+	
+	
+2. Abstract Class; because service() method is 
+   declared as abstract	
+   
+   Abstract class; but none of the methods are 
+   declared as abstract
+	
+	
+3. If we extend the GenericServlet then we must  
+   provide the implementation for service() method	
+   
+   There is NO restriction on overriding any version
+   of the service method. But generally we override 
+   one or more doXXX() methods.
+   
+   
+4. GenericServlet does not extend any other Servlet 
+   API related class	
+   
+   HttpServlet extends GenericServlet which is part 
+   of Servlet API   
+   
+   
+   
+5. GenericServlet implements Servlet API related 
+   interfaces such as "Servlet" & "ServletConfig"	
+   
+   HttpServlet does not implements any Servlet API 
+   related interfaces  
+   
+   
+6. It belongs to “javax.servlet” package	
+
+   It belongs to “javax.servlet.http” package
+   
+   
+   
+   
+   
+   
+	
+	
+	
+	
+	
+	One / More doXXX(HSR, HSR) method(s)
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	HttpServlet
+	
+	
+	javax.servlet.Servlet,
+	javax.servlet.ServletConfig 
+	
+	
+	
+	
+	
+	
+	
+	
+	javax.servlet
+	javax.servlet.http
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	

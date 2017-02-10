@@ -1,0 +1,108 @@
+<Tomcat_Location>\work\Catalina\localhost\
+<Application_Name>\org\apache\jsp
+
+
+1. "Web Designer" can build the "Presentation Logic"
+2. "Web Developer" can write Business Logic to generate 
+	"Dynamic Data"
+
+
+1. Translate the JSP into a Servlet (i.e. ".java" file)
+2. Compiles the Servlet (i.e. ".class" file)
+3. This ".class" file is used to Generate the Response
+
+Hence time taken to generate the response for First Request
+is more compared to Subsequent Request
+
+
+1. By using the JSP File Name directly in the URL
+2. By configuring URL for a JSP in "web.xml" & using
+   this configured URL in Web URL
+
+Second Approch helps us to achieve "Security" 
+& "Maintainablity" along with passing the "Servlet Config"
+parameters to JSP
+
+MyFirstJSP.jsp
+==============
+
+<%@page import="java.util.Date"%>
+
+<html>
+<body>
+	<%
+		//Java Code to Generate Current Date & Time
+		Date dateRef = new Date();
+		String currDate = dateRef.toString();
+		
+		//Get the Query String Information
+		String fNM = request.getParameter("fname");
+		String lNM = request.getParameter("lname");
+		
+		//Get the Servlet Context Parameter
+		String contextParamVal 
+				= application.getInitParameter("movie1");
+		
+		//Get the Servlet Config Parameter
+		String configParamVal 
+				= config.getInitParameter("initParam");
+	%>
+	<h1>
+		Current Date & Time is : 
+		<font color="red"><%= currDate %></font>
+	</h1>
+	First Name : <%= fNM %>
+	Last Name : <%= lNM %>
+	Context Param Value : <%= contextParamVal %>
+	Config Param Value : <%= configParamVal %>
+</body>
+</html>
+
+web.xml Changes :
+==================
+  <context-param>
+  	<param-name>movie1</param-name>
+  	<param-value>DDLJ</param-value>
+  </context-param>
+  
+  <servlet>
+  	<servlet-name>myFirstJsp</servlet-name>
+  	<jsp-file>/MyFirstJSP.jsp</jsp-file>
+  	<init-param>
+  		<param-name>initParam</param-name>
+  		<param-value>My Init Param Value</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>myFirstJsp</servlet-name>
+  	<url-pattern>/currentDateJsp</url-pattern>
+  </servlet-mapping>
+
+URL's to Access JSP :
+========================
+
+1. Using JSP File Name
+-----------------------
+
+http://localhost:8080/studentsApp/MyFirstJSP.jsp
+?fname=Praveen&lname=D
+
+2. Using Configured URL
+-----------------------
+
+http://localhost:8080/studentsApp/currentDateJsp
+?fname=Praveen&lname=D
+
+
+
+
+
+
+
+
+
+
+
+
+

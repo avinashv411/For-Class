@@ -1,0 +1,11 @@
+Write a Java Program which 
+get register number via 
+commond Line argument & gets
+the corresponding data from
+data base (combination of 
+data present in Students_info,
+guardian_info & Students_info)
+& print it in the Console.
+
+
+

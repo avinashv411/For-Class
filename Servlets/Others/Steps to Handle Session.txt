@@ -1,0 +1,65 @@
+1. Create the Session
+==========================
+
+	HttpSession session = req.getSession(true);
+					
+	OR
+						
+	HttpSession session = req.getSession();
+	
+	
+2. Validate the Session
+==========================
+
+	//Get the Current Session Object
+	HttpSession session = req.getSession(false);
+	if(session==null)
+	{
+		//Invalid Session !!! 
+		//Redirect the request to Login Page
+			
+	}else{
+	
+		//Valid Session ... 
+		//Generate Proper Response
+	}
+	
+	
+3. In-Validate the Session
+==========================
+
+	HttpSession session = req.getSession(false);
+	if(session!=null)
+	{
+		session.invalidate();
+	}
+	//Redirect the request to Login Page
+	
+		
+	1. In web.xml
+	--------------
+	
+	<session-config>
+		<!-- Time in Min -->
+		<session-timeout>10080</session-timeout> 
+	</session-config>
+	
+	
+	2. In Program
+	---------------
+	
+	HttpSession session = req.getSession(true);
+	//Time in Seconds
+	session.setMaxInactiveInterval(7*24*60*60);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

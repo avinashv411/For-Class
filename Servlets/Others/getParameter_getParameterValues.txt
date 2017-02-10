@@ -1,0 +1,5 @@
+
+1. String ServletRequest.getParameter(String name)
+
+2. String[] ServletRequest.getParameterValues(String name)
+

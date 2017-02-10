@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<form action="http://localhost:4444/SimplePro/SearchAllServlet" method="get">
+<fieldset>
+			<legend><B>Adavance Search</B></legend>
+
+<table>
+<tr>
+    <td>
+      <b>Keyword  </b></td>
+      <td>
+	  <input type="text" name="keyword" placeholder="Enter your keword" required>
+       </td>
+	 <tr>
+	 
+	 
+	 <td>
+	<b>Search in </b>
+	</td>
+	<td>
+		 <input type="radio" name="search" value="google">Google Search
+		 <BR>
+		 <input type="radio" name="search" value="yahoo">Yahoo! Search
+		 <BR>
+		 <input type="radio" name="search" value="bing">Bing Search
+		 <BR>
+		 <input type="radio" name="search" value="grainger" required>Grainger Search
+	</td>
+	</tr>
+	<tr>
+	   <td></td>
+	   <td>
+         <input type="submit" value="Search">
+	
+     </td>
+    </tr>
+</table>
+<font color="red">Note: All Data is Mandatory </font>
+</fieldset>
+
+</form>
+
+
+</body>
+</html>
+

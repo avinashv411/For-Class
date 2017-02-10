@@ -1,0 +1,8 @@
+write a java program to take following input arguments 
+via command line in the same order 
+1. reg number
+2. current password
+3. new password
+This program is shold check the data present in database 
+if yes change the current password with new password,
+if not print the error message in the console.

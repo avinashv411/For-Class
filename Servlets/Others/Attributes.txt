@@ -1,0 +1,23 @@
+ 
+ 1. javax.servlet.ServletContext
+ 
+ 2. javax.servlet.ServletRequest
+ 
+ 3. javax.servlet.http.HttpSession
+ 
+ 
+ 1. public void setAttribute(String name, Object value)
+
+ 2. public Object getAttribute(String name)
+ 
+ 3. public void removeAttribute(String name)
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,18 @@
+> Please create a dedicated email ONLY for Job Search
+
+> Do Not Use Personal Emails Address & Create meaningfull email id's
+  Ex: firstname.lastname@gmail.com
+  Don’t create like, 
+  name1980@gmail.com, 
+  nickname2014@gmail.com, etc.,
+
+> Please have a Dedicated Phone Number ONLY for Job Search 
+  & Do Not Provide your personal number in the resume
+  
+> Please have a project on Java/J2EE/Framework in the Resume
+
+> Don Not have sections like “Personal Details”  in that 
+  Do not provide information like Passport Number, Permanent Address, 
+  Date of Birth, etc.,
+  
+> Do not have a “Declaration” / “Acknowledgement” Section

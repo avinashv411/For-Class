@@ -1,0 +1,190 @@
+Attributes :-
+==============
+> Attributes helps us to pass information in 
+  the form of "name = value" pair where name 
+  is a "String" & value is "java.lang.Object" 
+
+> Which means that, any java object can be 
+  an attribute value
+  
+> Attributes are the one and only way, in 
+  Servlet API, to pass information in the 
+  form of "Java object" from one servlet/JSP 
+  to another servlet/JSP
+  
+> Attributes are of 3 types
+1. Context Attributes (Application Scope)
+2. Request Attributes (Request Scope)
+3. Session Attributes (Session Scope)
+
+> These 3 attributes can be get / set
+  by using following Objects respectively
+1. javax.servlet.ServletContext
+2. javax.servlet.ServletRequest
+3. javax.servlet.http.HttpSession
+ 
+> Following methods are present in above Three 
+  Objects, which can be used to "get, set or 
+  remove" attributes
+  
+1. public void setAttribute(String name, 
+                            Object value)
+==========================================
+> Sets an Object to a given attribute name
+
+> If an attribute with the given name 
+  already exists then this method will 
+  replace the existing object with the 
+  new Object
+  
+2. public Object getAttribute(String name)
+==========================================
+> This method returns an attribute value 
+  as java.lang.Object with the given name 
+  OR returns NULL if there is no attribute by 
+  that name exists
+
+3. public void removeAttribute(String name)
+============================================
+> This method removes an attribute with 
+  the given name
+  
+> After removal, subsequent calls to 
+  getAttribute() with the same name 
+  returns NULL
+
+NOTE:
+======
+> Following are the different ways of passing
+  information to Servlets
+1. Using Query String
+2. Using Context & Config Parameters
+3. Using HTML Form
+4. Attributes
+
+> Query String is name=value pair where
+  both name & value are "String"
+  
+> Context & Config Parameters are also
+  name=value pair where both name & value 
+  are "String"
+  
+> Form Parameters are also either "name=value" 
+  or "name=values" pair where both name & 
+  value/values are "String"
+  
+> Where as Attributes are name=value pair 
+  where name is a "String" but value is an
+  "Object" 
+
+> Hence if one Servlet wants to pass information
+  to another in the form of "Java Object" then
+  Attributes are the One & Only way
+  
+  
+  
+  
+  
+  
+Attributes Summarized :-
+========================================================================================================================
+|	 No.         | ServletContext                   | ServletRequest                    | HttpSession                  |
+========================================================================================================================
+| 1. Instance    | One Per Application              | One Per Request & Response Cycle  | One Per User OR Login/Logout |
+------------------------------------------------------------------------------------------------------------------------
+| 2. Lifespan    | Created during Server Start up   | Create When Request Comes         | Create When User Login       |
+|                | Destroyed during Server Goesdown | Destroyed When Response is Given  | Destroyed When User Logout   |
+------------------------------------------------------------------------------------------------------------------------
+| 3. Scope       | Application                      | Request & Response Cycle          | Session                      |
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+|		           | All the Above 3 Objects has 
+				   | private HashMap<String, Object> 
+| 4. Functionality | & 3 Public Methods to Operate 
+                   | on this HashMap i.e. 
+				   | 1. void setAttribute(String, Object)
+				   | 2. Object getAttribute(String) 
+				   | 3. void removeAttribute(String)
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Example :
+=========
+
+First Servlet:
+--------------
+/*
+ * Setting the Context Attributes
+ */
+ServletContext context = getServletContext();
+context.setAttribute("contextKey", new Object());
+
+/*
+ * Setting the Request Attributes
+ */
+req.setAttribute("reqKey", "My Request Attribute");
+
+/*resp.setContentType("text/html");
+PrintWriter out = resp.getWriter();
+out.println("Added the Attributes ...");*/
+
+RequestDispatcher dispatcher
+	= req.getRequestDispatcher("second");
+dispatcher.forward(req, resp);
+  
+Second Servlet  : 
+-----------------
+/*
+ * Getting the Context Attribute
+ */
+ServletContext context = getServletContext();
+Object obj = context.getAttribute("contextKey");
+
+if(obj==null){
+  out.println("Context Attribute Not Present");
+}else{
+  out.println("Context Attribute Present");
+  out.println("Value:"+obj.toString());
+}
+/*
+ * Getting the Request Attribute
+ */
+String str = (String)req.getAttribute("reqKey");
+
+if(str==null){
+ out.println("Request Attribute Not Present");
+}else{
+	out.println("Request Attribute Present");
+	out.println("Value:"+str);
+}  
+  
+   
+  
+  
+ 

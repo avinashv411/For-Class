@@ -1,0 +1,8 @@
+ Write the servlet program which takes the RegNo as an
+ input arguments from the browser .
+ 
+ This program should find  whether the RegNo is
+ there in database. if Yes then print the
+ Student_info, student_GaurdianINfo and
+ student_OtherInfo if NO then print the error
+ message like "RegNo not found" in a browser. 

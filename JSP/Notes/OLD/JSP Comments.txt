@@ -1,0 +1,18 @@
+> There will be only one type of Comment avilable 
+  in JSP API
+
+> Container ignores whatever we write inside this 
+  tag at the time of Translation
+	
+Syntax :	<%-- My JSP Comment --%>
+========
+	
+Note : 	
+=======	
+<!-- HTML Comment --> is a HTML Comment. 
+Hence there is nothing called as "Hidden Comment" 
+OR "Output Comment" as per JSP Specification
+
+
+
+

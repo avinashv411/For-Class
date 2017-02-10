@@ -1,0 +1,90 @@
+Part 1 - Summary 
+-------------------------------------------------------
+1. Web Browser
+2. Web Resources - (Static & Dynamic)
+3. Web Application - (Static & Dynamic) 
+4. Web Server - (Installed Tomcat Server)
+5. Different ways to interact with Web Applications
+6. Web URL - Introduction
+7. Servlets
+8. Java Code to Generate Current Date & Time
+9. Dynamic Web Project
+10. How to Create a Servlet
+11. Servlet API Package Representation
+12. Build Process
+13. WAR File
+14. Deployment Process
+15. Web Path
+16. Webserver behaviour with WAR File
+17. Static Page - Content Doesn't Change
+18. Dynamic Page - Content May Change  
+
+
+Part 2 - Summary 
+-------------------
+1. Web URL Structure - Domain & Query String
+2. HTTP Structure
+3. Key Elements of HTTP Request & HTTP Response
+4. HTTP Methods
+5. What determines whether Browser sends 
+   GET or POST requests
+6. Differences between GET & POST
+
+
+  
+  
+  
+  
+Part 3 - Summary
+----------------------------------------------------
+1. Servlet Container
+2. HttpServletRequest & HttpServletResponse Objects
+3. Introduction to XML
+4. Deployment Descriptor / web.xml  
+  
+
+  
+
+
+Part 4 - Summary
+=================
+> Servelt Hierarchy 
+> Different ways of Creating Servlets
+> Difference between GenericServlet & HttpServlet
+> Servlet Lifecycle
+  - <load-on-startup> Tag
+> Use of Main method in Servlets
+> Single Threaded Servelt
+
+
+
+Part 5 - Summary
+=================
+> ServletContext & ServletConfig
+> Redirect, Forward & Include
+  - Differences between Redirect & Forward
+  - When to use Redirect & When to use Forward
+  - Use of Include
+> Attributes
+	- Types
+	- Scope
+	- When to Use What Type of Attributes
+> Cookies
+	- Why Cookies
+	- How to Create Cookies
+	- How to Send Cookies to Browser
+	- Types of Cookies
+	- How to Create Persistent Cookie
+> HttpSession
+	- Types of Dynamic Web Applications
+	- Limitations of HTTP Protocol
+	- Why HttpSession
+	- HttpSession Steps 
+	- URL Rewriting
+	
+	
+	
+	
+	
+	
+	

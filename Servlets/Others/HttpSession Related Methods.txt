@@ -1,0 +1,25 @@
+
+ 1. HttpSession HttpServletRequest.getSession()
+ 
+ 2. HttpSession    
+    HttpServletRequest.getSession(boolean create)
+ 
+ 3. void 
+ HttpSession.setMaxInactiveInterval(int timeInterval)
+
+ 4. String HttpServletResponse.encodeURL(String url)
+ 5. String HttpServletResponse.encodeRedirectURL(String url)
+
+ 6. void HttpSession.invalidate()
+ 
+ 7. String HttpSession.getId()
+
+ 8. 
+ 
+ 
+ 
+ 
+ 
+
+ 7. 
+

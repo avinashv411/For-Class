@@ -1,0 +1,1 @@
+SHOW PROCEDURE STATUS WHERE DB = 'bece3_db';

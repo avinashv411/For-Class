@@ -1,0 +1,1433 @@
+Web Services Introduction
+============================
+> Servlets, JSP along with JDBC helps to develop 
+  Web Application
+
+> However "Web Services" a.k.a "Application Services"
+  helps web applications to interact with any other 
+  applications (Mobile Apps / Desktop Applications 
+  / Web Applications)
+
+> Web Services, as name implies, they are the 
+  services avilable in "Web". They take the request 
+  from Applications, via any communication protocol such
+  as HTTP & generate Response
+
+> Web Services, is a concept, are independent of
+  - Platform
+  - Programing Languages &
+  - Applications
+  
+> Web Services take Web-applications to the 
+  Next Level!!!
+
+> Unlike Web Applications, Web Services do not 
+  provide the user with a GUI. 
+  
+> In other words Web services are meant for 
+  "Inter-System Communication
+  / Application-to-Application Interactions but not
+  for Users"
+  
+> Hence Web Services do not require the use of 
+  browsers or HTML
+ 
+> Few real time examples of Web Services
+  - Mobile Apps (ex: GMail App) communicate with 
+    their correspondig Web Applications (ex: GMail) 
+    using Web Services
+	
+  - Uber / OLA Mobile Apps/Web Application interact 
+    with Google Maps using Web Services
+	
+  - BookMyShow Web Application / Mobile Application 
+    interact with PVR Web Application using Web   
+    Services   
+ 
+ 
+ 
+ 
+ 
+> Web Service has two participants:
+  1. Service Provider / Producer
+  2. Service Consumer / Requester
+  
+> Service Provider exposes the "Service on Web" &  
+  Service Consumer uses this "Web Service"
+
+> Service Provider should be a Web Application, however  
+  Service Consumer can be Desktop/Mobile Application or Web Application
+
+> There are 2 types of Web Services
+  1. RESTful Web Services
+  2. SOAP Web Services / XML Web Services 
+
+> Java provides 2 API's to develop these web services
+  1. "JAX-RS" API for developing 
+	  "RESTful Web Services"
+	  
+  2. "JAX-WS" API for developing 
+      "SOAP Web Services"
+
+> "javax.ws.rs.*" is the package representation 
+  of JAX-RS API  
+  
+  "javax.jws.*" is the package representation 
+  of JAX-WS API  
+  
+  
+  
+Why Web Services / Advantages of Web Services
+==============================================
+
+1. Web Services Interoperability (WS-I)
+------------------------------------------
+> Web Services are "Application, Platform and 
+  Technology Independent"
+  
+> Ex: VB / .NET applications can talk to Java Web 
+  Services and vice versa. Thus helping the 
+  organisations to use existing applications which 
+  are developed using other technologies 
+  (may be legacy) 
+
+> Also Web Services helps/allows different applications to 
+  share data among themselves
+
+> Ex: Uber / OLA and Google Maps shares the data 
+      among each other
+
+	  
+	  
+	  
+2. Loosely Coupled 
+------------------------
+> Each application is independent of one another. 
+  Hence changes done to one application will not 
+  impact the "unrelated areas"
+  
+> Ex: Changes / Modifications done at Uber / OLA 
+      will not impact Google Maps
+
+  
+3. No need of re-inventing the wheel
+-------------------------------------
+> Web Services reduces the software development time
+ 
+> This helps the other business partners to quickly 
+  develop application and start doing business
+  
+> This helps business to save time and money by 
+  cutting development time
+
+Ex: Uber / OLA can make use of Google Maps 
+
+
+4. Business Opportunity
+-----------------------
+> Web Services will open the door for new business 
+  opportunities by making it easy to connect with 
+  partners
+
+> Ex: Domino's can get the order from Food Panda / 
+      Swiggy along with getting orders from its 
+	  own site 
+
+	  
+	  
+
+5. Service Reuse
+------------------
+> Web Services takes code reuse a step further
+
+> A specific service within the organisation is 
+  only coded once and used over and over again by 
+  other applications
+  
+> Ex: An organization can have a "Single Payment 
+     Gateway service" which helps other web 
+	 applications of that organization to interact 
+	 with "Payment Gateways" 
+
+
+	 
+Web Services Architecture
+===========================
+NOTE:
+-----
+> Web Service Producer MUST be a Web Application
+> However Web Service Consumer can be 
+  - Web Application OR
+  - Desktop Application OR
+  - Mobile Application
+
+
+
+
+Steps Followed to Create the 
+First Web Service Producer & Consumer Web Applications
+==============================================================================================
+
+I. Steps for Web Service "Producer Web Application"
+---------------------------------------------------
+1. Created the Maven Project by providing the below 
+   information
+   
+   Archetype 	: maven-archetype-webapp
+   Group ID	 	: com.google
+   Artifact ID	: googlemaps
+   
+2. Under Java Resources if "src/main/java" folder is not
+   present then, create it
+   
+3. Added the "Glassfish Jersey & Servlet" Dependencies to
+   pom.xml    
+
+4. Configured Jersey "ServletContainer" in web.xml 
+
+5. Created the Java Class which hosts the Rest 
+   Webservices using Jersey Framework
+
+
+II. Steps for Web Service Consumer Web Application
+-----------------------------------------------------
+
+1. Created the Maven Project by providing the below 
+   information
+   
+   Archetype 	: maven-archetype-webapp
+   Group ID	 	: org.jspiders
+   Artifact ID	: mywebapp
+
+2. Under Java Resources if "src/main/java" folder is not
+   present then, create it
+
+3. Added the "Glassfish Jersey & Servlet" Dependencies to
+   pom.xml    
+   
+3. Created the Servlet which interact with above 
+   web application to consume the Web Services
+
+4. Configured this Servlet in web.xml 
+
+Maven Dependencies
+=======================
+> URL to get the Dependencies : 
+  https://mvnrepository.com/
+  
+> Jersey Dependencies	:
+	jersey-client
+	jersey-server
+	jersey-container-servlet
+	jersey-media-json-jackson
+	jersey-common
+	jersey-media-multipart
+	jersey-container-servlet-core
+	
+> Servelet Dependency	:
+	javax.servlet-api
+
+	
+	
+
+Maven Installation Steps 
+===========================================================
+
+Pre-requirement :
+------------------ 
+JDK is Required & JAVA_HOME environment variable 
+should be set
+
+Steps
+---------
+1. Download Maven Binary from Apache Maven
+2. Set the Following environment Variables
+   - M2_HOME (Its the latest variable)
+   - MAVEN_HOME (Some applications stil refer this variable)
+   - Modify path variable to add %M2_HOME%/bin
+3. run mvn in commond 
+
+	
+Data Formats
+==============
+> W.K.T Web Services helps different applications to interact
+  with Web Applications
+
+> In this interactions there should be a exchange of Data & that
+  data should have some specific format
+  
+> The most commonly used Data formats are
+  1. XML
+  2. JSON  
+	
+	
+	
+eXtensible Markup Language (XML) - Part I:-
+==================================================
+> XML is "Programing Language & Platform Independent 
+  Language" which helps to store and transport data
+
+> Different Applications which are developed using 
+  different technologies can Transfer the Data among
+  themselves with the help of XML
+
+> As the name implies it's an extension of HTML & 
+  hence XML looks similar to HTML but it’s not a HTML
+
+> XML has User-defind Tags. XML tags are also called
+  as "elements"
+
+> XML Elements are "Case Sensitive"
+
+> XML is "Strictly Typed" Language & Hence every 
+  opening element should have corresponding closing 
+  element and also XML elements Must be Properly 
+  Nested/closed
+  
+  Ex: <employee>
+			<name>Praveen</name>
+	   </employee>
+  
+  Note:- 
+  - In the above example first you should closed
+    </name> & then </employee> but 
+  
+  - In HTML its not mandatory. For example, 
+    <B><U><I>My Text</U></I></B> works perfectly fine
+  
+> Below line is called as "XML prolog", which is 
+  optional. If it exists, it must be the First Line 
+  of XML  
+  <?xml version="1.0" encoding="UTF-8" ?>
+
+> The syntax of XML comment is similar to that of HTML
+  <!-- This is a comment -->
+  
+> File extension of XML is ".xml"  
+  
+> MIME type (Content Type) of XML is "application/xml"   
+
+   
+   
+   
+   
+   
+XML Structure
+================
+> Like HTML, XML follows a Tree Structure
+
+> An XML tree starts at a "root element" 
+  and branches from "root element" will have 
+  "child elements"
+
+> XML Consists of "Only One" root element which 
+  is parent of all other elements
+
+> "child elements" can have "sub elements / child 
+   elements"
+
+> Structure
+-------------
+<root>
+  <child>
+    <subchild>.....</subchild>
+  </child>
+</root>
+
+> Example:
+-------------
+<?xml version="1.0" encoding="UTF-8"?> ====> XML Declaration
+<!-- bookstore.xml -->				 ====> XML Comment
+<bookstore>							 ====> Root element start-tag 
+  <book ISBN="1234">				 ====> Child element start-tag 
+                                           with an attribute in 
+										   name="value" pair
+    <title>Java EE</title>       --
+    <author>Praveen D</author>     | ====> Sub elements/Child elements 
+    <year>2008</year>              |
+    <price>25.99</price>         --
+  </book>							====> Child element end-tag
+
+  <book ISBN="5678">			  ====> Second Child element start-tag
+    <title>Java</title>
+    <author>Keshav</author>
+	<author>Madhu</author>
+    <year>2009</year>
+    <price>19.99</price>
+  </book>					      ====> Second Child element end-tag
+</bookstore> 					  ====> Root element end-tag 
+
+
+
+
+
+
+
+Entity References
+====================
+> Some characters have a special meaning in XML
+
+> If you place a character like "<" inside an XML element, 
+  it will generate an error because it represents 
+  the start of a new element
+  
+  Ex: <message>salary<1000</message>
+
+> To avoid this error, we can replace the "<" character with
+  an "entity reference" as shown below
+  
+  <message>salary &lt; 1000</message>
+  
+> There are 5 pre-defined entity references in XML:
+	&lt;	<	less than
+	&gt;	>	greater than
+	&amp;	&	ampersand 
+	&apos;	'	apostrophe
+	&quot;	"	quotation mark
+
+
+	
+	
+	
+	
+
+XML Elements
+=============
+> XML element is everything from (including) the element's 
+  start tag to (including) the element's end tag
+  
+> An element can contain:
+  1. text/data
+  2. attributes
+  3. other elements OR
+  4. All of the above
+  
+> In the above example
+  - <title>, <author>, <year>, and <price> have text content
+     because they contain text 
+  - <bookstore> and <book> have element contents, because 
+    they contain elements
+  - <book> has an attribute (ISBN="------")
+
+> An element with no content is said to be "empty". In XML, 
+  we can indicate an empty element like this
+  <element></element>
+  OR
+  <element />
+  
+> Empty elements can have attributes <book ISBN="5678" />
+
+> if data present between elemets consist of white spaces 
+  then they are considered in XML. However HTML truncates 
+  multiple white-spaces to one single white-space
+
+  
+  
+  
+  
+  
+  
+> XML Elements Naming Rules
+-----------------------------
+  - they are case-sensitive
+  - they cannot contain spaces
+  - they must start with a letter or underscore
+  - they are cannot start with the letters like 
+    xml or XML or Xml etc.,
+  - they can contain letters, digits, hyphens, underscores, 
+    and periods
+  - Any name can be used, no words are reserved (except xml)
+  
+ 
+> Best Naming Practices
+-------------------------
+  - Avoid "-"{Check this}
+  - Avoid "."
+  - Avoid ":"
+  - Create descriptive names, like
+    <person>, <firstname>, <lastname>
+  - Create short and simple names, like 
+    <book_title> not like this: <the_title_of_the_book>
+  - Non-English letters are perfectly legal in XML but 
+    avoid them
+
+
+  
+  
+  
+  
+  
+XML Attributes
+================
+> Like HTML, XML elements can also have attributes
+
+> Attributes are designed to contain data related to a 
+  specific element
+  
+> XML Attributes Must be Quoted either single or double 
+  quotes can be used
+  
+  Ex: <person gender="female">
+	   OR
+      <person gender='female'>
+	
+> If the attribute value itself contains double quotes 
+  then we can use single quotes
+  
+  Ex: <person name='Praveen "Bangalore" D'>
+	  OR
+	  <person name='Praveen &quot;Bangalore&quot; D'>
+
+	
+	
+	
+	
+XML Elements Vs Attributes
+==============================	
+> Example 1 :-
+-----------------
+<person gender="male">
+  <name>Praveen</name>
+</person>
+
+> Example 2 :-
+-----------------
+<person>
+  <gender>male</gender>
+  <name>Praveen</name>
+</person>
+
+> Note: 
+--------
+In Example 1 gender is an attribute &
+In Example 2 gender is an element
+Both examples provide the same information
+
+> There are no rules about when to use attributes or 
+  when to use elements in XML
+
+When to avoid XML Attributes?
+==============================
+> attributes cannot contain multiple values but elements can
+> attributes cannot contain tree structures but elements can
+> attributes are not easily expandable for future changes 
+  but elements can
+
+  
+  
+  
+  
+  
+  
+XML Schema's
+==================
+> W.K.T XML helps us to store & transfer the data
+
+> When sending data from one application to an 
+  another, it is essential that both applications 
+  have the same "expectations / agreement" about the
+  content/data
+
+> for example, A date like "03-11-2004"  
+  - in some countries, be interpreted as 3rd November and 
+  - in other countries as 11th March
+  
+> With XML Schemas, the sender application can 
+  describe the data in a way that the receiver 
+  application will understand
+
+> Schema is nothing but a "Structure". 
+  It is a formal description of structure of an XML.
+   i.e., 
+- which elements are allowed, 
+- which elements must be present, 
+- which elements are optional, 
+- the sequence and relationship of the elements, etc.,
+
+> For example,
+- abc@gmail.com is a Valid Email ID. However
+- abc#gmail is Invalid because there is "NO @ and ."
+- Hence email schema looks somethig like 
+  some-name@domain-name.com
+
+> Schema "does not validate the data" instead 
+  "it validates the structure"
+
+> There are two ways to define a Schema for XML  
+  1. Document Type Definition (DTD)
+  2. XML Schema Definition (XSD)
+
+
+  
+  
+  
+  
+1. XML Document Type Definition (DTD)
+=======================================
+> A DTD defines the structure and the legal elements
+  and attributes of an XML document
+  
+> An application can use a DTD to verify that XML 
+  data is valid
+  
+> There are 2 ways to declare the DTD
+  1. An Internal DTD Declaration
+  2. An External DTD Declaration
+
+> An Internal DTD Declaration has the following 
+  syntax:
+
+	<!DOCTYPE root-element [
+	   declarations
+	]>
+  
+> A DTD can also be stored in an external file.
+  An XML can reference an external DTD via the 
+  following syntax:
+
+   <!DOCTYPE root-element SYSTEM "DTD-filename">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+2. XML Schema Definition (XSD)
+=======================================
+> XSD also describes the structure, legal elements 
+  and attributes for an XML
+
+> It defines,
+- the elements and attributes that can appear in XML
+- the number of and also the order of child elements
+- data types for elements and attributes
+- default and fixed values for elements & attributes
+
+> One of the greatest strength of XML Schemas is 
+  the support for data types
+
+> For Example, the following is an example of a date
+  declaration in XSD:
+  <xs:element name="start-date" type="xs:date"/>
+  
+  it defines the structure/format of the Date as
+  "YYYY-MM-DD"
+
+  An element in XML might look like
+  <start-date>2002-09-24</start-date>
+
+> Another great strength about XML Schemas is that 
+  they are written in XML
+   
+> Hence XSD's are extensible so, we can
+  -	Reuse Schema in other Schemas
+  -	Create your own data types derived from the 
+    standard types
+  -	Reference multiple schemas in the same document
+  
+ 
+
+NOTE:
+=======
+> Functionality wise both XSD & DTD similar in nature
+  but XSD's are more sophisticated compared to DTD
+  
+> In otherwords, DTD provides less control on XML 
+  structure whereas XSD provides more control
+  
+> Hence XSD's preferred over DTD's
+
+> Without an XSD/DTD, an XML need only follow the 
+  rules for being well-formed 
+
+> With an XSD/DTD, an XML must adhere to additional 
+  constraints placed upon the names and values of 
+  its elements and attributes in order to be 
+  considered valid
+  
+
+  
+Differences between DTD & XSD
+===================================================
+|          DTD				|			XSD       |
+===================================================
+> DTDs are written in Markup Language	
+  XSDs are written in XML
+
+> DTD is not extensible
+  XSD is extensible
+
+> DTD doesn't support datatypes (limited to text string)
+  XSD supports datatypes for elements and attributes
+  
+> DTD doesn't define order for child elements
+  XSD defines order for child elements
+
+> DTD's occurrence indicator is limited to 0, 1 and many; 
+  cannot support a specific number such as 8
+  
+  XSD can support a specific number
+
+> DTD doesn't support namespace
+  XSD supports namespace
+  
+> We canot inherit one DTD into an another 
+  We can inherit one XSD into an another 
+  
+> DTD provides less control on XML structure
+  XSD provides more control on XML structure
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+Parsing XML Documents (XML Parsers)
+=========================================
+{ Needs Revisiting about the Notes }
+> To process the data contained in XML documents,
+  we need to write a application program 
+ (in any programming language such as Java/C/C++, etc)
+
+> The program makes use of an XML parser to tokenize
+  and retrieve the data from the XML documents
+
+> An XML parser is the software that sits between 
+ the application and the XML documents to shield 
+ the application developer from the details of the
+ XML syntax. 
+
+> The parser reads a raw XML document, ensures that 
+  is well-formed, and may validate the document 
+  against a DTD or XSD
+
+> There are two standard APIs for parsing XML 
+  documents:
+  1. SAX (Simple API for XML)
+  2. DOM (Document Object Model)
+
+> The JAXB provides a common interface for creating, 
+  parsing and manipulating XML documents using the 
+  standard SAX, DOM and XSLTs
+  
+  
+  
+  
+  
+SAX API 
+===========  
+> SAX is an event-driven API
+
+> The SAX API defines a number of callback methods,
+  which will be called when events occur during 
+  parsing
+
+> The SAX parser reads an XML document and generate 
+  events as it finds elements, attributes, or data 
+  in XML
+
+  
+DOM API 
+===========  
+> DOM is an object-oriented API
+
+> The DOM parser explicitly builds an object model, 
+  in the form of a tree structure, to represent an
+  XML document
+
+> Our application code can then manipulate the nodes 
+  in the tree
+
+> The DOM API defines the mechanism for querying, 
+  traversing and manipulating the object model 
+  built
+
+  
+  
+
+
+PCDATA : Parsed Character Data
+================================
+> Text between start-element and end-element is 
+  called as PCDATA which will be examined by the 
+  parser
+
+Example:-
+-----------
+<employee>Praveen</employee>
+The string "Praveen" is considered as PCDATA
+
+
+CDATA [Character Data]
+============================
+> W.K.T special characters (such as "<", "&")
+  must be referenced through pre-defined entities
+
+> If XML data contain many special characters, it 
+  is cumbersome to replace all of them. Instead we 
+  can use "CDATA (character data) section" 
+  
+> A CDATA section starts with the following sequence:
+
+	<![CDATA[
+
+ and ends with the next occurrence of the sequence:
+
+	]]>
+
+  All characters enclosed between these two sequences
+  are interpreted as characters
+	
+> The XML processor ignores all the markup within the
+  CDATA section. 
+  
+Example : - 
+=============
+
+<employee>Praveen</employee>
+the start and end "employee" elements are interpreted
+as markup. However, if written like this:
+
+<![CDATA[<employee>Praveen</employee>]]>
+then the parsers interprets the same as if it had 
+been written like this:
+
+&lt;employee&gt;Praveen&lt;/employee&gt;
+
+
+ 
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+https://www3.ntu.edu.sg/home/ehchua/programming/java/j6d_xml.html
+
+
+
+eXtensible Markup Language (XML) Continued - Part II :-
+===========================================================
+
+	
+XML Namespaces
+===============
+
+XSLT
+=======
+
+
+XPath
+========
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Java Architecture for XML Binding (JAXB)
+===============================================
+> JAXB is part of the JDK (from 1.6 onwards) & "it is
+  the most often used API to process XML "
+ 
+> JAXB is a Java API helps us to convert Java Object
+  to XML & vice-versa
+ 
+> The Process of converting Java Object to XML 
+  is called as "Marshalling"
+  
+> The Process of converting XML to Java Object 
+  is called as "Unmarshalling"
+
+> "javax.xml.bind.*" is the package representation 
+  of JAXB
+
+> JAXB also helps us to generate XSD using Java
+  Objects (with the help of "schemagen" commond)
+  
+> It helps us to Generate Java Objects using XSD 
+  (with the help of "xjc" commond)
+  
+> The JAX-RS API uses JAXB to convert the XML data 
+  from the request into a Java Object & vice-versa
+
+ 
+
+
+ 
+Commonly Used/Basic Annotations in JAXB
+========================================
+> W.K.T Java Annotations provide metadata on 
+  - packages
+  - classes 
+  - fields and 
+  - methods
+
+> Also each annotation type has its own set of 
+  "annotation elements"
+  
+> JAXB can be used in two ways
+- Creating our own Java Beans using JAXB Annotations 
+- Generating & Using Java Beans using XSD
+  
+1. @XmlRootElement
+----------------------
+> A class that describes an XML element that is to 
+  be a top-level element, should be annotated with 
+  XmlRootElement
+  
+> This annotation should be used with a Class Name
+
+> When a top level class is annotated with the 
+  @XmlRootElement annotation, then its value is 
+  represented as XML element in an XML
+  
+> It has 2 Optional Annotation Elements
+  
+  1. name :- 
+  ------------
+  - Its the name of the XML root element
+  - default name is derived from the class name
+  
+  2. namespace :- 
+  ---------------
+  - "namespace" name of the XML element
+  - default is the empty namespace
+
+2. @XmlElement
+---------------
+> This annotation helps to define an element 
+  in an XML
+
+> This Annotation should be used with Class 
+  Variables / Getter Methods
+
+> by default JavaBeans Property Names are used as 
+  element names
+
+> the "name" element of this annotation defines 
+  name for an Element in XML
+						
+3. @XmlAttribute 
+-------------------
+> specifies the attribute for XML element
+
+> This Annotation should be used with Class Variables
+  / Getter Methods
+
+> by default JavaBeans Property Names are used as 
+  Attribute names
+
+> the "name" element of this annotation defines name
+  for an Element in XML
+
+4. @XmlType(propOrder = { "field2", "field1",.. })
+----------------------------------------------------
+> This annotation should be used with a Class Name
+
+> This annotation with element "propOrder" allows to
+  define the order in which the fields are written 
+  in an XML file
+
+5. @XmlElementWrapper
+----------------------------------------------------
+> XmLElementWrapper generates a wrapper element 
+  around XML representation
+
+> This is primarily intended to be used to produce 
+  a wrapper XML element around collections
+
+> by default JavaBeans Property Names are used as 
+  Element Wrapper name
+
+> the "name" element of this annotation defines 
+  name for an Element in XML
+
+6. @XmlAccessorType
+----------------------
+> This annotation defines the way class level 
+  anntation needs to be treated
+  
+- if @XmlAccessorType(XmlAccessType.FIELD) then 
+  Class Variables should have JAXB Annotations
+  
+- if @XmlAccessorType(XmlAccessType.PROPERTY) then 
+  Class Getter Methods should have JAXB Annotations
+  
+- if @XmlAccessorType(XmlAccessType.NONE) then 
+  either Class Getter Methods/Class Variables 
+  (one of them) should have JAXB Annotations
+  
+> This annotation should be used with a Class Name 
+  along with @XmlRootElement
+
+> If we have JAXB annotations for Class Getter 
+  Methods then this annotation can be avioded
+
+JAXB - Generating XSD using JAXB Annotated Class
+===================================================
+Commond:
+------------
+schemagen -cp <Class_Files_Location> 
+<Java_File_Location_Which_acts_as_Root_Element>
+
+Note:
+-------
+<Class_Files_Location> should point the begining of 
+Package not inside the package
+
+JAXB - Generating Java Beans/POJO's using XSD
+===================================================
+Commond:
+------------
+xjc <XSD_File_Location>
+
+Note:
+-------
+- Generated Classes will be present inside the 
+  folder by name "generated"
+  
+- this folder will be present under the path where 
+  we run this commond
+  
+  Ex:- c:\jaxb>xjc d:\jaxb\schema1.xsd
+  
+  then "generated" folder along the corresponding 
+  classes will be in "c:\jaxb" folder
+  
+ 
+
+JAXB Marshalling [Converting Object into XML]
+====================================================
+Steps:
+--------
+1. Create a Java Beans with JAXB annotations 
+   or Using XSD generate the classes
+2. Create the JAXBContext object
+3. Create the Marshaller object
+4. Invoke setProperty method on Marshaller object 
+   by certain values (Optional)
+5. Invoke the marshal method on Marshaller object
+
+JAXB Unmarshalling [Converting XML into Object]
+===================================================
+Steps:
+--------
+1. Create a Java Beans with JAXB annotations 
+   or Using XSD generate the classes
+2. Create the JAXBContext object
+3. Create the Unmarshaller object
+4. Invoke the unmarshal method
+5. Invoke getter methods of Java Bean to access 
+   the data
+
+javax.xml.bind.JAXBContext
+===============================
+> The JAXBContext class provides the client's entry
+  point to the JAXB API
+
+> It is an Abstraction layer in JAXB which helps us 
+  to perform basic operation of JAXB such as 
+  marshal, unmarshal and validate
+
+> Its an abstract class doesnot extend any other 
+  JAXB related Class i.e. 
+  public abstract class JAXBContext extends Object
+
+> A client application normally obtains 
+  new instances of this class using newInstance() 
+  method
+  
+  Syntax:
+  --------
+	public static JAXBContext 
+	newInstance(Class... classesToBeBound)
+	throws JAXBException
+							   
+
+javax.xml.bind.Marshaller
+==============================							   
+> Marshaller object is responsible for governing
+  the process of serializing Java content trees 
+  back into XML data
+  
+> It provides the basic marshalling methods, to 
+  convert Java Objects to XML
+  
+> It's an Interface & an instance of Marshaller is
+  obtained by invoking "createMarshaller()" method
+  on JAXBContext Object
+
+  Syntax
+  -------
+  Marshaller JAXBContext.createMarshaller() 
+  throws JAXBException
+							   
+
+
+javax.xml.bind.Unmarshaller
+==============================
+> Unmarshaller object is responsible for governing
+  the process of deserializing XML data into newly 
+  created Java content trees, optionally validating
+  the XML data 
+  
+> It provides lot of overloaded unmarshalling 
+  methods, to convert XML to Java Objects
+  
+> It's an Interface & an instance of Unmarshaller is
+  obtained by invoking "createUnmarshaller()" method
+  on JAXBContext Object
+
+  Syntax
+  -------
+  Unmarshaller JAXBContext.createUnmarshaller() 
+  throws JAXBException
+
+
+Marshalling Example:-
+=====================
+JAXBContext jaxbContext 
+= JAXBContext.newInstance(
+    <Class_NM_Which_Represents_XML_Root_Element>);  
+  
+Marshaller marshaller 
+    = jaxbContext.createMarshaller();  
+
+marshaller.marshal(
+<Object_Of a Class_Which_Represents_XML_Root_Element>, 
+System.out);
+  
+
+Unmarshalling Example:-
+=====================
+JAXBContext jaxbContext 
+= JAXBContext.newInstance(
+    <Class_NM_Which_Represents_XML_Root_Element>);  
+ 
+Unmarshaller unmarshaller 
+= jaxbContext.createUnmarshaller();
+
+Object obj = 
+unmarshaller.unmarshal(new FileReader("fileNM.xml"));
+
+JAXB Summary
+=====================
+
+I. Annotations Used:
+----------------------
+1. @XmlRootElement
+2. @XmLElement
+3. @XmlAttribute
+4. @XmLElementWrapper
+5. @XmlType
+6. @XmlAccessorType
+
+
+II. Java Classes Used:
+----------------------
+1. JAXBContext (Abstract Class)
+2. Marshaller (Interface)
+3. Unmarshaller (Interface)
+4. JAXBException (Concreate Class)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*******************************************************************************
+AJAX (Asynchronous JavaScript and XML) Histroy: https://en.wikipedia.org/wiki/Ajax_(programming)
+* During his time at State Software, Crockford popularized the JSON data format, based upon existing JavaScript language constructs, as a lightweight alternative to XML. He obtained the domain name json.org in 2002, and put up his description of the format there.[9] In July 2006, he specified the format officially, as RFC 4627.[10]*
+*******************************************************************************
+
+
+String str1 = "123praveen200.12";
+String str2 = "EmpID=123|EmpNM=praveen|EmpSal=200.12";
+
+<employee>
+	<emp-id>123</emp-id>
+	<emp-name>Praveen</emp-name>
+	<emp-salary>200.12</emp-salary>
+</employee>
+
+{"EmpID":123, "EmpNM":"Praveen", "EmpSal":200.12}
+
+JavaScript Object Notation [JSON]
+========================================
+> Like XML, JSON also is a "Programing Language & 
+  Platform Independent Language" which helps to 
+  store and transport data
+
+> However compared to XML, its a lightweight, easy 
+  for applications to parse and generate by avioding 
+  complicated parsing and translations
+  
+> JSON is a "text format" but uses conventions that
+  are familiar to programmers of the C-family of 
+  languages (C, C++, C#, Java, JavaScript, Perl, 
+  Python, etc.,). Hence JSON is an "ideal data 
+  interchange language" 
+  
+> JSON, as the name implies, which consists of data
+  similler to "Object Notation of JavaScript". It's
+  an extension of JavaScript scripting language and
+  this format was specified by 
+  "Douglas Crockford in 2006"
+  
+> Hence if we receive data from a server in JSON 
+  format, we can directly use it like any other 
+  JavaScript object
+
+> The filename extension of JSON  ".json"
+
+> MIME type (Content Type) of JSON is 
+  "application/json"
+
+JSON Syntax
+=================
+> JSON syntax is derived from JavaScript object 
+  notation syntax:
+  - Data is in "name:value" pairs
+  - Data is separated by "commas"
+  - "Curly braces" hold objects
+  - "Square brackets" hold arrays
+
+1. JSON Data
+----------------
+> JSON data is written as name/value pairs.
+  A name/value pair consists of 
+  - a field name (in double quotes)
+  - followed by a colon
+  - followed by a value
+  
+ Ex:
+ ----
+ "name" : "Praveen D"
+ 
+ Note:- Name should have double quotes
+
+2. JSON Values
+------------------
+> In JSON, values must be one of the following 
+  data types
+  1. String
+  2. Number
+  3. Boolean
+  4. NULL
+  5. an Object (JSON object)
+  6. an Array
+
+> In JSON, 
+  - String values must be written with double quotes
+  - Numbers must be an integer/decimal values
+  - Boolean values must be true/false
+  - JSON NULL values must be null
+
+Ex:-
+----
+{ "name":"Praveen D", 
+  "age":33, 
+  "isEmployed":true, 
+  "girlFriend":null 
+}
+
+
+
+
+
+
+3. JSON Objects
+-----------------
+> Values in JSON can be objects
+
+> JSON Objects are 
+  - surrounded by curly braces {}
+  - JSON object data is written in "key:value" pairs
+  - Each "key:value" pair is separated by a comma
+  - Keys must be String and Values must be a valid 
+    JSON data type (String, Number, Object, Array, 
+	Boolean or null)
+
+  Ex:-
+  ----
+  {
+     "employee":{ "name":"Praveen D", 
+				  "age":33, 
+				  "isEmployed":true, 
+				  "girlFriend":null 
+				}
+  }
+  
+> Values in a JSON object can be another JSON object
+	{
+     "employee": { 
+					"name":"Praveen D", 
+					"age":33, 
+					"isEmployed":true, 
+					"girlFriend":null, 
+					"cars": {
+								"car1":"GM",
+								"car2":"BMW",
+								"car3":"Audi"
+							}
+				}
+	}
+
+4. JSON Arrays
+-----------------
+> Values in JSON can be arrays
+
+> JSON Arrays are 
+  - surrounded by "Square Brackets []"
+  - JSON Arrays values is separated by a comma
+  - Array values must be a valid JSON data type 
+    (String, Number, Object, Array, Boolean or null)	
+
+> Example 1:-
+---------------
+{
+  "employees":[ "Praveen", "Rekha", "Malleshwar" ]
+}
+
+> Example 2:-
+---------------
+{
+  "name":"Praveen",
+  "age":33,
+  "cars":[ "GM", "BMW", "Audi" ]
+}
+
+> Values in an array can also be another array, 
+  or even another JSON object:
+{
+    "name":"Praveen",
+    "age":33,
+    "cars": [
+              { "name":"GM", 
+				 "models":[ "Aveo", 
+							"Beat", 
+							"Cruze" 
+						  ] 
+			  },
+              { "name":"Audi", 
+			    "models":[ "A3", "A7" ] 
+			  }
+            ]
+ }
+ 
+JSON vs XML
+===============
+> Both JSON and XML can be used to store & get the 
+  data from a web server
+  
+> However,
+- XML has to be parsed with an XML parser
+  JSON can be parsed by a standard JavaScript function
+ 
+- Hence, XML is much more difficult to parse than JSON
+  JSON is a ready-to-use JavaScript object
+
+- XML Data cannot consist of Arrays
+  JSON Data can consist of Arrays
+   
+> In General, 
+  - Web Applications interact with each other by 
+    exchanging data using XML
+	
+  - Mobile Apps interact with Web Applications by 
+    exchanging data using JSON
+   
+   
+   
+   
+   
+
+https://www.tutorialspoint.com/json/json_data_types.htm
+
+
+
+
+
+Assignment
+================
+Create a Java POJO structure for the below XML file
+https://maps.googleapis.com/maps/api/geocode/xml?address=chicago&sensor=false
+
+
+https://github.com/CreatorHead/WebServices
+
+
+
+http://www.tutorialspoint.com/java/xml/javax_xml_bind_util_jaxbsource.htm
+http://stackoverflow.com/questions/11463231/how-to-generate-jaxb-classes-from-xsd
+
+https://www.javacodegeeks.com/2011/02/jaxb-generate-xml-xsd.html
+https://jaxb.java.net/tutorial/section_6_2_11-Annotations-for-Object-References-XmlID-XmlIDREF.html
+
+Jersey RESTful Web Services Framework
+=========================================
+Jersey RESTful Web Services framework is an open source, production quality, framework for developing RESTful Web Services in Java that provides support for JAX-RS APIs and serves as a JAX-RS (JSR 311 & JSR 339) Reference Implementation.
+
+The accepted answer does work, but only if the webapp is deployed to an app server like Glassfish or Wildfly, and possibly servlet containers with EE extensions like TomEE. It doesn't work on standard servlet containers like Tomcat, which I'm sure most people looking for a solution here want to use.
+
+If you're using a standard Tomcat install (or some other servlet container), you need to include a REST implementation since Tomcat doesn't come with one. If you're using Maven, add this to the dependencies section:
+
+
+http://stackoverflow.com/questions/9373081/how-to-set-up-jax-rs-application-using-annotations-only-no-web-xml
+
+
+
+
+
+
+
+

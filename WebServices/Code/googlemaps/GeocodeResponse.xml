@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<geocodeResponse>
+    <status>OK</status>
+    <result>
+        <type>locality</type>
+        <type>political</type>
+        <formatted_address>Bengaluru, Karnataka, India</formatted_address>
+        <address_component>
+            <long_name>Bengaluru</long_name>
+            <short_name>Bengaluru</short_name>
+            <type>locality</type>
+            <type>political</type>
+        </address_component>
+        <address_component>
+            <long_name>Bengaluru</long_name>
+            <short_name>Bengaluru</short_name>
+            <type>locality</type>
+            <type>political</type>
+        </address_component>
+        <address_component>
+            <long_name>Bengaluru</long_name>
+            <short_name>Bengaluru</short_name>
+            <type>locality</type>
+            <type>political</type>
+        </address_component>
+        <geometry>
+            <location>
+                <lat>0.21936251584718813</lat>
+                <lng>0.14757320081785985</lng>
+            </location>
+            <location_type>APPROXIMATE</location_type>
+            <viewport>
+                <southwest>
+                    <lat>0.21936251584718813</lat>
+                    <lng>0.14757320081785985</lng>
+                </southwest>
+                <northeast>
+                    <lat>0.21936251584718813</lat>
+                    <lng>0.14757320081785985</lng>
+                </northeast>
+            </viewport>
+            <bounds>
+                <southwest>
+                    <lat>0.21936251584718813</lat>
+                    <lng>0.14757320081785985</lng>
+                </southwest>
+                <northeast>
+                    <lat>0.21936251584718813</lat>
+                    <lng>0.14757320081785985</lng>
+                </northeast>
+            </bounds>
+        </geometry>
+        <place_id>ChIJbU60yXAWrjsR4E9-UejD3_g</place_id>
+    </result>
+</geocodeResponse>

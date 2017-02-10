@@ -1,0 +1,110 @@
+Processing the Result returned by SQL Queries :-
+================================================
+> Whenever we issue SQL Queries to RDBMS Application 
+  via JDBC there are two kinds of results expected 
+  out of RDBMS Application
+	1. No. of Rows Affected Count 
+	2. DB Results 
+	
+> JDBC returns 
+  - "No. of Rows Affected Count" as a "Integer Value" 
+  - "DB Results" in the form of "ResultSet Object" 
+  
+java.sql.ResultSet
+===================
+> Its an interface & an Object of ResultSet 
+  is an "Object representation of DB Results"
+  produced by Select SQL Query
+
+> ResultSet object is produced by invoking
+  "executeQuery()" Method on any of the 
+  JDBC Statement Objects
+  
+> ResultSet consists of N number of Rows 
+  with each row containing N number of Columns
+
+> Number of rows and columns in Resultset 
+  directly depends on "where condition" & 
+  "column list" respectively in "Select SQL Query"
+
+> ResultSet object may consist of "Zero/More" 
+  OR "Zero/One" rows 
+
+> If ResultSet consist of zero/more rows of data 
+  then we must use "while loop"
+
+> If ResultSet consist of zero/one row of data 
+  then we can use either "while loop" or "if block"
+  (preferred)
+
+> Once the ResultSet is produced, data from 
+  ResultSet can be extracted as follows
+
+1. Move to desired Row by calling necessary
+   ResultSet methods
+
+   For Ex : next(), first(), last(), etc
+	        ------
+
+2. Retrieve the desired column value using
+
+   getXXX(< Position of the Column in SQL Query
+			as Integer Value >);
+   OR
+   
+   getXXX("< Column Name as String Value >");
+   ----------------------------------------
+	
+   where XXX = Java Data Type corresponding to 
+			   DB Table column data type
+	  
+NOTE : getXXX() methods are the ONLY way to 
+	   retrieve data from ResultSet object		  
+		  
+		  
+	
+	
+	
+	
+
+	
+Why we need to Close Necessary JDBC Objects:
+==============================================
+> JDBC Objects such as 
+  - Connection
+  - JDBC Statements and 
+  - ResultSet 
+  make use of memory 
+ 
+> In case of Connection Object, further RDBMS
+  Application resources are consumed
+
+> Also memeory consumed by ResultSet object is 
+  comparatively more compared to other JDBC Objects
+  
+> Hence forgetting to close any of the JDBC objects 
+  "will heavily impact the application performance"
+  and garbage collection should not be relied upon
+  
+> So it's important to close any of the JDBC 
+  Object as soon as their job is done
+
+> To close any of the JDBC Objects invoke "close()" 
+  method
+
+Syntax:
+----------		  
+public void close() throws SQLException
+
+
+
+
+
+
+
+
+
+
+		  
+		  
+		  

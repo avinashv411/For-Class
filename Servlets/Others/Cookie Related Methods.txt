@@ -1,0 +1,15 @@
+ 1. public Cookie(String name, String value)
+ 
+ 2. void Cookie.setMaxAge(int expiry)
+ 
+ 3. String Cookie.getName()
+ 
+ 4. String Cookie.getValue()
+ 
+ 5. void HttpServletResponse.addCookie(Cookie cookieObj)
+ 
+ 6. Cookie[] HttpServletRequest.getCookies()
+
+
+
+

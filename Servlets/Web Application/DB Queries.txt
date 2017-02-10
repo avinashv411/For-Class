@@ -1,0 +1,67 @@
+create database studentsapp_db;
+
+create table students_info
+( regno int(10) not null,
+  firstname varchar(50),
+  middlename varchar(50),
+  lastname varchar(50),
+  primary key(regno)
+);
+
+
+create table guardian_info
+( regno int(10) not null,
+  gfirstname varchar(50),
+  gmiddlename varchar(50),
+  glastname varchar(50),
+  primary key(regno)
+);
+
+
+create table students_otherinfo
+( regno int(10) not null,
+  isadmin varchar(1),
+  password varchar(50),
+  primary key(regno)
+);
+
+
+insert into students_info values (1, 'Praveen', 'NA', 'D');
+insert into students_info values (2, 'Sachin', 'NA', 'B S');
+insert into students_info values (3, 'Mallesh', 'NA', 'D');
+insert into students_info values (4, 'Rekha', 'NA', 'M');
+insert into students_info values (5, 'Nirbhay', 'NA', 'D S');
+
+insert into guardian_info values (1, 'AAA', 'NA', 'BBB');
+insert into guardian_info values (2, 'BBB', 'NA', 'DDD');
+insert into guardian_info values (3, 'ABC', 'NA', 'XYZ');
+insert into guardian_info values (4, 'XYZ', 'NA', 'ABC');
+insert into guardian_info values (5, 'DEF', 'NA', 'GHI');
+
+insert into students_otherinfo values (1, 'Y', 'qwerty');
+insert into students_otherinfo values (2, 'N', 'qwerty');
+insert into students_otherinfo values (3, 'N', 'qwerty');
+insert into students_otherinfo values (4, 'N', 'qwerty');
+insert into students_otherinfo values (5, 'N', 'qwerty');
+
+
+
+
+create table library
+(  student_nm varchar(50),
+  book_nm varchar(50)
+);
+
+insert into library values('ABC', 'Core Java');
+insert into library values('ABC', 'JDBC');
+insert into library values('ABC', 'Servlets');
+insert into library values('DEF', 'Core Java');
+insert into library values('XYZ', 'Core Java');
+insert into library values('XYZ', 'JDBC');
+insert into library values('XYZ', 'Servlets');
+insert into library values('XYZ', 'Hibernate');
+insert into library values('XYZ', 'Springs');
+
+
+
+

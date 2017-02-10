@@ -1,0 +1,56 @@
+*******************
+Assignment 5 :
+*******************
+
+> Create a Login Page as shown below
+  
+   Login.html
+   ----------
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+> Create a Servlet by name "LoginServlet which gets 
+  the request from this from, 
+  1. Get the Form Data
+  2. Authenticate the Form Data by interacting
+     BECE67_DB Database
+  3. If Credentials are In-Valid, then display
+     "In-Valid User Name / Password" Error Message
+	 in the Browser
+  4. If Credentials are Valid, then display
+     his own infomation 
+	 (combination of data present in 
+	   - "students_info" & 
+	   - "guardian_info" tables)
+	 in the Browser as shown below
+
+
+
+
+
+
+
+
+	 
+Query to be Used:
+--------------------
+select * from 
+  students_info si,
+  guardian_info gi,
+  students_otherinfo soi
+where si.regno = gi.regno
+  and si.regno = soi.regno
+  and soi.regno = ?
+  and soi.password = ?  
+  
+  
+  
+  
+  

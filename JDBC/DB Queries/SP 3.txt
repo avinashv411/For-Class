@@ -1,0 +1,27 @@
+delimiter &&
+create procedure studentUpsert
+(IN in_regno INT,
+ IN in_fnm VARCHAR(50),
+ IN in_mnm VARCHAR(50),
+ IN in_lnm VARCHAR(50))
+begin
+	declare regno_count int;
+	select count(*) into regno_count
+	from students_info
+	where regno = in_regno;
+
+	if regno_count>0 then
+		update students_info
+		set firstname = in_fnm,
+		    middlename = in_mnm,
+			lastname = in_lnm
+		where regno = in_regno;
+	else
+		insert into students_info
+		values (in_regno, in_fnm, in_mnm, in_lnm);
+	end if;
+end&&
+
+delimiter ;
+
+call studentUpsert(12, 'ABC', 'NA', 'XYZ');
