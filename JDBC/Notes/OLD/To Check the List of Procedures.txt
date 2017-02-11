@@ -1,3 +1,0 @@
-Query to Get the List of Procedures :-
-======================================
-SHOW PROCEDURE STATUS WHERE DB = DATABASE();

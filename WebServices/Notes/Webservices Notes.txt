@@ -873,10 +873,10 @@ Java Architecture for XML Binding (JAXB)
   to XML & vice-versa
  
 > The Process of converting Java Object to XML 
-  is called as "Marshalling"
+  is called as "Marshalling" OR "Serialization"
   
 > The Process of converting XML to Java Object 
-  is called as "Unmarshalling"
+  is called as "Unmarshalling" OR "Deserialization"
 
 > "javax.xml.bind.*" is the package representation 
   of JAXB
@@ -1083,7 +1083,10 @@ javax.xml.bind.JAXBContext
 	newInstance(Class... classesToBeBound)
 	throws JAXBException
 							   
-
+> There should be ONLY ONE object of "JAXBContext" should exists
+  per application. In other words it should be accessed in "Singleton"
+  way. NOTE: "JAXBContext" is not Singleton in nature
+  
 javax.xml.bind.Marshaller
 ==============================							   
 > Marshaller object is responsible for governing
@@ -1386,32 +1389,213 @@ JSON vs XML
   - Mobile Apps interact with Web Applications by 
     exchanging data using JSON
    
-   
-   
-   
-   
-
-https://www.tutorialspoint.com/json/json_data_types.htm
-
-
-
-
-
 Assignment
 ================
 Create a Java POJO structure for the below XML file
-https://maps.googleapis.com/maps/api/geocode/xml?address=chicago&sensor=false
+https://maps.googleapis.com/maps/api/geocode/xml?address=bangalore
+
+   
+Jackson
+=====================   
+> Like JAXB,  Jackson is the most often used Framework 
+  to process JSON. It helps us to convert Java Object
+  to JSON & vice-versa
+ 
+> The Process of converting Java Object to JSON 
+  is called as "Marshalling" OR "Serialization"
+  
+> The Process of converting JSON to Java Object 
+  is called as "Unmarshalling" OR "Deserialization"
+
+> "org.codehaus.jackson.*" is the package representation 
+  of Jackson
+
+> Glassfish Jersey uses Jackson to convert the JSON data 
+  from the request to Java Object & vice-versa
+
+> Jackson is not the only framework to process the JSON 
+  but it's one among many. 
+  For Ex: GSON, Moxy, JSON-P (part of Java EE) etc.,
+  
+> However Jackson is a high-performance, efficient and hence 
+  very popular JSON processor for Java
+
+> Along with making use of JAXB related annotations Jackson also 
+  provides its own set of annotations for mapping too
+
+Processing JSON using Jackson
+==================================
+> Though there are three different ways to process JSON
+  1. Streaming API (It is analogous to SAX parser for XML)
+  2. Tree Model (It is analogous to DOM parser for XML)
+  3. Data Binding (It converts JSON to and from Java Bean  
+      using property accessor or using annotations)
+  
+> "org.codehaus.jackson.map.ObjectMapper"  its a concreate class
+   it helps us to serialize/Marshall and deserialize/Unmarshaller
+   regular Java objects (POJOs or Java Beans)
+
+> There should be ONLY ONE object of "ObjectMapper" should exists
+  per application. In other words it should be accessed in "Singleton"
+  way. NOTE: "ObjectMapper" is not a Singleton Class
+
+> The most commonly used methods of the ObjectMapper are
+  1. writeValue()
+  2. readValue()
+  3. writeValueAsString()
+  
+> writeValue() Methods
+  ---------------------
+  - There are various Overloaded Versions writeValue() Methods
+     and all of them are Non-Static methods
+  - They helps us to convert Java Object to JSON
+  - return type of these methods is "void"
+  - All of these methods takes Object to be converted as input
+    argument (as a 2nd input argument)
+
+> readValue() Methods
+  ---------------------
+  - There are various Overloaded Versions readValue() Methods
+     and all of them are Non-Static methods
+  - They helps us to convert JSON to Java Object
+  - return type of these methods is "Object of the Desired Class"
+  - All of these methods takes JSON (in various forms) as input argument
+
+> writeValueAsString() Method
+  ----------------------------
+  - It's a Non-Static method
+  - It convert Java Object to JSON & return as "String"
+ 
+ 
+Jackson Marshalling Example :-
+===============================
+ObjectMapper mapper = new ObjectMapper();
+mapper.writeValue(new File("fileNM.json"), <Java_Object_to be_Converted>)
+
+Jackson Unmarshalling Example :-
+==================================
+ObjectMapper mapper = new ObjectMapper();
+Object obj = mapper.readValue(new File("fileNM.json"), <Class_NM>.class)
 
 
-https://github.com/CreatorHead/WebServices
 
 
 
-http://www.tutorialspoint.com/java/xml/javax_xml_bind_util_jaxbsource.htm
-http://stackoverflow.com/questions/11463231/how-to-generate-jaxb-classes-from-xsd
 
-https://www.javacodegeeks.com/2011/02/jaxb-generate-xml-xsd.html
-https://jaxb.java.net/tutorial/section_6_2_11-Annotations-for-Object-References-XmlID-XmlIDREF.html
+JAX-RS
+============
+> JAX-RS stands for JAVA API for RESTful Web Services
+> JAX-RS makes it easy for developers to build RESTful web services using the Java programming language
+> "javax.ws.rs.*" is the package representation of JAX-RS API
+> RESTful web services are loosely coupled, lightweight web services that are particularly well suited for creating APIs for clients spread out across the internet. 
+> Representational State Transfer (REST) is an "architectural style" of client-server application centered around the "transfer" of "representations" of "resources" through requests and responses
+> In the REST architectural style, data and functionality (i.e. Web Service Methods) are considered resources and are accessed using Uniform Resource Identifiers (URIs), typically links on the Web.
+> The representation of that resource might be an XML document, JSON File, an image file, or an HTML page.
+> A client might retrieve a particular representation, modify the resource by updating its data, or delete the resource entirely.
+> The REST architectural style is designed to use a stateless communication protocol, typically HTTP. 
+> The following principles encourage RESTful applications to be simple, lightweight, and fast:
+I. Resource identification through URI:
+Resources in RESTful web services are identified by URIs
+II. Uniform interface: 
+Resources are manipulated using a fixed set of four operations
+1. create
+2. read
+3. update
+4. delete 
+These operations can be perform using below HTTP Methods respectively
+1. PUT (creates a new resource)
+2. GET (retrieves the current state of a resource in some representation)
+3. POST (transfers a new state onto a resource OR Update the existing resource)
+4. DELETE (Delete an existing resource)
+
+
+III. Self-descriptive messages: 
+Resources are decoupled from their representation so that their content can be accessed in a variety of formats, such as HTML, XML, plain text, PDF, JPEG, JSON, and other formats.
+
+> The JAX-RS API uses "annotations" to simplify the development of RESTful web services. 
+  So Developers 
+  - can decorate Java Beans with JAX-RS annotations to define resources and 
+  - the actions that can be performed on those resources 
+
+  
+  
+Summary of JAX-RS Annotations
+==================================================================
+
+1. @Path			
+-----------
+> It identifies the URI path. It can be specified on class or method.
+> Avoid using spaces. Instead use underscore (_) or hyphen (-) when using a long resource name. 
+  For example, use authorized_users instead of authorized%20users.
+> Use lowercase letters. Although URI is case-insensitive, it is a good practice to keep the url in lower case letters only
+
+
+2. @GET, @POST, @PUT, @DELETE, @HEAD and @OPTIONS
+--------------------------------------------------------------------
+> This annotations are used with Java Methods
+> The Java method annotated with @GET will process HTTP GET requests
+> The Java method annotated with @POST will process HTTP POST requests
+> The Java method annotated with @PUT will process HTTP PUT requests
+> The Java method annotated with @DELETE will process HTTP DELETE requests
+> The Java method annotated with @HEAD will process HTTP HEAD requests
+> The Java method annotated with @OPTIONS will process HTTP OPTIONS requests
+> NOTE: There is NO @TRACE and @CONNECT annotation
+
+3. @PathParam
+----------------
+> represents the parameter of the URI path
+
+4. @QueryParam
+----------------
+> represents the parameter of the query string of an URL.
+
+
+5. @FormParam
+---------------
+> represents the parameter of the form
+> It should not be used with @GET
+
+
+6. @HeaderParam	
+-----------------
+> represents the parameter of the header
+
+
+7. @CookieParam	
+------------------
+> represents the parameter of the cookie
+
+
+8. @DefaultValue
+---------------------
+> Assigns a default value to a parameter passed to the method.
+
+
+9. @Produces
+---------------
+> This annotation is used to specify the MIME media types of 
+  representations a resource can produce and send back to the client
+> For example, "text/plain", "application/json", "application/xml", etc.,
+
+
+10. @Consumes
+---------------
+> This annotation is used to specify the MIME media types of representations a resource can consume that were sent by the client.
+
+
+11. @MatrixParam
+-------------------
+> Binds the parameter passed to the method to a HTTP matrix parameter in path.					
+
+
+
+
+
+
+
+
+
+
 
 Jersey RESTful Web Services Framework
 =========================================
@@ -1422,10 +1606,148 @@ The accepted answer does work, but only if the webapp is deployed to an app serv
 If you're using a standard Tomcat install (or some other servlet container), you need to include a REST implementation since Tomcat doesn't come with one. If you're using Maven, add this to the dependencies section:
 
 
-http://stackoverflow.com/questions/9373081/how-to-set-up-jax-rs-application-using-annotations-only-no-web-xml
+REST stands for REpresentational State Transfer. REST is a web standards based architecture and uses HTTP Protocol for data communication. It revolves around resources where every component is a resource and a resource is accessed by a common interface using HTTP standard methods. REST was first introduced by Roy Fielding in year 2000.
+
+
+In REST architecture, a REST Server simply provides access to resources and the REST client accesses and presents the resources. Here each resource is identified by URIs/ Global IDs. REST uses various representations to represent a resource like Text, JSON and XML. JSON is now the most popular format being used in Web Services.
+
+HTTP Methods
+The following HTTP methods are most commonly used in a REST based architecture.
+
+GET − Provides a read only access to a resource.
+
+PUT − Used to create a new resource.
+
+DELETE − Used to remove a resource.
+
+POST − Used to update an existing resource or create a new resource.
+
+OPTIONS − Used to get the supported operations on a resource
 
 
 
+Architecturally, REST doesn't care what the media type is. HTML is just as much a resource representation as anything else. When you click on a link in a browser to visit a static HTML page, that is a "Representational State Transfer".
+
+REST - An Architectural Style, Not a Standard
+
+REST is not a standard. You will not see the W3C putting out a REST specification. You will not see IBM or Microsoft or Sun selling a REST developer's toolkit. Why? Because REST is just an architectural style. You can't bottle up that style. You can only understand it, and design your Web services in that style. (Analogous to the client-server architectural style. There is no client-server standard.)
+While REST is not a standard, it does use standards:
+HTTP
+URL
+XML/HTML/GIF/JPEG/etc (Resource Representations)
+text/xml, text/html, image/gif, image/jpeg, etc (MIME Types)
+
+REST does not deal with implementation details (e.g., using Java servlets or CGI to implement a Web service)
+
+ REST-compliant Web services allow requesting systems to access and manipulate textual representations of Web resources using a uniform and predefined set of stateless operations.
+ 
+ REST (REpresentational State Transfer) is an architectural style, and an approach to communications that is often used in the development of Web services. The use of REST is often preferred over the more heavyweight SOAP (Simple Object Access Protocol) style because REST does not leverage as much bandwidth, which makes it a better fit for use over the Internet. The SOAP approach requires writing or using a provided server program (to serve data) and a client program (to request data).
+
+ REST, which typically runs over HTTP (Hypertext Transfer Protocol)
+ 
+ The REST style emphasizes that interactions between clients and services is enhanced by having a limited number of operations (verbs). Flexibility is provided by assigning resources (nouns) their own unique Universal Resource Identifiers (URIs). Because each verb has a specific meaning (GET, POST, PUT and DELETE), REST avoids ambiguity.
+ 
+ 
+ 
+Jersey RESTful Web Services framework is open source, production quality, framework for developing RESTful Web Services in Java that provides support for JAX-RS APIs and serves as a JAX-RS (JSR 311 & JSR 339) Reference Implementation. Jersey framework is more than the JAX-RS Reference Implementation. Jersey provides it’s own API that extend the JAX-RS toolkit with additional features and utilities to further simplify RESTful service and client development.
+
+What is a Resource?
+REST architecture treats every content as a resource. These resources can be Text Files, Html Pages, Images, Videos or Dynamic Business Data. REST Server simply provides access to resources and REST client accesses and modifies the resources. Here each resource is identified by URIs/ Global IDs. REST uses various representations to represent a resource where Text, JSON, XML. The most popular representations of resources are XML and JSON.
+
+
+
+
+
+ 
+JAX-RS API Annotations
+===============================
+> JAX-RS API provides following annotations to develop RESTful applications in java. 
+> The javax.ws.rs package contains JAX-RS annotations.
+
+No.	Annotation		Description
+1.	@Path			
+
+2.	@PathParam		represents the parameter of the URI path.
+3.	@GET			specifies method responds to GET request.
+4.	@POST			specifies method responds to POST request.
+5.	@PUT			specifies method responds to PUT request.
+6.	@HEAD			specifies method responds to HEAD request.
+7.	@DELETE			specifies method responds to DELETE request.
+8.	@OPTIONS		specifies method responds to OPTIONS request.
+9.	@FormParam		represents the parameter of the form.
+10.	@QueryParam		represents the parameter of the query string of an URL.
+11.	@HeaderParam	represents the parameter of the header.
+12.	@CookieParam	represents the parameter of the cookie.
+13.	@Produces		defines media type for the response such as XML, PLAIN, JSON etc. 
+					It defines the media type that the methods of a resource class or 
+					MessageBodyWriter can produce.
+14.	@Consumes		It defines the media type that the methods of a resource class or 
+					MessageBodyReader can produce.
+
+@MatrixParam
+
+Binds the parameter passed to the method to a HTTP matrix parameter in path.					
+		
+
+15
+
+@DefaultValue
+
+Assigns a default value to a parameter passed to the method.
+
+16
+
+@Context
+
+Context of the resource. For example, HTTPRequest as a context.		
+	
+
+
+2
+
+@GET
+
+HTTP Get request, used to fetch resource.
+
+3
+
+@PUT
+
+HTTP PUT request, used to create resource.
+
+4
+
+@POST
+
+HTTP POST request, used to create/update resource.
+
+5
+
+@DELETE
+
+HTTP DELETE request, used to delete resource.
+
+6
+
+@HEAD
+
+HTTP HEAD request, used to get status of method availability
+
+
+
+
+
+
+
+	
+@Produces("text/plain"): for downloading text file.
+@Produces("image/png"): for downloading png image file.
+@Produces("application/pdf"): for downloading PDF file.
+@Produces("application/vnd.ms-excel"): for downloading excel file.
+@Produces("application/msword"): for downloading ms word file.
+
+
+		
 
 
 
