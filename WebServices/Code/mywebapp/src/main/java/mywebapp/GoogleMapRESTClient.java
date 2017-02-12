@@ -30,15 +30,18 @@ public class GoogleMapRESTClient extends HttpServlet
 		String meditype=null;
 		String url=null;
 		
-		url = "https://maps.googleapis.com/maps/api/geocode/xml?address="+locationVal;
-		
 		if(dataType.equals("txt")){
 			meditype = MediaType.TEXT_PLAIN;
+			url = "http://localhost:8080/googlemaps/rest/files/txt/"+locationVal+"?fname=AAA";
 		}else if(dataType.equals("xml")){
 			meditype = MediaType.APPLICATION_XML;
+			url = "http://localhost:8080/googlemaps/rest/files/xml/"+locationVal+"?fname=AAA";
 		}else if(dataType.equals("json")){
-			url = "http://localhost:8080/googlemaps/rest/mapsapi/json/"+locationVal;
+			meditype = MediaType.APPLICATION_JSON;
+			url = "http://localhost:8080/googlemaps/rest/mapsapi/json/"+locationVal+"?fname=AAA";
 		}
+		
+//		url = "https://maps.googleapis.com/maps/api/geocode/xml?address="+locationVal;
 		
 		resp.setContentType(meditype);
 		PrintWriter out = resp.getWriter();
