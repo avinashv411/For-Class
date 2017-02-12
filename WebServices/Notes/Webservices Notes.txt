@@ -1478,39 +1478,69 @@ ObjectMapper mapper = new ObjectMapper();
 Object obj = mapper.readValue(new File("fileNM.json"), <Class_NM>.class)
 
 
+Representational State Transfer (REST) Web Services
+============================================================
+> It's an "architectural style" of client-server application, centered around  
+  the "transfer" of "representations" of "resources" through requests and responses
+
+> In the REST architectural style, data and functionality (i.e. Web Service Methods) 
+  are considered as resources and are accessed using Uniform Resource Identifiers (URIs), 
+  typically hyperlinks on the Web
+  
+> The representation of that resource might be 
+  - an XML document
+  - a JSON File
+  - a Simple Text
+  - an image file  
+  - an HTML page, etc.,
+  
+> A client application might 
+  - retrieve a particular representation
+  - modify the resource by updating its data or 
+  - delete the resource entirely
+
+> The REST architectural style is designed to use a stateless 
+  communication protocol, typically HTTP
+  
+> The following principles encourage RESTful applications 
+  to be simple, lightweight, and fast
+  
+  I. Resource Identification through URI:-
+  -----------------------------------------
+  Resources in RESTful web services are identified by URIs
+ 
+ 
+  II. Uniform Interface:-
+  ---------------------------
+  Resources are manipulated using a fixed set of 4 operations
+  1. create
+  2. read
+  3. update
+  4. delete 
+  
+  These operations can be perform using below HTTP Methods respectively
+  1. PUT (creates a new resource)
+  2. GET (retrieves the current state of a resource in some representation)
+  3. POST (transfers a new state onto a resource OR Update the existing resource)
+  4. DELETE (Delete an existing resource)
 
 
+  III. Self-descriptive messages:-
+  ----------------------------------
+  Resources are decoupled from their representation so that their content 
+  can be accessed in a variety of formats, such as HTML, XML, plain text, 
+  PDF, JPEG, JSON, and other formats.
+
+  
+> Hence RESTful web services are loosely coupled, lightweight web services 
+  they are well suited for creating APIs for clients spread across the internet 
 
 
-JAX-RS
+JAX-RS API
 ============
 > JAX-RS stands for JAVA API for RESTful Web Services
 > JAX-RS makes it easy for developers to build RESTful web services using the Java programming language
 > "javax.ws.rs.*" is the package representation of JAX-RS API
-> RESTful web services are loosely coupled, lightweight web services that are particularly well suited for creating APIs for clients spread out across the internet. 
-> Representational State Transfer (REST) is an "architectural style" of client-server application centered around the "transfer" of "representations" of "resources" through requests and responses
-> In the REST architectural style, data and functionality (i.e. Web Service Methods) are considered resources and are accessed using Uniform Resource Identifiers (URIs), typically links on the Web.
-> The representation of that resource might be an XML document, JSON File, an image file, or an HTML page.
-> A client might retrieve a particular representation, modify the resource by updating its data, or delete the resource entirely.
-> The REST architectural style is designed to use a stateless communication protocol, typically HTTP. 
-> The following principles encourage RESTful applications to be simple, lightweight, and fast:
-I. Resource identification through URI:
-Resources in RESTful web services are identified by URIs
-II. Uniform interface: 
-Resources are manipulated using a fixed set of four operations
-1. create
-2. read
-3. update
-4. delete 
-These operations can be perform using below HTTP Methods respectively
-1. PUT (creates a new resource)
-2. GET (retrieves the current state of a resource in some representation)
-3. POST (transfers a new state onto a resource OR Update the existing resource)
-4. DELETE (Delete an existing resource)
-
-
-III. Self-descriptive messages: 
-Resources are decoupled from their representation so that their content can be accessed in a variety of formats, such as HTML, XML, plain text, PDF, JPEG, JSON, and other formats.
 
 > The JAX-RS API uses "annotations" to simplify the development of RESTful web services. 
   So Developers 
@@ -1525,11 +1555,19 @@ Summary of JAX-RS Annotations
 1. @Path			
 -----------
 > It identifies the URI path. It can be specified on class or method.
-> Avoid using spaces. Instead use underscore (_) or hyphen (-) when using a long resource name. 
-  For example, use authorized_users instead of authorized%20users.
-> Use lowercase letters. Although URI is case-insensitive, it is a good practice to keep the url in lower case letters only
+> Avoid using spaces. Instead use underscore (_) or hyphen (-) while 
+  using a long resource name. For example, 
+  use "/authorized_users" instead of "/authorized users"
+> Although URI is case-insensitive, Use lowercase letters
+> It can be used with simple paths like @Path("/users") OR
+> It can be used with varibale names 
+  Syntax : {variable_name} 
+  Ex: @Path("/users/{username}") 
+> OR It can be used with Regular Expressions 
+  Syntax : {variable_name : regular_expression} 
+  Ex: @Path("{id : \\d+}") //It supports digit only
 
-
+  
 2. @GET, @POST, @PUT, @DELETE, @HEAD and @OPTIONS
 --------------------------------------------------------------------
 > This annotations are used with Java Methods
@@ -1548,7 +1586,9 @@ Summary of JAX-RS Annotations
 4. @QueryParam
 ----------------
 > represents the parameter of the query string of an URL.
-
+> If we there are multiple name=value pairs with "same name" 
+  then we should make use of either List / Set to get the data
+  
 
 5. @FormParam
 ---------------
@@ -1586,11 +1626,29 @@ Summary of JAX-RS Annotations
 11. @MatrixParam
 -------------------
 > Binds the parameter passed to the method to a HTTP matrix parameter in path.					
+> Matrix parameters are a set of “name=value” in URI path
+  For Ex: 	/users/praveen;userid=abcd
+> URI can consist of N number of Matrix parameters but they should be separate 
+  by a semi colon “;“
+> They can be present anywhere in URI
 
 
 
 
 
+
+
+@Context
+
+Context of the resource. For example, HTTPRequest as a context.		
+	
+
+	
+	
+	
+
+javax.ws.rs.core.Response
+============================
 
 
 
