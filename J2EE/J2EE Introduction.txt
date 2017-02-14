@@ -148,8 +148,8 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
   2. Servlet
   3. JSP
 
-> JDBC API helps Web Application to interact with 
-  RDBMS Application
+> JDBC API helps Web Application to interact   
+  with RDBMS Application
 
 > Servlet and JSP API's helps web application to 
   - get the request from browser, 
@@ -157,8 +157,7 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
   - gives it back to the browser
 
 > J2EE helps to develop "Web Applications" 
-  where as
-  Andriod / iOS helps to develop "Mobile Apps" 
+  where as "Andriod / iOS" helps to develop "Mobile Apps" 
 
 > "Mobile Apps" are 2-Tier Architectured 
   Applications
@@ -173,15 +172,17 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
   "maintain" as compared to 2-Tier architectured 
   applications
 	
-J2EE 3-Tier Architecture :-
-============================
+Java EE 3-Tier Architecture :-
+================================
 
 
 
 
 
-J2EE 2-Tier Architecture :-
-============================
+
+
+Java EE 2-Tier Architecture :-
+=================================
 
 
 
@@ -196,7 +197,7 @@ J2EE 2-Tier Architecture :-
 JDBC					:	20 Hours 
 Servlets				:	60 Hours 
 JSP					    :	10 Hours 
-========================================================									 
+==============================================									 
 Grand Total			    :	90 Hours
 No. of Hours / day 	    :	2 Hours
 No. of Classes for J2EE	:  (90/2) = 45 Classes
