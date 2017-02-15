@@ -1100,49 +1100,56 @@ Assignment 1:
   
   
   
+  
+  
+  
+  
+  
 
 javax.servlet.http.HttpServletRequest
 ======================================
-> "HttpServletRequest" object, in short called as 
-  "Request Object",is an Object representation of 
-  "Raw HTTP Request"
+> "HttpServletRequest" object, in short called 
+ as "Request Object",is an Object representation of "Raw HTTP Request"
  
-> We should make use of this object to get Info from
-  "Raw Http Request"
+> We should make use of this object to get 
+  Info from "Raw Http Request"
   
-> HttpServletRequest is an Interface & it extends 
-  an another Interface by name
+> HttpServletRequest is an Interface & it  
+  extends an another Interface by name
   "javax.servlet.ServletRequest"
 
->  Request Object has many "Getter Methods" which 
-   helps us to get the information from "Raw Http 
-   Request"
+>  Request Object has many "Getter Methods" 
+   which helps us to get the information from "Raw Http Request"
    
    
    
    
    
+
+
+
+
+
    
-Some Methods which are part of "Request Object" are:
-====================================================
+Some Methods which are part of "Request Object" 
+are:
+===============================================
 1. String HttpServletRequest.getMethod()
 ----------------------------------------------
-> This method return the HTTP Method present in the 
-  request as a String Value
+> This method return the HTTP Method present 
+  in the request as a String Value
 
-2. StringBuffer HttpServletRequest.getRequestURL() 
----------------------------------------------------  
-> This method return the URL present in the request
-  as a StringBuffer
+2. StringBuffer 
+             HttpServletRequest.getRequestURL() 
+----------------------------------------------- 
+> This method return the URL present in the 
+  request as a StringBuffer
 
 3. String ServletRequest.getProtocol()
 ---------------------------------------
-> This method return the Protocol present in the 
-  request as a String Value
+> This method return the Protocol present in 
+  the request as a String Value
 
-  
-  
-  
 4. String ServletRequest.getParameter(String name)
 
 5. String[] ServletRequest
