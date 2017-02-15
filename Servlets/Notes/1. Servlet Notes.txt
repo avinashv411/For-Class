@@ -1190,6 +1190,11 @@ javax.servlet.http.HttpServletResponse
 
   
   
+  
+  
+  
+  
+  
 Methods in Response Object :-
 ============================
 
@@ -1234,11 +1239,17 @@ NOTE :
   reduces the size of the Actual Content there by
   increases the Performance
 
+  
+  
+  
+  
+  
+  
+  
 4. void HttpServletResponse
-		   .sendError(int statusCode, String errMsg) 
+		  .sendError(int statusCode, String errMsg) 
    throws IOException   
 ----------------------------------------------------  
-  
 > This method helps us to send the Error Response
 
 

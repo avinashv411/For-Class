@@ -12,7 +12,7 @@ Java Data Base Connectivity (JDBC)
 
 > JDBC helps to do this & in the world of Java, 
   JDBC is the "One & Only API" that helps to 
-  interact with RDBMS (DB) Application
+  interact ONLY with RDBMS (DB) Application
   
 > Also JDBC is "DB Independent" i.e. using JDBC 
   we can interact with any RDBMS Applications 
@@ -20,12 +20,8 @@ Java Data Base Connectivity (JDBC)
   
 NOTE: 
 ------
-- JDBC helps to interact ONLY with "RDBMS 
-  Applications" 
-   
-- "MongoDB" & "Hadoop Distributed File System 
-  (HDFS / Hadoop)" Applications are not 
-  RDBMS Applications
+"MongoDB" & "Hadoop Distributed File System 
+(HDFS / Hadoop)" Applications are not RDBMS Applications
   
   
   
