@@ -1266,46 +1266,45 @@ Assignment 2:
 	
 eXtensible Markup Language (XML) Introduction :-
 ==================================================
-> As the name implies it's an extension of HTML
-  & this Language helps to Transfer the Data between 
-  different Applications  						
-
+> As the name implies it's an extension of Markup
+  Language & this Language helps to Transfer the 
+  Data between different Applications
+  
 > XML looks similar to HTML but it’s not a HTML
 
 Comparision Between HTML & XML
 ---------------------------------------						
-====================================================													
-|   HTML 				|			 XML           |
+====================================================|   HTML 				|			 XML           |
 ====================================================							
 1. HTML helps to display the Data in the Browser
-   XML helps to Transfer the Data between 
+   XML helps to Transfer/Exchange the Data between 
    Applications   						
 						
 2. HTML has Pre-defind Tags
-   XML has User-defind Tags
+   XML has User-defind Tags 
+   (also called as "Elements")
 
 3. HTML Tags are "Case In-Sensitive"   
    XML Tags are "Case Sensitive"
 
-4. First Line of HTML is 
+4. First Line of HTML is (which is Optional)
    <!DOCTYPE html ----- >
    
-   First Line of XML is 
+   First Line of XML is (It's called as "XML Prolog", which is Optional)
    <?xml version="1.0" encoding="UTF-8" ?>
    
 5. HTML is "Not Strictly Typed" Language
-   XML is "Strictly Typed" Language
+   XML is "Strictly Typed" Language. i.e.
+   - Every Opening Tag should have Closing Tag
+   - Order in which tags are opened, we should 
+     follow the same order to close
+   
    
 6. File extension of HTML is ".html / .htm" 
    File extension of XML is ".xml"     
 
 NOTE:
 -----
-> Hence XML file should have
-  - ".xml" has file extension &
-  - first line of that file should be    
-    <?xml version="1.0" encoding="UTF-8" ?>
-
 > Since XML consist of User-defind Tags, these
   tags information is defind in an another file 
   by name "XML Schema Document (XSD)"  
@@ -1356,8 +1355,14 @@ Example:-
 	<!-- Static Resource -->
 	<welcome-file>index.html</welcome-file>
 	<!-- Dynamic Resource -->
-	<welcome-file>currentDateTime</welcome-file>
+	<welcome-file>currentDate</welcome-file>
 </welcome-file-list>  
+
+
+
+
+
+
 
 2. Configuring a URL for a Servlet :-
 ======================================

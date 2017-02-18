@@ -32,16 +32,16 @@ NOTE:
   
 JDBC Pre-requirements:
 =========================
-1.	Install the Any RDBMS Application (MySQL 5.5)
+1.	Install an RDBMS Application (MySQL 5.5)
 2.	Create a "Database (Schema)" by name 
-    "BECE1011_DB"
+    "BECM12_DB"
 3.	Create a table by name "STUDENTS_INFO"
     in the above "Database"
 4.	Insert some data into the above table
 
 SQl Queries for MySQL RDBMS Application:-
 ==========================================
-create database BECE1011_DB;
+create database BECM12_DB;
 
 create table students_info
 ( regno int(10) not null,
@@ -58,7 +58,7 @@ Some Usefull Queries:
 ========================
 1. To connect to database:-
 ----------------------------
-   use BECE1011_DB;
+   use BECM12_DB;
    
 2. To get the list of databases:-
 ---------------------------------
@@ -85,26 +85,11 @@ Necessary Steps to Work with JDBC
 4. "Process the Results" returned by "SQL Queries"
 5. Close All "JDBC Objects"
 
-   /*
-	* 1. Load the "Driver"
-	*/
-
-   /*
-	* 2. Get the "DB Connection" via "Driver"
-	*/
-
-   /*
-	* 3. Issue "SQL Queries" via "Connection"
-	*/
-
-   /*
-	* 4. "Process the Results" returned by "SQL Queries"
-	*/
-
-   /*
-	* 5. Close All "JDBC Objects"
-	*/
-
+//1. Load the Driver
+//2. Get the DB Connection via Driver
+//3. Issue SQL Queries via Connection
+//4. Process the Results returned by SQL Queries
+//5. Close All JDBC Objects
 
 
 
@@ -131,11 +116,11 @@ Note:-
 IP Address 		: 192.168.1.101
 Computer Name 	: QSP-SHMUTT-PC
 Port Number 	: 3306
-DB Name 		: BECE1011_DB
+DB Name 		: BECM12_DB
 User Name 		: root / j2ee 
 Password		: root / j2ee
 
-jdbc:mysql://QSP-SHMUTT-PC:3306/BECE1011_DB?user=j2ee&password=j2ee
+jdbc:mysql://QSP-SHMUTT-PC:3306/BECM12_DB?user=j2ee&password=j2ee
 
 
 
@@ -143,9 +128,9 @@ jdbc:mysql://QSP-SHMUTT-PC:3306/BECE1011_DB?user=j2ee&password=j2ee
 
 
 
-jdbc:mysql://QSP-SHMUTT-PC:3306/BECE1011_DB?user=j2ee&password=j2ee
- 
-	
+
+
+
 		
 Drivers:
 ===========		
@@ -466,7 +451,7 @@ java.sql.DriverManager
    throws SQLException
 ----------------------------------------------------
  String dbUrl = 
- "jdbc:mysql://localhost:3306/BECE1011_DB
+ "jdbc:mysql://localhost:3306/BECM12_DB
  			         ?user=root&password=root";
  			
  Connection con = DriverManager.getConnection(dbUrl);
@@ -477,7 +462,7 @@ java.sql.DriverManager
   throws SQLException
 -----------------------------------------------------
  String dbUrl  = 
-	    "jdbc:mysql://localhost:3306/BECE1011_DB";
+	    "jdbc:mysql://localhost:3306/BECM12_DB";
  String userNM = "root";
  String pass   = "root";
 				

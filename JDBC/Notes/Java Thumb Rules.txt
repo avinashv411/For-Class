@@ -1,13 +1,15 @@
-> If L.H.S "Equeal to" R.H.S, then L.H.S is always 
-  "Concrete Class"
+***************************
+*    Java Thumb Rules     *
+***************************
+1. If L.H.S "Equeal to" R.H.S, then L.H.S is always 
+   "Concrete Class"
   
-  A ref = new A();
+   A ref = new A();
   
-  
-> If L.H.S "Not Equeal to" R.H.S, then L.H.S can be 
-  "an Interface / Concrete Class / an Abstract Class"
+2. If L.H.S "Not Equeal to" R.H.S, then L.H.S can be 
+   "an Interface / Concrete Class / an Abstract Class"
 
-  B ref = new A();
+   B ref = new A();
   
   
   
@@ -15,39 +17,13 @@
   
   
   
-> A Class which is declared with "abstract" keyword
-  is called as an "Abstract Class"
+3. A Class which is declared with "abstract" keyword
+   is called as an "Abstract Class"
 
-> A Class which is declared without "abstract" 
-  keyword is called as "Concrete Class"
+4. A Class which is declared without "abstract" 
+   keyword is called as "Concrete Class"
   
-> Hence all "final classes" are "Concrete Class"
-  
-  
-  
-  
-  
-  
-> Simply having an Abstract Class is of "No Use" & 
-  there MUST be a "Atleast One Sub-Class"
-  
-> Simply having an Interface in Java is of "No Use" & 
-  there MUST be a "Atleast One Implentation Class"  
-  
-  
-  
-  
-  
-  
-  
-  
-> In Java, "Super Class" can be either an "Abstract 
-  Class" or "Concrete Class"
-
-
-
-
-
+5. Hence all "final classes" are "Concrete Class"
   
   
   
@@ -55,16 +31,44 @@
   
 
   
-> Anything in Java which start with Uppercase Letter
-  is either "Class Name OR Interface Name"  
+6. Simply having an Interface in Java is of "No Use" 
+   & there MUST be a "Atleast One Implentation Class"  
   
-> Anything in Java which start with Lowercase Letter 
-  & without parantasis is a "Variable Name"
+7. Simply having an Abstract Class is of "No Use" & 
+   there MUST be a "Atleast One Sub-Class"  
+  
 
-> Anything in Java with parantasis is a "Method Name"
+  
+  
+  
+  
+  
+  
+8. In Java, "Super Class" can be either an "Abstract 
+   Class" or "Concrete Class"
 
-> In Java, anything apart from Premitive Data Types 
-  are called as "Object References"  
+
+
+
+
+  
+  
+  
+  
+  
+
+  
+9. Anything in Java which start with Uppercase Letter
+   is either "Class Name OR Interface Name"  
+  
+10. Anything in Java which start with Lowercase 
+    Letter & without parantasis is a "Variable Name"
+
+11. Anything in Java with parantasis is a "Method 
+    Name"
+
+12. In Java, anything apart from Premitive Data 
+    Types are called as "Object References"  
   
   For Ex:
   ---------
@@ -81,9 +85,12 @@
 	Concrete Class
 
 
-> If a method input argument is other than primitive
-  data type, then it can be "Interface / Concrete Class
-  / Abstract Class"
+	
+	
+	
+	
+13. If a method/contructor input argument is other 
+    than primitive data type, then it can be "Interface / Concrete Class / Abstract Class"
 
   For Example:
   ------------
@@ -102,9 +109,10 @@
 			Concrete Class
 
 
-> If a method return type is other than primitive data 
-  type, then it can be "Interface / Concrete Class
-  / Abstract Class"
+			
+			
+14. If a method return type is other than primitive 
+    data type, then it can be "Interface / Concrete Class / Abstract Class"
 
   For Example:
   ------------
@@ -120,16 +128,26 @@
 	an Abstract Class OR
 	Concrete Class
 
+	
+	
+	
+	
+	
 > There are two types of Interfaces
   1. Marker Interface
   2. Non-Marker Interface
   
-> If a Class implements as interface & we are getting
-  the compilation error means its a non-marker interface
+> If a Class implements an interface & we are getting
+  the compilation error means it must be a Non-Marker Interface & this interface SHOULD have
+  One/More Abstract Methods
   
-> If a Class implements as interface & we are NOT 
-  getting the compilation error means it may be a 
-  marker / non-marker interface
+> If a Class implements an interface & we are NOT 
+  getting the compilation error means it must be a 
+  Non-Marker / Marker Interface.
+  
+  If it is a Non-Marker interface then it SHOULD NOT
+  consist of ANY Abstract Methods
+  
    
 
 
