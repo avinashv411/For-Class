@@ -178,7 +178,7 @@ throws ServletException, IOException
   Lifecycle i.e. equal to number of requests
 
 > This method is also responsible for generating 
-  response for all HTTP methods
+  response for HTTP methods
   
 > We cannot override this method. Whatever we write 
   inside a JSP becomes part of this method at the 
@@ -273,43 +273,17 @@ Differences Between Servlets & JSP
 ====================================================
 |	Servlets                |     JSP       	   |
 ====================================================
-
-
-
-
-
-
-
 1.  Servlets are Protocol Independent
 
 	By default JSP is protocol dependent 
     i.e. it handles ONLY HTTP & HTTPS Protocols	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
 2. In case of Servlets, Business Logic is tightly 
    coupled with Presentation Logic i.e "HTML inside 
    Java"
 
    In case of JSP, Business Logic is kept separate 
    from Presentation Logic i.e "Java inside the HTML"
-   
-
-   
-   
-   
-   
-   
-   
-   
-   
    
 3. In case of Servlets, Already compiled ".class" 
    files are used to generate the response 
@@ -318,37 +292,19 @@ Differences Between Servlets & JSP
    get compiled & the compiled ".class" file is used 
    to generate the response
 
-   
-   
-   
-   
-   
-   
 4. Hence time to take generate the response for 1st 
    Request is Less (as compared to JSP)
    
    But in case of JSP, time to take generate the 
    response for 1st Request is More
    
-   
-   
-   
-   
-   
-   
 5. Servlets are accessed ONLY by using the configured
    URL present in web.xml
    
   JSP can be accessed 
-  - either by using the file name directly in the URL or 
+  - either by using the file name directly in the URL
+  or 
   - using the configured URL present in web.xml	   
-   
-   
-   
-   
-   
-   
-   
    
 6. Servlets extends either "GenericServlet" or 
    "HttpServlet"
@@ -356,33 +312,11 @@ Differences Between Servlets & JSP
    In case of JSP, "Translated Servlet extends 
    HttpJspBase" which in turn extends "HttpServlet"	 
 
-
-   
-   
-   
-   
-   
-   
-7. In case of Servlets (which extends HttpServlet) 
-   Container invokes corresponding doXXX(HSR, HSR) 
-   method depending on the HTTP Method present in 
-   the request
-
-   Container invokes _jspService(HSR, HSR) method 
-   irrespective of the HTTP Method present in 
-   the request	
-   
-
-
-
-
-
-8. Servelts has "*.java" file extension
+7. Servelts has "*.java" file extension
 
    JSP has "*.jsp" file extension
 
-
-9. Implicit Objects are NOT avilable & we have to
+8. Implicit Objects are NOT avilable & we have to
    explicitly define them
 	
    Implicit Objects are available	
@@ -474,8 +408,8 @@ within the same JSP(like "private" variables in Java)
   
 Implicit Objects :
 ==================
-> Implicit objects are the objects that are "created 
-  by the container"
+> Implicit objects are the objects that are 
+  "created by the container"
   
 > Since container creates these objects it uses
   standard variable names
@@ -484,6 +418,10 @@ Implicit Objects :
   names while using implicit objects in JSP
   
 > There are 9 implicit objects
+
+
+
+
 
 ======================================================================
 | Variable 	  |	Of Type			| Scope    | Description	         |
@@ -517,7 +455,7 @@ Servlet Objects
 
 
 
-| out   | javax.servlet.jsp.JspWriter  | page  |
+| out   | javax.servlet.jsp.JspWriter  | request  |
 
 > This Object helps to print the data in Browser
 
@@ -554,6 +492,9 @@ Servlet Objects
   
   
   
+  
+  
+  
 | exception | java.lang.Throwable  | page	|
 
 > This implicit Object is only available to the
@@ -566,10 +507,11 @@ Servlet Objects
 			
 			
 			
+			
 Note:
 ======
-Apart from "pageContext" rest of the variable names 
-are in "Lower Case"
+Apart from "pageContext" rest of the variable 
+names are in "Lower Case"
 			
 			
 			
@@ -582,9 +524,13 @@ are in "Lower Case"
 			
 JSP Tags:-
 ==========
-> We know that JSP is like a Java inside HTML & "JSP 
-  tags  helps us to write Java code inside JSP"
+> JSP separate Presentation Logic from Business Logic.
+  Using HTML Tags we can write Presentation Logic &
+  using JSP Tags we can write Business Logic
   
+> In other words, JSP is like a Java inside HTML 
+  & "JSP tags  helps us to write Java code inside JSP"
+
 > Every JSP tag has its own functionality. Also, we 
   cannot make use of one tag inside an another tag 
   (excluding Action Tag)
@@ -618,8 +564,10 @@ Code Word :  DEADS
 
 > We can have "Zero / One / More" Declaration 
   Tag & Declaration Tag can be present "Anywhere 
-  inside a JSP" (Preferred is to keep at the begining 
-  of the JSP)
+  inside a JSP"
+  
+> Preferred approch is to have ONLY ONE Declaration 
+  tag & present at the begining of the JSP
 
 > Code present inside this tag will be kept as a 
   first lines of translated servlet at the time of 
@@ -661,7 +609,8 @@ Code Word :  DEADS
 3. Scriptlet Tag [ <%        %> ]
 ===================================
 > In Servlets we write business logic (Java Code)
-  inside service() method
+  inside service() method which get executed for
+  every request
   
 > We also know that, JSP get translated to Servlet 
   at runtime & hence "we can also write business 
@@ -701,7 +650,7 @@ Tags :
 	Age 1 : <%= age %>
 	Age 2 : <%= getAge() %>
 	<%
-		int j=100;
+		boolean isTrue=true;
 		for(int i=0; i<5; i++)
 		{
 	%>
@@ -753,8 +702,8 @@ Note :
 ------
 > We can Forward the request to ONLY ONE resource at a 
   time
-> Only incase of Action Tag, we can make use of other JSP 
-  Tag i.e Expression Tag inside Action Tag
+> Only incase of Action Tag, we can make use of other 
+  JSP Tag i.e Expression Tag inside Action Tag
 
 For Example :
 --------------
@@ -771,7 +720,7 @@ For Example :
 	
 	
 II. Include Action [<jsp:include  page="relativeURL" />]
-----------------------------------------------------------	
+--------------------------------------------------------
 This tag helps us to Include the Response of an another
 Internal Resource (static / dynamic i.e Servlet or JSP) 
 into JSP
@@ -827,17 +776,12 @@ Syntax:
 	  Constructor"  & 
 	* set that object to the corresponding scope
 
-> Since web application is Multi Threaded in Nature, 
-  the above logic is "synchronized"	in Translated 
-  Servelt
-  
-> We know that, Java Bean helps us to tranfer the 
-  data in the form of Object from one Java program 
-  to other 
+> We know that, Java Bean helps us to tranfer the data 
+  in the form of Object from one Java program to other 
 
-> Hence using this tag "we can ONLY create an 
-  instance of Java Bean" & for noraml Java Classes 
-  we should use "Scriptlet Tag"
+> Hence using this tag "we can ONLY create an instance 
+  of Java Bean" & for noraml Java Classes we should use 
+  "Scriptlet Tag"
   
 Example:
 =========  
@@ -930,6 +874,9 @@ III. Page Directive [ <%@page   attributes %> ]
 =======================================================
 |   Attribute 	|	Syntax			|   Description    |
 =======================================================
+
+
+
 
 
 
@@ -1145,12 +1092,12 @@ III. Page Directive [ <%@page   attributes %> ]
 	
 NOTE:
 =======	
-1. We can have Zero / More Page Directive in JSP & 
-   they can be present anywhere inside a JSP (Preferred
-   is to keep at the begining of the JSP)
+1. We can have Zero / More Page Directive in JSP & they
+   can be present anywhere inside a JSP (Preferred is to 
+   keep at the begining of the JSP)
    
-2. We can club multiple Page Directive Attributes 
-   into one page directive as shown below
+2. We can club multiple Page Directive Attributes into 
+   one page directive as shown below
 
    <%@page errorPage="JSPErrorPage.jsp" 
 		   import="java.util.Date" %>
@@ -1164,17 +1111,8 @@ NOTE:
    at the begining of the JSP (Preferred). So between 
    these two, Page Directive Tag should be present first
    followed by Declaration Tag
-   
-   
-   
-   
-   
-4. Apart from the above 11 Page Attributes, there are 
-   few more attributes like 
-   "isELIgnored", 
-   "pageEncoding", etc.,
-	
-5. Code Word : 	
+
+4. Code Word : 	
 	
 	
 	
@@ -1236,6 +1174,7 @@ Example:
 			   
 			   
 			   
+			   
 JSP Redirect Example:
 ========================
 <%-- Don't Generate the Response, Instead Redirect the
@@ -1245,7 +1184,6 @@ JSP Redirect Example:
 	String url = "http://www.gmail.com";
 	response.sendRedirect(url); 
 %>			   
-
 
 ================= END of JSP ==============
 ################# End of J2EE ##############
