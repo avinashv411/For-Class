@@ -2532,7 +2532,9 @@ Include :
    into Servlet
   
 > When we Include the content of one servlet into an 
-  another, it will include the response of "corresponding overridden version of doXXX() method" in that servlet  
+  another, it will include the response of 
+  "corresponding overridden version of doXXX() method" 
+  in that servlet  
 
 > If corresponding overridden version of doXXX() methods
   does not exists, then Container "DOES NOT give any 
