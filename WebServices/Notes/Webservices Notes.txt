@@ -1407,93 +1407,62 @@ Jackson
 > The Process of converting JSON to Java Object 
   is called as "Unmarshalling" OR "Deserialization"
 
-> "org.codehaus.jackson.*" is the package representation
+> "org.codehaus.jackson.*" is the package representation 
   of Jackson
 
-> Glassfish Jersey uses Jackson to convert the JSON    
-  data from the request to Java Object & vice-versa
+> Glassfish Jersey uses Jackson to convert the JSON data 
+  from the request to Java Object & vice-versa
 
 > Jackson is not the only framework to process the JSON 
   but it's one among many. 
   For Ex: GSON, Moxy, JSON-P (part of Java EE) etc.,
   
-> However Jackson is a high-performance, efficient and 
-  hence very popular JSON processor for Java
+> However Jackson is a high-performance, efficient and hence 
+  very popular JSON processor for Java
 
-> Along with making use of JAXB related annotations 
-  Jackson also provides its own set of annotations for mapping too
+> Along with making use of JAXB related annotations Jackson also 
+  provides its own set of annotations for mapping too
 
 Processing JSON using Jackson
 ==================================
 > Though there are three different ways to process JSON
-  1. Streaming API 
-     (It is analogous to SAX parser for XML)
+  1. Streaming API (It is analogous to SAX parser for XML)
+  2. Tree Model (It is analogous to DOM parser for XML)
+  3. Data Binding (It converts JSON to and from Java Bean  
+      using property accessor or using annotations)
   
-  2. Tree Model 
-     (It is analogous to DOM parser for XML)
-  
-  3. Data Binding 
-     (It converts JSON to and from Java Bean using 
-	  property accessor or using annotations)
-  
-  
-  
-  
-  
-> "org.codehaus.jackson.map.ObjectMapper"  its a 
-  concreate class it helps us to Serialize/Marshall 
-  and De-serialize/Unmarshall regular Java objects 
-  (POJOs or Java Beans)
+> "org.codehaus.jackson.map.ObjectMapper"  its a concreate class
+   it helps us to serialize/Marshall and deserialize/Unmarshaller
+   regular Java objects (POJOs or Java Beans)
 
-> There should be ONLY ONE object of "ObjectMapper" 
-  should exists per application. In other words it 
-  should be accessed in "Singleton" way. 
-  NOTE: "ObjectMapper" is not a Singleton Class
+> There should be ONLY ONE object of "ObjectMapper" should exists
+  per application. In other words it should be accessed in "Singleton"
+  way. NOTE: "ObjectMapper" is not a Singleton Class
 
 > The most commonly used methods of the ObjectMapper are
   1. writeValue()
   2. readValue()
   3. writeValueAsString()
   
-  
-  
-  
-  
-  
 > writeValue() Methods
   ---------------------
-  - There are 5 Overloaded Versions writeValue() 
-    Methods and all of them are Non-Static methods
+  - There are various Overloaded Versions writeValue() Methods
+     and all of them are Non-Static methods
   - They helps us to convert Java Object to JSON
   - return type of these methods is "void"
-  - All of these methods takes Object to be converted 
-    as input argument (as a 2nd input argument)
+  - All of these methods takes Object to be converted as input
+    argument (as a 2nd input argument)
 
-	
-	
-	
-	
-	
-	
 > readValue() Methods
   ---------------------
-  - There are various Overloaded Versions readValue() 
-    Methods and all of them are Non-Static methods
+  - There are various Overloaded Versions readValue() Methods
+     and all of them are Non-Static methods
   - They helps us to convert JSON to Java Object
-  - return type of these methods is "Object of the 
-    Desired Class"
-  - All of these methods takes JSON (in various forms) 
-    as input argument
+  - return type of these methods is "Object of the Desired Class"
+  - All of these methods takes JSON (in various forms) as input argument
 
-	
-	
-	
-	
-	
 > writeValueAsString() Method
   ----------------------------
-  - There are NO Overloaded versions of   
-    writeValueAsString() exists
   - It's a Non-Static method
   - It convert Java Object to JSON & return as "String"
  
@@ -1501,33 +1470,28 @@ Processing JSON using Jackson
 Jackson Marshalling Example :-
 ===============================
 ObjectMapper mapper = new ObjectMapper();
-mapper.writeValue(new File("fileNM.json"), 
-                  <Java_Object_tobe_Converted>)
+mapper.writeValue(new File("fileNM.json"), <Java_Object_to be_Converted>)
 
 Jackson Unmarshalling Example :-
 ==================================
 ObjectMapper mapper = new ObjectMapper();
-Object obj = mapper.readValue(new File("fileNM.json"), 
-                               <Class_NM>.class)
-
-
+Object obj = mapper.readValue(new File("fileNM.json"), <Class_NM>.class)
 
 
 Representational State Transfer (REST) Web Services
-======================================================
-> It's an "architectural style" of client-server   
-  application, centered around the "transfer" of 
-  "representations" of "resources" through requests 
-  and responses
+============================================================
+> It's an "architectural style" of client-server application, centered around  
+  the "transfer" of "representations" of "resources" through requests and responses
 
-> In the REST architectural style, data and 
-  functionality (i.e. Web Service Methods) are considered as resources and are accessed using Uniform Resource Identifiers (URIs), typically hyperlinks on the Web
+> In the REST architectural style, data and functionality (i.e. Web Service Methods) 
+  are considered as resources and are accessed using Uniform Resource Identifiers (URIs), 
+  typically hyperlinks on the Web
   
 > The representation of that resource might be 
   - an XML document
   - a JSON File
   - a Simple Text
-  - an Image   
+  - an image file  
   - an HTML page, etc.,
   
 > A client application might 
@@ -1535,151 +1499,569 @@ Representational State Transfer (REST) Web Services
   - modify the resource by updating its data or 
   - delete the resource entirely
 
-> The REST architectural style is designed to use a 
-  stateless communication protocol, typically HTTP
+> The REST architectural style is designed to use a stateless 
+  communication protocol, typically HTTP
   
-  
-  
-  
-  
-  
-  
-  
-> The following principles encourage RESTful 
-  applications to be simple, lightweight, and fast
+> The following principles encourage RESTful applications 
+  to be simple, lightweight, and fast
   
   I. Resource Identification through URI:-
   -----------------------------------------
-  Resources in RESTful web services are identified by URI's
+  Resources in RESTful web services are identified by URIs
  
   II. Uniform Interface:-
   ---------------------------
   Resources are manipulated using a fixed set of 4 operations
-  1. Create
-  2. Read
-  3. Update
-  4. Delete 
+  1. create
+  2. read
+  3. update
+  4. delete 
   
   These operations can be perform using below HTTP Methods respectively
-  
   1. PUT (creates a new resource)
-  2. GET (retrieves the current state of a resource 
-            in some representation)
-  3. POST (transfers a new state onto a resource 
-            OR Update the existing resource)
+  2. GET (retrieves the current state of a resource in some representation)
+  3. POST (transfers a new state onto a resource OR Update the existing resource)
   4. DELETE (Delete an existing resource)
 
   III. Self-descriptive messages:-
   ----------------------------------
-  Resources are decoupled from their representation so that their content can be accessed in a variety of formats, such as HTML, XML, Plain Text, PDF, JPEG, JSON, and other formats.
+  Resources are decoupled from their representation so that their content 
+  can be accessed in a variety of formats, such as HTML, XML, plain text, 
+  PDF, JPEG, JSON, and other formats.
 
-> Hence RESTful web services are loosely coupled, 
-  lightweight web services they are well suited for creating APIs for clients spread across the internet 
+> Hence RESTful web services are loosely coupled, lightweight web services 
+  they are well suited for creating APIs for clients spread across the internet 
 
-  
-  
-  
-  
-  
-  
-  
-  
 
 JAX-RS API
 ============
-> JAX-RS stands for JAVA API for RESTful Web Services
-> JAX-RS makes it easy for developers to build RESTful web services using the Java programming language
-> "javax.ws.rs.*" is the package representation of JAX-RS API
+> JAX-RS stands for JAVA API for RESTful Web 
+  Services
 
-> The JAX-RS API uses "annotations" to simplify the development of RESTful web services. 
+> JAX-RS makes it easy for developers to build 
+  RESTful web services using the Java programming language as compared to SOAP/XML Web Services
+  
+> "javax.ws.rs.*" is the package representation 
+  of JAX-RS API
+
+> The JAX-RS API uses "annotations" to simplify 
+  the development of RESTful web services. 
   So Developers 
-  - can decorate Java Beans with JAX-RS annotations to define resources and 
-  - the actions that can be performed on those resources 
+  - can decorate Java Beans with JAX-RS  
+    annotations to define resources and 
+  - the actions that can be performed on those 
+    resources 
 
   
   
-Summary of JAX-RS Annotations
-==================================================================
+  
+  
+Most Commonly Used HTTP Status Codes 
+in RESTful Web Services
+==================================================
+Codes in the 100 range
+are considered informational. Codes in the 200 range are considered successful. Codes
+in the 300 range are success codes, but fall under the redirection category. Error codes
+are in the 400 to 500 ranges. The 400s are client errors and 500s are server errors.
+
+ADD 406
+304 & 204 will not have a Body
+
+<Successful Responses
+Successful HTTP response code numbers range from 200 to 399.
+
+If the return
+value is null, a successful response code of 204, “No Content,” is returned. The 204
+response is not an error condition. It just tells the client that everything went OK, but
+that there is no message body to look for in the response.
+
+If the JAX-RS resource method’s
+return type is void, a response code of 204, “No Content,” is returned. This is the case
+with our update() and delete() methods.
+
+The HTTP specification is pretty consistent for the PUT, POST, GET, and DELETE
+methods. If a successful HTTP response contains a message body, 200, “OK,” is the
+response code. If the response doesn’t contain a message body, 204, “No Content,” must
+be returned.
+
+For our getCustomer() and create() methods, if the client requests a text/html response,
+the JAX-RS implementation will automatically return a 406, “Not Acceptable,”
+response code with no response body. This means that JAX-RS has a relative URI path
+that matches the request, but doesn’t have a JAX-RS resource method that can produce
+the client’s desired response media type. 
+
+If the client invokes an HTTP method on a valid URI to which no JAX-RS resource
+method is bound, the JAX-RS runtime will send an error code of 405, “Method Not
+Allowed.” So, in our example, if our client does a PUT, GET, or DELETE on the /custom
+ers URI, it will get a 405 response because POST is the only supported method for that
+URI.
+
+The JAX-RS implementation will also return an Allow response header back to
+the client that contains a list of HTTP methods the URI supports. So, if our client did a
+GET /customers in our example, the server would send this response back:
+HTTP/1.1 405, Method Not Allowed
+Allow: POST
+
+The exception to this rule is the HTTP HEAD and OPTIONS methods. If a JAX-RS
+resource method isn’t available that can service HEAD requests for that particular URI,
+but there does exist a method that can handle GET, JAX-RS will invoke the JAX-RS
+resource method that handles GET and return the response from that minus the request
+body.
+
+If there is no existing method that can handle OPTIONS, the JAX-RS implementation
+is required to send back some meaningful, automatically generated response
+along with the Allow header set.
+
+>
+
+> W.K.T Http Staus code is part of the Http 
+  Response & its a Mandatory Information
+  
+> HTTP Status Codes are grouped into 5 Groups. 
+  They are,
+  1. 1xx Informational
+  2. 2xx Success
+  3. 3xx Redirection
+  4. 4xx Client Error
+  5. 5xx Server Error
+  
+> The Most Commonly used HTTP Status Codes in 
+  RESTful Web Services are
+  
+  1. 200 OK 	
+  -----------
+  - Request has been successfully handled
+  
+  2. 201 Created
+  ---------------
+  - The request has been fulfilled and resulted in a new resource being created. 
+  - In this case response may or may not have a body 
+ 
+  3. 204 No Content
+  ------------------
+  - The request has been fulfilled however it does not need to return an response body
+  - The 204 response MUST NOT contain a message-body
+
+  4. 304 Not Modified
+  --------------------
+  - The request has been fulfilled however the 
+    resource is not modified  
+  - The 304 response MUST NOT contain a message-body
+  
+  5. 400 Bad Request
+  ---------------------
+  - The request could not be understood by the 
+    server due to malformed syntax. 
+  - The client SHOULD NOT repeat the request 
+    without modifications.
+  
+  6. 401 Unauthorized
+  ---------------------
+  - The request requires user authentication. 
+  - The response MUST include a header field 
+    containing a challenge applicable to the requested resource. 
+  
+  7. 403 Forbidden
+  -----------------------
+  - The server understood the request, but is 
+    refusing to fulfill it. 
+  - Authorization will not help and the request 
+    SHOULD NOT be repeated.
+  
+  8. 404 Not Found
+  -----------------
+  - The server has not found anything matching the 
+    Request-URI 
+	
+  9. 405 Method Not Allowed
+  -----------------------------
+  - if method is annoted with @GET & if we make a request using any other method ex:- @POST we get this error. <Format this> 
+  
+  10.  415 - Unsupported Media Type
+  ----------------------------------
+  we get this Error when there is Media Type mismatch
+  
+  9. 409 Conflict
+  -----------------
+  - The request could not be completed due to a 
+    conflict with the current state of the resource. 
+  - This code is only allowed in situations where 
+    it is expected that the user might be able to resolve the conflict and resubmit the request. 
+  - The response body SHOULD include enough 
+    information for the user to recognize the source of the conflict.
+  
+  10. 500 Internal Server Error
+  -----------------------------
+  - The server encountered an unexpected condition 
+    which prevented it from fulfilling the request
+  
+  
+  
+  
+Root Resource Classes
+===========================
+> They are Java Classes that are 
+  - annotated with @Path 
+  - have at least "one method" 
+    annotated with @Path 
+    OR 
+    a "resource method designator" annotation (such as @GET, @PUT, @POST, @DELETE)
+	
+> They MUST BE "public" in nature & They MUST have "public default constructor" (ONLY in case of JAXRS–unaware servlet containers)
+
+  
+Resource Methods
+====================
+> They are methods of a "resource class" annotated with a "resource method designator"
+> They SHOULD be public methods
+> They May / May-Not return value
+> i.e. the resource method may returns "void". 
+  This means "No Representation" is returned and response 
+  with a status code of 204 (No Content) will be returned to the client.  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+JAX-RS Annotations
+======================
 
 1. @Path			
 -----------
-> It identifies the URI path. It can be specified on class or method.
-> Avoid using spaces. Instead use underscore (_) or hyphen (-) while 
-  using a long resource name. For example, 
-  use "/authorized_users" instead of "/authorized users"
-> Although URI is case-insensitive, Use lowercase letters
-> It can be used with simple paths like @Path("/users") OR
-> It can be used with varibale names 
-  Syntax : {variable_name} 
-  Ex: @Path("/users/{username}") 
-> OR It can be used with Regular Expressions 
-  Syntax : {variable_name : regular_expression} 
-  Ex: @Path("{id : \\d+}") //It supports digit only
+> It identifies a perticular "Resource Method" in a  
+  "Root Resource Class"
+> It can be specified at "Class" or "Method" level
+> Java classes that you want to be recognized as JAX-RS services must have this annotation.
+> Declaration at Class Level is Mandatory. However
+  declaration at Method Level is Optional
+> If its not present at Method Level then always First
+  Method gets executed
+> Avoid using spaces in Path Name. 
+  Instead use underscore (_) or hyphen (-) while using a long resource name. 
+  For example, 
+  use "/create_employee" instead of 
+      "/create employee"
+> Use lowercase letters in Path Name
+> A @Path value may or may not begin with a '/', 
+  it makes no difference
+> Likewise, @Path value may or may not end in a '/', 
+  it makes no difference
+> Thus request URLs that end or do not end in a '/' 
+  will both be matched
 
-  
-2. @GET, @POST, @PUT, @DELETE, @HEAD and @OPTIONS
---------------------------------------------------------------------
-> This annotations are used with Java Methods
-> The Java method annotated with @GET will process HTTP GET requests
-> The Java method annotated with @POST will process HTTP POST requests
-> The Java method annotated with @PUT will process HTTP PUT requests
-> The Java method annotated with @DELETE will process HTTP DELETE requests
-> The Java method annotated with @HEAD will process HTTP HEAD requests
-> The Java method annotated with @OPTIONS will process HTTP OPTIONS requests
+Few Examples:
+--------------------
+@Path("customers/{firstname}-{lastname}")
+@Path("/")  ===> Can be used with Resource Class 
+
+
+
+
+
+
+2. @<Resource_Method_Designators> 
+  (@GET, @POST, @PUT, @DELETE, @HEAD and @OPTIONS )
+---------------------------------------------------
+> This annotations are used with Java Methods & 
+  they are called as "Resource Method Designator Annotations"
+> The JAX-RS spec disallows multiple method designators 
+  on a single Java method
+> Its Mandatory Information & every Resource Method
+  should have ONLY ONE Resource Method Designator
+> The Java method annotated with @GET will process 
+  HTTP GET requests
+> The Java method annotated with @POST will process 
+  HTTP POST requests
+> The Java method annotated with @PUT will process   
+  HTTP PUT requests
+> The Java method annotated with @DELETE will process 
+  HTTP DELETE requests
+> The Java method annotated with @HEAD will process 
+  HTTP HEAD requests
+> The Java method annotated with @OPTIONS will 
+  process HTTP OPTIONS requests
 > NOTE: There is NO @TRACE and @CONNECT annotation
 
-3. @PathParam
-----------------
-> represents the parameter of the URI path
+  
+NOTE:
+------
+For Resource Methods @Path is Optional, however,
+@<Resource_Method_Designators> is Mandatory (ONLY ONE)
 
-4. @QueryParam
+  
+3. @<*>Param (Parameter Annotations) 
+  (@PathParam, @QueryParam, @FormParam, @HeaderParam, @CookieParam and @MatrixParam)
+--------------------------------------------------------------------------------------
+> Parameters of a "resource method" may be annotated with 
+  parameter-based annotations to extract information from a request
+
+> Usually, these annotations are used on the input arguments of a "Resource Methods"
+
+> A. @PathParam
+-----------------
+  - It represents the parameter of the URI path
+    Syntax : {variable_name} 
+    Ex: @Path("/users/{username}") 
+  
+  - This annotation allows us to extract values from extract a path parameter from the path component of the request URL 
+  
+  - It can be used with Regular Expressions 
+    Syntax : {variable_name : regular_expression} 
+    Ex: @Path("{id : \\d+}") //It supports digit only
+
+> B. @QueryParam
 ----------------
-> represents the parameter of the query string of an URL.
-> If we there are multiple name=value pairs with "same name" 
-  then we should make use of either List / Set to get the data
+  - This annotation allows us to extract values from URL Query Parameters 
   
 
-5. @FormParam
+> C. @FormParam
 ---------------
-> represents the parameter of the form
-> It should not be used with @GET
-
-
-6. @HeaderParam	
+  - This annotation allows us to extract values from "posted" form data
+  - This annotation is used to access "application/x-www-form-urlencoded" request bodies.
+  - In otherwords, whenever we submit the form which has method="post" then request header will 
+	have "Content-Type: application/x-www-form-urlencoded" information
+  - It should not be used with @GET  
+  
+> D. @HeaderParam	
 -----------------
-> represents the parameter of the header
+  - This annotation allows us to extract values from HTTP request headers
+  
 
-
-7. @CookieParam	
+> E. @CookieParam	
 ------------------
-> represents the parameter of the cookie
+  - This annotation allows us to extract values from HTTP request cookies 
+  
 
+> F. @MatrixParam
+-------------------
+  - Matrix parameters are a set of “name=value” in URI path
+    For Ex: 	/users/praveen;userid=abcd
+  - URI can consist of N number of Matrix parameters but they should be separate 
+    by a semi colon “;“
+  - They can be present anywhere in URI  
+  - This annotation allows us to extract values from URI matrix parameters 
+  
+> All these Parameter Annotations refer various parts of an HTTP request. These parts are represented as a string of characters within the HTTP request. 
 
-8. @DefaultValue
+> So we can get them as a String values or else JAX-RS can convert this string data into any Java type that we want, provided that it matches one of the following criteria:
+  1. Be a primitive type (byte, short, int, long, float, double, char & boolean)
+  2. Have a Class Name which has constructor that accepts a single String argument
+  3. Be a 
+     - List<T>, 
+	 - Set<T> or 
+	 - SortedSet<T> 
+	 resulting collection is read-only
+  
+  
+4. @DefaultValue
 ---------------------
-> Assigns a default value to a parameter passed to the method.
+> Assigns a default value to a parameters (Parameter Annotations)
+> If the @DefaultValue is not used in conjunction with "Parameter Annotations" 
+  and if any parameter is not present in the request then value will be 
+  - an "empty collection" for List, Set or SortedSet
+  - "null" for other object types and 
+  - "default values" for primitive types
+
+  
+5. @BeanParam  
+-----------------
+> The @BeanParam annotation is something new added in the JAX-RS 2.0 specification.
+> It allows you to inject an application-specific class whose property methods or fields are annotated with "Parameter Annotations"  
+> The JAX-RS runtime will introspect the @BeanParam parameter’s type for injection annotations and then set them as appropriate.
+  
+ 
+6. @HttpMethod
+-------------------
+> can create new annotations that bind to HTTP methods other than GET, POST, PUT, DELETE, HEAD and PUT.
+> While HTTP is a ubiquitous, stable protocol, it is still constantly evolving. For example, consider the WebDAV protocol.
+
+> WebDAV protocol
+-----------------------
+  - The WebDAV protocol makes the Web an interactive readable and writable medium. 
+  - It allows users to create, change, and move documents on web servers. 
+  - It does this by adding a bunch of new methods to HTTP like MOVE, COPY, MKCOL, LOCK, and UNLOCK.> 
+
+> Although JAX-RS does not define any WebDAV-specific annotations, we could create them ourselves using the @HttpMethod annotation:
+
+	package org.rest.webdav;
+
+	import ...;
+
+	@Target({ElementType.METHOD})
+	@Retention(RetentionPolicy.RUNTIME)
+	@HttpMethod("LOCK")
+	public @interface LOCK {
+	  ...
+	}
+
+> Here, we have defined a new @org.rest.LOCK annotation using @HttpMethod to specify the HTTP operation it binds to. We can then use it on JAX-RS resource methods:
+
+	@Path("/employee")
+	public class EmployeeResource {
+
+	   @Path("{id}")
+	   @LOCK
+	   public void lockEmployeeID(@PathParam("id") String id) {
+		  ...
+	   }
+	}
+
+	
+> Now WebDAV clients can invoke LOCK operations on our web server and they will be dispatched to the lockEmployeeID() method.	
+	
+7. @Encoded
+--------------
+> "Parameter Annotations" must all be encoded by the HTTP specification. 
+> By default, JAX-RS decodes these values before converting them into the desired Java types. 
+> Sometimes, we may want to work with the raw encoded values. 
+> In this case, using the @javax.ws.rs.Encoded annotation gives you the desired effect:	
+> Ex:
+-----
+  @GET
+  @Produces("application/xml")
+  public String getData(@Encoded @QueryParam("regno") String regNum) {...}
 
 
-9. @Produces
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+8. @Produces
 ---------------
-> This annotation is used to specify the MIME media types of 
-  representations a resource can produce and send back to the client
-> For example, "text/plain", "application/json", "application/xml", etc.,
-> It should be used ONLY Once with the Method
+> This annotation is used to specify the MIME media 
+  types of representations a resource can produce and send back to the client
+  
+> For example, 
+  - "text/plain", 
+  - "application/json", 
+  - "application/xml", etc.,
+  
+> @Produces can be applied at both the class as well 
+  as at method levels
+  
+> If @Produces is applied at the class level, all the 
+  methods in a resource can produce the specified   MIME types by default
+  
+> If it is applied at the method level, it overrides 
+  any @Produces annotations applied at the class level
 
+> For Example:
+  
+  @Path("/myResource")
+  @Produces("text/plain")
+  public class SomeResource 
+  {
+      @GET
+      public String doGetAsPlainText() {
+          ...
+      }
+   
+      @GET
+      @Produces("text/html")
+      public String doGetAsHtml() {
+          ...
+      }
+  }
+ 
+ - The doGetAsPlainText method defaults to the MIME 
+   type of the @Produces annotation at the class level
+   
+ - The doGetAsHtml method's @Produces annotation 
+   overrides the class-level @Produces setting, and specifies that the method can produce HTML rather than plain text
+  
+> The value of @Produces is an array of String of 
+  MIME types. For example:
+  @Produces({"image/jpeg", "image/png"})
+
+> Hence more than one media type may be declared in   
+  the same @Produces declaration. 
+
+  Ex:
+  ---
+  @GET
+  @Produces({"application/xml", "application/json"})
+  public String doGetAsXmlOrJson() {
+  ...
+  } 
+
+- The doGetAsXmlOrJson method will get invoked if 
+  either of the media types application/xml and application/json are acceptable 
+
+- If both are equally acceptable (i.e. Request with 
+  Accept Header value as "*/*"), then the former will be chosen because it occurs first
+  
+> If no methods in a resource are able to produce the 
+  MIME type in a client request, the Jersey runtime sends back an HTTP “406 Not Acceptable” error 
+  
 10. @Consumes
 ---------------
-> This annotation is used to specify the MIME media types of representations a resource can consume that were sent by the client.
+> This annotation is used to specify the MIME media 
+  types of representations a resource can consume from the client
+  
+> @Consumes can be applied at both the class and the 
+  method levels 
+
+> If it is applied at the class level, all the methods
+  in a resource can consume the specified MIME types by default 
+
+> If it is applied at the method level, it overrides 
+  any @Consumes annotations applied at the class level
+
+> The value of @Consumes is an array of String of 
+  acceptable MIME types. For example:
+  @Consumes({"text/plain", "text/html"})
+
+> If a resource is unable to consume the MIME type of 
+  a client request, the Jersey runtime sends back an HTTP “415 Unsupported Media Type” error
+
+javax.ws.rs.core.MediaType
+===============================
+> It's a Concreate Class part of JAX-RS API which has 
+  lot of Constants with most popular MIME Types
+
+> Rather than typing MIME media types, It is possible 
+  to refer to constant values, which may reduce typographical errors
+
+EX:-
+------
+Rather than typing 
+@Produces("application/xml")
+
+We can use
+@Produces(MediaType.APPLICATION_XML)
+
+JAXB and JSON JAX-RS Handlers
+=================================
+> Once we apply JAXB annotations to Java classes, 
+  with JAX-RS API it is very easy to exchange XML/JSON data between client and web services
+
+> The built-in JAXB and JSON (Jettison, Jackson, etc.,)
+  handlers will automatically takescare of Marshalling 
+  & Unmarshalling of these Java Classes to XML/JSON
+
+> Also, by default, JAX-RS API will take care of the 
+  creation and initialization of JAXBContext instances
+  
+> Because the creation of JAXBContext instances can 
+  be expensive, JAX-RS implementations usually cache them after they are first initialized.
 
 
-11. @MatrixParam
--------------------
-> Binds the parameter passed to the method to a HTTP matrix parameter in path.					
-> Matrix parameters are a set of “name=value” in URI path
-  For Ex: 	/users/praveen;userid=abcd
-> URI can consist of N number of Matrix parameters but they should be separate 
-  by a semi colon “;“
-> They can be present anywhere in URI
 
 
 
@@ -1687,176 +2069,851 @@ Summary of JAX-RS Annotations
 
 
 
-@Context
 
-Context of the resource. For example, HTTPRequest as a context.		
+
+
+
+
 	
 
-	
-	
-	
+
+
+
+
+
+
+
 
 javax.ws.rs.core.Response
 ============================
+> Many times we may need to send "additional information OR Metadata information" along with the response like Cookies, Last Modified Date, Language, Cacheing Information, Location URI of the Newly created Resource, etc.,
+
+> In such cases, resource methods can return instances of javax.ws.rs.core.Response
+
+> "javax.ws.rs.core.Response" is an Abstrat Class and 
+  "javax.ws.rs.core.Response.ResponseBuilder" is an inner abstract class of Response. 
+  Both are part of JAX-RS API and both classes have couple of abstract methods. 
+
+> The Classes which extends above abstract classes are in Jersey Framework
+1. org.glassfish.jersey.message.internal.OutboundJaxrsResponse extends Response
+2. org.glassfish.jersey.message.internal.OutboundJaxrsResponse$Builder extends ResponseBuilder
+
+> Hence implementation of abstract methods present in Response & ResponseBuilder classes are provided in Jersey Framework. 
+
+> Response object cannot be created directly; instead, 
+  1. First we need to get the javax.ws.rs.core.Response.ResponseBuilder Object by invoking one of the static helper methods (depending on our need) of javax.ws.rs.core.Response
+  
+  2. ResponseBuilder object has many non-static methods which would help us to set the Metadata information to Response. Hence we need to invoke one/more non-static methods (depending on our need) on ResponseBuilder
+  
+  3. Finally invoke build() method to get the Response objects
+  
+  Psuedo-Code 
+  ------------
+  ResponseBuilder builder = Response.one-of-the-Static_Methods();
+  builder.one-or-more-Non_Static_Methods();
+  Response resp = builder.build();
+
+> The ResponseBuilder class is a factory that helps to create one individual Response object
+
+> For example, below is the code which returns 201 (Created) status code and a Location header whose value is the URI to the newly created resource
+
+  @POST
+  @Consumes("application/xml")
+  public Response createResource(String content) 
+  {
+    //Code to Create the Resource using content
+    URI createdUri = ...
+    return Response.created(createdUri).build();
+  }
 
 
 
 
 
 
-Jersey RESTful Web Services Framework
-=========================================
-Jersey RESTful Web Services framework is an open source, production quality, framework for developing RESTful Web Services in Java that provides support for JAX-RS APIs and serves as a JAX-RS (JSR 311 & JSR 339) Reference Implementation.
+The Status Enum (javax.ws.rs.core.Response.Status)
+=======================================================
+> It's always better to have a numeric constant to set a Response status code rather than hardcoding to aviod typographical errors
 
-The accepted answer does work, but only if the webapp is deployed to an app server like Glassfish or Wildfly, and possibly servlet containers with EE extensions like TomEE. It doesn't work on standard servlet containers like Tomcat, which I'm sure most people looking for a solution here want to use.
+> The JAX-RS specification provides a "Java Enum" called javax.ws.rs.core.Response.Status for this purpose
 
-If you're using a standard Tomcat install (or some other servlet container), you need to include a REST implementation since Tomcat doesn't come with one. If you're using Maven, add this to the dependencies section:
+> Status is an Enum declared inside "javax.ws.rs.core.Response" class
 
-
-REST stands for REpresentational State Transfer. REST is a web standards based architecture and uses HTTP Protocol for data communication. It revolves around resources where every component is a resource and a resource is accessed by a common interface using HTTP standard methods. REST was first introduced by Roy Fielding in year 2000.
-
-
-In REST architecture, a REST Server simply provides access to resources and the REST client accesses and presents the resources. Here each resource is identified by URIs/ Global IDs. REST uses various representations to represent a resource like Text, JSON and XML. JSON is now the most popular format being used in Web Services.
-
-HTTP Methods
-The following HTTP methods are most commonly used in a REST based architecture.
-
-GET − Provides a read only access to a resource.
-
-PUT − Used to create a new resource.
-
-DELETE − Used to remove a resource.
-
-POST − Used to update an existing resource or create a new resource.
-
-OPTIONS − Used to get the supported operations on a resource
+> It consist of Constants for commonly used status codes defined by HTTP
+  Ex:- Response.Status.NOT_FOUND
 
 
 
-Architecturally, REST doesn't care what the media type is. HTML is just as much a resource representation as anything else. When you click on a link in a browser to visit a static HTML page, that is a "Representational State Transfer".
 
-REST - An Architectural Style, Not a Standard
 
-REST is not a standard. You will not see the W3C putting out a REST specification. You will not see IBM or Microsoft or Sun selling a REST developer's toolkit. Why? Because REST is just an architectural style. You can't bottle up that style. You can only understand it, and design your Web services in that style. (Analogous to the client-server architectural style. There is no client-server standard.)
-While REST is not a standard, it does use standards:
-HTTP
-URL
-XML/HTML/GIF/JPEG/etc (Resource Representations)
-text/xml, text/html, image/gif, image/jpeg, etc (MIME Types)
 
-REST does not deal with implementation details (e.g., using Java servlets or CGI to implement a Web service)
 
- REST-compliant Web services allow requesting systems to access and manipulate textual representations of Web resources using a uniform and predefined set of stateless operations.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Handling Cookies in RESTFul Web Services
+==============================================
+> W.K.T Cookies are little piece of information in the form of "name=value String pair" exchanged between Client & Server
+> Servers can store state information in cookies on the client, and can retrieve that information
+when the client makes its next request
+> Many web applications use cookies to set up a session between the client and the server. 
+> They also use cookies to remember identity and user preferences between requests. These cookie values are transmitted back and forth between the client and server
+
+
+1. Sending Cookie as part of the Response:-
+-------------------------------------------
+> javax.ws.rs.core.NewCookie is a Concreate Class part of JAX-RS API which extends javax.ws.rs.core.Cookie  
+> It's used to create a new HTTP cookie and transferred as part of a response.
+> To set cookies as part of response, create instances of NewCookie and pass them to the method ResponseBuilder.cookie(). 
+
+> example:
+-----------
+@Path("/myservice")
+public class MyService 
+{
+	@GET
+	public Response get() 
+	{
+		NewCookie cookie = new NewCookie("key", "value");
+		ResponseBuilder builder = Response.ok("hello", "text/plain");
+		return builder.cookie(cookie).build();
+	}
+}
+
+
+
+2. Getting Cookie from the Request:-
+-------------------------------------------
+> javax.ws.rs.core.Cookie Represents the value of a HTTP cookie, transferred in a request
+
+> The @javax.ws.rs.CookieParam annotation allows us to inject cookies sent by a client
+request into your JAX-RS resource methods. 
+
+> For example, let’s say if web service sends a customerId cookie to clients so that we can track users as they invoke and interact with our web services, code to pull in this information might look like this:
+
+@Path("/myservice")
+public class MyService 
+{
+	@GET
+	@Produces("text/html")
+	public String get(@CookieParam("customerId") int custId) 
+	{
+		...
+	}
+}
+
+> @CookieParam makes JAX-RS to search all cookies with the name "customerId". It then converts the correspondig value into an int and injects it into the custId parameter.
+
+> If we need more information about the cookie other than its value, we can instead inject a javax.ws.rs.core.Cookie object
+
+@Path("/myservice")
+public class MyService 
+{
+	@GET
+	@Produces("text/html")
+	public String get(@CookieParam("customerId") Cookie custCookie) 
+	{
+		...
+	}
+}
+
+> The Cookie class has additional contextual information about the cookie beyond its name and value:
+
+package javax.ws.rs.core;
+
+public class Cookie
+{
+	public String getName() {...}
+	public String getValue() {...}
+	public int getVersion() {...}
+	public String getDomain() {...}
+	public String getPath() {...}
+	...
+}
+
+NOTE:-
+=======
+- Use javax.ws.rs.core.NewCookie to send the Cookies as part of the Response
+- Use javax.ws.rs.core.Cookie to get the Cookie information from Request
+
+
+HTTP "Content-Disposition" Header
+===================================
+> It's optional in HTTP can be present either in HTTP Request or Response
+
+> Content-Disposition in HTTP Response indicates 
+  - if the content is to be displayed in the browser or 
+  - as an attachment (i.e. downloaded and saved locally)
+
+> Content-Disposition will be present ONLY in "multipart/form-data" HTTP Request Body. It's subpart of a multipart body to give information about the field it applies to. The subpart is delimited by the boundary defined in the Content-Type header. 
+  
+> Syntax for HTTP Request Header
+  Content-Disposition: form-data
+  Content-Disposition: form-data; name="fieldName"
+  Content-Disposition: form-data; name="fieldName"; filename="filename.jpg"
+  
+> Syntax for HTTP Response Header
+  Content-Disposition: inline
+  Content-Disposition: attachment
+  Content-Disposition: attachment; filename="filename.jpg"
+
+> The first parameter of "Content-Disposition" in "HTTP Response Header" is either  
+  - "inline" (default value, indicating it can be display inside the Web page, or as the Web page) or 
+  - "attachment" (indicating it should be downloaded; most browsers presenting a 'Save as' dialog, prefilled with the value of the filename parameters if present
+
+> The first parameter of "Content-Disposition" in "HTTP Request Header" is always "form-data".   
+  Additional parameters are case-insensitive and have arguments, that use quoted-string syntax after the '=' sign. Multiple parameters are separated by a semi-colon (';').
+
+javax.ws.rs.core.HttpHeaders
+=============================
+> It's an interface part of JAX-RS API which has various varibales which indicates/represents various headers of HTTP
+
+> to aviod typographical errors it's always better to use these constants whenever we need to deal with HTTP headers
+
+
+Dealing with Large Binary Objects (i.e. Uploading File) using Jersey 
+=======================================================================
+> While developing web services we may need to create web services which needs to deal with large binary Objects such as images, documents and various types of media files
+
+> When "Web Service Consumer" wants to upload any files then
+  - Request SHOULD have method="post" and 
+  - Request should have encoded POST body
+
+> For this Consumer have to use, enctype="multipart/form-data" encoding to deal with a large binary object uploaded via <input type="file">
+
+> Unfortunately, JAX-RS API doesnot have standardized Annotation to deal with large files
+
+> to overcome this probelm Jersey provides "@FormDataParam" Annotation
+
+@FormDataParam Annotation
+===========================
+> This annotation binds the named body part(s) of a "multipart/form-data" request entity body to a   
+  - resource method parameter or 
+  - a class memeber variable (@BeanParam) as appropriate
+
+> This annotation  should be used in conjunction with the media type "multipart/form-data" should be used for submitting and consuming forms that contain files, non-ASCII data, and binary data.
+
+> Jersey allows to inject @FormDataParam onto following parameter types
+  - Any type of parameter for which a message body reader is avilable
+  - "org.glassfish.jersey.media.multipart.FormDataContentDisposition" 
+    this represents the form data content disposition header 
+  
+> "FormDataContentDisposition" is a concreate class of Jersey which consist 
+  of Metadata information of the "multipart/form-data" request 
+  like file name, size, creation date, etc.,
+
+
+More About Root Resource Class
+==================================
+> So far, we’ve applied JAX-RS annotations directly on the Java class that has RESTful web services
+
+> In JAX-RS, we are also allowed to define a Java interface that contains all our JAX-RS annotation metadata instead of applying all our annotations to our implementation class
+
+Ex:-
+====
+import ....
+
+public interface FileDownloadService 
+{
+	@GET
+	@Path("/image")
+	@Produces("image/png")
+	public Response getImageFile();
+}
+
+
+> With an interface, we can defines web service methods that gives high level picture on how our RESTful services looks like without exposing implementation  details
+
+> Interfaces are a great way to isolate all this metadata into one logical and readable construct
+
+> Hence they helps us to achieve readbility because business logic isn’t “polluted” with so many annotations
+
+> The implementation class looks like
+
+@Path("/file/download")
+public class FileDownloadServiceImpl implements FileDownloadService {
+
+	public Response getImageFile() {
+		.....
+		.....
+		.....
+	}
+}
+
+NOTE: 
+-------
+- @Path SHOULD be present at class level not at Interface level
+- Hence, Interfaces helps us to design our services based on our need (with more than one implementation class with different @Path)
+
+> As we can see, except @Path, no other JAX-RS annotations are needed within the implementing class. 
+All our metadata is confined to the FileDownloadService interface.
+
+> If we want to, we can override the metadata defined in our interfaces by reapplying
+annotations within our implementation class. For example,
+
+@Path("/file/download")
+public class FileDownloadServiceImpl implements FileDownloadService {
+
+	@GET
+	@Path("/img")
+	@Produces("image/png")
+	public Response getImageFile() {
+		.....
+		.....
+		.....
+	}
+}
  
- REST (REpresentational State Transfer) is an architectural style, and an approach to communications that is often used in the development of Web services. The use of REST is often preferred over the more heavyweight SOAP (Simple Object Access Protocol) style because REST does not leverage as much bandwidth, which makes it a better fit for use over the Internet. The SOAP approach requires writing or using a provided server program (to serve data) and a client program (to request data).
+> In the above example, we are overriding the metadata defined in an interface for one specific
+method. "When overriding metadata for a method, you must specify all the annotation
+metadata for that method even if you are changing only one small thing"
 
- REST, which typically runs over HTTP (Hypertext Transfer Protocol)
- 
- The REST style emphasizes that interactions between clients and services is enhanced by having a limited number of operations (verbs). Flexibility is provided by assigning resources (nouns) their own unique Universal Resource Identifiers (URIs). Because each verb has a specific meaning (GET, POST, PUT and DELETE), REST avoids ambiguity.
- 
- 
- 
-Jersey RESTful Web Services framework is open source, production quality, framework for developing RESTful Web Services in Java that provides support for JAX-RS APIs and serves as a JAX-RS (JSR 311 & JSR 339) Reference Implementation. Jersey framework is more than the JAX-RS Reference Implementation. Jersey provides it’s own API that extend the JAX-RS toolkit with additional features and utilities to further simplify RESTful service and client development.
+> However, it is not recommend to override metadata in implementation class. 
 
-What is a Resource?
-REST architecture treats every content as a resource. These resources can be Text Files, Html Pages, Images, Videos or Dynamic Business Data. REST Server simply provides access to resources and REST client accesses and modifies the resources. Here each resource is identified by URIs/ Global IDs. REST uses various representations to represent a resource where Text, JSON, XML. The most popular representations of resources are XML and JSON.
+> The whole point of using an interface to apply our JAX-RS metadata is to isolate the information and define it in one place. If annotations are scattered about between implementation class & interface, then code becomes a lot harder to read and understand
 
+> It's also possible that root resource class can have super class (Abstract & Concrete)
+
+> If Super Class is an Abstract Class then it SHOULD NOT have @Path at class level
 
 
 
 
- 
-JAX-RS API Annotations
+
+
+
+
+
+
+
+Deployment and Integration
+====================================
+> JAX-RS Web Applications can be deployed 
+
+  1. within a standalone servlet container, like 
+     - Apache Tomcat
+     - Jetty
+     - JBossWeb, etc., 
+	 
+  2. within the servlet container of Application Server, like 
+     - JBoss 
+     - Wildfly
+     - Weblogic
+     - Websphere or 
+     - Glassfish, etc.,
+  
+> How JAX-RS Web Applications is deployed within a servlet container varies between 
+
+  1. JAX-RS-Aware Servlet Containers 
+     (like any JavaEE supported Application Servers or 
+      standalone Servlet 3.x containers like Tomcat) 
+  
+  2. JAXRS–Unaware (Older) Servlet Containers
+
+Deployment within JAX-RS-Aware Containers
+===========================================
+> Application servers that are certified under Java EE 6 are required to 
+  have built-in support for JAXRS 1.1
+  
+> Application servers that are certified under Java EE 7 are required to 
+  have built-in support for JAX-RS 2.0
+  
+> To deploy JAX-RS application in JAX-RS-Aware Containers, 
+  we should have 
+  - at least one Java Class which extends "javax.ws.rs.core.Application" and
+  - annotated with "@ApplicationPath"
+  then JAX-RS–aware container will automatically deploy that Application
+
+> For Example :-
+  --------------
+  package com.mycomp.myapp;
+  
+  import javax.ws.rs.ApplicationPath;
+  import javax.ws.rs.core.Application;
+  
+  @ApplicationPath("/services")
+  public class MyRestApplication extends Application 
+  {
+	....
+	....
+  }
+
+> The @ApplicationPath annotation will set up a base path to whatever the WAR’s context root is.
+  If WAR file name is "mywebapp" then URL will looks like,
+  
+  http://<Domain-Name>:<Port>/mywebapp/services/<Paths-of-Root_Resource_Class_and_Method>
+
+javax.ws.rs.core.Application
+==============================
+> It's a Concreate Class present in JAX-RS API 
+
+> The Application class is the only portable way of telling container that 
+  which web services (@Path annotated classes) we want to be deployed. 
+  This Class list "Classes and Objects" that JAX-RS is supposed to deploy. 
+  
+> Application Class has below 3 methods & hence subclass of this class can 
+  override any/all/none of these methods
+  1. public Set<Class<?>> getClasses()
+  2. public Set<Object> getSingletons()
+  3. public Map<String, Object> getProperties()
+  
+> The getClasses() method returns a list of JAX-RS web service and provider classes. 
+  These Classes will get instantiated once request comes & garbage collected once response is given (non-singleton in nature). These Classes SHOULD have public default constructor. In this case, its a Container responsibility to create an instance of resource class
+  
+> The getSingletons() method returns a list of preallocated JAX-RS web services and providers. 
+  These Classes will get instantiated during the server start-up & garbage collected during the server shut down. Hence they are "singleton" in nature. These Classes need not to have public default constructor. In this case, we as a developer, are responsible for creating these objects.
+
+> The getProperties() method returns a map of custom application-wide properties
+
+> The JAX-RS runtime will iterate through the list of objects and register them internally.
+
+> Along with creating a class which extends Application class we still need at least an 
+  empty web.xml file:
+  
+   <?xml version="1.0" encoding="UTF-8"?>
+   <web-app xmlns="http://java.sun.com/xml/ns/javaee"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+								http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+								version="3.0">
+   </web-app>
+
+NOTE:-
+======
+> We can fully leverage "servlet class scanning abilities" of application server incase 
+  if we don't override getClasses() and getSingletons() OR both return an empty set
+  
+> For Example:-
+  -------------
+  @ApplicationPath("/services")
+  public class MyRestApplication extends Application 
+  {
+	//Empty Class
+  }
+   
+> When scanning, the application server will look within WEB-INF/classes and any JAR
+file within the WEB-INF/lib directory
+
+> It will add any class annotated with @Path to the list of things that need to be deployed and registered with the JAX-RS runtime
+
+> You can also deploy as many Application classes as you want in one WAR
+
+> The scanner will also ignore any Application classes not annotated with @ApplicationPath
+
+> You can also override the @ApplicationPath annotation via a simple servlet mapping
+  within web.xml:
+
+   <?xml version="1.0" encoding="UTF-8"?>
+   <web-app xmlns="http://java.sun.com/xml/ns/javaee"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+								http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+								version="3.0">
+		<servlet-mapping>
+			<servlet-name>com.mycomp.myapp.MyRestApplication</servlet-name>
+			<url-pattern>/*</url-pattern>
+		</servlet-mapping>
+   </web-app>
+   
+> The servlet-name is the fully qualified class name of your Application class. 
+  In this case, we can also omit the @ApplicationPath annotation entirely.
+
+
+
+Deployment within a JAX-RS-Unaware Container
+================================================
+> If Servlet containers are 2.x or older then we have to manually configure web.xml 
+  to load your JAX-RS implementation’s proprietary servlet class
+
+> For Example, 
+
+  Jersey
+  --------
+
+  <servlet>
+  	<servlet-name>GlashFishJersey</servlet-name>
+  	<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+  	<init-param>
+  		<param-name>jersey.config.server.provider.packages</param-name>
+  		<param-value>com.mycomp.myapp;</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GlashFishJersey</servlet-name>
+  	<url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+
+  RestEasy
+  --------
+  
+  <servlet>
+	<servlet-name>JAXRS</servlet-name>
+	<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+	<init-param>
+		<param-name>javax.ws.rs.Application</param-name>
+		<param-value>com.mycomp.myapp.MyRestApplication</param-value>
+	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+	<servlet-name>JAXRS</servlet-name>
+	<url-pattern>/*</url-pattern>
+  </servlet-mapping>
+
+> The <servletmapping> specifies the base URI path for the JAX-RS runtime
+
+> The <urlpattern> specifies that all incoming requests should be routed through our JAX-RS implementation. URL pattern should end with *
+
+> "ServletContainer" in case of Jersey is a Concreate Class which extends HttpServlet. In otherwords
+  its a Servlet, takes the all the incoming requests & routes to correspondig resource class
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+JAX-RS Client API 
+====================
+> The JAX-RS Client API provides a high-level API for accessing any REST resources, not just JAX-RS services. 
+
+> The Client API is defined in the "javax.ws.rs.client.*" package
+
+> The following steps are needed to access a REST resource using the Client API.
+1. Obtain an instance of the javax.ws.rs.client.Client interface
+2. Configure the Client instance with a target
+3. Create a request based on the target
+4. Invoke the request
+5. Process the Response
+
+
+1. Obtaining the Client Instance
+====================================
+> To utilize the client API it is first necessary to build an instance of a Client using one of the static ClientBuilder factory methods.
+
+  //First Approch
+  Client client = ClientBuilder.newClient();  
+  
+  OR
+  
+  //Second Approch
+  ClientBuilder builder = ClientBuilder.newBuilder(); 
+  Client client = builder.build();
+
+> ClientBuilder is an Abstract Class part of JAX-RS API which has "N" number of Abstract Methods is the Main entry point to the client API. 
+
+> "org.glassfish.jersey.client.JerseyClientBuilder" part of Jersey framework is a concreate class which 
+  extends ClientBuilder
+  
+  public class JerseyClientBuilder extends ClientBuilder
+
+> newBuilder() is a Static method of ClientBuilder Create a new instance of ClientBuilder 
+
+> build() is a non-static method but abstract method, return type is Object of type "Client"
+  public abstract Client build();
+
+> Hence the implemetation of this method is provided by the JAX-RS implementation provider such as Jersey, CXF, etc.,
+
+
+> newClient() is a Static method of ClientBuilder, it returns new Client instance 
+
+> newClient() method  which internally invokes "newBuilder().build()"
+  
+    public static Client newClient() {
+        return newBuilder().build();
+    }
+
+> "javax.ws.rs.client.Client" is an Interface part of JAX-RS API. Implementation class provided by the JAX-RS implementation provider such as Jersey, CXF, RestEasy, etc.,
+
+> "org.glassfish.jersey.client.JerseyClient" part of Jersey framework is a concreate class which  
+   implements "javax.ws.rs.client.Client"
+   
+   public class JerseyClient implements javax.ws.rs.client.Client
+  
+> We can go for 2nd approch, in a slightly more advanced scenarios (i.e. if you want to interact with web services using https protocol), where ClientBuilder can be used to configure additional client instance properties, such as a SSL transport settings, etc.,
+  
+> For http we can go for First Approch
+
+> Use the close() method to close Client instances after it's job is done
+
+> Client instances are heavyweight objects. For performance reasons, limit the number
+of Client instances, as the initialization and destruction of these instances may be expensive 
+
+
+*/
+2. Setting the Client Target
 ===============================
-> JAX-RS API provides following annotations to develop RESTful applications in java. 
-> The javax.ws.rs package contains JAX-RS annotations.
+> The target of a client, the REST resource at a particular URI, is represented by an instance of the 
+javax.ws.rs.client.WebTarget interface.
 
-No.	Annotation		Description
-1.	@Path			
+> we can obtain a WebTarget instance by invoking target() method and passing in the URI of the target REST resource.
 
-2.	@PathParam		represents the parameter of the URI path.
-3.	@GET			specifies method responds to GET request.
-4.	@POST			specifies method responds to POST request.
-5.	@PUT			specifies method responds to PUT request.
-6.	@HEAD			specifies method responds to HEAD request.
-7.	@DELETE			specifies method responds to DELETE request.
-8.	@OPTIONS		specifies method responds to OPTIONS request.
-9.	@FormParam		represents the parameter of the form.
-10.	@QueryParam		represents the parameter of the query string of an URL.
-11.	@HeaderParam	represents the parameter of the header.
-12.	@CookieParam	represents the parameter of the cookie.
-13.	@Produces		defines media type for the response such as XML, PLAIN, JSON etc. 
-					It defines the media type that the methods of a resource class or 
-					MessageBodyWriter can produce.
-14.	@Consumes		It defines the media type that the methods of a resource class or 
-					MessageBodyReader can produce.
+Client client = ClientBuilder.newClient();
+WebTarget myResource 
+        = client.target("http://www.example.com/webapi");
 
-@MatrixParam
+> "javax.ws.rs.client.WebTarget" is an Interface part of  
+  JAX-RS API
 
-Binds the parameter passed to the method to a HTTP matrix parameter in path.					
-		
+> "org.glassfish.jersey.client.JerseyWebTarget" part of Jersey framework is a concreate class which  implements "javax.ws.rs.client.WebTarget"   
 
-15
+> For complex REST resources, it may be beneficial to create several instances of WebTarget. For example, 
 
-@DefaultValue
+Client client = ClientBuilder.newClient();
+WebTarget base 
+         = client.target("http://www.example.com/webapi");
 
-Assigns a default value to a parameter passed to the method.
+//http://www.example.com/webapi/read
+WebTarget read = base.path("read");
 
-16
+//http://www.example.com/webapi/write
+WebTarget write = base.path("write");
+  
+> In the above example, a base target is used to construct
+ several other targets that represent different services provided by a REST resource.
 
-@Context
+> The WebTarget.path() method creates a new WebTarget instance by appending the current target URI with the path that was passed in
+  
+  
+  
+  
+  
+  
+  
 
-Context of the resource. For example, HTTPRequest as a context.		
+3. Create a request based on the target
+=========================================
+> After setting and applying any configuration options to the target, we one of the WebTarget.request() methods to begin creating the request. 
+  
+> This is usually accomplished by passing to WebTarget.request() the accepted media response type for the request 
+- either as a string of the MIME type or 
+- using one of the constants in javax.ws.rs.core.MediaType
+  
+> The WebTarget.request() method returns an instance of javax.ws.rs.client.Invocation.Builder, a helper object that provides methods for preparing the client request.
+
+> "Invocation" is an Interface and "Builder" is a 
+  inner-interface of "Invocation"
+
+> Invocation.Builder has a lot of methods that allow us to 
+  - set different types of request headers
+  - various acceptXXX() methods for content negotiation
+  - cookie() methods allow us to set HTTP cookies you want to return to the server
+
+> NOTE:-
+---------
+- WebTarget has additional request() methods whose parameters take one or more String or MediaType parameters
+
+- These parameters are media types you want to include in an Accept header
+
+- It makes the code more readable if you use the Invocation.Builder.accept() method instead. However it's a matter of personal preference
+  
+> Example:-
+----------------
+Client client = ClientBuilder.newClient();
+WebTarget target 
+    = client.target("http://www.example.com/webapi/read");
+
+Invocation.Builder builder 
+                 //= target.request("text/html"); OR
+                   = target.request(MediaType.TEXT_HTML);
+//OR
+
+WebTarget target 
+     = client.target("http://www.example.com/webapi/read");
+target.request(MediaType.TEXT_HTML)  
+Invocation.Builder builder = target.request();
+
+
+
+
+
+
+
+4. Invoke the request
+=============================
+> After setting the media type, invoke the request by calling one of the methods of the Invocation.Builder instance that corresponds to the type of HTTP request the target REST resource expects. 
+
+> These methods are:
+  1. head()
+  2. trace()
+  3. put()
+  4. post()
+  5. delete()
+  6. options()
+  7. get()
+
+> The return type should correspond to the entity returned by the target REST resource.
+
+> If the target REST resource is expecting an HTTP POST request, call the Invocation.Builder.post method
+
+StoreOrder order = new StoreOrder(...);
+
+Client client = ClientBuilder.newClient();
+WebTarget myResource 
+  = client.target("http://www.example.com/webapi/write");
+  
+TrackingNumber trackingNumber 
+	= myResource
+		.request(MediaType.APPLICATION_XML)
+		.post(Entity.xml(order), TrackingNumber.class);
+									
+> In the above example, the return type is a custom class and is retrieved by setting the type in the Invocation.Builder.post(Entity<?> entity, Class<T> responseType) method as a parameter
+
+> If the return type is a collection, use 
+javax.ws.rs.core.GenericType<T> as the response type parameter, where T is the collection type
+
+List<StoreOrder> orders 
+		= client
+			.target("http://www.example.com/webapi/")
+			.path("allOrders")
+			.request(MediaType.APPLICATION_XML)
+			.get(new GenericType<List<StoreOrder>>() {});
+							
+> In the above example, methods are chained together in the Client API to simplify how requests are configured and 
+invoked
+
+
+
+
+5. Process the Response
+=========================
+> Certain versions of request methods (get(), head(), 
+  etc.,) returns"javax.ws.rs.core.Response" object
+
+> This is the same Response class that is used on the server side. This gives us more fine-grained control of the HTTP response on the client side.
+
+> For Example
+----------------
+import javax.ws.rs.core.Response;
+
+Response response 
+     = client
+		.target("http://www.ecommerce.com/customers/123")
+		.accept("application/json")
+		.get();
+
+try 
+{
+  if (response.getStatus() == 200) {
+   Customer customer = response.readEntity(Customer.class);
+  }
+}finally{
+  response.close();
+}
+
+> In the above example, we invoke an HTTP GET to obtain a Response object. We check that the status is OK and if so,extract a Customer object from the returned JSON document
+by invoking Response.readEntity(). 
+
+> The readEntity() method matches up the requested Java type and the response content with an appropriate MessageBodyReader
+
+> Reponse object can be used at Producer/Server side as well as at Consumer/Client code
+  - @Producer side, it's used to send the Response with additional/metadata information
+  - @Consumer side, it's used to get the Response to get more information about the response
+
+> Reponse object has lot of static methods and all of them 
+returns object of "ResponseBuilder". These methods should be used for sending the Response as part of"Producer / Server" code
+
+> Reponse object also has lot of Getter methods 
+(ex:- getCookies(), getHeaders(), getLastModified(), 
+ etc.,) which helps us to get additional/metadata information from Request
+
+> NOTE:- readEntity() fectches the "actual response" and other Getter methods provides "additional information" about the response
+ 
+> readEntity() method should be invoked only once unless we buffer the response with the bufferEntity() method. 
+
+> For example:
+-------------------
+Response response 
+   = client
+	  .target("http://www.ecommerce.com/customers/123")
+	  .accept("application/json")
+	  .get();
+					
+try 
+{
+  if (response.getStatus() == 200) {
+   response.bufferEntity();
+   Customer customer = response.readEntity(Customer.class);
+   Map rawJson = response.readEntity(Map.class);
+ }
+} finally {
+	response.close();
+}
+
+> In the above xample, the call to bufferEntity() allows us to extract the HTTP response content into different Java types, the first type being a Customer and the second 
+a java.util.Map that represents raw JSON data
+
+> If we didn’t buffer the entity, the second readEntity() call would result in an IllegalStateException
+  
+> Closing Response Object:-
+-------------------------------
+- Once we're done with Response object we MUST close() it
+
+- Response objects reference open socket streams. 
+  If we do not close them, we're leaking system resources
+  
+- While most JAX-RS implementations implement a finalize() method for Response, it is not a good idea to rely on the garbage collector to clean up 
+
+- The default behavior of the RESTEasy JAX-RS implementation actually only lets us to have one open Response per Client instance. This forces you to write responsible client code.
+  
+
+
+  
+
+  
+
+
 	
 
-
-2
-
-@GET
-
-HTTP Get request, used to fetch resource.
-
-3
-
-@PUT
-
-HTTP PUT request, used to create resource.
-
-4
-
-@POST
-
-HTTP POST request, used to create/update resource.
-
-5
-
-@DELETE
-
-HTTP DELETE request, used to delete resource.
-
-6
-
-@HEAD
-
-HTTP HEAD request, used to get status of method availability
+  
+  
 
 
+   
+   
+   
+   Once you have a Client instance you can create a WebTarget from it.
+   WebTarget webTarget = client.target("http://example.com/rest");
+
+   
 
 
+> "javax.ws.rs.core.Response" is an Abstract Class which has "N" number of Abstract Methods
+> "org.glassfish.jersey.client.InboundJaxrsResponse" part of Jersey framework is a concreate class which 
+   extends Response
+   
+   class InboundJaxrsResponse extends Response
+   
 
-
-
-	
-@Produces("text/plain"): for downloading text file.
-@Produces("image/png"): for downloading png image file.
-@Produces("application/pdf"): for downloading PDF file.
-@Produces("application/vnd.ms-excel"): for downloading excel file.
-@Produces("application/msword"): for downloading ms word file.
-
-
-		
-
-
-
-
-
+   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

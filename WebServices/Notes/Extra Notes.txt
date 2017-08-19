@@ -1,0 +1,319 @@
+ 
+8. @Context
+---------------
+> This annotation is a all-purpose injection annotation. 
+> It allows us to inject various helper and informational objects that are provided by the JAX-RS API.
+
+You can obtain an instance of the UriInfo interface by using the @jav
+ax.ws.rs.core.Context injection annotation. Here’s an example:
+@Path("/cars/{make}")
+public class CarResource {
+@GET
+@Path("/{model}/{year}")
+@Produces("image/jpeg")
+public Jpeg getPicture(@Context UriInfo info) {
+String make = info.getPathParameters().getFirst("make");
+PathSegment model = info.getPathSegments().get(1);
+String color = model.getMatrixParameters().getFirst("color");
+...
+}
+}
+
+
+
+As with UriInfo, you can use the @Context annotation to obtain an instance of
+HttpHeaders. Here’s an example:
+@Path("/myservice")
+public class MyService {
+@GET
+@Produces("text/html")
+public String get(@Context HttpHeaders headers) {
+String referer = headers.getRequestHeader("Referer").get(0);
+for (String header : headers.getRequestHeaders().keySet())
+{
+System.out.println("This header was set: " + header);
+}
+...
+}
+}
+
+
+@Context Request request;
+@Context Configurable configurable;
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+	
+	
+
+
+
+	
+
+
+
+
+
+
+
+
+	
+@ApplicationPath
+
+
+
+@ConstrainedTo
+@NameBinding
+
+
+
+
+PUT / DELETE / POST / GET Examlples:-
+==========================================
+
+
+
+
+
+HEAD / OPTIONS :-
+==========================================
+
+
+
+	
+Life-cycle of Root Resource Classes
+========================================
+	
+	
+
+
+	
+Jersey RESTful Web Services Framework
+=========================================
+Jersey RESTful Web Services framework is an open source, production quality, framework for developing RESTful Web Services in Java that provides support for JAX-RS APIs and serves as a JAX-RS (JSR 311 & JSR 339) Reference Implementation.
+
+The accepted answer does work, but only if the webapp is deployed to an app server like Glassfish or Wildfly, and possibly servlet containers with EE extensions like TomEE. It doesn't work on standard servlet containers like Tomcat, which I'm sure most people looking for a solution here want to use.
+
+If you're using a standard Tomcat install (or some other servlet container), you need to include a REST implementation since Tomcat doesn't come with one. If you're using Maven, add this to the dependencies section:
+
+
+REST stands for REpresentational State Transfer. REST is a web standards based architecture and uses HTTP Protocol for data communication. It revolves around resources where every component is a resource and a resource is accessed by a common interface using HTTP standard methods. REST was first introduced by Roy Fielding in year 2000.
+
+
+In REST architecture, a REST Server simply provides access to resources and the REST client accesses and presents the resources. Here each resource is identified by URIs/ Global IDs. REST uses various representations to represent a resource like Text, JSON and XML. JSON is now the most popular format being used in Web Services.
+
+HTTP Methods
+The following HTTP methods are most commonly used in a REST based architecture.
+
+GET − Provides a read only access to a resource.
+
+PUT − Used to create a new resource.
+
+DELETE − Used to remove a resource.
+
+POST − Used to update an existing resource or create a new resource.
+
+OPTIONS − Used to get the supported operations on a resource
+
+
+
+Architecturally, REST doesn't care what the media type is. HTML is just as much a resource representation as anything else. When you click on a link in a browser to visit a static HTML page, that is a "Representational State Transfer".
+
+REST - An Architectural Style, Not a Standard
+
+REST is not a standard. You will not see the W3C putting out a REST specification. You will not see IBM or Microsoft or Sun selling a REST developer's toolkit. Why? Because REST is just an architectural style. You can't bottle up that style. You can only understand it, and design your Web services in that style. (Analogous to the client-server architectural style. There is no client-server standard.)
+While REST is not a standard, it does use standards:
+HTTP
+URL
+XML/HTML/GIF/JPEG/etc (Resource Representations)
+text/xml, text/html, image/gif, image/jpeg, etc (MIME Types)
+
+REST does not deal with implementation details (e.g., using Java servlets or CGI to implement a Web service)
+
+ REST-compliant Web services allow requesting systems to access and manipulate textual representations of Web resources using a uniform and predefined set of stateless operations.
+ 
+ REST (REpresentational State Transfer) is an architectural style, and an approach to communications that is often used in the development of Web services. The use of REST is often preferred over the more heavyweight SOAP (Simple Object Access Protocol) style because REST does not leverage as much bandwidth, which makes it a better fit for use over the Internet. The SOAP approach requires writing or using a provided server program (to serve data) and a client program (to request data).
+
+ REST, which typically runs over HTTP (Hypertext Transfer Protocol)
+ 
+ The REST style emphasizes that interactions between clients and services is enhanced by having a limited number of operations (verbs). Flexibility is provided by assigning resources (nouns) their own unique Universal Resource Identifiers (URIs). Because each verb has a specific meaning (GET, POST, PUT and DELETE), REST avoids ambiguity.
+ 
+ 
+ 
+Jersey RESTful Web Services framework is open source, production quality, framework for developing RESTful Web Services in Java that provides support for JAX-RS APIs and serves as a JAX-RS (JSR 311 & JSR 339) Reference Implementation. Jersey framework is more than the JAX-RS Reference Implementation. Jersey provides it’s own API that extend the JAX-RS toolkit with additional features and utilities to further simplify RESTful service and client development.
+
+What is a Resource?
+REST architecture treats every content as a resource. These resources can be Text Files, Html Pages, Images, Videos or Dynamic Business Data. REST Server simply provides access to resources and REST client accesses and modifies the resources. Here each resource is identified by URIs/ Global IDs. REST uses various representations to represent a resource where Text, JSON, XML. The most popular representations of resources are XML and JSON.
+
+
+
+
+
+ 
+JAX-RS API Annotations
+===============================
+> JAX-RS API provides following annotations to develop RESTful applications in java. 
+> The javax.ws.rs package contains JAX-RS annotations.
+
+No.	Annotation		Description
+1.	@Path			
+
+2.	@PathParam		represents the parameter of the URI path.
+3.	@GET			specifies method responds to GET request.
+4.	@POST			specifies method responds to POST request.
+5.	@PUT			specifies method responds to PUT request.
+6.	@HEAD			specifies method responds to HEAD request.
+7.	@DELETE			specifies method responds to DELETE request.
+8.	@OPTIONS		specifies method responds to OPTIONS request.
+9.	@FormParam		represents the parameter of the form.
+10.	@QueryParam		represents the parameter of the query string of an URL.
+11.	@HeaderParam	represents the parameter of the header.
+12.	@CookieParam	represents the parameter of the cookie.
+13.	@Produces		defines media type for the response such as XML, PLAIN, JSON etc. 
+					It defines the media type that the methods of a resource class or 
+					MessageBodyWriter can produce.
+14.	@Consumes		It defines the media type that the methods of a resource class or 
+					MessageBodyReader can produce.
+
+@MatrixParam
+
+Binds the parameter passed to the method to a HTTP matrix parameter in path.					
+		
+
+15
+
+@DefaultValue
+
+Assigns a default value to a parameter passed to the method.
+
+16
+
+@Context
+
+Context of the resource. For example, HTTPRequest as a context.		
+	
+
+
+2
+
+@GET
+
+HTTP Get request, used to fetch resource.
+
+3
+
+@PUT
+
+HTTP PUT request, used to create resource.
+
+4
+
+@POST
+
+HTTP POST request, used to create/update resource.
+
+5
+
+@DELETE
+
+HTTP DELETE request, used to delete resource.
+
+6
+
+@HEAD
+
+HTTP HEAD request, used to get status of method availability
+
+
+
+
+
+
+
+	
+@Produces("text/plain"): for downloading text file.
+@Produces("image/png"): for downloading png image file.
+@Produces("application/pdf"): for downloading PDF file.
+@Produces("application/vnd.ms-excel"): for downloading excel file.
+@Produces("application/msword"): for downloading ms word file.
+
+
+		
+
+
+
+
+
+https://api.instagram.com/v1/media/search?lat=12.7342888&lng=77.3791981&distance=20&access_token=4030125408.b5ac793.dfeefb93307840c5a0baa21f02379bb5
+
+
+
+Cacheing in JAX-RS
+===================
+In HTTP 1.1 the Cache-Control header specifies the resource caching behavior as well as the max age the resource can be cached. As an example, this response would be cached for one day:
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: private, max-age=86400
+Last-Modified: Thu, 07 Feb 2013 11:56 EST
+
+
+Here is a list of all the available Cache-Control tokens and their meaning:
+
+private 	
+only clients (mostly the browser) and no one else in the chain (like a proxy) should cache this
+
+public 
+any entity in the chain can cache this
+
+no-cache 
+should not be cached anyway
+
+no-store 
+can be cached but should not be stored on disk (most browsers will hold the resources in memory until they will be quit)
+
+no-transform 
+the resource should not be modified (for example shrink image by proxy)
+
+max-age 
+how long the resource is valid (measured in seconds)
+
+s-maxage 
+same like max-age but this value is just for non clients
+
+
+
+
+
+
+javax.ws.rs.core.Response
+============================
+> its part of JAX-RS API and its an abstract class
+> It contains three simple methods. 
+  1. getEntity()
+  2. getStatus()
+  3. getMetadata()
+  
+> getEntity() ----> returns the Java object we want converted into an HTTP message body
+  getStatus() ----> returns the HTTP status code. 
+  getMetadata() ---> is a MultivaluedMap of response headers
+
+  
+  
+  
+  
+  
+  

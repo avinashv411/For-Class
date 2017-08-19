@@ -21,6 +21,8 @@ public class MyRESTclient extends HttpServlet
 						 HttpServletResponse resp) 
 	throws ServletException, IOException 
 	{
+		//resp.sendRedirect("index.html");
+		
 		//Get the Form Data
 		String locationVal = req.getParameter("location");
 		String dataType = req.getParameter("type");
@@ -32,7 +34,7 @@ public class MyRESTclient extends HttpServlet
 			url = "http://localhost:8080/googlemaps/rest/mapsapi/text/"+locationVal;
 		}else if(dataType.equals("xml")){
 			meditype = MediaType.APPLICATION_XML;
-			url = "http://localhost:8080/googlemaps/rest/mapsapi/xml/"+locationVal;
+			url = "http://localhost:8080/googlemaps/rest/mapsapi/json/"+locationVal;
 		}else if(dataType.equals("json")){
 			url = "http://localhost:8080/googlemaps/rest/mapsapi/json/"+locationVal;
 			meditype = MediaType.APPLICATION_JSON;
