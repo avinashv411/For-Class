@@ -1,0 +1,286 @@
+J2EE Introduction
+===================
+
+Computer
+=========
+> It is a combination of hardware + an Operating 
+  System
+  
+> Computers are represented as shown below
+
+
+
+
+
+Application 
+==============
+> Every Application has its own dedicated functionality
+  For ex: 
+  - Adobe Reader can only open pdf files
+  - Media Player can only open media files
+
+> Every Application has its own known file extensions
+  For ex: 
+  - Adobe Reader can only understand ".pdf" files
+  - Media Player can only understand ".mp3"/".avi" files
+	   
+> Every Application is "Platform Dependent" including   
+  Java Application
+
+> Java as an "Application" is "Platform Dependent",
+  however Java as a "Programming Language" is 
+  "Platform Independent"
+	
+> Java Programming Language is Platform Independent 
+  because "JRE / JVM" Platform Dependent
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+> "Applications acts like an interface between "User" 
+  and an "Operating System"
+
+Operating System
+=================
+> It acts like an interface between an "Applications" 
+  and "underlying Hardware"
+
+  
+  
+  
+  
+  
+  
+  
+Smart Phones 
+================= 
+> It's also a combination of hardware + an Operating 
+  System  
+  
+> Compared to Computer, we can perform most of the 
+  operations in "Smart Phones" (not all)  
+  
+> Smart Phones are represented as shown below  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+Types of Applications 
+=======================
+> There are 2 types of Applications
+  1. Standalone application (Un-shared)
+  2. Web Applications (Shared)
+	
+> Standalone Applications are present in our own computer
+  or Smart Phones and they are dedicated per user
+  ex: Adobe Reader, Web Browser, Media Player, etc..
+	
+> Web applications are not present in our own computer 
+  but they are present in some other computer where our 
+  own computer and that computer is "Network Connected"
+  ex: Gmail, Facebook, Twitter, etc.,
+
+> There are 2 Types of Standalone Applications
+  1. Desktop Applications
+  2. Mobile Applications
+  
+> Desktop Applications, as the name implies, are present
+  in our "computer / Desktop"
+  
+> Mobile Applications, as the name implies, are present 
+  in our "Smart Phones"
+  
+> To interact with web applications we must make use of
+  1. Network
+  2. Web Browser
+
+> Web Browser is a Desktop Application & if we are using
+  Browser means we are interacting with Web Applications
+  
+> A network is a collection of computers and there are 
+  two types of Network:
+  1. Intranet (Private Network)
+  2. Internet (Public Network)
+	
+> Hence Web Applications can be present either in
+  "Intranet" or in "Internet"
+  ex: 
+  - Gmail Web Application is present in Internet
+  - "Jspider Attendance Tracking Web Application"
+    is present in Intranet		
+	
+> I.P Address / "Computer Name (DNS Name)" Uniquely 
+  identifies a particular Computer in a Network
+
+  
+
+
+
+  
+Server
+===========
+> Server is also a computer, but they are not dedicated
+  to a particular user instead they are "Shared Computer"
+  Hence Servers will not have a "Monitor / Terminal"
+  
+> Also hardware configuration of this computer will be 
+  pretty high level when compared to a Desktop Computer
+  ex: Server can have 22TB of RAM
+
+> Servers are represented as shown below
+  
+  
+  
+  
+  
+  
+  
+Relational DataBase Management System / 
+RDBMS Application / DataBase / DB
+=================================================
+> It's also an application which helps us to   
+  store and maintain Giga-Bytes to Tera-Bytes of data 
+
+> RDBMS Application is represented as shown below
+
+
+
+
+
+
+
+
+
+Java 2 Enterprise Edition / J2EE / JEE / Java EE
+=================================================
+> J2EE is a collection of API's (Application 
+  Programming Interface), which helps us to 
+  develop "Enterprise Web Applications"
+
+> An API is a "Collection of Packages" with a 
+  dedicated "functionality" & it helps two 
+  different applications to "programmatically" 
+  communicate with each other
+
+> Major API's of J2EE are
+  1. JDBC 
+  2. Servlet
+  3. JSP
+
+> JDBC API helps Web Application to interact   
+  with RDBMS Application
+
+> Servlet and JSP API's helps web application to 
+  - get the request from browser, 
+  - generate the response and 
+  - gives it back to the browser
+
+> J2EE helps to develop "Web Applications" 
+  whereas "Andriod / iOS" helps to develop 
+  "Mobile Apps" 
+
+  
+  
+  
+  
+  
+  
+> "Mobile Apps" are 2-Tier Architectured 
+  Applications
+
+> However "Web Applications" acts like 
+  - 3-Tier architecture application if it is 
+    accessed using "Web Browser"
+  - 2-Tier architecture application if it is 
+    accessed using "Mobile Apps"
+
+> From Maintenance Perspective, 3-Tier 
+  architecture applications are easy to 
+  "maintain" as compared to 2-Tier 
+
+> However from User Perspective, 2-Tier 
+  architectured applications (Mobile Apps, 
+  Google Drive, Anti-Virus, etc.,) are easy 
+  to access as compared to 3-Tier
+
+  
+  
+  
+  
+**********************************************
+* Explain this using Gmail Inbox Page        *
+* Explain about Web Designer & Web Developer *
+**********************************************
+
+
+> W.K.T Applications consist of set of Programs 
+  hence, web applications also consist of set of 
+  Programs (code) and in these programs we write the 
+  "Business Logic"
+  
+> This Business Logic(code) may needs to interact with
+  DB to get some data & should send it to the 
+  Browser to display it to the user
+
+> Hence this Code can be divided into 2 parts
+  1. Code to get the data from DB 
+	 (Back-end Code)
+  2. Code/Logic to present the data to User 
+     (Front-end Code)
+  
+> Using Java, JDBC & Servlets we can write 
+  Back-end Code   
+
+> Using JSP, HTML, CSS, Java Script, AngularJS,
+ ExtJS, NodeJS, etc., we can write Front-end Code
+
+Java EE 3-Tier Architecture:-
+================================
+
+
+
+
+
+
+
+Java EE 2-Tier Architecture:-
+=================================
+
+
+
+
+
+
+
+
+
+
+
+JDBC					:	20 Hours 
+Servlets				:	60 Hours 
+JSP					    :	10 Hours 
+==============================================									 
+Grand Total			    :	90 Hours
+No. of Hours / day 	    :	2 Hours
+No. of Classes for J2EE	:  (90/2) = 45 Classes
+
+
+
+
+
+
