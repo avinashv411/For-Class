@@ -1,12 +1,8 @@
-/*
- * I. Create a HttpSession
- */
+// I. Create a HttpSession
 HttpSession session = req.getSession(true);
 
 =================================================
-/*
- * II. Validate the Session
- */
+// II. Validate the Session
 HttpSession session = req.getSession(false);
 if(session==null) {
 	//Invalid Session; Generate Login Page
@@ -15,14 +11,17 @@ if(session==null) {
 }
 
 =================================================
-/*
- * III. Invalidate Session
- */
+// III. Invalidate Session
 HttpSession session =  req.getSession(false);
 if(session!=null) {
 	session.invalidate();
 }
 //Generate Login Page with Success Msg
+
+
+
+
+
 
 
 

@@ -19,7 +19,7 @@ public class StudentSearchServlet extends HttpServlet
 	RequestDispatcher dispatcher = null;
 	
 	@Override
-	protected void doPost(HttpServletRequest req, 
+	protected void doGet(HttpServletRequest req, 
 						 HttpServletResponse resp)
 	throws ServletException, IOException 
 	{
@@ -41,7 +41,7 @@ public class StudentSearchServlet extends HttpServlet
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			
 			//2. Get the DB Connection via Driver 
-			String dbUrl = "jdbc:mysql://localhost:3306/BECM4_DB?user=j2ee&password=j2ee";
+			String dbUrl = "jdbc:mysql://localhost:3306/studentsapp_db?user=j2ee&password=j2ee";
 			con = DriverManager.getConnection(dbUrl);
 			
 			//3. Issue SQL Queries via Connection 

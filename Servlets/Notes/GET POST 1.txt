@@ -1,0 +1,16 @@
+1. Type URL			  :- HTTP Method: GET ---> doGet(HSR, HSR)
+2. Click on Hyperlink :- HTTP Method: GET ---> doGet(HSR, HSR)
+3. Submit Form		  :- 
+						<form action="URL" method="get">
+						HTTP Method: GET ---> doGet(HSR, HSR)
+
+						<form action="URL">
+						HTTP Method: GET ---> doGet(HSR, HSR)
+
+						<form action="URL" method="post">
+						HTTP Method: POST ---> doPost(HSR, HSR)
+
+
+
+
+

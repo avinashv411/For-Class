@@ -44,6 +44,11 @@ Part 3 - Summary
   
 
   
+  
+  
+  
+  
+  
 
 
 Part 4 - Summary
@@ -52,9 +57,12 @@ Part 4 - Summary
 > Different ways of Creating Servlets
 > Difference between GenericServlet & HttpServlet
 > Servlet Lifecycle
-  - <load-on-startup> Tag
-> Use of Main method in Servlets
+> Important Points - "Use of Main method in Servlets"
 > Single Threaded Servelt
+
+
+
+
 
 
 

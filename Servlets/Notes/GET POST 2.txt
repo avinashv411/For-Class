@@ -1,0 +1,14 @@
+GET 								POST
+==================================================
+Default								not Default
+
+Form Data Present in Header			Body
+
+Have Empty Body / No Body			Have Body
+
+We cannot send Huge amount 			We can
+of Data								
+
+We cannot send Files				We can
+
+in-secure							secure

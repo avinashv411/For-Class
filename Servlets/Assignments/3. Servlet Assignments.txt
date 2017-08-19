@@ -1,0 +1,577 @@
+****************************************			
+Servlet Practical Exercise 2
+*****************************************
+> Add Below Static Web Resources to "studentsApp"
+  Dyanamic Web Project
+  1. PDF File (should be present under "pdf" folder)
+  1. ZIP File (should be present under "zip" folder)
+  1. Video File (should be present under "video" folder)
+  
+> Access these Static Resources using the corresponding 
+  Web URL
+
+> Modify index.html to have hyperlinks with these Web URL
+
+****************************************			
+Servlet Practical Exercise 3
+*****************************************
+> Modify "MyFirstServlet" to get below Query String 
+  information & print it back in Browser
+  
+  http://localhost:8080/studentsApp/currentDate
+  ?fname=Praveen&lname=D
+
+****************************************			
+Servlet Practical Exercise 4
+*****************************************
+> Install "Fiddler Application" & identify the 
+  key elements of HTTP Request & Response for
+  index.html & MyFirstServlet
+  
+  
+  
+  
+  
+  
+
+
+
+
+*************			
+Assignment 1:
+*************
+> Create a HTML Form as shown below
+  
+  FormExample.html
+  -------------------
+
+
+*************			
+Assignment 2:
+*************
+
+> Create a HTML Form as shown below
+  
+  Search.html
+  -------------------
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+> Create Servelt by name "StudentSearchServlet", 
+  which gets the request from this form,
+1. Get the Form Data
+2. Check this Reg. No. exists in BECM12_DB DataBase 
+3. If No, Print the Error Message in the Browser
+4. If Yes, Get the corresponding Reg. No. Data from 
+   BECM12_DB DataBase 
+   ( Combination of Data Present in 
+     students_info & 
+	 guardian_info Tables), 
+  and display the Data in the Browser as shown below 
+  
+  	
+	
+	
+SQL Query:-
+-----------
+select * from 
+students_info si, guardian_info gi
+where si.regno = gi.regno 
+and si.regno = ?	
+
+
+
+
+
+
+
+
+
+Note:-
+======
+> Since this form doesn't collects either 
+  1. sensitive info or
+  2. huge amount of info 
+     "method" attribute of the form can have 
+     - method="get" (preferred) or 
+     - method="post"
+  
+> Create "StudentSearchServlet"	by extending 
+  "HttpServlet" & Override doGet() Method
+
+> In doGet() Method perform the below Operations
+  1. Get the Form Data
+  2. Search for Student Data by interacting with DB
+     using JDBC
+  3. Generate the Success / Error Response
+  
+> After creating the Servlet configure URL for that
+  servlet in web.xml (/search)
+  
+> URL to Access:
+==================
+HTML :- 
+------------
+http://localhost:8080/studentsApp/Search.html
+
+Servlet:- 
+------------
+http://localhost:8080/studentsApp/studentSearch
+
+> Provide Servlet URL in <form> tag "action" attribute
+action=
+    "http://localhost:8080/studentsApp/studentSearch"
+
+> Since this Servelt needs to interact with DB, it 
+  MUST make use of JDBC & JDBC requires Driver JAR file
+  
+> Copy & Paste Driver JAR file into 
+  “WebContent/WEB-INF/lib” folder
+  
+> First access the HTML form using HTML URL, fillout 
+  the form & submit the form to make request to Servlet
+
+
+
+
+  
+****************************************			
+Servlet Practical Exercise 
+*****************************************  
+> Validate the below statement about "web.xml"  
+  i.e. web.xml MUST 
+  - be a XML file 
+  - have the name “web.xml” 
+  - be present inside WEB-INF folder 
+  
+  
+  
+  
+  
+  
+  
+
+
+*************			
+Assignment 3:
+*************
+
+> Create a HTML Form as shown below
+  
+  CreateProfile.html
+  -------------------
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+> Create Servelt by name "CreateProfileServlet", 
+  which gets the request from this form,
+1. Get the Form Data
+2. Store the Form Data into Corresponding Tables
+3. generate Proper Response(Success / Error Message)
+	
+	
+	
+	
+	
+	
+	
+	
+Note:-
+======
+> Since this form collects sensitive info, it should
+  have method="post"
+> Refer "Student Search" Assignment for more info
+	
+	
+	
+*************			
+Assignment 4:
+*************
+
+> Create a HTML Form as shown below
+  
+  ChangePassword.html
+  -------------------
+  
+  
+  
+  
+  
+  
+  
+  
+  
+> Create Servelt by name "ChangePasswordServlet" 
+  which gets the request from this form,
+  1. Gets the Form Data
+  2. Checks "New Password" & "Retype New Password"
+     are matching
+  3. If NO, then display Error Message in the Browser
+  4. If YES, then check Reg. No. & Current Password 
+     are valid by interacting with BECM12_DB DataBase
+  5. If In-Valid, then display "Invalid Reg. No. & 
+     Current Password" Error Message in the Browser
+  6. If Valid, update the "Current Password" with 
+     "New Password" and Print Success Message in the 
+     Browser
+ 	
+
+	
+	
+	
+Note:-
+======
+Refer "Create Profile" Assignment for more info
+
+
+
+
+
+	
+	
+*************			
+Assignment 5:
+*************	
+
+> Create a HTML Form as shown below
+  
+  Login.html
+  ----------
+
+
+
+  
+  
+  
+  
+
+
+> Create Servelt by name "LoginServlet" which gets 
+  the request from this form,
+  1. Gets the Form Data
+  2. Authenticate the Credentials by interacting 
+     with BECM12_DB DataBase
+  3. If In-Valid Credentials, then display "In-Valid 
+     User Name / Password" Error Message in Browser
+  4. If Valid, then display corresponding Reg. No. 
+     Data ( Combination of Data Present in 
+            students_info & 
+	        guardian_info Tables), 
+     in the Browser as shown below
+	 
+
+
+
+SQL Query:-
+-----------
+select * from 
+students_info si, 
+guardian_info gi,
+students_otherinfo soi
+where si.regno = gi.regno 
+and si.regno = soi.regno 
+and soi.regno = ?	
+and soi.password = ?
+
+*************			
+Assignment 6:
+*************	
+
+> Modify the response of Login Assignment in such a 
+  that ONLY for ADMIN user display "Click Here" to
+  View All Students Info hyper-link as shown below
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+*************			
+Assignment 6:
+*************	
+
+> Create a HTML Page with Hyper-Link as shown below
+  
+  AllStudentsView.html
+ ----------------------  
+  
+
+  
+  
+  
+  
+  
+  
+
+> Create a "AllStudentsViewServlet" which gets the 
+  request from this Hyper-Link & display All the students information (combination of data present in students_info & guardian_info table) & display the data in browser as shown below
+  
+  
+  
+  
+  
+  
+  
+  
+select * from 
+students_info si, 
+guardian_info gi
+where si.regno = gi.regno 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+*************			
+Assignment 6:
+*************	
+
+> Create a "Header Page" as shown below
+  
+  Header.html
+  ------------
+
+  
+  
+  
+  
+> Provide the "href" for 
+  - Create Profile
+  - Search
+  - Change Password
+  
+> Don't Provide "href" for "Home" & "Logout"
+
+> Create a "Footer Page" as shown below
+  
+  Footer.html
+  ------------
+  
+  
+
+> Include these Header.html & Footer.html in the 
+  responses of
+  - Login Page
+  - Create Profile
+  - Search &
+  - Change Password
+
+> Also, if Authentication failes during Login,
+  "Generate Login Page with Error Message" as a 
+  Response, as shown below
+
+  
+  
+*************			
+Assignment 7:
+*************	
+
+> Create a HTML Form as shown below
+  
+  GraingerSearch.html
+  --------------------
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+> Create a Servlet which gets the request from this form,
+  takes the "keyword" & display the results for that 
+  keyword in "www.grainger.com" Website
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+*************			
+Assignment 8:
+*************	
+
+> Create a HTML Form as shown below
+  
+  AdvanceSearch.html
+  --------------------
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+> Create a Servlet 
+  - which gets the request from this form,
+  - takes the "keyword" & 
+  - display the results for that keyword in 
+    the corresponding Website  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+*************			
+Assignment 8:
+*************	
+
+> Create a Servlet by name "CheckCookieServlet" which
+  checks whether request has any Cookies
+  - If Yes, It should print the Success Message
+  - If NO, It should print below Error Message  
+  
+  
+  
+  
+  
+  
+  
+  
+	 
+*************			
+Assignment 9:
+*************	
+
+> Implement "Remember User Name" functionality in 
+  "studentsApp" web application
+  	 
+
+	 
+	 
+	 
+	 
+	 
+	 
+Note:-
+------
+> For this requirement, 
+  - Make use of Coookies 
+  - Create a "Persistent Cookie" with 
+    name as "alwaysRemember"
+	valu as "Reg. No." &
+	Max Age = 7 Years
+  - Also Login Page should be Dynamic
+  
+> Hence we must stop using Login.html & create a Servelt 
+  (ex: LoginPageServlet) for generating Login Page
+  
+> We have to modify following 2 servlets for this requirement
+  1. LoginServlet
+  2. LoginPageServlet
+	 
+> "LoginServlet" should check whether user has checked the
+  "Check Box", if Yes, it should create a Persistent 
+  Cookie & sent it along with response ()	 
+	 
+	 
+	 
+	 
+****************			
+Assignment 10 :
+****************		 
+> Implement MVC Design Pattern in all the "Request & 
+  Response" flows of studentsApp Web Application
+
+
+
+
+
+
+
+
+
+	 
+Assignment [Test] 7
+=======================
+> Assume that there is a table by name "Library" in
+  our MySQL DB "BECM12_DB" with the following 
+  structure
+  
+ 	"Library"
+	==============================
+	1. student_nm 		varchar(50)
+	2. book_nm	        varchar(50)
+	
+	NOTE: None of the above columns are Primary Key
+
+Sample Data in the above Table:-
+=================================
++------------+-----------+
+| student_nm | book_nm   |
++------------+-----------+
+| ABC        | Core Java |
+| ABC        | JDBC      |
+| ABC        | Servlets  |
+| DEF        | Core Java |
+| XYZ        | Core Java |
+| XYZ        | JDBC      |
+| XYZ        | Servlets  |
+| XYZ        | Hibernate |
+| XYZ        | Springs   |
++------------+-----------+
+	
+> Create a HTML which will have an Hyperlink as shown
+  below
+  
+  
+  
+  
+> Create a Servlet which get the request from this 
+  Hyperlink, interacts with the above table & prints 
+  the data as shown below 
+
+	 
+	 
+Write a Servlet Which Prints the "Number of Hits" for that Servlet or Page in Browser	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 

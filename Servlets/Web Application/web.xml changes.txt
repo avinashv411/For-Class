@@ -1,6 +1,27 @@
+<servlet>
+	<servlet-name>bodyPage</servlet-name>
+	<servlet-class>com.jspiders.studentsapp.servlets.BodyPageServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>bodyPage</servlet-name>
+	<url-pattern>/bodyPage</url-pattern>
+</servlet-mapping>  
+
+<servlet>
+	<servlet-name>studentSearch</servlet-name>
+	<servlet-class>com.jspiders.studentsapp.servlets.StudentSearchServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>studentSearch</servlet-name>
+	<url-pattern>/studentSearch</url-pattern>
+</servlet-mapping>
+
+
   <servlet>
   	<servlet-name>login</servlet-name>
-  	<servlet-class>com.jspiders.studentsapp.servlets.LoginServlet</servlet-class>
+	<servlet-class>com.jspiders.studentsapp.servlets.LoginServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -29,15 +50,7 @@
   
   
 
-  <servlet>
-  	<servlet-name>bodyPage</servlet-name>
-  	<servlet-class>com.jspiders.studentsapp.servlets.BodyPageServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>bodyPage</servlet-name>
-  	<url-pattern>/bodyPage</url-pattern>
-  </servlet-mapping>  
+
   
    <servlet>
   	<servlet-name>allStudentsView</servlet-name>
@@ -58,3 +71,5 @@
   	<servlet-name>allStudentsController</servlet-name>
   	<url-pattern>/allStudentsController</url-pattern>
   </servlet-mapping> 
+  
+  	
