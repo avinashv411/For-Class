@@ -1,3 +1,45 @@
+Sasken (NO Repeaters)
+==================================
+Designation		:	Java Developer
+Skills			:	Core Java 
+Percentage		:	65% in Degree
+YOP				:	2016
+Degree			:	BE / BTech / ME / MTech
+Streams			:	ANY
+Interview 		:	Bangalore
+JOB Location	:	Bangalore
+Interview Date 	: 	03-May-2017 
+BOND			:	3 Years
+Salary			:	3.25 LPA
+
+
+
+
+
+Urjanet Energy Solution
+==================================
+Designation		:	Java Developer
+Skills			:	Core Java 
+Percentage		:	60% Throughout
+YOP				:	2014 / 2015 / 2016
+Degree			:	BE / BTech
+Streams			:	ANY
+Interview 		:	Bangalore
+JOB Location	:	Chennai
+Interview Date 	: 	26-Apr-2017 (Probable)
+BOND			:	Not Avilable
+Salary			:	2.1 LPA
+
+
+
+
+
+
+
+
+
+
+
 CapGemini (NO Repeaters)
 ==================================
 Designation		:	Software Engineer
