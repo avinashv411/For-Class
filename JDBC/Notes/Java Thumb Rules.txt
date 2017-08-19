@@ -59,15 +59,19 @@
 
   
 9. Anything in Java which start with Uppercase Letter
-   is either "Class Name OR Interface Name"  
+   & without parantasis is either "Class Name OR 
+   Interface Name"  
   
 10. Anything in Java which start with Lowercase 
     Letter & without parantasis is a "Variable Name"
 
-11. Anything in Java with parantasis is a "Method 
-    Name"
+11. Anything in Java which start with Lowercase 
+    Letter & with parantasis is a "Method Name"
 
-12. In Java, anything apart from Premitive Data 
+12. Anything in Java which start with Uppercase 
+    Letter & with parantasis is a "Constructor"
+	
+13. In Java, anything apart from Premitive Data 
     Types are called as "Object References"  
   
   For Ex:
@@ -88,17 +92,17 @@
 	
 	
 	
+
 	
-13. If a method/contructor input argument is other 
-    than primitive data type, then it can be "Interface / Concrete Class / Abstract Class"
+14. If a method/contructor input argument is other 
+    than primitive data type, then it can be 
+	"Interface / Concrete Class / Abstract Class"
 
   For Example:
   ------------
   public void myMethod(Abc ref)
   {
-	/*
-     *	Some Business Logic
-	 */
+	//Some Business Logic
   }
 
   Where 
@@ -111,16 +115,15 @@
 
 			
 			
-14. If a method return type is other than primitive 
-    data type, then it can be "Interface / Concrete Class / Abstract Class"
+15. If a method return type is other than primitive 
+    data type, then it can be "Interface / Concrete 
+	Class / Abstract Class"
 
   For Example:
   ------------
   public Abc myMethod()
   {
-	/*
-     *	Some Business Logic
-	 */
+	//Some Business Logic
   }
 
   Where "Abc" can be 
@@ -133,20 +136,19 @@
 	
 	
 	
-> There are two types of Interfaces
-  1. Marker Interface
-  2. Non-Marker Interface
+16. There are two types of Interfaces
+    1. Marker Interface
+    2. Non-Marker Interface
   
-> If a Class implements an interface & we are getting
-  the compilation error means it must be a Non-Marker Interface & this interface SHOULD have
-  One/More Abstract Methods
+17. If a Class implements an interface & we are 
+    getting the compilation error means it must be a Non-Marker Interface & this interface SHOULD have One/More Abstract Methods
   
-> If a Class implements an interface & we are NOT 
-  getting the compilation error means it must be a 
-  Non-Marker / Marker Interface.
+18. If a Class implements an interface & we are NOT 
+    getting any compilation error means it can be a 
+    Non-Marker / Marker Interface.
   
-  If it is a Non-Marker interface then it SHOULD NOT
-  consist of ANY Abstract Methods
+19. If it is a Non-Marker interface then it SHOULD 
+    NOT consist of ANY Abstract Methods but it will consist of only Variables
   
    
 

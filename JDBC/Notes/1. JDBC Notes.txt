@@ -16,12 +16,16 @@ Java Data Base Connectivity (JDBC)
   
 > Also JDBC is "DB Independent" i.e. using JDBC 
   we can interact with any RDBMS Applications 
-  exist in the world
+  exist in the world (like Oracle, MySQL, DB2, 
+  MS-SQL, SyBase, etc.,)
   
 NOTE: 
 ------
-"MongoDB" & "Hadoop Distributed File System 
-(HDFS / Hadoop)" Applications are not RDBMS Applications
+1. MongoDB 
+2. Cassandra 
+3. Hadoop Distributed File System (HDFS/Hadoop)
+They are Applications to store the data but they
+are not RDBMS Applications
   
   
   
@@ -34,14 +38,14 @@ JDBC Pre-requirements:
 =========================
 1.	Install an RDBMS Application (MySQL 5.5)
 2.	Create a "Database (Schema)" by name 
-    "BECM12_DB"
+    "BECE14_DB"
 3.	Create a table by name "STUDENTS_INFO"
     in the above "Database"
 4.	Insert some data into the above table
 
-SQl Queries for MySQL RDBMS Application:-
+SQL Queries for MySQL RDBMS Application:-
 ==========================================
-create database BECM12_DB;
+create database BECE14_DB;
 
 create table students_info
 ( regno int(10) not null,
@@ -58,7 +62,7 @@ Some Usefull Queries:
 ========================
 1. To connect to database:-
 ----------------------------
-   use BECM12_DB;
+   use BECE14_DB;
    
 2. To get the list of databases:-
 ---------------------------------
@@ -79,17 +83,20 @@ Some Usefull Queries:
    
 Necessary Steps to Work with JDBC
 ==================================
-1. Load the "Driver"
-2. Get the "DB Connection" via "Driver"
-3. Issue "SQL Queries" via "Connection"
-4. "Process the Results" returned by "SQL Queries"
-5. Close All "JDBC Objects"
+//1. Load the "Driver"
+//2. Get the "DB Connection" via "Driver"
+//3. Issue "SQL Queries" via "Connection"
+//4. "Process the Results" returned by "SQL Queries"
+//5. Close All "JDBC Objects"
 
-//1. Load the Driver
-//2. Get the DB Connection via Driver
-//3. Issue SQL Queries via Connection
-//4. Process the Results returned by SQL Queries
-//5. Close All JDBC Objects
+
+
+
+
+
+
+
+
 
 
 
@@ -103,7 +110,7 @@ Note:-
 ------
 > "java.sql.*" is the Package Representaion of JDBC
 > i.e. Any Class / Interface belongs to this package
-  means it’s part of JDBC
+  means, it’s part of JDBC
 
   
   
@@ -113,15 +120,14 @@ Note:-
   
   
   
-IP Address 		: 192.168.1.101
-Computer Name 	: QSP-SHMUTT-PC
-Port Number 	: 3306
-DB Name 		: BECM12_DB
-User Name 		: root / j2ee 
-Password		: root / j2ee
+IP Address 		: 	192.168.1.189
+Computer name	: 	QSP-SHMUTT-PC
+Port Number		: 	3306
+DB Name			:	BECE14_DB
+User Name		:	root	j2ee
+Password		:	root	j2ee
 
-jdbc:mysql://QSP-SHMUTT-PC:3306/BECM12_DB?user=j2ee&password=j2ee
-
+jdbc:mysql://QSP-SHMUTT-PC:3306/BECE14_DB?user=j2ee&password=j2ee
 
 
 
@@ -136,20 +142,20 @@ Drivers:
 ===========		
 Image:
 ------
-> Driver is an additional software component 
-  required by JDBC to interact with RDBMS Application
 
-> Drivers are provided by DB Vendor & they are 
+> Drivers are external software component required
+  by JDBC to interact with RDBMS Application
+
+> Drivers are provided by "DB Vendor" & they are 
   "DB Dependent"
    
 > i.e. Using My-SQL Driver we can ONLY interact 
-  with My-SQL RDBMS Application & 
-  Using DB2 Driver we can ONLY interact with 
-  DB2 RDBMS Application
+  with My-SQL RDBMS Application & Using DB2 Driver 
+  we can ONLY interact with DB2 RDBMS Application
 
-> "Driver" helps us to establish DB Connection, 
-  transfers the DB query and results between Java
-  program and RDBMS Application 
+> "Drivers", as the name implies, acts like a 
+  "Bridge" between Java Application and 
+  RDBMS Application 
  
 
  
@@ -157,18 +163,17 @@ Image:
  
  
  
-> DB Vendor providers Driver Software in the form of
-  "JAR File" 
+> DB Vendor providers Driver Software in the form 
+  of a "JAR File" 
 
 JAR (Java ARchieve) File:
 ==========================
-> It's a Collection of ".class" files
+> It's a Collection of Packages & ".class" files
   + Other Necessary Resources 
     (Text File, XML, Property Files, etc.,)
 
 > JAR file helps us to transfer the "Java files /
-  .class files / Java Application" from one location
-  to an another location
+  .class files / Java Application" from one location to an another location
   
 > JAR File will have ".jar" file extension & 
   functionality wise it's similler to "ZIP" file
@@ -187,12 +192,13 @@ Steps to Create JAR File :-
 Steps to Make Use of JAR File :-
 ----------------------------------
 1. Right Click on the Java Project, where we want
-   to make use of JAR File, select "Build Path" & 
-   click on "Add External Archieves..."
+   to make use of JAR File, select "Build Path" 
+   & click on "Add External Archieves..."
 
 2. Select the "JAR File" & Click on "Open"
 
 3. We see JAR File under "Referenced Libraries"
+   
    
    
    
@@ -205,11 +211,17 @@ Driver Class
   "java.sql.Driver" interface
 
 > This interface is present in JDBC API & every 
-  JDBC driver provider has to implement this Interface
+  JDBC driver provider has to implement this 
+  Interface
 
 > By referring Driver Manual we can get the "Driver
   Class" information
 
+  
+  
+  
+  
+  
 Steps to Load the "Driver Class" into the Program
 --------------------------------------------------
 There are 2 ways to load the Driver Class
@@ -221,7 +233,7 @@ There are 2 ways to load the Driver Class
 Syntax :
 ========
 public void DriverManager
-           .registerDriver(java.sql.Driver driverRef) 
+          .registerDriver(java.sql.Driver driverRef) 
 throws SQLException
 
 Code for MySQL Driver :
@@ -229,10 +241,6 @@ Code for MySQL Driver :
 java.sql.Driver ref = new com.mysql.jdbc.Driver();
 DriverManager.registerDriver(ref);
    
-   
-   
-   
- 
    
 2. Second approach to Load the Driver Class is with 
    the help of Java's "Class.forName()" Method
@@ -283,7 +291,7 @@ JDBC Step 1 Summary:-
 
 
 
-Database Uniform Resource Locator (DB URL)
+DataBase Uniform Resource Locator (DB URL)
 ==========================================
 > DB URL, as the name implies, it uniquely 
   identifies Database OR a RDBMS Application 
@@ -296,9 +304,11 @@ Database Uniform Resource Locator (DB URL)
   
   
   
+  
+  
 1. Protocol     
 ============
-> It's a Mandatory Information
+> It's a Mandatory Information & Case In-sensitive
 > In case of Java, Protocol is always "jdbc"
 
 
@@ -313,7 +323,7 @@ Database Uniform Resource Locator (DB URL)
 
 2. Subprotocol
 ==============
-> It's a Mandatory Information
+> It's a Mandatory Information & Case In-sensitive
 
 > It identifies the "DB Connectivity Mechanisam"
   used to Connect to DB
@@ -321,8 +331,9 @@ Database Uniform Resource Locator (DB URL)
 > This information is provided by DB Vendor & we 
  have to refer the Driver Manual to get this info
 
-> In case of MySQL, Subprotocol is "mysql"
-
+> In case of MySQL, Subprotocol is "mysql" but,
+  incase of Oracle or DB2 its different
+  
 
 
 
@@ -332,10 +343,11 @@ Database Uniform Resource Locator (DB URL)
 > It's a Mandatory Information
 
 > It Consists of,
-	1. Host Name (Computer Name / IP Address)
-	2. Port Number
-	3. Database Name / Schema Name
-	4. User Name & Password
+	1. Host Name 
+	  (Computer Name / IP Address & Case In-sensitive) 
+	2. Port Number 
+	3. Database Name / Schema Name (Case In-sensitive)
+	4. User Name & Password (Case Sensitive)
 	
 > Arrangement of Subname varies from driver 
   to driver, we have to refer the manual & 
@@ -397,8 +409,9 @@ jdbc:mysql://localhost:3306/BJM24_DB?user=j2ee&password=j2ee
 
 java.sql.DriverManager 
 ==========================
-> DriverManager is a "Concrete Class" present in JDBC 
-  API & as the name implies, it manages the drivers
+> DriverManager is a "Concrete Class" present in 
+  JDBC API & as the name implies, it manages the 
+  drivers
   
 > It helps Java Program to establish the connection 
   to DB & for that it requires following two 
@@ -415,8 +428,8 @@ java.sql.DriverManager
 
 > DriverManager’s getConnection() method helps us to 
   establish the connection to the DB.  This method
-  - throws SQLException if it is unable to establish
-    the connection to DB
+  - throws "SQLException" if it is unable to 
+    establish the connection to DB
 	OR
   - returns an object of "Connection" if it is able 
     to establish the connection to DB
@@ -439,8 +452,8 @@ java.sql.DriverManager
   world, they "should be public static" in 
   nature  
   
-
-
+  
+  
   
   
   
@@ -451,7 +464,7 @@ java.sql.DriverManager
    throws SQLException
 ----------------------------------------------------
  String dbUrl = 
- "jdbc:mysql://localhost:3306/BECM12_DB
+ "jdbc:mysql://localhost:3306/BECE14_DB
  			         ?user=root&password=root";
  			
  Connection con = DriverManager.getConnection(dbUrl);
@@ -462,7 +475,7 @@ java.sql.DriverManager
   throws SQLException
 -----------------------------------------------------
  String dbUrl  = 
-	    "jdbc:mysql://localhost:3306/BECM12_DB";
+	    "jdbc:mysql://localhost:3306/BECE14_DB";
  String userNM = "root";
  String pass   = "root";
 				
@@ -472,16 +485,67 @@ java.sql.DriverManager
 
  
  
+3. Connection getConnection (String url, 
+                             Properties info) 
+   throws SQLException
+---------------------------------------------
+	 
+String dbUrl="jdbc:mysql://localhost:3306/BECE14_DB";
+		
+String filePath = "D:\\db.properties";
+FileReader reader = new FileReader(filePath);
+		
+Properties props = new Properties();
+props.load(reader);
+		
+Connection con 
+        = DriverManager.getConnection(dbUrl, props);
+
+Data Present in "db.properties" File is:- 
+=============================================	
+#DB Credentials
+user = root
+password = root	 
+	 
+NOTE:-
+------
+> We can make use of any version of "getConnection()"
+  method to establish connection to RDBMS application	 
+
+> But "getConnection (String url, Properties info)"
+  helps us to take out the hardcoded credentials from
+  program & keep it outside of the application
+  
+> Hence this method is widely used because it helps 
+  us to "easily maintain the application" whenever 
+  there is change in DB credentials
+  	 
+
  
+Results of RDBMS Application
+===================================
+> Whenever we issue "Select SQL Queries" to DB 
+  it returns DB Results
+  
+> Whenever we issue "Other than Select SQL Queries"  
+  to DB then it returns "No. of Rows Affected Count" 
+  in the form of Integer 
+
+> Hence w.r.t results we can group SQL Queries into  
+  Two Groups 
+  1. Select SQL Query 
+  2. Other Than Select SQL Query
+
+> Image:-   
 	 
 
 
 
 Static SQL Queries
 ===================
-> SQL queries 
+> ANY SQL queries 
   - "without conditions" OR 
-  - "with harcoded condition values" 
+  - "ALL Conditions with harcoded values" 
   are called as "Static SQL Queries"
  
 > Example :
@@ -495,9 +559,9 @@ Note : ABC = Table Name
 
 Dynamic SQL Queries
 ======================
-> SQL Queries which 
+> ANY SQL Queries which 
   - MUST have conditions AND 
-  - One/More condition values get decided at runtime 
+  - One/More conditions value get decided at runtime 
   are known as "Dynamic SQL Queries" 
 
 Examples:
@@ -510,8 +574,37 @@ NOTE :
 ------
 1. ABC = Table Name
 2. Dynamic SQL Query MUST Contain One/More "?"
- 
-  
+3.  Static SQL Queries
+    	|
+    	|----> Select
+    	|
+    	|----> Other Than Select
+    
+    Dynamic SQL Queries
+    	|
+    	|----> Select
+    	|
+    	|----> Other Than Select
+    
+	
+
+select * from ABC;
+select * from ABC where X = 1;
+create database DB_NAME;
+insert into ABC values (1, 'Praveen');
+update ABC set C=10;
+delete from ABC;
+
+select * from ABC where X=? and Y=?;
+select * from ABC where X=1 and Y=?;
+insert into ABC values (?, 'Praveen');
+update ABC set C=10 and D=?;
+delete from ABC where C=?;
+
+
+
+
+
   
   
   
@@ -533,11 +626,11 @@ JDBC Statements
 > This method is used to execute "Other than SELECT" 
   SQL Queries
  
-> This method returns "No. of Rows Affected Count" in
-  the form of Integer
+> This method returns "No. of Rows Affected Count" 
+  in the form of Integer
 
 2. ResultSet executeQuery() throws SQLException
-----------------------------------------------------   
+----------------------------------------------------
 > This method is used to execute "ONLY SELECT" SQL 
   Queries   
    
@@ -611,9 +704,12 @@ void setXXX( Postiton of ? as Int Value,
              Corresponding Runtime Value ) 
 throws SQLException
 		
-where XXX = Java Data Type corresponding to 
-            DB Column Data Type
-			
+- where XXX = Java Data Type corresponding to 
+              DB Column Data Type
+			  
+- Also, "Runtime Value" Data Type SHOULD be same as 
+  "XXX Data Type"		
+  
 > PreparedStatements are also known as “Precompiled 
   Statements” & they helps us to achieve "high 
   performance"
@@ -668,6 +764,11 @@ java.sql.ResultSet
 > ResultSet object may consist of "Zero/More" OR 
   "Zero/One" rows 
 
+> ResultSet consists of "Zero/One" row if where 
+  condition is on Primary Key with "equal to (=)"
+  
+> for rest of the cases it consists of "Zero/More" 
+  rows   
   
   
   
@@ -718,22 +819,23 @@ Why we need to Close Necessary JDBC Objects:-
   - ResultSet 
   make use of memory 
  
-> In case of Connection Object, further RDBMS Application
-  resources are consumed
+> In case of Connection Object, further RDBMS 
+  Application resources are consumed
 
 > Also memory consumed by ResultSet object is 
-  comparatively more compared to other JDBC Objects
+  comparatively more compared to other JDBC 
+  Objects
   
-> Hence forgetting to close any of the JDBC objects 
-  "will heavily impact Java as well as RDBMS application 
-  performance" and Garbage Collection should not be 
-  relied upon
+> Hence forgetting to close any of the JDBC 
+  objects "will heavily impact Java as well 
+  as RDBMS application performance" & Garbage 
+  Collection should not be relied upon
   
-> So it's important to close any of the JDBC Object 
-  as soon as their job is done
+> So it's important to close any of the JDBC 
+  Object as soon as their job is done
 
-> To close any of the JDBC Objects invoke "close()" 
-  method
+> To close any of the JDBC Objects invoke 
+  "close()" method
 
 Syntax:
 ----------		  
@@ -743,8 +845,30 @@ public void close() throws SQLException
 
 
 
+  
+  
+  
+
 JDBC Summary:
-================
+================  
+> Commonly used JDBC Objects are  
+                              ---|
+1. java.sql.ResultSet            |
+2. java.sql.Connection		     |--> Interfaces
+3. java.sql.Statement			 |
+4. java.sql.PreparedStatement    |
+                              ---|
+                           ---|
+5. java.sql.DriverManager     |
+6. java.sql.SQLException      |--> Concrete Class
+                           ---| 
+
+> SQLException is a Concrete Class which extends
+  "java.lang.Exception" & its a "Checked Exception"
+
+> JDBC Steps 1 to 4 will be in "try block" and 
+  step 5 will be in "finally block"
+
 > While makeing use of JDBC we MUST follow 5 steps
   and out of 5, ONLY Once 
   - We need to load the Driver (Step 1)
@@ -753,36 +877,37 @@ JDBC Summary:
   
 > But, Step 3 & 4 (i.e. Issuing SQL Queries & 
   Processing Results) can happen "N" number of times
-  depending on our use
+  depending on our need (Min. 1 Max. N number)
 
-> Steps 1 to 4 will be in "try block" and step 5 will
-  be in "finally block"
+> JDBC is "DB Independent"(i.e it can work with ANY
+  RDBMS Application) because "Driver JAR" is 
+  DB Dependent 
+		  
+> Though JDBC claims that it is "DB Independent" but,
+  because of "SQL Queries (step 3)", it is actually
+  "DB Dependent"
   
-  
-  
-  
-  
-  
-> Commonly used JDBC Objects are   
-  1. java.sql.DriverManager
-  2. java.sql.Connection
-  3. java.sql.Statement
-  4. java.sql.PreparedStatement
-  5. java.sql.ResultSet
-  6. java.sql.SQLException
+Note:
+======
+SQL is "DB Dependent". For example, below are the 
+different SQL queries used to fetch first 5 records 
+of the table depending on RDBMS application
+		  
+MySQL & PostgreSQL:	
+---------------------
+SELECT * FROM ABC LIMIT 5;
 
-> Aprat from DriverManager & SQLException, rest of 
-them are "Interfaces". Where as DriverManager & 
-SQLException are "Concrete Classes"
+Oracle:	
+--------
+SELECT * FROM ABC WHERE rownum <= 5;
 
-> SQLException is a Concrete Class which extends
-  "java.lang.Exception" & its a "Checked Exception"
+MSSQL Server:	
+---------------
+SELECT TOP 5 * FROM ABC;
 
-
-
-
-
-
+		  
+		  
+		  
 		  
 		  
 Transactions:-  

@@ -1,0 +1,192 @@
+ create database studentsdb;
+
+ use studentsdb;
+ 
+CREATE TABLE students_info
+(
+	regno int(10) not null,
+	firstname varchar(50) not null,
+	middlename varchar(50),
+	lastname varchar(50) not null,
+	primary key(regno)
+);
+
+
+CREATE TABLE students_course
+ (
+ 	regno int(10) NOT NULL,
+	courseid int(10) NOT NULL,
+ 	PRIMARY KEY (regno,courseid)
+ );
+
+CREATE TABLE student_addresses
+ (
+ 	regno int(10) NOT NULL ,
+ 	type varchar(50) NOT NULL,
+ 	address1 varchar(250) NOT NULL,
+	address2 varchar(250) NOT NULL,
+ 	city varchar(50),
+ 	pin int(7),
+ 	PRIMARY KEY (regno,type)
+ );
+
+ CREATE TABLE guardian_info
+ (
+ 	regno int(10) NOT NULL,
+ 	gfirstname varchar(50),
+ 	gmiddlename varchar(50),
+ 	glastname varchar(50),
+ 	PRIMARY KEY (regno) 
+ );
+
+CREATE TABLE course_details
+(
+	courseid int(10) NOT NULL,
+	coursename varchar(50),
+	PRIMARY KEY(courseid)
+);
+CREATE TABLE Student_courses
+(
+	regno int(10) NOT NULL,
+	courseid int(10) NOT NULL,
+	PRIMARY KEY (regno,courseid) 
+);
+CREATE TABLE student_marks
+(
+	regno int(10) NOT NULL,
+	courseid int(10) NOT NULL,
+	marks int(10),
+	PRIMARY KEY (regno,courseid) 
+);
+
+CREATE TABLE student_mock
+(
+	regno int(20) NOT NULL,
+	courseid int(10) NOT NULL,
+	rating int(10) NOT NULL,
+	PRIMARY KEY(regno,courseid)
+);
+
+CREATE TABLE students_otherInfo
+(
+	regno int(10) NOT NULL,
+	isadmin varchar(10),
+	password varchar(20),
+	PRIMARY KEY(regno)
+);
+
+-------------------------------------------------
+desc students_info;
+desc student_addresses;
+desc students_course;
+desc course_details;
+desc guardian_info;
+desc student_marks;
+-------------------------------------------------
+select *from students_info;
+select *from student_addresses;
+select *from students_course;
+select *from course_details;
+select *from guardian_info;
+select *from student_marks;
+select *from students_otherInfo;
+-------------------------------------------------------
+Questions:
+
+1. Display the students who had secured more than 50 in the course j2ee?
+
+	> select * from students_info si,course_details cd,student_marks sm where si.regno=sm.regno and 	cd.courseid=sm.courseid and sm.marks>50 and sm.courseid=(select courseid from course_details 		where coursename='j2ee');
+
+2.Display the students with their corresponding guardian_names?
+		
+	 >	select firstname,middlename,lastname,gfirstname,gmiddlename,glastname
+	 	 from students_info,guardian_info
+  		where students_info.regno=guardian_info.regno;
+
+3.Display the Average marks of  student whose regno=1?
+	
+	> 	 select firstname,middlename,lastname,avg(marks) from students_info si,student_marks 		sm where si.regno=sm.regno and sm.regno=1;
+
+4. Display the name of students  who is attending the course Corejava?
+
+	>	select firstname,middlename,lastname,coursename from students_info si,course_details 		cd,students_course sc where si.regno=sc.regno and cd.courseid=sc.courseid and cd.courseid=(select 		courseid from course_details where coursename='core java');
+
+5.Display the number of students who enrolled to the course Corejava?
+		
+	>	select coursename,count(*) from course_details cd,students_course sc where 				cd.courseid=sc.courseid and cd.courseid=(select courseid from course_details where 		coursename='core java');
+
+6. Display student name who scored maximum marks in Corejava?
+		
+	>	select si.*,max(marks) from students_info si,students_course sc,student_marks 			sm,course_details cd where si.regno=sc.regno and sc.courseid=cd.courseid and 		cd.courseid=sm.courseid and cd.courseid=(select courseid from course_details where 		coursename like 'core java');
+
+
+7.Display the student's Guardian name those students who had secured maximum marks?
+
+	>	select si.*,gi.*,coursename,max(marks) from students_info si,guardian_info 				gi,students_course sc,student_marks sm,course_details cd where si.regno=gi.regno and 			si.regno=sc.regno and sc.courseid=cd.courseid and cd.courseid=sm.courseid group by 			coursename;
+
+8.Display student information  with addresses who are belonging to city Bangalore?
+	
+	>	select si.*,Type,address1,address2,pincode,city from students_info 	si,student_addresses 		sa where si.regno=sa.regno and sa.city like 'bangalore';
+
+9.Display student information who all are doing j2ee course with mock rating  1?
+	
+	>	select si.*,coursename,rating from students_info si,course_details cd,student_mock 			sm,students_course sc where si.regno=sc.regno and sc.courseid=cd.courseid and 			cd.courseid=sm.courseid and cd.coursename like 'J2EE' and rating=1;
+
+10.Display total number of students who are enrolled in different courseses ?
+		
+	>	select coursename,count(*) from course_details cd,students_course sc where 				cd.courseid=sc.courseid group by coursename;
+
+11.Display all students who having greater than avg marks?
+		
+	>	select si.*,marks from students_info si,student_marks sm where si.regno=sm.regno and 		marks>(select avg(marks) from student_marks);
+
+12.Display the student's guardian and student's name whose pincode between  560061 and 560064?
+		
+	>	select si.*,gFirstname,gMiddlename,gLastname from students_info si, guardian_info 		gi,student_addresses sa where si.regno=gi.regno and si.regno=sa.regno and sa.pincode 		between 560061 and 560064;
+
+13.Display the names of the student who enrolled in all the courses?
+		
+	>	select si.* from students_info si where (select count(*) from students_course where 			regno=si.regno)=(select count(*) from course_details);
+
+
+14.List the students who belongs to course corejava and j2ee?
+	
+	>	 select si.*,coursename from students_info si,students_course sc,course_details cd where 		si.regno=sc.regno and sc.courseid=cd.courseid and cd.coursename in ('core java','j2ee');
+
+15.Display the students who are not attended the mock test?
+	
+	>	 select * from student_mock
+ 		where regno not in(select regno from students_info);
+
+16.) calculate the persentage of each student and display it?
+
+	>	select si.*,avg(marks) from students_info si,student_marks sm where 				si.regno=sm.regno group by si.regno;
+
+17) Display the students who had secured same marks?
+
+	>    select si.*,marks from students_info si,student_marks sm where sm.regno=si.regno order by 
+		marks desc;
+
+18) Display all information of each student?
+	
+	>select si.*,gi.*,coursename,marks from students_info si,guardian_info gi,student_addresses sa,
+	course_details cd,students_course sc,student_marks sm where si.regno=gi.regno and si.regno=sa.regno and sc.courseid=cd.courseid and sc.regno=si.regno and sm.regno=si.regno=sc.regno and sm.courseid=sc.courseid;
+	
+
+		
+			
+
+
+		
+
+
+
+
+
+
+	
+	
+	
+	
+
+	
