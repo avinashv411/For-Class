@@ -75,33 +75,21 @@ MVC Design Pattern Advantages :-
 > For Example, Struts & Spring Frameworks 
   internally uses MVC Design Pattern 
 
-  
-  
-  
-  
-  
-  
-  
 Java Bean / Plain Old Java Object (POJO) :-
 ============================================
 > If a Java class follow the below rules 
   then it is called as Java Bean 
-  1. Should have "Public Default Constructor" 
-  2. Should have "Private class level variables"
-  3. Should have "Public Getters & Setters" and 
-  4. Should NOT have "any other methods other 
+  1. Should be a Concrete Class
+  2. Should have "Public Default Constructor" 
+  3. Should have "Private class level variables"
+  4. Should have "Public Getters & Setters" and 
+  5. Should NOT have "any other methods other 
      than Getters & Setters"
-	
+  
 > The "one & only" use of a Java Bean is to 
   transfer the data from One Java Program to 
   Another Program in loosely-coupled fashion
 
-  
-  
-  
-  
-  
-  
 Data Transfer Object (DTO) Design Pattern :- 
 ===========================================
 
