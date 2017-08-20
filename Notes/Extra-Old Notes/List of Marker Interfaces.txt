@@ -1,0 +1,8 @@
+java.lang.Cloneable
+java.io.Serializable
+java.util.EventListener
+java.rmi.Remote
+java.util.RandomAccess
+
+Javax.servlet.SingleThreadModel
+Javax.ejb.EnterpriseBean
