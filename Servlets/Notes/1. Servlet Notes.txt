@@ -2621,8 +2621,9 @@ Cookie nameCookie = new Cookie("myName","Praveen");
      Server without Cookies
 
 > Hence Cookies "optional" both in HTTP Request & 
-  Response	 
-
+  Response. If present, Cookies will be present in 	 
+  "Header" part of HTTP Request / Response
+  
 > To get Cookies from Request, invoke getCookies()
   method on Request Object
   
@@ -2654,17 +2655,16 @@ Cookie nameCookie = new Cookie("myName","Praveen");
 1. Non-Persistent Cookie (it's default) :-
 ------------------------------------------
 > Non-Persistent Cookie lives as long as Browser
-  is kept open. Once the Browser is closed 
+  is kept open. Once the Browser is closed, 
   cookie disapears
   
 2. Persistent Cookie :-
 -------------------------
 > Persistent Cookie will be present in Browser 
-  even after Browser is Closed
+  even after Browser is Closed till it meets the
+  expiry time
 
-  
-  
-  
+ 
 Cookie Related Methods :-
 =========================
 
