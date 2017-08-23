@@ -424,7 +424,7 @@ Web URL (Web Uniform Resource Locator's) :
 
 > Max. number of characters allowed in Web URL is 
   around 2000 characters (exact number depends on 
-  Browser for ex, IE supports 2048 characters)   
+  Browser. For ex, IE supports 2048 characters)   
   
 Web URL Structure:	
 ------------------
@@ -2694,25 +2694,26 @@ Cookie Related Methods :-
   
 
 
-2. void HttpServletResponse.addCookie(Cookie cookieObj)
-========================================================
+2. public void HttpServletResponse
+                              .addCookie(Cookie cookieObj)
+==========================================================
 > This method add the specified Cookie to the Response
 > This method can be called "Multiple Times" to set more
   than one Cookie to the Response
  
-3. Cookie[] HttpServletRequest.getCookies()
-=============================================
+3. public Cookie[] HttpServletRequest.getCookies()
+======================================================
 > This method returns 
   - an "Array containing all the Cookie Objects" 
   OR 
   - returns "NULL" if request does not have Cookies
 
-4. String Cookie.getName()
-============================
+4. public String Cookie.getName()
+======================================================
 > This method returns the Name of the Cookie
 
-5. String Cookie.getValue()
-==============================
+5. public String Cookie.getValue()
+======================================================
 > This method returns the Value of the Cookie
  
  
@@ -2732,8 +2733,8 @@ Cookie Related Methods :-
  
  
  
-6. void Cookie.setMaxAge(int expiry)
-=====================================
+6. public void Cookie.setMaxAge(int expiry)
+=====================================================
 > set's the max age of the Cookie in "Seconds" 
 > +ve Value makes Cookie "Persistent" 
 > Any -ve Value makes Cookie "Non-Persistent"
@@ -2742,8 +2743,8 @@ Cookie Related Methods :-
  
 Examples :
 =============
-1. Create Cookie
-------------------
+1. Create Cookie Example
+--------------------------
 //Non-Persistent Cookie
 Cookie myNameCookie 
 		= new Cookie("myName", "Praveen D");
@@ -2760,8 +2761,8 @@ resp.addCookie(myLocationCookie);
 
 out.print("Cookies Created ...");
 
-2. Read Cookie
-------------------
+2. Read Cookie Example
+-------------------------
 //Get Cookies From Request
 Cookie[] receivedCookies = req.getCookies();
 
@@ -2777,8 +2778,8 @@ if(receivedCookies == null) {
   }
 }//End of if-else
 
-3. Delete Cookie
-------------------
+3. Delete Cookie Example
+---------------------------
 //Get Cookies From Request
 Cookie[] receivedCookies = req.getCookies();
 
