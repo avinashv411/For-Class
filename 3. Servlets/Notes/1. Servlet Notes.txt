@@ -408,8 +408,7 @@ Part 1 - Summary
 16. Webserver behaviour with WAR File
 17. Static Response  - Content doesn't change
 18. Dynamic Response - Content get generated @ the 
-                       time of request & it may 
-					   change  	 
+                       time of request & it may change  	 
 	 
 	 
 
@@ -419,8 +418,14 @@ Part 1 - Summary
 	   
 Web URL (Web Uniform Resource Locator's) :
 ===========================================
-> Every web resource (static OR dynamic) should have
-  its unique address in the form of Web URL
+> Web Application is a Collection of web resources 
+ (static OR dynamic)
+  
+> Web URL uniquely identifies ONE of the web resource 
+  (static OR dynamic) present inside a Web Application
+
+> In other words, every web resource should have its 
+  unique address in the form of Web URL
 
 > Max. number of characters allowed in Web URL is 
   around 2000 characters (exact number depends on 
@@ -466,8 +471,10 @@ Protocol:
 > As the name implies most of the time HTTP Response 
   contain HTML
   
-> In URL it’s an optional information & default 
-  protocol is HTTP
+> In URL 
+  - it’s an optional information
+  - case in-sensitive and
+  - default protocol is HTTP
 
 
 
@@ -484,7 +491,18 @@ Domain:
   IP address of the computer in which web 
   application is present
   
-> In URL it is a Mandatory Information
+> In URL 
+  - it is a Mandatory Information and
+  - case in-sensitive 
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 
 
