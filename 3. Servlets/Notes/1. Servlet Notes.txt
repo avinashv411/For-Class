@@ -492,8 +492,8 @@ Domain:
   application is present
   
 > In URL 
-  - it is a Mandatory Information and
-  - case in-sensitive 
+  - it's a Mandatory Information and
+  - it's case in-sensitive 
   
   
   
@@ -565,8 +565,9 @@ Path:
 > "Configured URL" uniquely identifies Dynamic web 
   resource inside that web applciation 
   
-> In URL, it’s an optional Information
-
+> In URL, 
+  - it’s an optional Information and
+  - it's case sensitive
 
 
 
@@ -586,6 +587,10 @@ Query String:
  name=value pair which are separated by an 
  ampersand(&)
 
+> In Query String
+  - Name is Case-Sensitive but
+  - Value is Case-Insensitive
+ 
 Examples:	
 ---------
 www.google.com/search?q=Praveen
@@ -609,14 +614,21 @@ req = Object reference of HttpServletRequest
 
 
 
+
+
+
+
+
 Fragment ID 
 ============
 > A Fragment ID or Fragment Identifier, as the name 
   implies, it refers to a particular fragment / a section within a web page
  
-> In URL, It’s an optional information & if present,
-  it begins with a hash (#) character followed by an
-  identifier
+> In URL, 
+  - It’s an optional information 
+  - Case In-Sensitive & 
+  - if present, it starts with a hash (#) character 
+    followed by an unique identifier
 
 Example:
 ---------	
@@ -627,7 +639,6 @@ manager-howto.html#Introduction
 
 
 
-jdbc:mysql://localhost:3306/BECM145_DB?user=root&password=root
 
 
 
@@ -635,6 +646,52 @@ jdbc:mysql://localhost:3306/BECM145_DB?user=root&password=root
 
 
 
+
+> Create Servelt by name "StudentSearchServlet", 
+  which gets the request by typing the URL (with the
+  Query String as "?regno=<register_number>") in 
+  the Browser and this Servlet,
+1. Needs to Get the "Register Number" from Query String   
+2. Check this Reg. No. exists in BECE14_DB DataBase 
+3. If No, Print the Error Message in the Browser
+4. If Yes, Get the corresponding Reg. No. Data from 
+   BECE14_DB DataBase 
+   ( Combination of Data Present in 
+     students_info & 
+	 guardian_info Tables), 
+  and display the Data in the Browser as shown below
+
+
+  
+  
+  
+  
+Note:-
+======
+> Create "StudentSearchServlet"	by extending 
+  "HttpServlet" & Override doGet() Method
+
+> In doGet() Method perform the below Operations
+1. Get the "Register Number" from Query String 
+2. Get the Data from DB using JDBC for this "Register Number" 
+3. Generate the Success / Error Response
+  
+> After creating the Servlet configure URL for that
+  servlet in web.xml (/studentSearch)
+  
+> URL to Access:
+-----------------
+http://localhost:8080/studentsApp/studentSearch
+
+> Since this Servelt needs to interact with DB, it 
+  MUST make use of JDBC & JDBC requires Driver JAR file
+  
+> Copy & Paste Driver JAR file into 
+  “WebContent/WEB-INF/lib” folder
+  
+
+  
+  
 
 
 
@@ -664,6 +721,15 @@ HTTP Structure:
 > Both Header Part & Body Part are separated by a
   "Single Empty Line"
 
+***********************  
+* Practical Exercise  *
+***********************  
+Install Fiddler Application  
+  
+  
+  
+  
+  
   
   
   
@@ -2826,68 +2892,76 @@ if(receivedCookies == null){
 
 Attributes :-
 ==============
-> Attributes helps us to pass information in 
-  the form of "name = value" pair where name is a "String" & value is "java.lang.Object" 
+> Attributes helps us to pass "Object" has an 
+  information from One Servlet to an Another
+  
+>  Attributes are "name/key = value" pair where 
+   - "name/key" is a "String" and
+   - "value" is a "java.lang.Object" 
 
 > Which means that, any java object can be an 
   attribute value
   
 > Attributes are the "One and Only way", in 
-  Servlet API, to pass information in the form of "Java object" from one servlet/JSP to another servlet/JSP
+  Servlet API, to pass information in the form
+  of "Java object" from one servlet/JSP to another
+  servlet/JSP
   
 > Attributes are of 3 types
   1. Context Attributes (Application Scope)
   2. Request Attributes (Request Scope)
   3. Session Attributes (Session Scope)
 
-> These 3 attributes can be get / set by using 
-  following Objects respectively
+> These 3 attributes can be get, set or remove by
+  using following Objects respectively
   1. javax.servlet.ServletContext
   2. javax.servlet.ServletRequest
   3. javax.servlet.http.HttpSession
  
 > Following methods are present in above Three 
-  Objects, which can be used to "get, set or remove" attributes
+  Objects, which can be used to "get, set or remove" 
+  attributes
   
 1. public void setAttribute(String name, Object value)
-=======================================================
-> Sets an Object to a given attribute name
+========================================================
+> Sets an "Object" to a given "Attribute Name"
 
 > If an attribute with the given name already exists 
-  then this method will replace the existing object with
-  the new Object
+  then this method will replace the existing object 
+  with the new Object
   
 2. public Object getAttribute(String name)
 ========================================================
 > This method returns an attribute value as 
-  java.lang.Object with the given name OR returns NULL 
-  if there is no attribute by that name exists
+  - "java.lang.Object" with the given name OR 
+  - "NULL" if there is no attribute by that name exists
 
 3. public void removeAttribute(String name)
 ========================================================
 > This method removes an attribute with the given name
   
-> After removal, subsequent calls to getAttribute() with
-  the same name returns NULL
+> After removal, subsequent calls to getAttribute() 
+  with the same name returns NULL
 
 NOTE:
 ======
-> Following are the different ways of passing information to Servlets
+> Following are the different ways of passing 
+  information to Servlets
   1. Using Query String
   2. Using Context & Config Parameters
   3. Using HTML Form
   4. Using Cookies
   5. Attributes
 
-> Apart from Attributes rest are name=value pair where 
-  both name & value are "String"
+> Apart from Attributes rest are "name/key=value" pair 
+  where both name & value are "String"
   
-> Where as Attributes are name=value pair where name is 
-  a "String" but value is an "Object" 
+> Where as Attributes are "name/key=value" pair where 
+  name is a "String" but value is an "Object" 
 
 > Hence if one Servlet wants to pass information to an
-  another in the form of "Java Object" then "Attributes"
-  are the One & Only way
+ another in the form of "Java Object" then "Attributes"
+ are the One & Only way
   
   
   
@@ -3042,12 +3116,11 @@ Session Introduction
 
 1. User Dependent Dynamic Web Applications  :-
 ----------------------------------------------
-> These are the Web Applications where "Response 
-  Data is specific to a User"
+> These are the Web Applications where "Response Data 
+  is specific to a User"
   Ex:- Gamil, Facebook, Twitter, Linked-In, etc.,
 
-> Login & Logout is "Must" for these Web 
-  Applications
+> Login & Logout is "Must" for these Web Applications
 
 > Also these webapplications MUST know "from which 
   User it's getting the request"
@@ -3065,6 +3138,7 @@ Session Introduction
 
 > Also these webapplications Need Not know "from 
   which User it's getting the request"		   
+		   
 		   
 Thumb Rule :-
 --------------
@@ -3104,8 +3178,7 @@ Why HttpSession (a.k.a Session) Functionality ?
 Thumb Rule:  
 -----------
 Any web application which has Login & Logout 
-then we MUST make use of HttpSession 
-functionality   
+then we MUST make use of HttpSession functionality   
 	
 
 	

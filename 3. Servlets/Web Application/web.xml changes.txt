@@ -73,3 +73,14 @@
   </servlet-mapping> 
   
   	
+	
+	
+<servlet>
+	<servlet-name>allStudents</servlet-name>
+	<servlet-class>com.jspiders.studentsapp.servlets.AllStudentsViewServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>allStudents</servlet-name>
+	<url-pattern>/allStudents</url-pattern>
+</servlet-mapping>	

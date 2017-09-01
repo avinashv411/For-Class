@@ -86,7 +86,7 @@ public class LoginServlet extends HttpServlet
 				
 				if(isAdmin.equals("Y"))
 				{
-					String url = "";
+					String url = "./allStudents";
 					out.println("<a href=\""+url+"\"> Click Here <a> to View ALL Students Info ...");
 					out.println("<BR> ");
 				}
