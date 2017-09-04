@@ -10,6 +10,8 @@ Web Browser :
 > Hence if we are using Browser in our computer 
   means, we are interacting with Web Applications
   
+> Browser is capable of Displaying "Text/HTML" data
+
 > Browser is the One & Only application which 
   understands contetnt/data present in HTML and 
   display accordingly
@@ -832,19 +834,20 @@ Actual Content:
 Content Type OR MIME Type:
 ===========================
 > Content Type OR Multipurpose Internet Mail 
-  Extensions (MIME) Type, tells the browser that what
-  type of content it’s going to receive so that it 
-  can prepare itself to handle the response data 
+  Extensions (MIME) Type, tells the browser that 
+  what "type of Actual Content" it’s going to 
+  receive so that it can prepare itself to handle 
+  the response data 
   
 > For example, 
   - open an Adobe Reader to handle PDF content 
   - Open Media Player to handle media content etc.,
 
-> Content Type is “Mandatory if Actual Content is
-  present" in the Response
-
-> If present, then its present in Header of HTTP 
-  Response
+> It’s 
+  - an Optional Information, 
+  - if present, then its present in Header part 
+    of HTTP Response and
+  - case in-sensitive
 
 > The default content type is “text/html”
 
@@ -855,7 +858,6 @@ Content Type OR MIME Type:
 	image/jpeg
 	application/zip
     Many More ....
-
 
 	
 
@@ -954,11 +956,12 @@ HTTP Method:
   
   
   
-> Servlet API has "Default Implementation" for these methods 
-  "excluding CONNECT method"
+> Servlet API has "Default Implementation" for these
+  methods "excluding CONNECT method"
   
-> All these default implementations are present in the Servlet 
-  API class by name “javax.servlet.http.HttpServlet”
+> All these default implementations are present in 
+  the Servlet API class by name
+  “javax.servlet.http.HttpServlet”
 
 ===============================================================
 | HTTP       |     Related Servlet Method                     |
