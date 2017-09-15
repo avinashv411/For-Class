@@ -37,6 +37,13 @@ behind the scene at runtime
 > Hence time taken to generate the response for First 
   Request is more compared to Subsequent Requests
 
+> Whatever we write inside a JSP (Not All) becomes part 
+  of "_jspService(HSR, HSR) method of Translated Servlet"
+
+> At the end of the Day, since JSP get converted to   
+  Servlet(i.e. Java) we can also have "Java Methods"
+  inside a JSP
+  
 > Also JSP's are handled by two different parties
   1. Web Developer creates the JSP
   2. Servlet Container translates JSP into Servlet  
@@ -59,11 +66,11 @@ behind the scene at runtime
 > By default JSP handles ONLY HTTP / HTTPS Protocols
   i.e. by default JSP API is "Protocol Dependent"
   where as Servlet API is "Protocol Independent"
-  
+
 MyFirstJSP.jsp
 ==============
 
-<%@page import="java.util.Date"%>
+<%@ page import="java.util.Date" %>
 
 <%
   //Java Code to Generate Current Date & Time
@@ -82,7 +89,21 @@ Configuring URL for JSP in web.xml :-
 ======================================
 <servlet>
 	<servlet-name>myFirstJsp</servlet-name>
+	<!-- if JSP Directly Present under WebContent -->
 	<jsp-file>/MyFirstJSP.jsp</jsp-file>
+	
+<!-- if JSP Present under sub-folder (jsp) of WebContent 
+	<jsp-file>/jsp/MyFirstJSP.jsp</jsp-file>
+-->
+	
+<!-- if JSP Directly Present under WEB-INF
+	<jsp-file>/WEB-INF/MyFirstJSP.jsp</jsp-file>
+-->
+	
+<!-- if JSP Present under sub-folder (jsp) of WEB-INF
+	<jsp-file>/WEB-INF/jsp/MyFirstJSP.jsp</jsp-file>
+-->
+
 </servlet>
 
 <servlet-mapping>
@@ -93,15 +114,33 @@ Configuring URL for JSP in web.xml :-
 URL's to Access JSP :
 ========================
 
-1. Using JSP File Name
+1. Using JSP File  
 -----------------------
-http://localhost:8080/studentsApp/MyFirstJSP.jsp
+> if JSP Directly Present under WebContent
+  http://localhost:8080/studentsApp/MyFirstJSP.jsp
+
+> if JSP Present under Sub-floder (jsp) of WebContent
+  http://localhost:8080/studentsApp/jsp/MyFirstJSP.jsp
+
+> if JSP Present under "WEB-INF" then we cannot access
+  using the filename. In such cases we get 404 Response  
 
 2. Using Configured URL
 -----------------------
 http://localhost:8080/studentsApp/currentDateJsp
 
 
+NOTE:-
+=======
+> "WEB-INF" folder is meant for Web Server. Whatever
+  we keep inside this folder will not be exposed to 
+  outside world
+
+> Hence,
+  - keeping JSP inside "WEB-INF", 
+  - configuring url for this JSP in web.xml & 
+  - accessing this JSP using this configured url 
+    is "more Secure"
 
 
 
@@ -207,18 +246,24 @@ public void jspDestroy()
 NOTE:
 ======
 > Servlet get created by 
-  1. Extending GenericServlet
-  2. Extending HttpServlet or
-  3. Got created because of the JSP
+  1. Implementing Servlet
+  2. Extending GenericServlet
+  3. Extending HttpServlet or
+  4. Got created because of the JSP
      
 > No Matter how Servlet get created, container always 
   invokes below Lifecycle Methods in that Servlet
   1. public default constructor
-  2. init(SC)
-  3. service(SR, SR)
-  4. destroy()
   
-> In other words, From "Container Perspective" 
+  2. public void init(ServletConfig)
+     throws ServletException
+	 
+  3. public void service(ServletRequest, ServletResponse)
+     throws ServletException, IOException
+	 
+  4. public void destroy()
+  
+> In other words, from "Container Perspective" 
   LifeCycle methods remains same 
 
 > However from "Developer Perspective" LifeCycle 
@@ -316,7 +361,12 @@ Differences Between Servlets & JSP
 
    JSP has "*.jsp" file extension
 
-8. Implicit Objects are NOT avilable & we have to
+8. Servelts are created under "src" folder of 
+   Dynamic Web Project
+
+   JSPs are created under "WebContent" folder 
+   
+9. Implicit Objects are NOT avilable & we have to
    explicitly define them
 	
    Implicit Objects are available	
@@ -343,6 +393,9 @@ Note :
 <!-- HTML Comment --> is a HTML Comment. 
 Hence there is nothing called as "Hidden Comment" 
 OR "Output Comment" as per JSP Specification
+
+
+
 
 
 
@@ -455,7 +508,12 @@ Servlet Objects
 
 
 
-| out   | javax.servlet.jsp.JspWriter  | request  |
+
+
+
+
+
+| out   | javax.servlet.jsp.JspWriter  | page  |
 
 > This Object helps to print the data in Browser
 
@@ -481,6 +539,10 @@ Servlet Objects
 
 
 
+
+
+
+
 | pageContext | javax.servlet.jsp.PageContext | page |
 
 > PageContext acts like a Single API to manage all 
@@ -498,8 +560,8 @@ Servlet Objects
 | exception | java.lang.Throwable  | page	|
 
 > This implicit Object is only available to the
-  pages where "isErrorPage" page directive is 
-  set to "true"
+  pages where page directive with attribute 
+  "isErrorPage" is set to "true"
   
   <%@page isErrorPage="true" %>
 			
@@ -525,8 +587,8 @@ names are in "Lower Case"
 JSP Tags:-
 ==========
 > JSP separate Presentation Logic from Business Logic.
-  Using HTML Tags we can write Presentation Logic &
-  using JSP Tags we can write Business Logic
+- Using HTML Tags we can write Presentation Logic &
+- Using JSP Tags we can write Business Logic (Java Code)
   
 > In other words, JSP is like a Java inside HTML 
   & "JSP tags  helps us to write Java code inside JSP"
@@ -589,9 +651,11 @@ Code Word :  DEADS
 > This tag helps us to print Dynamic Value in the 
   Browser
 
-> Code placed with in this tag should not end with 
-  Semicolon
-
+> Code placed with in this tag 
+  - should not end with Semicolon &
+  - will be present inside _jspService(HSR, HSR) method
+    [ that too inside out.print() ]
+  
 > Functionality of this tag is similler to  printing 
   the dynamic data using out.print() in case of 
   Servlets
@@ -617,8 +681,8 @@ Code Word :  DEADS
   logic (Java Code) inside JSP using Scriptlet Tag"
   
 > Code placed with in this tag becomes part of 
-  _jspService() Method at runtime and get executed 
-  for every request
+  _jspService(HSR, HSR) Method at runtime and get 
+  executed for every request
   
 > If we declare a variable using this tag then it 
   becomes "Method Level Variable" and accessable only
@@ -868,8 +932,8 @@ Syntax:
 		
 III. Page Directive [ <%@page   attributes %> ]
 --------------------------------------------------
-> Page Directive has 11 Optional Attribute that provides 
-  some processing information to Servlet Container
+> Page Directive has 11 Optional Attribute (case sensitive)
+  that provides some processing information to Container 
   
 =======================================================
 |   Attribute 	|	Syntax			|   Description    |
@@ -896,13 +960,18 @@ III. Page Directive [ <%@page   attributes %> ]
   
   
   
+  
+  
+  
+  
+  
 
 | language		| <%@page language="java" %>				|			 |
 
 > Language denotes the "Scripting Language" used in 
   Declaration, Expression & Scriptlet tags
 
-> Default language is "java"
+> Default value is "java"
 
 
 
@@ -917,11 +986,11 @@ III. Page Directive [ <%@page   attributes %> ]
   
 
 
-| contentType	| <%@ page contentType="text/html" %>		|			 |
-|				|	OR  									|			 |
-|				| <%@ page contentType="text/html; 			|			 |
-|				|          charset=ISO-8859-1"%>		  	|			 |
-|				|										    |			 |
+| contentType	| <%@page contentType="text/html" %> |			 |
+|				|	OR  							 | 			 |
+|				| <%@page contentType="text/html; 	 | 			 |
+|				|         charset=ISO-8859-1" %>	 |			 |
+|				|									 |			 |
 
 > This attribute specifies the Content Type and 
   Character Set for JSP Response
@@ -936,10 +1005,10 @@ III. Page Directive [ <%@page   attributes %> ]
 
 
 
-| import   | <%@page import="pkg1.class1, pkg2.*, .."%>| 			 |
-|          | OR                                        | 			 |
-| 	       | <%@page import="pkg1.class1"%>            | 			 |
-| 		   | <%@page import="pkg2.*"%>                 | 			 |
+| import | <%@page import="pkg1.class1, pkg2.*, .."%>| 			 |
+|        | OR                                        | 			 |
+| 	     | <%@page import="pkg1.class1"%>            | 			 |
+| 		 | <%@page import="pkg2.*"%>                 | 			 |
 
 
 > Functionality is similar to Java "import" statement
@@ -1029,7 +1098,7 @@ III. Page Directive [ <%@page   attributes %> ]
 
 
 
-| isThreadSafe  | <%@page isThreadSafe="true | false"%>		|			 |
+| isThreadSafe  | <%@page isThreadSafe="true | false"%>	|	|			 |
 
 
 > If "true" (it's default), then JSP becomes 

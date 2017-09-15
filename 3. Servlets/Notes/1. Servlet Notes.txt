@@ -952,6 +952,8 @@ HTTP Method:
   8. CONNECT
   
   Code Word : HTPP DOG C
+  NOTE:- We should write HTTP Methods ALWAYS 
+         in "Uppercase"
   
   
   
@@ -1003,6 +1005,8 @@ NOTE:
 Since method signature is same apart from Method name,
 these methods in general called as doXXX(HSR, HSR) methods
 
+Syntax
+-------
 protected void doXXX(HttpServletRequest req, 
 					 HttpServletResponse resp)
 throws ServletException, IOException  
@@ -1017,6 +1021,11 @@ throws ServletException, IOException
 	
 	
 	
+
+ 
+
+
+
 	
 	
 	
@@ -1032,13 +1041,38 @@ throws ServletException, IOException
   
   
   
+  
+  
+  
+  
 
 
  
- 
- 
- 
- 
+Questions We have So Far:-
+==============================
+> There are 8 HTTP Methods (out of 8, two methods are 
+  important from Web Application perspective) & Request 
+  can consists of any ONE of them.
+  In what case, request consists of HTTP Method GET / POST ?
+  
+> Whenever we create a Servlet by extending HttpServlet 
+  we get 3 Choices. So when to override doGet() / doPost() ?
+  
+> Servlet API takes care of 7 HTTP Methods out of 8.
+  What happens if request consist CONNECT?
+  
+  
+  
+  
+  
+*********************** 
+* Practical Exercise  *
+*********************** 
+
+> Create a HTML Form as shown below
+  
+  Login.html
+  ---------- 
  
  
  
@@ -1081,23 +1115,25 @@ NOTE :
 
 > If a form collects 
   - "Sensitive Data" like Password 
-    (ex: Gmail Login Page / Profile Creation Page) 
+    (ex: Gmail Login Page) 
 	OR 
-  - Very Large Data like sending mail 
-    (ex: Gmail Compose Mail / Youtube Video Upload) 
+  - Very Large Data but in-sensitive 
+    (ex: Youtube Video Upload) 
 	OR 
   - Both of them 
     (ex: Naukri Profile Creation Page)
   then that form "SHOULD" use method="post"
   
-> If a form collects "In-Sensitive Data" like search 
-  words (ex:Google Search) then that form may use 
-  method="post" or method="get"
+> If a form collects "In-Sensitive and Less Amount of Data" like search 
+  that form may use 
+  - method="post" or 
+  - method="get" (preferred)
   
-> Hence whenever Servlet gets a request via 
-  Submitting the form then generally we override 
-  doPost() method & for rest of the cases, we have 
-  to override doGet() method
+> Hence whenever Servlet gets a request via Submitting 
+  the form & that form has method="post" then we have to 
+  override doPost() method 
+
+> For rest of the cases, we have to override doGet() method
   
 Differences between GET/doGet() &  POST/doPost()
 ------------------------------------------------
@@ -1125,7 +1161,7 @@ Differences between GET/doGet() &  POST/doPost()
    hence it will not be exposed to the outside world
 
 5. The amount of data sent using GET is restricted 
-   becuase URL can contain Only 1024 characters
+   becuase URL can contain around 2000 characters
 
    There is no restriction on the amount of data 
    sent using the POST
@@ -1232,30 +1268,30 @@ for every incoming request
 
 3. Declarative Support :
 ------------------------
-With "web.xml", which is used by Servlet 
-container, we can change the behaviour of web 
-application without changing anything in 
-Servlet/JSP Code
+With "web.xml", which is used by Servlet container, 
+we can change the behaviour of web application without 
+changing anything in Servlet/JSP Code
 
 4. Life Cycle Management :
 -------------------------
-Container manages/controls the "Life Cycle of a
-Servlet"
+Container manages/controls the "Life Cycle of a Servlet"
 
 5. JSP Support :
 ----------------
-Container takes care of converting JSP into a 
-Servlet
+Container takes care of converting JSP into a Servlet
 
 
 
 
 
-*************			
-Assignment 1:
-*************
+*********************			
+Practical Exercise :
+**********************
   
-  
+> Create a HTML Form as shown below   
+
+FormExample.html
+------------------
   
   
   
@@ -1273,7 +1309,7 @@ javax.servlet.http.HttpServletRequest
 > We should make use of this object to get Info 
   from "Raw Http Request"
   
-> HttpServletRequest is an Interface & it  extends 
+> HttpServletRequest is an Interface & it extends 
   an another Interface by name
   "javax.servlet.ServletRequest"
 
@@ -1326,7 +1362,10 @@ Some Methods which are part of "Request Object" are:
 > Both these methods return NULL if the parameter 
   name does not exist
   
-		
+Note:-
+-------
+Apart from the above, there are many more Getter Methods,
+which helps to get infomration from Request Object		
 			
 			
 
@@ -3438,3 +3477,27 @@ Part 5 - Summary
   Object, below things happens behind the scene
   - Status of Unique ID get changed to In-Active
   - 
+  
+  
+Servlet Summary :-
+====================
+Web Server & Application Server
+Apache Tomcat is "Pure Servlet Container"  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  

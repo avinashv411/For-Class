@@ -8,6 +8,16 @@ Computer
   
 > Computers are represented as shown below
 
+Smart Phones 
+================= 
+> It's also a combination of hardware + an Operating 
+  System  
+  
+> Compared to Computer, we can perform most of the 
+  operations in "Smart Phones" (not all)  
+  
+> Smart Phones are represented as shown below  
+  
 
 
 
@@ -59,16 +69,7 @@ Operating System
   
   
   
-Smart Phones 
-================= 
-> It's also a combination of hardware + an Operating 
-  System  
-  
-> Compared to Computer, we can perform most of the 
-  operations in "Smart Phones" (not all)  
-  
-> Smart Phones are represented as shown below  
-  
+
   
   
   
@@ -86,9 +87,9 @@ Types of Applications
   1. Standalone application (Un-shared)
   2. Web Applications (Shared)
 	
-> Standalone Applications are present in our own computer
-  or Smart Phones and they are dedicated per user
-  ex: Adobe Reader, Web Browser, Media Player, etc..
+> Standalone Applications are present in our own 
+  computer or Smart Phones and they are dedicated per 
+  user ex: Adobe Reader, Web Browser, Media Player, etc.
 	
 > Web applications are not present in our own computer 
   but they are present in some other computer where our 
@@ -230,8 +231,8 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
 
 > W.K.T Applications consist of set of Programs 
   hence, web applications also consist of set of 
-  Programs (code) and in these programs we write the 
-  "Business Logic"
+  Programs (code) and in these programs we write 
+  the "Business Logic"
   
 > This Business Logic(code) may needs to interact with
   DB to get some data & should send it to the 
@@ -251,6 +252,11 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
 
 Java EE 3-Tier Architecture:-
 ================================
+
+
+
+
+
 
 
 
