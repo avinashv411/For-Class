@@ -1465,11 +1465,86 @@ NOTE :
   
   
   
-*************			
-Assignment 2:
-*************
-
+***********************			
+* Practical Exercise  *
+***********************
+> Create a HTML Form as shown below
+  
+  CreateProfile.html
+  -------------------
+  
+  
+  
+  
+  
+  
+  
+  
+  
+> Create Servlet by name "CreateProfileServlet", 
+  which gets the request from this form,
+1. Get the Form Data
+2. Store the Form Data into Corresponding Tables
+3. generate Proper Response(Success / Error Message)
 	
+	  
+  
+  
+  
+  
+  
+  
+	
+Note:-
+======
+> Since this form collects sensitive info, it should
+  have method="post"
+  
+> Create "CreateProfileServlet"	by extending 
+  "HttpServlet" & Override doPost() Method
+
+> In doPost() Method perform the below Operations
+  1. Get the Form Data
+  2. Store the Form Data into DB using JDBC
+  3. Generate the Success / Error Response
+  
+> After creating the Servlet configure URL for that
+  servlet in web.xml (/createProfile)
+  
+> URL to Access:
+==================
+HTML :- 
+------------
+http://localhost:8080/studentsApp/CreateProfile.html
+
+Servlet:- 
+------------
+http://localhost:8080/studentsApp/createProfile
+
+> Provide Servlet URL in <form> tag "action" attribute
+action=
+    "http://localhost:8080/studentsApp/createProfile"
+
+> Since this Servelt needs to interact with DB, it 
+  MUST make use of JDBC & JDBC requires Driver JAR file
+  
+> Copy & Paste Driver JAR file into 
+  “WebContent/WEB-INF/lib” folder
+  
+> First access the HTML form using HTML URL, fillout 
+  the form & submit the form to make request to Servlet
+
+
+
+
+
+
+
+
+
+
+
+  
 eXtensible Markup Language (XML) Introduction :-
 ==================================================
 > As the name implies it's an extension of Markup

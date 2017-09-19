@@ -239,12 +239,12 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
   Programs (code) and in these programs we write 
   the "Business Logic"
   
-> This Business Logic(code) may needs to interact with
-  DB to get some data & should send it to the 
-  Browser to display it to the user
+> This Business Logic(code),
+  - may needs to interact with DB/File to get data & 
+  - should send it to the Browser to display 
 
 > Hence this Code can be divided into 2 parts
-  1. Code to get the data from DB 
+  1. Code to get the data from DB/File 
 	 (Back-end Code)
   2. Code/Logic to present the data to User 
      (Front-end Code)
