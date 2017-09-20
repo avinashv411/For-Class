@@ -38,14 +38,14 @@ JDBC Pre-requirements:
 =========================
 1.	Install an RDBMS Application (MySQL 5.5)
 2.	Create a "Database (Schema)" by name 
-    "BECE14_DB"
+    "BECME156_DB"
 3.	Create a table by name "STUDENTS_INFO"
     in the above "Database"
 4.	Insert some data into the above table
 
 SQL Queries for MySQL RDBMS Application:-
 ==========================================
-create database BECE14_DB;
+create database BECME156_DB;
 
 create table students_info
 ( regno int(10) not null,
@@ -62,7 +62,7 @@ Some Usefull Queries:
 ========================
 1. To connect to database:-
 ----------------------------
-   use BECE14_DB;
+   use BECME156_DB;
    
 2. To get the list of databases:-
 ---------------------------------
@@ -120,15 +120,18 @@ Note:-
   
   
   
+  
+  
+  
 IP Address 		: 	192.168.1.189
-Computer name	: 	QSP-SHMUTT-PC
-Port Number		: 	3306
-DB Name			:	BECE14_DB
-User Name		:	root	j2ee
-Password		:	root	j2ee
+Computer Name 	:	QSP-SHMUTT-PC
+Port Number		:	3306
+DB Name			:	BECME156_DB
+User Name		:	root / j2ee
+Password		:	root / j2ee
+Table Name		: 	students_info
 
-jdbc:mysql://QSP-SHMUTT-PC:3306/BECE14_DB?user=j2ee&password=j2ee
-
+jdbc:mysql://192.168.1.189:3306/BECME156_DB?user=j2ee&password=j2ee
 
 
 
@@ -464,7 +467,7 @@ java.sql.DriverManager
    throws SQLException
 ----------------------------------------------------
  String dbUrl = 
- "jdbc:mysql://localhost:3306/BECE14_DB
+ "jdbc:mysql://localhost:3306/BECME156_DB
  			         ?user=root&password=root";
  			
  Connection con = DriverManager.getConnection(dbUrl);
@@ -475,7 +478,7 @@ java.sql.DriverManager
   throws SQLException
 -----------------------------------------------------
  String dbUrl  = 
-	    "jdbc:mysql://localhost:3306/BECE14_DB";
+	    "jdbc:mysql://localhost:3306/BECME156_DB";
  String userNM = "root";
  String pass   = "root";
 				
@@ -490,7 +493,7 @@ java.sql.DriverManager
    throws SQLException
 ---------------------------------------------
 	 
-String dbUrl="jdbc:mysql://localhost:3306/BECE14_DB";
+String dbUrl="jdbc:mysql://localhost:3306/BECME156_DB";
 		
 String filePath = "D:\\db.properties";
 FileReader reader = new FileReader(filePath);
