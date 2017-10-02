@@ -2096,12 +2096,6 @@ Important Points:
    
    
    
-> If a class extends either HttpServlet or 
-   GenericServlet & a "subclass of that class 
-   is also be called as Servlet"     
-   
-   
-   
    
    
 > Hence, there are 3 ways of creating the Servelt
@@ -2126,55 +2120,67 @@ public class MyAnotherServlet implements Servlet
 	public void init(ServletConfig config) 
 	throws ServletException {
 		//Initialization Code Goes Here
-	}//End of 
+	} 
 	
 	public void service(ServletRequest req, 
 			            ServletResponse resp) 
 	throws ServletException, IOException {
 		//Service Logic Code Goes Here
-	}//End of service
+	}
 	
 	public void destroy() {
 		//Clean-up Code Goes Here
-	}//End of 
+	} 
 
 	public ServletConfig getServletConfig() {
 		return null;
-	}//End of getServletConfig
+	}
 
 	public String getServletInfo() {
 		return null;
-	}//End of getServletInfo
+	}
 
 }//End of Class   
    
 > As shown in the above example Servlet intreface 
   has below 5 Methods
-
-   1. void init(ServletConfig config) 
-      throws ServletException
-
-   2. void service(ServletRequest req, 
-   				   ServletResponse resp) 
-	  throws ServletException, IOException
-   
-   3. void destroy()
-
-   4. ServletConfig getServletConfig()
+									------
+1. void init(ServletConfig config) 		 |
+  throws ServletException				 |
+										 |     Servlet
+2. void service(ServletRequest req, 	 |---> Lifecycle
+			   ServletResponse resp) 	 |     Methods
+  throws ServletException, IOException	 |
+										 |
+3. void destroy()						 |		
+									------
+4. ServletConfig getServletConfig()
    
    5. String getServletInfo()
    
 > If we implements Servlet Interface then that 
   Servlet will become "Protocol-Independent Servlet"   
-   
-   
-   
-   
-   
+ 
+
+
+
+
+
+
+
+
+ 
+> If a class 
+  - extends either HttpServlet or GenericServlet OR
+  - implemets Servlet interface 
+  & a "subclass of that class is also be called as Servlet"     
    
 > Servlets (for which we configure a URL in web.xml)
   must be a "concrete class" otherwise they fail at 
   runtime i.e. during the "Instantiation Phase"
+   
+   
+   
    
    
    
@@ -2189,37 +2195,9 @@ public class MyAnotherServlet implements Servlet
   combination of any other constructor along with 
   public default constructor
    
-   
-   
-   
-   
-   
-   
-   
-   
 >  Servlets are protocol independent in nature, 
    but are most often used with HTTP & HTTPS
    protocols      
-   
-   
-   
-   
-   
-   
-   
-   
-   
-> We can also create a Servlet by implementing 
-  "javax.servelt.Servlet" interface however this 
-  approch is not so common. In this case Servlet 
-  becomes "Protocol-Independent" in nature.
-  
-   
-   
-   
-   
-   
-   
    
 > There is only one instance exist for any servlet. 
    i.e. Servlets are "Singleton in nature"   

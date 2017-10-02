@@ -176,8 +176,11 @@ JAR (Java ARchieve) File:
     (Text File, XML, Property Files, etc.,)
 
 > JAR file helps us to transfer the "Java files /
-  .class files / Java Application" from one location to an another location
-  
+  .class files / Java Application" from one location
+  to an another location
+
+> Hence JAR File represents a "Java Application"  
+ 
 > JAR File will have ".jar" file extension & 
   functionality wise it's similler to "ZIP" file
 
@@ -201,6 +204,11 @@ Steps to Make Use of JAR File :-
 2. Select the "JAR File" & Click on "Open"
 
 3. We see JAR File under "Referenced Libraries"
+   
+   
+   
+   
+   
    
    
    
@@ -294,6 +302,14 @@ JDBC Step 1 Summary:-
 
 
 
+Uniform Resource Locator (URL)
+================================
+> As the name implies, it uniquely identifies
+  a "Resource" or an "Application" in a Network
+  
+> There are "many" types of URL's & couple of 
+  them are
+
 DataBase Uniform Resource Locator (DB URL)
 ==========================================
 > DB URL, as the name implies, it uniquely 
@@ -311,8 +327,8 @@ DataBase Uniform Resource Locator (DB URL)
   
 1. Protocol     
 ============
-> It's a Mandatory Information & Case In-sensitive
-> In case of Java, Protocol is always "jdbc"
+> It's a Mandatory Information
+> In case of Java / Java EE, Protocol is always "jdbc"
 
 
 
@@ -326,13 +342,13 @@ DataBase Uniform Resource Locator (DB URL)
 
 2. Subprotocol
 ==============
-> It's a Mandatory Information & Case In-sensitive
+> It's a Mandatory Information
 
 > It identifies the "DB Connectivity Mechanisam"
   used to Connect to DB
   
 > This information is provided by DB Vendor & we 
- have to refer the Driver Manual to get this info
+  have to refer the Driver Manual to get this info
 
 > In case of MySQL, Subprotocol is "mysql" but,
   incase of Oracle or DB2 its different
@@ -346,11 +362,10 @@ DataBase Uniform Resource Locator (DB URL)
 > It's a Mandatory Information
 
 > It Consists of,
-	1. Host Name 
-	  (Computer Name / IP Address & Case In-sensitive) 
-	2. Port Number 
-	3. Database Name / Schema Name (Case In-sensitive)
-	4. User Name & Password (Case Sensitive)
+1. Host Name (Computer Name/IP Address) 
+2. Port Number (should be a Digits)
+3. Database Name / Schema Name
+4. User Name & Password (Optional)
 	
 > Arrangement of Subname varies from driver 
   to driver, we have to refer the manual & 
@@ -363,9 +378,21 @@ DataBase Uniform Resource Locator (DB URL)
   
   - In case of DB URL, it uniquely identifies
     a RDBMS Application
-  
+ 
+NOTE:- 
+========
+> Apart from "user name & password" rest all are 
+  Case In-sensitive
+
+ 
 JDBC URL - Few Examples:-
 ==========================
+
+
+
+
+
+
 Oracle:
 --------
 jdbc:oracle:thin:myUser/myPassword@myHost:1521:myDB
@@ -412,9 +439,8 @@ jdbc:mysql://localhost:3306/BJM24_DB?user=j2ee&password=j2ee
 
 java.sql.DriverManager 
 ==========================
-> DriverManager is a "Concrete Class" present in 
-  JDBC API & as the name implies, it manages the 
-  drivers
+> DriverManager is a "Concrete Class" present in JDBC 
+  API & as the name implies, it manages the drivers
   
 > It helps Java Program to establish the connection 
   to DB & for that it requires following two 
@@ -422,12 +448,11 @@ java.sql.DriverManager
   1. Driver Class 
   2. DB URL 
 
-> By invoking "registerDriver()" method on 
-  DriverManager we can provide an "Object of Driver 
-  Class"
+> By invoking "registerDriver()" method on DriverManager
+  we can provide an "Object of Driver Class"
   
-> By invoking "getConnection()" method on 
-  DriverManager we can provide "DB URL" 
+> By invoking "getConnection()" method on DriverManager
+  we can provide "DB URL" 
 
 > DriverManager’s getConnection() method helps us to 
   establish the connection to the DB.  This method
@@ -485,13 +510,10 @@ java.sql.DriverManager
  Connection con 
  = DriverManager.getConnection(dbUrl, userNM, pass);
 
-
- 
- 
 3. Connection getConnection (String url, 
                              Properties info) 
    throws SQLException
----------------------------------------------
+-----------------------------------------------------
 	 
 String dbUrl="jdbc:mysql://localhost:3306/BECME156_DB";
 		
@@ -524,6 +546,7 @@ NOTE:-
   there is change in DB credentials
   	 
 
+ 
  
 Results of RDBMS Application
 ===================================
