@@ -158,8 +158,43 @@
 16. If it is a Non-Marker interface then it SHOULD 
     NOT consist of ANY Abstract Methods but it will consist of only Variables
   
-   
+Method Overloading
+===================
+> If Methods names are "Same"   
+  + if it has 
+    ( different number OR different types )
+	of arguments
+  then its called as "Method Overloading"	
 
-
+> Overloading can happen in 
+  "Same Class" as well as "Sub Class"
+  
+Method Overriding
+===================  
+> It happens ONLY in Sub Class
+> Hence Sub-Class should have same method signature 
+  as Super-Class however,
+  - We can increase the Visibility of the methods 
+  - return type SHOULD be same for Premitive Data-Types
+  - return type can be of "covarient type" for 
+    Non Premitive Data-Types
+  - Method name should be same
+  - Method input arguments should be same. 
+    If not, then it becomes "Method Overloading"
+  - Wen can decrease the visibility of the Exceptions
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   

@@ -2282,13 +2282,15 @@ Note:
 Single Threaded Servlets :
 ==========================
 > We Know that, by default servlets are Multi 
-  Threaded in Nature. Hence following are the 2 ways
+  Threaded in Nature. Hence following are the 3 ways
   to create Single Threaded Servlet  
   
 1. By Implementing "javax.servlet.SingleThreadModel"
-   Marker Interface OR
+   Marker Interface 
 2. By Synchronizing Service Method
-
+3. By Synchronizing a Block of Code 
+   in Service Method (preferred)
+   
 > SingleThreadModel is a Marker Interface which 
   ensures that servlets handle only one request 
   at a time i.e. Container start handling the 
