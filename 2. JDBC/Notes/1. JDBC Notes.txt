@@ -600,7 +600,7 @@ NOTE :
 ------
 1. ABC = Table Name
 2. Dynamic SQL Query MUST Contain One/More "?"
-3.  Static SQL Queries
+3. Static SQL Queries
     	|
     	|----> Select
     	|
@@ -690,6 +690,19 @@ Statement stmt = con.createStatement();
 where "con" is the Object reference of 
 "java.sql.Connection" Object
   
+
+******************
+* GPS Exercise 1
+******************    
+1. Write "StatementExample" Program
+2. Write a Java program to delete Reg. No. 6 data 
+   from students_info table
+
+delete from students_info where regno=6
+Statement
+executeUpdate()
+
+
 
 
   

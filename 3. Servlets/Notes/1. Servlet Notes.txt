@@ -2404,10 +2404,10 @@ ServletContext context = config.getServletContext();
    
 ====================================================
 
-
 NOTE:
 =======
-1. Both ServletContext & ServletConfig objects has   getInitParameter() method which helps us to get 
+1. Both ServletContext & ServletConfig objects has   
+   getInitParameter() method which helps us to get 
    parameter value information from web.xml
 
    Syntax :
