@@ -2527,7 +2527,8 @@ Image:
 1. Using Browser, user makes a request to a servlet
 
 2. Servlet internally forwards that request to another 
-   Internal Resource (Static/Dynamic) by passing Request & Response objects
+   Internal Resource (Static/Dynamic) by passing Request 
+   & Response objects
 
 3. This internal resource handles that request & gives 
    back the response
