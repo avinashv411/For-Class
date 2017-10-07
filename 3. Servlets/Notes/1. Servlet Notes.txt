@@ -2585,8 +2585,6 @@ Differences between Redirect & Forward :-
 =============================================
 |	Redirect   		 |		Forward         |
 =============================================
-
-
 1. Redirect happens @ "Browser side"	
    Forward happens @ "Server side"
 
@@ -2655,6 +2653,8 @@ NOTE:
    
    
    
+
+
    
    
    
@@ -2803,7 +2803,7 @@ Cookie nameCookie = new Cookie("myName","Praveen");
      Server without Cookies
 
 > Hence Cookies "optional" both in HTTP Request & 
-  Response. If present, Cookies will be present in 	 
+  Response. If present, they will be present in 	 
   "Header" part of HTTP Request / Response
   
 > To get Cookies from Request, invoke getCookies()
