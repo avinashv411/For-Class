@@ -828,28 +828,38 @@ java.sql.ResultSet
 1. Move to desired Row by calling necessary ResultSet
    methods
    For Ex : next(), first(), last(), etc
-	        ------
-2. Retrieve the desired column value using
 
-   getXXX(< Position of the Column in SQL Query
-			as Integer Value >);
-   OR
-   getXXX("< Column Name as String Value >");
-   ----------------------------------------
-	
+   Syntax of next()
+   ====================
+   public boolean next() throws SQLException	
+
+2. Retrieve the desired column value using any one of
+   the below getXXX() methods
+
+	i.  public XXX getXXX(String columnName) 
+	    throws SQLException	
+
+	ii. public XXX getXXX(int columnIndex) 
+	    throws SQLException	
+ 
    where XXX = Java Data Type corresponding to DB 
                Table column data type
 	  
 NOTE : getXXX() methods are the ONLY way to retrieve 
        data from ResultSet object		  
 		  
-		  
 	
-	
-	
-	
-
-	
+ 
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 Why we need to Close Necessary JDBC Objects:-
 ==============================================
 > JDBC Objects such as 

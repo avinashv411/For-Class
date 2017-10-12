@@ -2846,7 +2846,6 @@ Cookie nameCookie = new Cookie("myName","Praveen");
   even after Browser is Closed till it meets the
   expiry time
 
- 
 Cookie Related Methods :-
 =========================
 
@@ -2855,7 +2854,8 @@ Cookie Related Methods :-
 > It's the ONE & ONLY constructor avilable in 
   "javax.servlet.http.Cookie" Concrete Class
   
-> It creates the Cookie Object with specified name  & value
+> It creates the Cookie Object with specified name  
+  & value
   
 > Name can contain only "Alphanumeric Character" but
   should not contain 
@@ -2918,7 +2918,7 @@ Cookie Related Methods :-
 6. public void Cookie.setMaxAge(int expiry)
 =====================================================
 > set's the max age of the Cookie in "Seconds" 
-> +ve Value makes Cookie "Persistent" 
+> Any +ve Value makes Cookie "Persistent" 
 > Any -ve Value makes Cookie "Non-Persistent"
 > 0 Value makes Cookie (Persistent / Non-Persistent) 
   to be "Deleted Immediately" from Browser 
@@ -2929,7 +2929,7 @@ Examples :
 --------------------------
 //Non-Persistent Cookie
 Cookie myNameCookie 
-		= new Cookie("myName", "Praveen D");
+		= new Cookie("myName", "Praveen");
 
 //Persistent Cookie
 Cookie myLocationCookie 
