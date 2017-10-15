@@ -1,0 +1,111 @@
+Web Services - What more to add 
+=====================================
+ 
+XSD
+=======
+Java to XSD, Use this XSD to generate Java Class for Marshalling & Unmarshalling
+XML to XSD, Use this XSD to generate Java Class for Marshalling & Unmarshalling
+XSD Vaidation
+JAXB with XPATH
+Real time examples with Google Maps, LinkedIn, Twitter, Facebook, Instagram
+
+
+JSON
+========
+Extracting perticular details in entire JSON
+refer this : https://www.tutorialspoint.com/jackson/jackson_streaming_api.htm
+
+URI, URL & URN
+================
+
+
+
+  2. 201 Created
+  ---------------
+  - The request has been fulfilled and resulted in a new resource being created. 
+  - The newly created resource can be referenced by the URI(s) returned in the response given by a Location header field. 
+  - The response SHOULD include an entity containing a list of resource characteristics and location(s) from which the user or user agent can choose the one most appropriate. 
+  The entity format is specified by the media type given in the Content-Type header field. The origin server MUST create the resource before returning the 201 status code. If the action cannot be carried out immediately, the server SHOULD respond with 202 (Accepted) response instead.
+  
+****************************************************
+* Do Examples on Point 3, 4 & 5 (related to 3 & 4)  
+*****************************************************
+  
+In general the Java type of the method parameter may:
+
+1. Be a primitive type;
+
+2. Have a constructor that accepts a single String argument;
+
+3. Have a static method named valueOf or fromString that accepts a single String argument (see, for example, Integer.valueOf(String) and java.util.UUID.fromString(String));
+
+4. Have a registered implementation of javax.ws.rs.ext.ParamConverterProvider JAX-RS extension SPI that returns a javax.ws.rs.ext.ParamConverter instance capable of a "from string" conversion for the type. or
+
+5. Be List<T>, Set<T> or SortedSet<T>, where T satisfies 2 or 3 above. The resulting collection is read-only.
+
+
+
+Exception Handling in JAX-RS
+Cacheing in JAX-RS
+javax.ws.rs.core.GenericEntity
+
+
+@Provider
+
+@FormDataParam Annotation
+--------------------------------
+> The type of the annotated parameter can be one of the following
+1. FormDataBodyPart - The value of the parameter will be the first named body part or null if such a named body part is not present.
+
+2. A List or Collection of FormDataBodyPart. The value of the parameter will one or more named body parts with the same name or null if such a named body part is not present.
+
+3. FormDataContentDisposition - The value of the parameter will be the content disposition of the first named body part part or null if such a named body part is not present.
+
+4. A List or Collection of FormDataContentDisposition. The value of the parameter will one or more content dispositions of the named body parts with the same name or null if such a named body part is not present.
+
+5. A type for which a message body reader is available given the media type of the first named body part. The value of the parameter will be the result of reading using the message body reader given the type T, the media type of the named part, and the bytes of the named body part as input.
+
+
+More About FormDataContentDisposition
+=======================================
+
+
+
+Main Packages of JAX-RS
+=========================
+> javax.ws.rs.core.*   		------> 	Consists of Core API related classes
+> javax.ws.rs.client.*   	------> 	Consists of Client API related classes
+> javax.ws.rs.*   			------> 	Consists of JAX-RS web service Annotations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://books.google.co.in/books?id=f9ZOCwAAQBAJ&pg=PA175&lpg=PA175&dq=jersey+about+@FormDataParam+annotation&source=bl&ots=ubuyE8Sd4k&sig=wZYaFWYdKKZuZbbps1uapD56biE&hl=en&sa=X&ved=0ahUKEwjQkcLcuuHSAhUHjJQKHW4SArQQ6AEITDAI#v=onepage&q&f=true
+  
+  
+  
+  
+  
