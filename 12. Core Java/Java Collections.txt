@@ -1,0 +1,62 @@
+Java Collections
+==========================
+
+interface Iterable
+interface Collection<E> extends Iterable<E>
+
+List
+-------------------------------------------
+interface List<E> extends Collection<E>
+LinkedList
+ArrayList
+Vector
+
+class Stack<E> extends Vector<E>
+
+Set
+-------------------------------------------
+interface Set<E> extends Collection<E>
+class HashSet<E>
+class LinkedHashSet<E>
+class LinkedHashSet<E> extends HashSet<E>
+
+
+interface Graph extends Set
+interface SortedSet<E> extends Set<E>
+interface NavigableSet<E> extends SortedSet<E>
+
+
+Map
+-------------------------------------------------
+public interface Map<K,V>
+
+class HashMap<K,V> extends AbstractMap<K,V> implements Map<K,V>
+class Hashtable<K,V> extends Dictionary<K,V> implements Map<K,V>
+class LinkedHashMap<K,V> extends HashMap<K,V>
+class WeakHashMap<K,V> extends AbstractMap<K,V> implements Map<K,V>
+
+interface SortedMap<K,V> extends Map<K,V>
+interface NavigableMap<K,V> extends SortedMap<K,V>
+interface ConcurrentMap<K, V> extends Map<K, V>
+
+class TreeMap<K,V> extends AbstractMap<K,V> implements NavigableMap<K,V>
+class ConcurrentHashMap<K,V> extends AbstractMap<K,V> implements ConcurrentMap<K,V>
+
+Queue
+---------------------------------------------------------
+interface Queue<E> extends Collection<E>
+
+class PriorityQueue<E> extends AbstractQueue<E>
+
+
+
+
+
+
+
+
+
+
+
+
+
