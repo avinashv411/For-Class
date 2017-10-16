@@ -903,10 +903,12 @@ JDBC Summary:
 > Commonly used JDBC Objects are  
                               ---|
 1. java.sql.ResultSet            |
-2. java.sql.Connection		     |--> Interfaces
-3. java.sql.Statement			 |
-4. java.sql.PreparedStatement    |
+2. java.sql.Connection		     |
+3. java.sql.Statement			 |--> Interfaces
+4. java.sql.PreparedStatement    | 
+5. java.sql.Driver               |
                               ---|
+							  
                            ---|
 5. java.sql.DriverManager     |
 6. java.sql.SQLException      |--> Concrete Class
@@ -915,6 +917,14 @@ JDBC Summary:
 > SQLException is a Concrete Class which extends
   "java.lang.Exception" & its a "Checked Exception"
 
+
+  
+  
+  
+  
+
+  
+  
 > JDBC Steps 1 to 4 will be in "try block" and 
   step 5 will be in "finally block"
 
@@ -932,6 +942,10 @@ JDBC Summary:
   RDBMS Application) because "Driver JAR" is 
   DB Dependent 
 		  
+		  
+		  
+		  
+		  
 > Though JDBC claims that it is "DB Independent" but,
   because of "SQL Queries (step 3)", it is actually
   "DB Dependent"
@@ -948,12 +962,32 @@ SELECT * FROM ABC LIMIT 5;
 
 Oracle:	
 --------
-SELECT * FROM ABC WHERE rownum <= 5;
+SELECT * FROM ABC WHERE rownum <=5;
 
 MSSQL Server:	
 ---------------
 SELECT TOP 5 * FROM ABC;
 
+		  
+******************* END of JDBC ************************		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
 		  
 		  
 		  

@@ -2996,14 +2996,11 @@ Attributes :-
 >  Attributes are "name/key = value" pair where 
    - "name/key" is a "String" and
    - "value" is a "java.lang.Object" 
-
-> Which means that, any java object can be an 
-  attribute value
+   i.e, "any java object" can be an attribute value
   
-> Attributes are the "One and Only way", in 
-  Servlet API, to pass information in the form
-  of "Java object" from one servlet/JSP to another
-  servlet/JSP
+> Attributes are the "One and Only way", in Servlet API, 
+  to pass information in the form of "Java object" from 
+  one servlet/JSP to another servlet/JSP
   
 > Attributes are of 3 types
   1. Context Attributes (Application Scope)
@@ -3016,12 +3013,11 @@ Attributes :-
   2. javax.servlet.ServletRequest
   3. javax.servlet.http.HttpSession
  
-> Following methods are present in above Three 
-  Objects, which can be used to "get, set or remove" 
-  attributes
+> Following methods are present in above 3 Objects, 
+  which can be used to "get, set or remove" attributes
   
 1. public void setAttribute(String name, Object value)
-========================================================
+=======================================================
 > Sets an "Object" to a given "Attribute Name"
 
 > If an attribute with the given name already exists 
@@ -3070,35 +3066,24 @@ NOTE:
   
   
 Attributes Summarized :-
-========================================================================================================================
-|	 No.         | ServletContext                   | ServletRequest                    | HttpSession                  |
-========================================================================================================================
-| 1. Instance    | One Per Application              | One Per Request & Response Cycle  | One Per User OR Login/Logout |
-------------------------------------------------------------------------------------------------------------------------
-| 2. Lifespan    | Created during Server Start up   | Create When Request Comes         | Create When User Login       |
-|                | Destroyed during Server shutdown | Destroyed When Response is Given  | Destroyed When User Logout   |
-------------------------------------------------------------------------------------------------------------------------
-| 3. Scope       | Application                      | Request & Response Cycle          | Session                      |
-------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-|		           | All the Above 3 Objects has 
-|				   | private HashMap<String, Object> 
-| 4. Functionality | & 3 Public Methods to Operate 
-|                  | on this HashMap i.e. 
-|				   | 1. void setAttribute(String, Object)
-|				   | 2. Object getAttribute(String) 
-|				   | 3. void removeAttribute(String)
------------------------------------------------------------------------------------------------------------------------
+==========================================================================================================================
+|	 No.           | ServletContext                   | ServletRequest                    | HttpSession                  |
+==========================================================================================================================
+| 1. Instance      | One Per Application              | One Per Request & Response Cycle  | One Per User OR Login/Logout |
+--------------------------------------------------------------------------------------------------------------------------
+| 2. Lifespan      | Created during Server Start up   | Create When Request Comes         | Create When User Login       |
+|                  | Destroyed during Server shutdown | Destroyed When Response is Given  | Destroyed When User Logout   |
+--------------------------------------------------------------------------------------------------------------------------
+| 3. Scope         | Application                      | Request & Response Cycle          | Session                      |
+--------------------------------------------------------------------------------------------------------------------------
+|		           | All the Above 3 Objects has                                                                         |
+|				   | private HashMap<String, Object>                                                                     |
+| 4. Functionality | & 3 Public Methods to Operate                                                                       |
+|                  | on this HashMap i.e.                                                                                |
+|				   | 1. void setAttribute(String, Object)                                                                |
+|				   | 2. Object getAttribute(String)                                                                      |
+|				   | 3. void removeAttribute(String)                                                                     |
+--------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -3211,7 +3196,7 @@ Session Introduction
   & there are 2 types of Dynamic Web Application
   1. User Dependent Dynamic Web Applications 
   2. User Independent Dynamic Web Applications
-
+	 
 1. User Dependent Dynamic Web Applications  :-
 ----------------------------------------------
 > These are the Web Applications where "Response Data 
@@ -3236,14 +3221,17 @@ Session Introduction
 
 > Also these webapplications Need Not know "from 
   which User it's getting the request"		   
-		   
-		   
+
 Thumb Rule :-
 --------------
 > If we must need to Login & Logout to access the 
   web application then, it MUST be a "User 
   Dependent Dynamic Web Application"		   
-		   
+
+
+
+
+  
 > Hence "studentsApp" is also "User Dependent 
   Dynamic Web Application"		   
 		   
