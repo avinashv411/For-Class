@@ -1,0 +1,62 @@
+XML can consists of tag by name <xml>
+XML elements cannot start with letter
+they cannot start with special char excluding _
+
+remove this point
+The JAX-RS API uses JAXB to convert the XML data 
+  from the request into a Java Object & vice-versa
+
+Complete List of JAXB Annotations
+http://docs.oracle.com/javaee/6/api/javax/xml/bind/annotation/package-summary.html
+
+HTTP Headers are case insensitive
+
+www.openweathermap.com    ======> API Key afe3843467efcd1b3028ab2874e7a9ae
+www.freegeoip.net
+https://www.ipify.org/    ======> to Get IP Address
+https://api.ipify.org/?format=json
+
+Google APi Key ===> AIzaSyD_Fgxv8SbZz_L4QQD0zeR1SB1gfIHX-fY
+
+ClockWork ====> 27ebbcbeb431c248e3595729782e4cea04d6ce5b
+TextLocal ====> ZE7YdlBVbTM-AUlOQ7N8qzOZwMXeg1M0Q54i6hkcVF	
+https://api.textlocal.in/send/?apikey=ZE7YdlBVbTM-AUlOQ7N8qzOZwMXeg1M0Q54i6hkcVF&message=Test+Message&numbers=9448246364
+
+http://smszone.in/main.asp
+User Name 9448246364
+Password 74B7
+
+http://api.openweathermap.org/data/2.5/weather?q=bangalore&appid=afe3843467efcd1b3028ab2874e7a9ae
+https://maps.googleapis.com/maps/api/geocode/xml?address=bangalore
+
+name of the web application will be like api.<web-app-name>.<org/com>
+
+Instagram Client ID : ba7bedccb1884e0cb529e5b7553f6787
+Client Sceret : 417caa5f53474977a312dcd83fdef4c2 
+
+https://api.instagram.com/oauth/authorize/?client_id=ba7bedccb1884e0cb529e5b7553f6787&redirect_uri=http://localhost:8080&response_type=token
+
+
+for sending whatsapp messages
+
+https://www.waboxapp.com/api/send/chat?token=d807e8babdaaf17caf4d9f00be18b09c59d3b9af6e346&uid=919448246364&to=919535322993&custom_uid=msg-2&text=Hello+world%21
+
+
+Sending POST request to 'https://www.waboxapp.com/api/send/chat'
+POST parameters:
+	token=d807e8babdaaf17caf4d9f00be18b09c59d3b9af6e346
+	uid=919448246364
+	to=919535322993
+	custom_uid=msg-1
+	text=Welcometo REST Web Services world!
+
+HTTP response code: 200
+Response json: {"success":true,"custom_uid":"msg-1"}
+
+https://www.waboxapp.com/manager/developers
+YOU SHOULD OPEN WhatsApp Web Session 
+
+
+
+https://console.developers.google.com/apis/credentials/key/281?authuser=0&project=ultimatepravee-webservices
+
