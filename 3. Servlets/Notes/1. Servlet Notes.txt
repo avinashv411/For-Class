@@ -178,7 +178,9 @@ Steps to Install Apache Tomcat Web Server:
 
 > To Shutdown the Web Server
   - Close the Console Window OR
-  - Use "Ctrl + C" 
+  - Use "Ctrl + C" OR
+  - Go to "<Tomcat_Location>\bin" folder & 
+    double click on "shutdown.bat" OR "shutdown" file
   
   
   
@@ -219,38 +221,7 @@ Resource File Name
 
 
 
-
-index.html
-==========
-<html>
-<body>
-	<h1>
-		Current Date & Time is :
-		<BR>
-		<font color="red">
-			3-May-2017 10:57 AM
-		</font>
-	</h1>
-</body>
-</html>
-
-
-
-Java Code to Generate Current Date & Time :
-============================================
-public class MainMethodClass 
-{
-  public static void main(String[] args) 
-  {
-	 //Java Code to Generate Current Date & Time
-	 java.util.Date dateRef = new java.util.Date();
-	 String currDate = dateRef.toString();
-	 System.out.print("Current Date & Time : ");
-	 System.out.print(currDate);
-  }//End of Main
-}//End of Class	    
-  
-  
+ 
   
   
 Servlets
@@ -291,13 +262,43 @@ For Example:
 
 > i.e. Even though Servlets are Java Programs, we 
   should not run them like normal Java Programs 
-  instead we should access via using corresponding 
-  Web URL with the help of Web Browser
+  instead, we should access via Web Browser using 
+  corresponding Web URL  
   
   
   
 
 
+index.html
+==========
+<html>
+<body>
+	<h1>
+		Current Date & Time is :
+		<BR>
+		<font color="red">
+			3-May-2017 10:57 AM
+		</font>
+	</h1>
+</body>
+</html>
+
+
+
+Java Code to Generate Current Date & Time :
+============================================
+public class MainMethodClass 
+{
+  public static void main(String[] args) 
+  {
+	 java.util.Date dateRef = new java.util.Date();
+	 String currDate = dateRef.toString();
+	 System.out.print("Current Date & Time : ");
+	 System.out.print(currDate);
+  }//End of Main
+}//End of Class	    
+  
+ 
 
 
 
@@ -3228,10 +3229,6 @@ Thumb Rule :-
   web application then, it MUST be a "User 
   Dependent Dynamic Web Application"		   
 
-
-
-
-  
 > Hence "studentsApp" is also "User Dependent 
   Dynamic Web Application"		   
 		   
@@ -3322,8 +3319,8 @@ Creating a New Session Object Means:
 --------------------------------------
 > Container generates "Unique ID" 
 
-> Container maintains the Status of this "Unique ID"
-  as "Active" @ Server Side
+> Container maintains the Status of this "Unique
+  ID" as "Active" @ Server Side
    
 > Container sends this Unique ID to User in the 
   form of Cookie along with the Response where, 
@@ -3352,10 +3349,6 @@ NOTE:
 > This method returns the unique identifier 
   generated for each session 
  
- 
- 
- 
- 
 5. void HttpSession
 		 .setMaxInactiveInterval(int timeInterval)
 ---------------------------------------------------
@@ -3366,21 +3359,6 @@ NOTE:
  
 > This method helps us to set different Session 
   Time Out for different types of users
- 
-
- 
- 
- 
- 
-
- 
- 
- 
- 
- 
- 
- 
- 
  
 6. String HttpServletResponse.encodeURL(String url)
 ----------------------------------------------------

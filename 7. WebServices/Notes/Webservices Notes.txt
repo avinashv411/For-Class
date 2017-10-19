@@ -2595,7 +2595,7 @@ Deployment within a JAX-RS-Unaware Container
   
   
 JAX-RS Client API 
-=========================================================================================
+====================
 > The JAX-RS Client API provides a high-level API for accessing any REST resources, not just JAX-RS services. 
 
 > The Client API is defined in the "javax.ws.rs.client.*" package
@@ -2661,77 +2661,93 @@ JAX-RS Client API
 of Client instances, as the initialization and destruction of these instances may be expensive 
 
 
-
+*/
 2. Setting the Client Target
 ===============================
-> The target of a client, the REST resource at a particular URI, is represented by an
-instance of the javax.ws.rs.client.WebTarget interface.
+> The target of a client, the REST resource at a particular URI, is represented by an instance of the 
+javax.ws.rs.client.WebTarget interface.
 
 > we can obtain a WebTarget instance by invoking target() method and passing in the URI of the target REST resource.
 
 Client client = ClientBuilder.newClient();
-WebTarget myResource = client.target("http://example.com/webapi");
+WebTarget myResource 
+        = client.target("http://www.example.com/webapi");
 
-> "javax.ws.rs.client.WebTarget" is an Interface part of JAX-RS API
+> "javax.ws.rs.client.WebTarget" is an Interface part of  
+  JAX-RS API
 
-> "org.glassfish.jersey.client.JerseyWebTarget" part of Jersey framework is a concreate class which  
-   implements "javax.ws.rs.client.WebTarget"   
+> "org.glassfish.jersey.client.JerseyWebTarget" part of Jersey framework is a concreate class which  implements "javax.ws.rs.client.WebTarget"   
 
-> For complex REST resources, it may be beneficial to create several instances of
-WebTarget. For example, 
+> For complex REST resources, it may be beneficial to create several instances of WebTarget. For example, 
 
-  a base target is used to construct several other targets that represent different services provided by a REST resource.
+Client client = ClientBuilder.newClient();
+WebTarget base 
+         = client.target("http://www.example.com/webapi");
+
+//http://www.example.com/webapi/read
+WebTarget read = base.path("read");
+
+//http://www.example.com/webapi/write
+WebTarget write = base.path("write");
   
-  Client client = ClientBuilder.newClient();
-  WebTarget base = client.target("http://www.example.com/webapi");
+> In the above example, a base target is used to construct
+ several other targets that represent different services provided by a REST resource.
+
+> The WebTarget.path() method creates a new WebTarget instance by appending the current target URI with the path that was passed in
   
-  //http://www.example.com/webapi/read
-  WebTarget read = base.path("read");
   
-  //http://www.example.com/webapi/write
-  WebTarget write = base.path("write");
   
-  The WebTarget.path() method creates a new WebTarget instance by appending the current target URI with the path that was passed in.
+  
+  
+  
   
 
 3. Create a request based on the target
 =========================================
-> After setting and applying any configuration options to the target, we one of the WebTarget.request() 
-  methods to begin creating the request. 
+> After setting and applying any configuration options to the target, we one of the WebTarget.request() methods to begin creating the request. 
   
-> This is usually accomplished by passing to WebTarget.request() 
-  the accepted media response type for the request 
-  - either as a string of the MIME type or 
-  - using one of the constants in javax.ws.rs.core.MediaType
+> This is usually accomplished by passing to WebTarget.request() the accepted media response type for the request 
+- either as a string of the MIME type or 
+- using one of the constants in javax.ws.rs.core.MediaType
   
-> The WebTarget.request() method returns an instance of javax.ws.rs.client.Invocation.Builder, 
-  a helper object that provides methods for preparing the client request.
+> The WebTarget.request() method returns an instance of javax.ws.rs.client.Invocation.Builder, a helper object that provides methods for preparing the client request.
 
-> Invocation is an Interface and Builder is a sub-interface of Invocation
+> "Invocation" is an Interface and "Builder" is a 
+  inner-interface of "Invocation"
 
-> Invocation.Builder has a bunch of methods that allow us to 
+> Invocation.Builder has a lot of methods that allow us to 
   - set different types of request headers
   - various acceptXXX() methods for content negotiation
   - cookie() methods allow us to set HTTP cookies you want to return to the server
 
 > NOTE:-
 ---------
-- WebTarget has additional request() methods whose parameters take 
-  one or more String or MediaType parameters
+- WebTarget has additional request() methods whose parameters take one or more String or MediaType parameters
+
 - These parameters are media types you want to include in an Accept header
-- It makes the code more readable if you use the Invocation.Builder.accept() method instead. 
-  However it's a matter of personal preference.
+
+- It makes the code more readable if you use the Invocation.Builder.accept() method instead. However it's a matter of personal preference
   
 > Example:-
 ----------------
 Client client = ClientBuilder.newClient();
-WebTarget myResource = client.target("http://www.example.com/webapi/read");
+WebTarget target 
+    = client.target("http://www.example.com/webapi/read");
 
-Invocation.Builder builder = myResource.request(MediaType.TEXT_HTML);
+Invocation.Builder builder 
+                 //= target.request("text/html"); OR
+                   = target.request(MediaType.TEXT_HTML);
 //OR
-Invocation.Builder builder = myResource.request("text/html");
-//OR
-Invocation.Builder builder = myResource.request();
+
+WebTarget target 
+     = client.target("http://www.example.com/webapi/read");
+target.request(MediaType.TEXT_HTML)  
+Invocation.Builder builder = target.request();
+
+
+
+
+
 
 
 4. Invoke the request
@@ -2754,25 +2770,113 @@ Invocation.Builder builder = myResource.request();
 StoreOrder order = new StoreOrder(...);
 
 Client client = ClientBuilder.newClient();
-WebTarget myResource = client.target("http://www.example.com/webapi/write");
-TrackingNumber trackingNumber = myResource
-									.request(MediaType.APPLICATION_XML)
-									.post(Entity.xml(order), TrackingNumber.class);
+WebTarget myResource 
+  = client.target("http://www.example.com/webapi/write");
+  
+TrackingNumber trackingNumber 
+	= myResource
+		.request(MediaType.APPLICATION_XML)
+		.post(Entity.xml(order), TrackingNumber.class);
 									
-> In the above example, the return type is a custom class and is retrieved by setting
-the type in the Invocation.Builder.post(Entity<?> entity, Class<T> responseType) method as a parameter
+> In the above example, the return type is a custom class and is retrieved by setting the type in the Invocation.Builder.post(Entity<?> entity, Class<T> responseType) method as a parameter
 
-> If the return type is a collection, use javax.ws.rs.core.GenericType<T> as the response type parameter, where T is the collection type
+> If the return type is a collection, use 
+javax.ws.rs.core.GenericType<T> as the response type parameter, where T is the collection type
 
-List<StoreOrder> orders = client
-							.target("http://www.example.com/webapi/")
-							.path("allOrders")
-							.request(MediaType.APPLICATION_XML)
-							.get(new GenericType<List<StoreOrder>>() {});
+List<StoreOrder> orders 
+		= client
+			.target("http://www.example.com/webapi/")
+			.path("allOrders")
+			.request(MediaType.APPLICATION_XML)
+			.get(new GenericType<List<StoreOrder>>() {});
 							
-> In the above example, methods are chained together in the Client API to simplify how requests are configured and invoked
+> In the above example, methods are chained together in the Client API to simplify how requests are configured and 
+invoked
 
 
+
+
+5. Process the Response
+=========================
+> Certain versions of request methods (get(), head(), 
+  etc.,) returns"javax.ws.rs.core.Response" object
+
+> This is the same Response class that is used on the server side. This gives us more fine-grained control of the HTTP response on the client side.
+
+> For Example
+----------------
+import javax.ws.rs.core.Response;
+
+Response response 
+     = client
+		.target("http://www.ecommerce.com/customers/123")
+		.accept("application/json")
+		.get();
+
+try 
+{
+  if (response.getStatus() == 200) {
+   Customer customer = response.readEntity(Customer.class);
+  }
+}finally{
+  response.close();
+}
+
+> In the above example, we invoke an HTTP GET to obtain a Response object. We check that the status is OK and if so,extract a Customer object from the returned JSON document
+by invoking Response.readEntity(). 
+
+> The readEntity() method matches up the requested Java type and the response content with an appropriate MessageBodyReader
+
+> Reponse object can be used at Producer/Server side as well as at Consumer/Client code
+  - @Producer side, it's used to send the Response with additional/metadata information
+  - @Consumer side, it's used to get the Response to get more information about the response
+
+> Reponse object has lot of static methods and all of them 
+returns object of "ResponseBuilder". These methods should be used for sending the Response as part of"Producer / Server" code
+
+> Reponse object also has lot of Getter methods 
+(ex:- getCookies(), getHeaders(), getLastModified(), 
+ etc.,) which helps us to get additional/metadata information from Request
+
+> NOTE:- readEntity() fectches the "actual response" and other Getter methods provides "additional information" about the response
+ 
+> readEntity() method should be invoked only once unless we buffer the response with the bufferEntity() method. 
+
+> For example:
+-------------------
+Response response 
+   = client
+	  .target("http://www.ecommerce.com/customers/123")
+	  .accept("application/json")
+	  .get();
+					
+try 
+{
+  if (response.getStatus() == 200) {
+   response.bufferEntity();
+   Customer customer = response.readEntity(Customer.class);
+   Map rawJson = response.readEntity(Map.class);
+ }
+} finally {
+	response.close();
+}
+
+> In the above xample, the call to bufferEntity() allows us to extract the HTTP response content into different Java types, the first type being a Customer and the second 
+a java.util.Map that represents raw JSON data
+
+> If we didn’t buffer the entity, the second readEntity() call would result in an IllegalStateException
+  
+> Closing Response Object:-
+-------------------------------
+- Once we're done with Response object we MUST close() it
+
+- Response objects reference open socket streams. 
+  If we do not close them, we're leaking system resources
+  
+- While most JAX-RS implementations implement a finalize() method for Response, it is not a good idea to rely on the garbage collector to clean up 
+
+- The default behavior of the RESTEasy JAX-RS implementation actually only lets us to have one open Response per Client instance. This forces you to write responsible client code.
+  
 
 
   
