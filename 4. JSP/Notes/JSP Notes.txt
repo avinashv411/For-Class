@@ -41,8 +41,8 @@ behind the scene at runtime
   of "_jspService(HSR, HSR) method of Translated Servlet"
 
 > At the end of the Day, since JSP get converted to   
-  Servlet(i.e. Java) we can also have "Java Methods"
-  inside a JSP
+  Servlet(i.e. Java). Hence, we can also have "Java 
+  Methods" inside a JSP
   
 > Also JSP's are handled by two different parties
   1. Web Developer creates the JSP
@@ -92,18 +92,15 @@ Configuring URL for JSP in web.xml :-
 	<!-- if JSP Directly Present under WebContent -->
 	<jsp-file>/MyFirstJSP.jsp</jsp-file>
 	
-<!-- if JSP Present under sub-folder (jsp) of WebContent 
+<!-- If JSP Present under sub-folder (jsp) of WebContent 
 	<jsp-file>/jsp/MyFirstJSP.jsp</jsp-file>
--->
-	
-<!-- if JSP Directly Present under WEB-INF
+   
+    If JSP Directly Present under WEB-INF
 	<jsp-file>/WEB-INF/MyFirstJSP.jsp</jsp-file>
--->
-	
-<!-- if JSP Present under sub-folder (jsp) of WEB-INF
+
+	If JSP Present under sub-folder (jsp) of WEB-INF
 	<jsp-file>/WEB-INF/jsp/MyFirstJSP.jsp</jsp-file>
 -->
-
 </servlet>
 
 <servlet-mapping>
