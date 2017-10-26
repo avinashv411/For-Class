@@ -322,30 +322,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MyFirstServlet extends HttpServlet
-{
+public class MyFirstServlet extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, 
 						 HttpServletResponse resp)
-	throws ServletException, IOException 
-	{
-	 //1. Java Code to Generate Current Date & Time
-	 Date dateRef = new Date();
-	 String currDate = dateRef.toString();
-	
-	 //2. Generate HTML Response
-	 String htmlRes =    "<html>" 
+	throws ServletException, IOException  {
+	 
+	  //1. Java Code to Generate Current Date & Time
+	  Date dateRef = new Date();
+	  String currDate = dateRef.toString();
+	  
+	  //2. Generate HTML Response
+	  String htmlRes =   "<html>" 
 						+"<body>"
 						+"<h1>"
 						+"Current Date & Time is :"
-						+"<font color=\"blue\">"
+						+"<font color=\"red\">"
 						+currDate
 						+"</font>"
 						+"</h1>"
 						+"</body>"
 						+"</html>";
-	
-	//3. Send HTML Response to Browser via Webserver
+	  
+	  //3. Send HTML Response to Browser via Webserver
 	  resp.setContentType("text/html");
 	  PrintWriter out = resp.getWriter();
 	  out.print(htmlRes);
@@ -475,8 +475,8 @@ Protocol:
   contain HTML
   
 > In URL 
-  - it’s an optional information
-  - case in-sensitive and
+  - it’s an optional information,
+  - "case in-sensitive" and
   - default protocol is HTTP
 
 

@@ -113,19 +113,18 @@ URL's to Access JSP :
 
 1. Using JSP File  
 -----------------------
-> if JSP Directly Present under WebContent
+> If JSP Directly Present under WebContent
   http://localhost:8080/studentsApp/MyFirstJSP.jsp
 
-> if JSP Present under Sub-floder (jsp) of WebContent
+> If JSP Present under Sub-floder (jsp) of WebContent
   http://localhost:8080/studentsApp/jsp/MyFirstJSP.jsp
 
-> if JSP Present under "WEB-INF" then we cannot access
+> If JSP Present under "WEB-INF" then we cannot access
   using the filename. In such cases we get 404 Response  
 
 2. Using Configured URL
 -----------------------
 http://localhost:8080/studentsApp/currentDateJsp
-
 
 NOTE:-
 =======
@@ -133,11 +132,9 @@ NOTE:-
   we keep inside this folder will not be exposed to 
   outside world
 
-> Hence,
-  - keeping JSP inside "WEB-INF", 
-  - configuring url for this JSP in web.xml & 
-  - accessing this JSP using this configured url 
-    is "more Secure"
+> Hence, keeping JSP inside "WEB-INF", configuring url 
+  for this JSP in web.xml & accessing this JSP using 
+  this configured url is "more Secure"
 
 
 
@@ -532,13 +529,7 @@ Servlet Objects
   
 > Functionality is as same as "this"
 
-
-
-
-
-
-
-
+-------------------------------------------------------
 
 | pageContext | javax.servlet.jsp.PageContext | page |
 
@@ -563,6 +554,11 @@ Servlet Objects
   <%@page isErrorPage="true" %>
 			
 
+			
+			
+			
+			
+			
 			
 			
 			
