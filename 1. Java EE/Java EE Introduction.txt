@@ -257,11 +257,11 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
   2. Code/Logic to present the data to User 
      (Front-end Code)
   
-> Using Java, JDBC, Servlets & JSP we can write 
+> Using Java, JDBC, Servlets & JSP helps to develop 
   Back-end Code   
 
 > Using HTML, CSS, Java Script, AngularJS, ExtJS,
-  NodeJS, etc., we can write Front-end Code
+  NodeJS, etc., helps to develop Front-end Code
 
 Java EE 3-Tier Architecture:-
 ================================

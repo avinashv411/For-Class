@@ -132,15 +132,23 @@ NOTE:-
 
 
 
-*************			
-Assignment 1:
-*************
-> Write a Java Program which deletes Reg. No. 6 
+			
+Assignment:
+=============
+> Write a Java Program which deletes Reg. No. 1 
   data from "students_info" table
 
+SQL Query :-
+-------------
+delete from students_info where regno=1
 
-
-
+  
+  
+  
+  
+  
+  
+  
 
 *************			
 Assignment 2:

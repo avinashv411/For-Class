@@ -1,4 +1,4 @@
-Java Data Base Connectivity (JDBC)
+Java DataBase Connectivity (JDBC)
 =================================================
 > Java Data Base Connectivity is an API, as the 
   name implies, it helps to achieve the 
@@ -38,14 +38,14 @@ JDBC Pre-requirements:
 =========================
 1.	Install an RDBMS Application (MySQL 5.5)
 2.	Create a "Database (Schema)" by name 
-    "BECME156_DB"
+    "BECME17_DB"
 3.	Create a table by name "STUDENTS_INFO"
     in the above "Database"
 4.	Insert some data into the above table
 
 SQL Queries for MySQL RDBMS Application:-
 ==========================================
-create database BECME156_DB;
+create database BECME17_DB;
 
 create table students_info
 ( regno int(10) not null,
@@ -62,7 +62,7 @@ Some Usefull Queries:
 ========================
 1. To connect to database:-
 ----------------------------
-   use BECME156_DB;
+   use BECME17_DB;
    
 2. To get the list of databases:-
 ---------------------------------
@@ -126,12 +126,27 @@ Note:-
 IP Address 		: 	192.168.1.189
 Computer Name 	:	QSP-SHMUTT-PC
 Port Number		:	3306
-DB Name			:	BECME156_DB
+DB Name			:	BECME17_DB
 User Name		:	root / j2ee
 Password		:	root / j2ee
 Table Name		: 	students_info
 
-jdbc:mysql://192.168.1.189:3306/BECME156_DB?user=j2ee&password=j2ee
+jdbc:mysql://192.168.1.189:3306/BECME17_DB?user=j2ee&password=j2ee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+jdbc:mysql://192.168.1.189:3306/BECME17_DB?user=j2ee&password=j2ee
 
 
 
@@ -253,6 +268,10 @@ java.sql.Driver ref = new com.mysql.jdbc.Driver();
 DriverManager.registerDriver(ref);
    
    
+   
+   
+   
+   
 2. Second approach to Load the Driver Class is with 
    the help of Java's "Class.forName()" Method
 
@@ -309,6 +328,8 @@ Uniform Resource Locator (URL)
   
 > There are "many" types of URL's & couple of 
   them are
+  1. DB URL
+  2. Web URL
 
 DataBase Uniform Resource Locator (DB URL)
 ==========================================
@@ -324,11 +345,18 @@ DataBase Uniform Resource Locator (DB URL)
   
   
   
+
+
+
+
+
   
 1. Protocol     
 ============
 > It's a Mandatory Information
-> In case of Java / Java EE, Protocol is always "jdbc"
+> In case of Java / Java EE, Protocol 
+  is always "jdbc"
+> Protocol is "Case In-sensitive"
 
 
 
@@ -353,6 +381,12 @@ DataBase Uniform Resource Locator (DB URL)
 > In case of MySQL, Subprotocol is "mysql" but,
   incase of Oracle or DB2 its different
   
+> Subprotocol is also "Case In-sensitive"
+
+
+
+
+
 
 
 
@@ -362,14 +396,21 @@ DataBase Uniform Resource Locator (DB URL)
 > It's a Mandatory Information
 
 > It Consists of,
-1. Host Name (Computer Name/IP Address) 
-2. Port Number (should be a Digits)
-3. Database Name / Schema Name
-4. User Name & Password (Optional)
+
+1. Host Name 
+  (Computer Name/IP Address and Case In-sensitive) 
+  
+2. Port Number 
+  (should be Digits)
+  
+3. Database Name / Schema Name 
+  (Case In-sensitive)
+  
+4. User Name & Password 
+   (Optional and Case Sensitive)
 	
-> Arrangement of Subname varies from driver 
-  to driver, we have to refer the manual & 
-  arrange accordingly
+> Arrangement of Subname varies from driver to driver, 
+  we have to refer the manual & arrange accordingly
   
 > Port Number:
   ============
@@ -384,14 +425,8 @@ NOTE:-
 > Apart from "user name & password" rest all are 
   Case In-sensitive
 
- 
 JDBC URL - Few Examples:-
 ==========================
-
-
-
-
-
 
 Oracle:
 --------
@@ -443,8 +478,7 @@ java.sql.DriverManager
   API & as the name implies, it manages the drivers
   
 > It helps Java Program to establish the connection 
-  to DB & for that it requires following two 
-  critical information
+  to DB & for that it requires following information
   1. Driver Class 
   2. DB URL 
 
@@ -488,44 +522,45 @@ java.sql.DriverManager
 > DriverManager has overloaded versions of 
   getConnection() methods. They are,
 
+--------------------------------------------------------
 1. Connection getConnection(String dbUrl) 
    throws SQLException
-----------------------------------------------------
+--------------------------------------------------------
  String dbUrl = 
- "jdbc:mysql://localhost:3306/BECME156_DB
+ "jdbc:mysql://localhost:3306/BECME17_DB
  			         ?user=root&password=root";
  			
  Connection con = DriverManager.getConnection(dbUrl);
 
+--------------------------------------------------------
 2. Connection getConnection(String dbUrl, 
 							String userNM, 
 							String password) 
   throws SQLException
------------------------------------------------------
- String dbUrl  = 
-	    "jdbc:mysql://localhost:3306/BECME156_DB";
- String userNM = "root";
- String pass   = "root";
+--------------------------------------------------------
+String dbUrl = "jdbc:mysql://localhost:3306/BECME17_DB";
+String userNM = "root";
+String pass   = "root";
 				
- Connection con 
- = DriverManager.getConnection(dbUrl, userNM, pass);
+Connection con 
+     = DriverManager.getConnection(dbUrl, userNM, pass);
 
-3. Connection getConnection (String url, 
-                             Properties info) 
+-----------------------------------------------------------
+3. Connection getConnection (String url, Properties info) 
    throws SQLException
------------------------------------------------------
+-----------------------------------------------------------
 	 
-String dbUrl="jdbc:mysql://localhost:3306/BECME156_DB";
+String dbUrl="jdbc:mysql://localhost:3306/BECME17_DB";
 		
-String filePath = "D:\\db.properties";
+String filePath = "C:\\db.properties";
 FileReader reader = new FileReader(filePath);
 		
 Properties props = new Properties();
 props.load(reader);
 		
-Connection con 
-        = DriverManager.getConnection(dbUrl, props);
+Connection con = DriverManager.getConnection(dbUrl, props);
 
+=============================================
 Data Present in "db.properties" File is:- 
 =============================================	
 #DB Credentials
@@ -548,6 +583,8 @@ NOTE:-
 
  
  
+ 
+ 
 Results of RDBMS Application
 ===================================
 > Whenever we issue "Select SQL Queries" to DB 
@@ -562,6 +599,10 @@ Results of RDBMS Application
   1. Select SQL Query 
   2. Other Than Select SQL Query
 
+  
+  
+  
+  
 > Image:-   
 	 
 
@@ -595,6 +636,11 @@ Examples:
 1. select * from ABC where X=? and Y=?;
 2. select * from ABC where X=1 and Y=?;
 3. insert into ABC values (?, 'Praveen');
+ 
+ 
+ 
+ 
+ 
  
 NOTE : 
 ------
@@ -680,7 +726,7 @@ java.sql.Statement
 
 Syntax:
 -------
-Statement Connection.createStatement() 
+public Statement createStatement() 
 throws SQLException  
 
 Example:
@@ -691,6 +737,9 @@ where "con" is the Object reference of
 "java.sql.Connection" Object
   
 
+  
+  
+  
 ******************
 * GPS Exercise 1
 ******************    
@@ -712,14 +761,12 @@ java.sql.PreparedStatement
 > Its an interface & an Object of PreparedStatement 
   is used to execute "Dynamic SQL Queries"
 
-> PreparedStatement Object can be created by 
-  invoking "prepareStatement()" method on 
-  "Connection" Object
+> PreparedStatement Object can be created by invoking 
+  "prepareStatement()" method on "Connection" Object
 
 Syntax:
 -------
-PreparedStatement Connection
-				  .prepareStatement(String query) 
+public PreparedStatement prepareStatement(String query) 
 throws SQLException
 
 Example:
@@ -727,8 +774,7 @@ Example:
 String query = " select * from students_info " 
 			   +" where regno=? ";
 			
-PreparedStatement pstmt 
- 				    = con.prepareStatement(query);
+PreparedStatement pstmt = con.prepareStatement(query);
 
 where "con" is the Object reference of 
 "java.sql.Connection" Object
@@ -739,8 +785,7 @@ where "con" is the Object reference of
 
 Syntax: 
 -------
-void setXXX( Postiton of ? as Int Value,
-             Corresponding Runtime Value ) 
+void setXXX( Postiton of ? as Int Value, Runtime Value ) 
 throws SQLException
 		
 - where XXX = Java Data Type corresponding to 
@@ -786,10 +831,10 @@ java.sql.ResultSet
   
   Example:-
   ----------
-  - ResultSet rs = stmt.executeQuery("SQL_Query");
+  - ResultSet rs = stmt.executeQuery();
     where "stmt" is a Object reference of Statement
   
-  - ResultSet rs = pstmt.executeQuery();
+  - ResultSet rs = pstmt.executeQuery("SQL_Query");
     where "pstmt" is a Object reference of 
     PreparedStatement
   
@@ -868,23 +913,20 @@ Why we need to Close Necessary JDBC Objects:-
   - ResultSet 
   make use of memory 
  
-> In case of Connection Object, further RDBMS 
-  Application resources are consumed
+> In case of Connection Object, further RDBMS Application
+  resources are consumed
 
-> Also memory consumed by ResultSet object is 
-  comparatively more compared to other JDBC 
-  Objects
+> Also memory consumed by ResultSet object is comparatively
+  more compared to other JDBC Objects
   
-> Hence forgetting to close any of the JDBC 
-  objects "will heavily impact Java as well 
-  as RDBMS application performance" & Garbage 
-  Collection should not be relied upon
+> Hence forgetting to close any of the JDBC objects "will 
+  heavily impact Java as well as RDBMS application performance" 
+  & Garbage Collection should not be relied upon
   
-> So it's important to close any of the JDBC 
-  Object as soon as their job is done
+> So it's important to close any of the JDBC Object as soon as 
+  their job is done
 
-> To close any of the JDBC Objects invoke 
-  "close()" method
+> To close any of the JDBC Objects invoke "close()" method
 
 Syntax:
 ----------		  
@@ -908,11 +950,10 @@ JDBC Summary:
 4. java.sql.PreparedStatement    | 
 5. java.sql.Driver               |
                               ---|
-							  
-                           ---|
-5. java.sql.DriverManager     |
-6. java.sql.SQLException      |--> Concrete Class
-                           ---| 
+                          ---|
+6. java.sql.DriverManager    |
+7. java.sql.SQLException     |--> Concrete Class
+                          ---| 
 
 > SQLException is a Concrete Class which extends
   "java.lang.Exception" & its a "Checked Exception"
@@ -936,11 +977,19 @@ JDBC Summary:
   
 > But, Step 3 & 4 (i.e. Issuing SQL Queries & 
   Processing Results) can happen "N" number of times
-  depending on our need (Min. 1 Max. N number)
+  depending on our need (Min. "1" & Max."N number")
 
+  
+  
+  
 > JDBC is "DB Independent"(i.e it can work with ANY
   RDBMS Application) because "Driver JAR" is 
   DB Dependent 
+		  
+		  
+		  
+		  
+		  
 		  
 		  
 		  
