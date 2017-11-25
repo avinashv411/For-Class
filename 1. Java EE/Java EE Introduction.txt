@@ -8,6 +8,13 @@ Computer
   
 > Computers are represented as shown below
 
+
+
+
+
+
+
+
 Smart Phones 
 ================= 
 > It's also a combination of hardware + an Operating 
@@ -20,6 +27,10 @@ Smart Phones
   
 
 
+  
+  
+  
+  
 
 
 Application 
@@ -41,7 +52,7 @@ Application
   however Java as a "Programming Language" is 
   "Platform Independent"
 	
-> Java Programming Language is Platform Independent 
+> Java as a "Programming Language" is "Platform Independent" 
   because "JRE / JVM" Platform Dependent
 	
 	
@@ -173,27 +184,27 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
   Programming Interface), which helps us to 
   develop "Enterprise Web Applications"
 
-> An API is a "Collection of Packages" with a 
-  dedicated "functionality" & it helps two 
-  different applications to "programmatically" 
-  communicate with each other
+> An API is a 
+  - "Collection of Packages" 
+  - with a dedicated "functionality" & 
+  - it helps two different applications to 
+    "programmatically" communicate with each other
 
 > Major API's of J2EE are
   1. JDBC 
   2. Servlet
   3. JSP
 
-> JDBC API helps Web Application to interact   
-  with RDBMS Application
+> JDBC API helps Web Application to interact with 
+  RDBMS Application
 
 > Servlet and JSP API's helps web application to 
   - get the request from browser, 
-  - generate the response and 
+  - generate the response & 
   - gives it back to the browser
 
-> J2EE helps to develop "Web Applications" 
-  whereas "Andriod / iOS" helps to develop 
-  "Mobile Apps" 
+> J2EE helps to develop "Web Applications" whereas 
+  "Andriod / iOS" helps to develop "Mobile Apps" 
 
   
   
@@ -201,8 +212,7 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
   
   
   
-> "Mobile Apps" are 2-Tier Architectured 
-  Applications
+> "Mobile Apps" are 2-Tier Architectured Applications
 
 > However "Web Applications" acts like 
   - 3-Tier architecture application if it is 
@@ -210,14 +220,12 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
   - 2-Tier architecture application if it is 
     accessed using "Mobile Apps"
 
-> From Maintenance Perspective, 3-Tier 
-  architecture applications are easy to 
-  "maintain" as compared to 2-Tier 
+> From Maintenance Perspective, 3-Tier architectured 
+  applications are easy to "maintain" as compared to 2-Tier 
 
-> However from User Perspective, 2-Tier 
-  architectured applications (Mobile Apps, 
-  Google Drive, Anti-Virus, etc.,) are easy 
-  to access as compared to 3-Tier
+> However from User Perspective, 2-Tier architectured 
+  applications (Mobile Apps, Google Drive, Anti-Virus, 
+  etc.,) are easy to access as compared to 3-Tier
 
   
   
@@ -249,11 +257,11 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
   2. Code/Logic to present the data to User 
      (Front-end Code)
   
-> Using Java, JDBC, Servlets & JSP we can write 
+> Using Java, JDBC, Servlets & JSP helps to develop 
   Back-end Code   
 
 > Using HTML, CSS, Java Script, AngularJS, ExtJS,
-  NodeJS, etc., we can write Front-end Code
+  NodeJS, etc., helps to develop Front-end Code
 
 Java EE 3-Tier Architecture:-
 ================================

@@ -622,7 +622,7 @@ Code Word :  DEADS
   inside a JSP"
   
 > Preferred approch is to have ONLY ONE Declaration 
-  tag & present at the begining of the JSP
+  tag & present at begining of the JSP
 
 > Code present inside this tag will be kept as a 
   first lines of translated servlet at the time of 
@@ -1013,10 +1013,19 @@ III. Page Directive [ <%@page   attributes %> ]
 
 
 
+
+
+
+
+
+
 | extends	| <%@page extends="pkgNM.classNM"%>		|			 |		
 
 
 > Functionality is similler to Java "extends" statement
+
+
+
 
 
 
@@ -1175,13 +1184,6 @@ NOTE:
    followed by Declaration Tag
 
 4. Code Word : 	
-	
-	
-	
-
-
-
-
 	
 Exception Handling in JSP
 ==========================

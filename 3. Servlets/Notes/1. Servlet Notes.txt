@@ -625,7 +625,8 @@ req = Object reference of HttpServletRequest
 Fragment ID 
 ============
 > A Fragment ID or Fragment Identifier, as the name 
-  implies, it refers to a particular fragment / a section within a web page
+  implies, it refers to a particular fragment / 
+  a section within a web page
  
 > In URL, 
   - It’s an optional information 
@@ -724,6 +725,14 @@ HTTP Structure:
 > Both Header Part & Body Part are separated by a
   "Single Empty Line"
 
+  
+  
+  
+  
+  
+  
+  
+  
 ***********************  
 * Practical Exercise  *
 ***********************  
@@ -889,17 +898,13 @@ Web URL:
 
 Form Data:
 ===========
-> Data collected using HTML form is called as Form 
-  Data 
+> Data collected using HTML form is called as "Form Data" 
 
 > Size of the Form Data varies from "Form to Form".
   For Example,
-  - Incase of "Gmail Login / Facebook Login",
-    it consists of few KB's of Form Data 	  
-  - Incase of "Naukri Profile Creation", 
-    it consists of few MB's of Form Data 
-  - Incase of "Youtube Video Upload", 
-    it consists of few MB's to GB's of Form Data 
+  - "Gmail/Facebook Login", it's few KB	  
+  - "Naukri Profile Creation", it's few MB 
+  - "Youtube Video Upload", it's few MB to GB 
   
 > i.e. Whenever we make request by Submitting Form, 
   then ONLY HTTP Request will have Form Data  
@@ -911,6 +916,21 @@ Form Data:
   Method present in the Request  
 	  
 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+Cookies :
+=============
+> Cookies are present in Both Request & Response
+
+> It’s 
+  - an Optional Information, 
+  - if present, then its present in Header part 
+    of HTTP Request/Response
 
 
 
@@ -943,18 +963,19 @@ HTTP Method:
   - every Http Request should consist of 
     "ONE of the 8 HTTP Methods"
   
-  1. HEAD   	(was present in HTTP 1.0)
+  1. HEAD   	(part of  HTTP 1.0)
   2. TRACE
   3. PUT
   4. DELETE
   5. OPTIONS
-  6. POST		(was present in HTTP 1.0)	
-  7. GET		(was present in HTTP 1.0)
+  6. POST		(part of  HTTP 1.0)	
+  7. GET		(part of  HTTP 1.0)
   8. CONNECT
   
-  Code Word : HTPP DOG C
-  NOTE:- We should write HTTP Methods ALWAYS 
-         in "Uppercase"
+NOTE:- 
+======
+- HTTP Methods SHOULD be written in "Uppercase"
+- Code Word : HTPP DOG C
   
   
   
@@ -966,6 +987,14 @@ HTTP Method:
   the Servlet API class by name
   “javax.servlet.http.HttpServlet”
 
+  
+  
+  
+  
+  
+  
+  
+  
 ===============================================================
 | HTTP       |     Related Servlet Method                     |
 | Method     |                                                |
@@ -1005,12 +1034,6 @@ NOTE:
 ------
 Since method signature is same apart from Method name,
 these methods in general called as doXXX(HSR, HSR) methods
-
-Syntax
--------
-protected void doXXX(HttpServletRequest req, 
-					 HttpServletResponse resp)
-throws ServletException, IOException  
 
 > So whenever we create a Servlet by extending HttpServlet
   - we can inherit all these default implementations 
@@ -1125,16 +1148,18 @@ NOTE :
     (ex: Naukri Profile Creation Page)
   then that form "SHOULD" use method="post"
   
-> If a form collects "In-Sensitive and Less Amount of Data" like search 
+> If a form collects "In-Sensitive and Less Amount of 
+  Data" like search 
   that form may use 
   - method="post" or 
   - method="get" (preferred)
   
 > Hence whenever Servlet gets a request via Submitting 
-  the form & that form has method="post" then we have to 
-  override doPost() method 
+  the form & that form has method="post" then we have 
+  to override doPost() method 
 
-> For rest of the cases, we have to override doGet() method
+> For rest of the cases, we have to override doGet() 
+  method
   
 Differences between GET/doGet() &  POST/doPost()
 ------------------------------------------------
@@ -1449,18 +1474,20 @@ NOTE :
   
   
   
-5. void HttpServletResponse.sendError(int statusCode) 
-   throws IOException  
-
-6. void HttpServletResponse
+5. void HttpServletResponse
 		      .sendError(int statusCode, String errMsg) 
    throws IOException      
 --------------------------------------------------------
-> As the name implies, both these methods helps us to 
-  send the Error Response
+> As the name implies, this method helps us to send the 
+  Error Response to Browser
 
 
  
+  
+  
+  
+  
+  
   
   
   
@@ -1572,16 +1599,17 @@ Comparision Between HTML & XML
    
    XML Tags are "Case Sensitive"
 
-4. First Line of HTML is (which is Optional)
+4. First Line of HTML is (Optional)
    <!DOCTYPE html ----- >
    
    First Line of XML is 
    <?xml version="1.0" encoding="UTF-8" ?>
-   (It's called as "XML Prolog", which is Optional)
+   (It's called as "XML Prolog" & its Optional)
    
 5. HTML is "Not Strictly Typed" Language
    
    XML is "Strictly Typed" Language. i.e.
+   - Every Tag Data should have "data type"
    - Every Opening Tag should have Closing Tag
    - Order in which tags are opened, we should 
      follow the same order to close
@@ -1721,15 +1749,14 @@ Assignment 3:
   */
 javax.servlet.GenericServlet
 ===============================
-> It's an abstract class, part of Servlet API & a 
-  sub-class of GenericServlet is called as Servlet 
-  & it can handle "ANY Protocols" including HTTP & HTTPS protocols
+> It's an abstract class, part of Servlet API 
+  - a sub-class of GenericServlet is called as Servlet 
+  - it can handle "ANY Protocols" including HTTP & HTTPS
  
-> In other words, It becomes "Protocol-Independent 
-  Servlet"
+> In other words, It becomes "Protocol-Independent Servlet"
 
-> GenericServlet has "one abstract method", by 
-  name service(), hence it's an "abstract class" 
+> GenericServlet has "one abstract method", by name 
+  service(), hence it's an "abstract class" 
 
 Syntax:
 --------
@@ -1781,30 +1808,29 @@ javax.servlet.http.HttpServlet
 > A sub-class of HttpServlet is called as Servlet
   & it can handle ONLY HTTP & HTTPS protocols
   
-> In other words, It becomes "Protocol-Dependent
-  Servlet"
+> In other words, It becomes "Protocol-Dependent Servlet"
   
-> It’s an abstract class but none of the methods
-  in this class are declared as abstract 
+> It’s an abstract class but none of the methods in this 
+  class are declared as abstract 
   
 > Hence this class MUST provide an Implementation
-  for GenericServlet abstract method 
-  i.e. service(SR, SR)
+  for GenericServlet abstract method i.e. service(SR, SR)
 
 > The implementation is 
-  - it checks whether request came via HTTP / 
-    HTTPS protocol
-  - If NO, then it throws an ServeltException
-	with "non-HTTP request or response" 
-	exception message
+  - it checks whether request came via HTTP/HTTPS protocol
+  
+  - If NO, then it throws an ServeltException with 
+    "non-HTTP request or response" exception message
+	
   - If YES, then it invokes "Overloaded version
     of service method i.e. service(HSR, HSR)"
 
 > Implementation present in service(HSR, HSR) is
-  - it gets the HTTP Method Present in the 
-    Request Object
+  - it gets the HTTP Method Present in the Request Object
+  
   - invkoes one of the corresponding doXXX(HSR, HSR)
     method by passing request &	response objects
+	
   - If request has HTTP Method as CONNECT, then this
     method return "Method is not supported by the 
 	Servlet API" error response OR "501 Error Response"
@@ -1824,17 +1850,16 @@ javax.servlet.http.HttpServlet
                         HttpServletResponse res)
 	throws ServletException, IOException	
 	
-> We should not override the first two versions 
-  of service methods & Our job is to override 
-  one / more doXXX(HSR, HSR) method(s)
+> We should not override the first two versions of service
+  methods & Our job is to override one / more 
+  doXXX(HSR, HSR) method(s)
 
-> All the 7 doXXX(HSR, HSR) methods in HttpServlet 
-  has the logic of Generating "405 Error Response"
+> All the 7 doXXX(HSR, HSR) methods in HttpServlet has the
+  logic of Generating "405 Error Response"
   
-> If we won’t override doXXX() methods, then 
-  default implementation from HttpServlet is 
-  invoked  which in turn return "405 Error 
-  Response" 
+> If we won’t override doXXX() methods, then default 
+  implementation from HttpServlet is invoked  which in 
+  turn return "405 Error Response" 
   
 Why HttpServlet is an Abstract Class?
 ======================================
@@ -1988,14 +2013,6 @@ throws ServletException
 > Once Instantiation & Initialization is successful,
   container caches the Servlet Instance	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 > Can we use Constructor for Initialization ?
   ---------------------------------------------
  - We can make use of Constructor for initialization
@@ -2109,7 +2126,6 @@ Example:-
 package com.jspiders.studentsapp.servlets;
 
 import java.io.IOException;
-
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -2157,7 +2173,7 @@ public class MyAnotherServlet implements Servlet
 									------
 4. ServletConfig getServletConfig()
    
-   5. String getServletInfo()
+5. String getServletInfo()
    
 > If we implements Servlet Interface then that 
   Servlet will become "Protocol-Independent Servlet"   
@@ -2192,16 +2208,7 @@ public class MyAnotherServlet implements Servlet
    
    
 
-> Servlets MUST have public default Constructor OR 
-  combination of any other constructor along with 
-  public default constructor
-   
->  Servlets are protocol independent in nature, 
-   but are most often used with HTTP & HTTPS
-   protocols      
-   
-> There is only one instance exist for any servlet. 
-   i.e. Servlets are "Singleton in nature"   
+
    
    
    
@@ -2258,7 +2265,15 @@ Note:
 
 
 
-
+> Servlets MUST have public default Constructor OR 
+  combination of any other constructor along with 
+  public default constructor
+   
+> Servlet API is protocol independent in nature, but are 
+  most often used with HTTP & HTTPS protocols      
+   
+> There is only one instance exist for any servlet. 
+  i.e. Servlets are "Singleton in nature"   
 
 > At any point of time there will be multiple 
   threads acting on servlet instance
