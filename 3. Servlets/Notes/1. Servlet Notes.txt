@@ -102,8 +102,8 @@ Web Application :
   "Dynamic Web Application"	
   Ex: Gmail, Facebook, Twiter, FlipKart, etc., 
 			 
-> J2EE / Java EE helps us to develop "Dynamic Web 
-  Applications"
+> J2EE/Java EE (Servlets & JSP) helps us to develop
+ "Dynamic Web Applications"
   
 > However HTML helps us to develop "Static Web 
   Applications"  
@@ -161,7 +161,7 @@ Steps to Install Apache Tomcat Web Server:
   =====
   - Both paths SHOULD NOT point to "lib / bin" folder 
   - JAVA_HOME SHOULD consist of "Java Installation"
-    path not the "java exe or JRE " location path
+    path not the "JRE " location path
   
 > Go to "<Tomcat_Location>\bin" folder & double click
   on "startup.bat" OR "startup" file
@@ -2262,6 +2262,9 @@ Note:
 
 
 
+  
+  
+  
 
 
 
