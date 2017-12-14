@@ -1502,7 +1502,6 @@ NOTE :
   Header info in the Response
   
   
-  
 6. void HttpServletResponse
 		      .sendError(int statusCode, String errMsg) 
    throws IOException      
@@ -1525,10 +1524,15 @@ NOTE :
 ***********************			
 * Practical Exercise  *
 ***********************
+
 > Create a HTML Form as shown below
   
   CreateProfile.html
   -------------------
+  
+  
+  
+  
   
   
   
@@ -1545,6 +1549,8 @@ NOTE :
 3. generate Proper Response(Success / Error Message)
 	
 	  
+  
+  
   
   
   
