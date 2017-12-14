@@ -176,8 +176,7 @@ and it has following phases
 ========================
 Syntax
 -------
-public void jspInit() 
-{
+public void jspInit() {
 	//Initialization Code goes here
 }
 
@@ -221,8 +220,7 @@ throws ServletException, IOException
 =======================	
 Syntax
 -------	
-public void jspDestroy() 
-{
+public void jspDestroy() {
 	//Clean-up Code goes here
 }
 
@@ -421,7 +419,8 @@ JSP Objects:
 1. Page Scope :
 ================
 JSP Object with "Page Scope" can be accessed only 
-within the same JSP(like "private" variables in Java)
+within the same JSP(like "private" Object references
+in Java)
 
 2. Request Scope :
 ==================
@@ -565,9 +564,10 @@ Servlet Objects
 			
 Note:
 ======
-Apart from "pageContext" rest of the variable 
-names are in "Lower Case"
-			
+> Apart from "pageContext" rest of the variable 
+  names are in "Lower Case"
+	
+> Code Word : 	
 			
 			
 			

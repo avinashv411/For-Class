@@ -220,55 +220,6 @@ Resource File Name
 
 
 
-
- 
-  
-  
-Servlets
-==========
-> Servlets is an API of J2EE, 
-  - it accepts request from Browser via Web Server,
-  - generates "Dynamic Response" i.e response is  
-    generated at the time of Request &
-  - gives it back to Browser via Web Server
-  
-> Hence Servlets & JSP acts like a "Dynamic web 
-  Resources" 
-  
-> Since, J2EE helps us to develop Dynamic web 
-  applications & these web applications should
-  consist of atleast ONE Servlet / JSP 
-
-> The Dynamic Response, may be a "HTML response" or
-  "Non-HTML Response"
-  
-For Example:
-------------
-1. Any NetBanking Web Application, Transaction 
-   Statement Download(PDF file) is Non-HTML Response
-2. Google Search Page (HTML Page) is a HTML Response
-3. Gmail "Download All Attachements" (ZIP File)
-   is a Non-HTML Response
-  
-> In the world of Java, Servlets are the "One and 
-  Only API" that accepts web request and generate 
-  "Dynamic Response"   
-  
-> However HTML helps to generate "Static Response"  
-  
-> Since Servlets are like Dynamic Resources & hence
-  Servlets must have its unique address in the form
-  of "Web URL"
-
-> i.e. Even though Servlets are Java Programs, we 
-  should not run them like normal Java Programs 
-  instead, we should access via Web Browser using 
-  corresponding Web URL  
-  
-  
-  
-
-
 index.html
 ==========
 <html>
@@ -296,7 +247,56 @@ public class MainMethodClass
 	 System.out.print("Current Date & Time : ");
 	 System.out.print(currDate);
   }//End of Main
-}//End of Class	    
+}//End of Class	 
+
+ 
+  
+  
+Servlets
+==========
+> Servlets is an API of J2EE, 
+  - it accepts request from Browser via Web Server,
+  - generates "Dynamic Response" i.e response is  
+    generated at the time of Request &
+  - gives it back to Browser via Web Server
+  
+> Hence Servlets & JSP acts like a "Dynamic web 
+  Resources" 
+  
+> Since, J2EE helps us to develop Dynamic web 
+  applications & hence web applications, incase of 
+  J2EE, should consist of atleast ONE Servlet/JSP 
+
+> The Dynamic Response, may be a "HTML response" or
+  "Non-HTML Response"
+  
+For Example:
+------------
+1. Any NetBanking Web Application, Transaction 
+   Statement Download(PDF file) is Non-HTML Response
+2. Google Search Page (HTML Page) is a HTML Response
+3. Gmail "Download All Attachements" (ZIP File)
+   is a Non-HTML Response
+
+> However HTML helps to generate "Static Response"
+  
+> In the world of Java, Servlets are the "One and 
+  Only API" that accepts web request and generate 
+  "Dynamic Response"   
+  
+> Since Servlets are like Dynamic Resources & hence
+  Servlets must have its unique address in the form
+  of "Web URL"
+
+> i.e. Even though Servlets are Java Programs, we 
+  should not run them like normal Java Programs 
+  instead, we should access via Web Browser using 
+  corresponding Web URL  
+  
+  
+  
+
+   
   
  
 
@@ -386,9 +386,39 @@ Note:
    
    <servlet-name>myServlet</servlet-name>
      
+	
+
+
+	
+Auto Refresh
+=================
+There are 2 ways to achieve "Auto Refresh" in 
+Server Response (Static / Dynamic)
+
+1. Using HTML Header
+2. Using Java Code 
+   (i.e. setting the "Refresh" header on 
+    HttpServletResponse	object) 
 	 
-	 
-	 
+1. Using HTML Header
+-------------------------
+<head>
+  <meta http-equiv="refresh" content="1">
+</head>
+
+2. Using Java Code
+--------------------
+resp.setHeader("Refresh", "1");
+
+where "resp" is a object reference of 
+HttpServletResponse object
+
+Note:- 
+-------
+In both the cases "1" represents "Time in Sec."
+
+
+
 	 
 	 
 Part 1 - Summary 
@@ -412,7 +442,7 @@ Part 1 - Summary
 17. Static Response  - Content doesn't change
 18. Dynamic Response - Content get generated @ the 
                        time of request & it may change  	 
-	 
+19. Auto Refresh	 
 	 
 
 	   
@@ -573,7 +603,7 @@ Path:
   - it's case sensitive
 
 
-
+
 
 
 
@@ -587,8 +617,7 @@ Query String:
   
 > In URL, It’s an optional information and if present,
  it starts with question mark followed by one or more
- name=value pair which are separated by an 
- ampersand(&)
+ name=value pair which are separated by an ampersand(&)
 
 > In Query String
   - Name is Case-Sensitive but
@@ -614,7 +643,8 @@ Where,
 req = Object reference of HttpServletRequest
 
 
-
+NOTE:- In the Response, if Web URL has a "Query String" 
+       means its a "Dynamic Response"
 
 
 
@@ -636,8 +666,8 @@ Fragment ID
 
 Example:
 ---------	
-http://tomcat.apache.org/tomcat-6.0-doc/
-manager-howto.html#Introduction
+http://tomcat.apache.org/tomcat-6.0-doc/manager-howto.html
+#Introduction
 
 
 
@@ -915,14 +945,6 @@ Form Data:
   Body of the HTTP Request which depends on HTTP 
   Method present in the Request  
 	  
-
-	  
-	  
-	  
-	  
-	  
-	  
-	  
 Cookies :
 =============
 > Cookies are present in Both Request & Response
@@ -954,22 +976,21 @@ HTTP Method:
 > It’s a mandatory information present in the header 
   of the HTTP Request
 
-> HTTP Method is the first component in the HTTP 
-  Request header
+> HTTP Method is the first element in the HTTP Request
 
 > - HTTP 1.0 had 3 Methods & in 
-  - HTTP 1.1, 5 "New Methods" got introduced 
+  - HTTP 1.1, "Five New Methods" got introduced 
   - So in total HTTP 1.1 has 8 different methods & 
   - every Http Request should consist of 
     "ONE of the 8 HTTP Methods"
   
-  1. HEAD   	(part of  HTTP 1.0)
+  1. HEAD   	(part of HTTP 1.0)
   2. TRACE
   3. PUT
   4. DELETE
   5. OPTIONS
-  6. POST		(part of  HTTP 1.0)	
-  7. GET		(part of  HTTP 1.0)
+  6. POST		(part of HTTP 1.0)	
+  7. GET		(part of HTTP 1.0)
   8. CONNECT
   
 NOTE:- 
@@ -987,14 +1008,6 @@ NOTE:-
   the Servlet API class by name
   “javax.servlet.http.HttpServlet”
 
-  
-  
-  
-  
-  
-  
-  
-  
 ===============================================================
 | HTTP       |     Related Servlet Method                     |
 | Method     |                                                |
@@ -1257,6 +1270,7 @@ How Servlet Container Works :
    
    
    
+
    
    
 8. In otherwords for every request, container 
@@ -1326,6 +1340,9 @@ FormExample.html
   
   
 
+  
+  
+  
 javax.servlet.http.HttpServletRequest
 ======================================
 > "HttpServletRequest" object, in short called 
@@ -1391,7 +1408,7 @@ Some Methods which are part of "Request Object" are:
 Note:-
 -------
 Apart from the above, there are many more Getter Methods,
-which helps to get infomration from Request Object		
+which helps to get information from Request Object		
 			
 			
 
@@ -1467,6 +1484,10 @@ NOTE :
   reduces the size of the Actual Content there by
   increases the Performance
 
+> Apart from the above, there are many more Methods,
+  which helps to send information in Response Object  
+  
+  
   
   
   
@@ -1475,6 +1496,14 @@ NOTE :
   
   
 5. void HttpServletResponse
+			  .setHeader(String key, String value)
+--------------------------------------------------------
+> As the name implies, this method helps us to set the 
+  Header info in the Response
+  
+  
+  
+6. void HttpServletResponse
 		      .sendError(int statusCode, String errMsg) 
    throws IOException      
 --------------------------------------------------------
@@ -2556,7 +2585,7 @@ Image:
   will not have any clue on what went behind the scene
   (i.e. forward happens at Server side) 
 
-> Also, URL in the browser doesn't change.
+> Also, URL in the browser doesn't change
 
 > To forward the request call forward() on  
   RequestDispatcher object
@@ -2568,37 +2597,42 @@ public void RequestDispatcher.forward(ServletRequest req,
 throws ServletException, IOException
 
 > We can get the "RequestDispatcher" Object, by invoking
-  "getRequestDispatcher()" Method on "Request" Object
+  "getRequestDispatcher()" Method on 
+  1. "Request" Object
+  2. "ServletContext" Object
 
-Syntax 
--------
-public RequestDispatcher  
-	   ServletRequest.getRequestDispatcher(String url)
-
-Example :
-============
-RequestDispatcher dispatcher = null;
-String url = null;
-
-url = "currentDate";    //Internal Resource - Dynamic
-url = "index.html";		//Internal Resource - Static
-
-dispatcher = req.getRequestDispatcher(url);
-dispatcher.forward(req, resp);
-
-NOTE:
-=====
-> We Cannot forward the request to External Resources
   
-  For Example:
-  --------------
-  /* In this case Browser gets "404 Resource Not Found" 
-   * Error Response from Server
-   */
-  String url = "http://www.gmail.com";
-  dispatcher = req.getRequestDispatcher(url);
-  dispatcher.forward(req, resp);
+  
+  
+  
+  
+1. RequestDispatcher  
+          ServletRequest.getRequestDispatcher(String url)
+	
+	url = "currentDate";    //Internal Resource - Dynamic
+	url = "index.html";		//Internal Resource - Static
+	
+	/* We Cannot forward the request to External Resource
+	 * In this case Browser gets "404 Error Response"
+     */
+	//String url = "http://www.gmail.com";
+		
+	RequestDispatcher dispatcher 
+					= req.getRequestDispatcher(url);
+	dispatcher.forward(req, resp);
+	
+2. RequestDispatcher 
+   ServletContext.getRequestDispatcher(String url)
 
+   //In this case URL MUST start with "/" 
+   String url = "/currentDate";
+   
+   ServletContext context = getServletContext();
+   RequestDispatcher dispatcher 
+				= context.getRequestDispatcher(url);
+			
+   dispatcher.forward(req, resp);
+	
 Differences between Redirect & Forward :-
 ----------------------------------------
 =============================================
@@ -2667,16 +2701,6 @@ NOTE:
    then container invokes  inherited or default doXXX() 
    method
 
-   
-   
-   
-   
-   
-
-
-   
-   
-   
 2. If URL in Browser Changes means it MUST be a Redirect
    (especially Domain Name)
    
@@ -3187,8 +3211,32 @@ if(str==null){
 }  
   
    
+Tomcat Web Server Config Changes :-
+========================================
+1. Goto <Apache Tomcat Location>\webapps\ROOT
+
+2. Open "index.jsp"
+
+3. Remove all the Lines in the above file 
+  & write the below lines
+ 
+<% 
+
+String url = 
+"http://<Your-Computer-IP>:8080/studentsApp/Login.html";
+	
+response.sendRedirect(url);
+
+%>  
   
-  
+   
+   
+   
+   
+   
+   
+   
+   
    
 
 Application
@@ -3283,6 +3331,8 @@ then we MUST make use of HttpSession functionality
 	
 
 	
+		   
+		   
 		   
 		   
 HttpSession
@@ -3474,6 +3524,10 @@ URL Rewriting
   "Session Hijacking" issue)
   
 
+  
+  
+  
+  
   
 **********************
 * Practical Exercise
