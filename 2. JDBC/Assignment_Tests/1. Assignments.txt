@@ -2,7 +2,7 @@
 *     Assignment 1   *
 **********************
 > Create "guardian_info" & "students_otherinfo"
-  Tables in "BECE1011_DB" database whith the 
+  Tables in "BECM19_DB" database with the 
   following structure
 
 	"guardian_info"
@@ -20,15 +20,31 @@
 
 > Insert regno 1 to 5 data into above tables
 
-> While inserting data into "students_otherinfo" table 
-  make regno 1 "isadmin" value as "Y" and rest as "N"
+> While inserting data to "students_otherinfo" make 
+  regno 1 "isadmin" value as "Y" and rest as "N"
   
   
   
   
   
   
+> Create one more table by name "student_address" 
+  with the following structure  
   
+   "student_address"
+	==============================
+	1. regno 			int(10)(PK)
+	2. address_type		varchar(10) (PK)
+	3. address1			varchar(50)
+	4. address2			varchar(50)
+	5. city				varchar(50)
+	5. pincode			int(6)
+  
+Note:-   
+--------
+Combination of "regno" & "address_type" should be
+a Primary Key i.e. Composite Key
+
 Queries :
 ===========
 create table guardian_info

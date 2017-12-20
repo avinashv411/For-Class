@@ -2455,6 +2455,21 @@ Deployment within JAX-RS-Aware Containers
 
 javax.ws.rs.core.Application
 ==============================
+******************
+We get a better control on the Web Services like
+- which one to expose / hide
+- Versioning i.e. we can add new version 
+  for ex:- @ApplicationPath("/api/2.0")
+  which that we can modify the exisitng service
+  keep the old service
+  and add a new service
+- control the way the RRC objects getting created
+- You can also pass application level properties
+
+Inshort we get more control on the web service methods 
+if we don't override then we don't get a control then all
+services get exposed to the outside world
+*******************
 > It's a Concreate Class present in JAX-RS API 
 
 > The Application class is the only portable way of telling container that 

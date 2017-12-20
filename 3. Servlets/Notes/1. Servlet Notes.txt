@@ -1732,7 +1732,7 @@ Example:-
   
 Example:-
 ---------
-<!-- I. Declaring the Servlet -->
+<!-- I. Declaring a Servlet -->
 <servlet>
   <servlet-name>someName</servlet-name>
   <servlet-class>pkgNM.ServletNM</servlet-class>
@@ -1863,7 +1863,7 @@ javax.servlet.http.HttpServlet
 > Implementation present in service(HSR, HSR) is
   - it gets the HTTP Method Present in the Request Object
   
-  - invkoes one of the corresponding doXXX(HSR, HSR)
+  - invokes one of the corresponding doXXX(HSR, HSR)
     method by passing request &	response objects
 	
   - If request has HTTP Method as CONNECT, then this
@@ -1914,10 +1914,10 @@ Why HttpServlet is an Abstract Class?
   - override doXXX(HSR, HSR) methods
   
 > It's Servlet Developer choice & this choice is
-  avilable "ONLY being an abstract Class with Zero 
+  available "ONLY being an abstract Class with Zero 
   methods as abstract"  
  
-> Thus, to force us to implement our own servlet 
+> Thus, to force us to implement our own Servlet 
   class along with overriding doGet()/doPost() 
   [based on our choice], the HttpServlet class is 
   marked as abstract
