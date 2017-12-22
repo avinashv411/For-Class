@@ -2032,8 +2032,7 @@ throws ServletException
   - Opening a Text File or
   - Reading the data from a Property File, etc.,
 
-> This method is called ONLY ONCE in Servlet 
-  Life-cycle
+> This method is called ONLY ONCE in Servlet Life-cycle
 
 > We may/may-not override this method. If we don't 
   override then default implementation present in 
@@ -2200,7 +2199,7 @@ public class MyAnotherServlet implements Servlet
 1. void init(ServletConfig config) 		 |
   throws ServletException				 |
 										 |     Servlet
-2. void service(ServletRequest req, 	 |---> Lifecycle
+2. void service(ServletRequest req, 	 |---> Life-cycle
 			   ServletResponse resp) 	 |     Methods
   throws ServletException, IOException	 |
 										 |
@@ -2224,7 +2223,7 @@ public class MyAnotherServlet implements Servlet
  
 > If a class 
   - extends either HttpServlet or GenericServlet OR
-  - implemets Servlet interface 
+  - implements Servlet interface 
   & a "subclass of that class is also be called as Servlet"     
    
 > Servlets (for which we configure a URL in web.xml)

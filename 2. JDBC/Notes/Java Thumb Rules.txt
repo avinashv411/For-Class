@@ -112,43 +112,37 @@
 	
 
 	
-11. If a method/constructor input argument is other 
+10. If a method/constructor input argument is other 
     than primitive data type, then it can be 
 	"Interface / Concrete Class / Abstract Class"
 
-  For Ex:
-  ------------
-  public void myMethod(Abc ref)
-  {
-	//Some Business Logic
-  }
-
-  Where 
-  - "ref" is a Object Reference Variable
-  - "Abc" can be 
-			an Interface OR
-			an Abstract Class OR
-			Concrete Class
-
-
-			
-			
-12. If a method return type is other than primitive 
+11. If a method return type is other than primitive 
     data type, then it can be "Interface / Concrete 
 	Class / Abstract Class"
 
   For Example:
   ------------
-  public Abc myMethod()
+  public Xyz myMethod(Abc ref)
   {
 	//Some Business Logic
   }
 
-  Where "Abc" can be 
+  Where  
+  - "ref" is a Object Reference Variable
+  - "Abc / Xyz" can be 
 	an Interface OR
 	an Abstract Class OR
 	Concrete Class
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
