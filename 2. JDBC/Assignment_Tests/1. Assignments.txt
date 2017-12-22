@@ -72,7 +72,7 @@ create table students_otherinfo
 **********************  
   
 > Write a Java Program which takes following input 
-  arguments via Commond Line in the "same order" & 
+  arguments via Command Line in the "same order" & 
   insert the data into corresponding tables
 	1. Reg No. 
 	2. First Name

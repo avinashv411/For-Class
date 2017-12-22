@@ -108,7 +108,7 @@ My First JDBC Program :-
 
 Note:-
 ------
-> "java.sql.*" is the Package Representaion of JDBC
+> "java.sql.*" is the Package Representation of JDBC
 > i.e. Any Class / Interface belongs to this package
   means, it’s part of JDBC
 
@@ -123,17 +123,15 @@ Note:-
   
   
   
-IP Address 		: 	192.168.1.189
-Computer Name 	:	QSP-SHMUTT-PC
+IP Address 		: 	192.168.1.40
+Computer Name 	: 	QSP-SHMUTT-PC
 Port Number		:	3306
-DB Name			:	BECM19_DB
-User Name		:	root / j2ee
-Password		:	root / j2ee
-Table Name		: 	students_info
+User Name 		:	root / j2ee
+Password 		: 	root / j2ee
+DB Name 		: 	BECM19_DB
+Table			:	students_info
 
-jdbc:mysql://192.168.1.189:3306/BECM19_DB?user=j2ee&password=j2ee
-
-
+jdbc:mysql://192.168.1.40:3306/BECM19_DB?user=j2ee&password=j2ee
 
 
 
@@ -143,10 +141,6 @@ jdbc:mysql://192.168.1.189:3306/BECM19_DB?user=j2ee&password=j2ee
 
 
 
-
-
-
-jdbc:mysql://192.168.1.189:3306/BECM19_DB?user=j2ee&password=j2ee
 
 
 
@@ -197,12 +191,12 @@ JAR (Java ARchieve) File:
 > Hence JAR File represents a "Java Application"  
  
 > JAR File will have ".jar" file extension & 
-  functionality wise it's similler to "ZIP" file
+  functionality wise it's similar to "ZIP" file
 
 Steps to Create JAR File :-
 ----------------------------
 1. Right Click on the Java Project, which we want
-   to tranfer, select "Export..."
+   to transfer, select "Export..."
 
 2. Select "JAR File" option present under "Java" 
    & click on "Next"
@@ -214,7 +208,7 @@ Steps to Make Use of JAR File :-
 ----------------------------------
 1. Right Click on the Java Project, where we want
    to make use of JAR File, select "Build Path" 
-   & click on "Add External Archieves..."
+   & click on "Add External Archives..."
 
 2. Select the "JAR File" & Click on "Open"
 
