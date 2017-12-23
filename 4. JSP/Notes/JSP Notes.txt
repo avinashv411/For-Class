@@ -614,7 +614,7 @@ Code Word :  DEADS
 > Declaration Tag helps us to declare
 1. Variable (static / non-static)
 2. Block of Code (static / non-static)
-3. Methods (static / non-static but non-abstract) &
+3. Methods (static / non-static but non-abstract) 
 4. Inner Classes inside a JSP
 
 > We can have "Zero / One / More" Declaration 
@@ -1061,7 +1061,7 @@ III. Page Directive [ <%@page   attributes %> ]
 
 > This attribute controls the behaviour of Buffer
 
-> If "true" (it's default), the buffer will be flused
+> If "true" (it's default), the buffer will be flushed
   automatically when it's full
   
 > If "false" then an exception is thrown when the Buffer
@@ -1087,11 +1087,11 @@ III. Page Directive [ <%@page   attributes %> ]
 
 
 > If "true" (it's default), then "session" implicit
-  object is avilable in JSP & it refers to Current / 
+  object is available in JSP & it refers to Current / 
   New Session
   
 > If "false", then "session" implicit object will NOT 
-  be avilable in JSP
+  be available in JSP
 
 
 
@@ -1121,10 +1121,10 @@ III. Page Directive [ <%@page   attributes %> ]
 
 
 > If "true", then "exception" implicit object is 
-  avilable in JSP
+  available in JSP
   
 > If "false" (it's default), then "exception" implicit 
-  object will NOT be avilable in JSP
+  object will NOT be available in JSP
 
 
 
@@ -1165,7 +1165,7 @@ NOTE:
 =======	
 1. We can have Zero / More Page Directive in JSP & they
    can be present anywhere inside a JSP (Preferred is to 
-   keep at the begining of the JSP)
+   keep at the beginning of the JSP)
    
 2. We can club multiple Page Directive Attributes into 
    one page directive as shown below
@@ -1179,7 +1179,7 @@ NOTE:
 	<%@page import="java.util.Date" %>
 
 3. Declaration Tag & Page Directive Tag can be  present 
-   at the begining of the JSP (Preferred). So between 
+   at the beginning of the JSP (Preferred). So between 
    these two, Page Directive Tag should be present first
    followed by Declaration Tag
 
@@ -1187,7 +1187,7 @@ NOTE:
 	
 Exception Handling in JSP
 ==========================
-In JSP we can handle exception scnerios with the help of
+In JSP we can handle exception scenarios with the help of
 "errorPage" & "isErrorPage" page directive attributes
 
 Example :-

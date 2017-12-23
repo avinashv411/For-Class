@@ -1732,7 +1732,7 @@ Example:-
   
 Example:-
 ---------
-<!-- I. Declaring the Servlet -->
+<!-- I. Declaring a Servlet -->
 <servlet>
   <servlet-name>someName</servlet-name>
   <servlet-class>pkgNM.ServletNM</servlet-class>
@@ -1863,7 +1863,7 @@ javax.servlet.http.HttpServlet
 > Implementation present in service(HSR, HSR) is
   - it gets the HTTP Method Present in the Request Object
   
-  - invkoes one of the corresponding doXXX(HSR, HSR)
+  - invokes one of the corresponding doXXX(HSR, HSR)
     method by passing request &	response objects
 	
   - If request has HTTP Method as CONNECT, then this
@@ -1875,15 +1875,15 @@ javax.servlet.http.HttpServlet
  
 1. public void service(ServletRequest req, 
 					   ServletResponse res)
-	throws ServletException, IOException
+   throws ServletException, IOException
 	
 2. public void service(HttpServletRequest req, 
                        HttpServletResponse res)
-	throws ServletException, IOException
+   throws ServletException, IOException
 	
 3. protected void doXXX(HttpServletRequest req, 
                         HttpServletResponse res)
-	throws ServletException, IOException	
+   throws ServletException, IOException	
 	
 > We should not override the first two versions of service
   methods & Our job is to override one / more 
@@ -1914,10 +1914,10 @@ Why HttpServlet is an Abstract Class?
   - override doXXX(HSR, HSR) methods
   
 > It's Servlet Developer choice & this choice is
-  avilable "ONLY being an abstract Class with Zero 
+  available "ONLY being an abstract Class with Zero 
   methods as abstract"  
  
-> Thus, to force us to implement our own servlet 
+> Thus, to force us to implement our own Servlet 
   class along with overriding doGet()/doPost() 
   [based on our choice], the HttpServlet class is 
   marked as abstract
@@ -1982,9 +1982,9 @@ Difference between GenericServlet & HttpServlet
    
   
   
-Servlet Lifecycle:-
+Servlet Life-cycle:-
 ===================
-Lifecycle of a Servlet is controlled by Servlet 
+Life-cycle of a Servlet is controlled by Servlet 
 Container & it has following phases
 1. Instantiation Phase
 2. Initialization Phase
@@ -2032,11 +2032,10 @@ throws ServletException
   - Opening a Text File or
   - Reading the data from a Property File, etc.,
 
-> This method is called ONLY ONCE in Servlet 
-  Lifecycle
+> This method is called ONLY ONCE in Servlet Life-cycle
 
-> We may/maynot override this method. If we don't 
-  override then default implemetation present in 
+> We may/may-not override this method. If we don't 
+  override then default implementation present in 
   GenericServlet is invoked
 
 > The first line of the Version 1 init method should
@@ -2078,7 +2077,7 @@ throws ServletException, IOException
   service(SR, SR) method by passing these objects
 
 > This method is called "for every request" i.e. 
-  one/more times in Servlet Lifecycle 
+  one/more times in Servlet Life-cycle 
 
 > Inside service(SR, SR) method we write any Java
   Code which needs to be executed for every request
@@ -2101,20 +2100,20 @@ public void destroy()
   Servlet Instance from it's memory then it invokes
   destroy() method "before removing"
 
-> destroy() method gives us a chance to perfrom 
+> destroy() method gives us a chance to perform 
   any clean-up activity such as Closing a File etc.,
   
 > This method is called ONLY ONCE in Servlet
-  Lifecycle
+  Life-cycle
 
-> We may/maynot override this method. If we don't 
-  override then default implemetation present in 
+> We may/may-not override this method. If we don't 
+  override then default implementation present in 
   GenericServlet is invoked	
 	
 NOTE:-
 --------
 NO Matter how we create a Servlet, Container ALWAYS 
-invokes below Lifecycle Methods on that Servlet
+invokes below Life-cycle Methods on that Servlet
 1. Public Default Constructor
 2. void init(ServletConfig)
 3. void service(ServletRequest, ServletResponse)
@@ -2134,11 +2133,11 @@ invokes below Lifecycle Methods on that Servlet
 Important Points:
 =================
 > Any Class which extends any one of the below 
-  class  is clalled as a "Servlet" 
+  class  is called as a "Servlet" 
   1. javax.servlet.http.HttpServlet
   2. javax.servlet.GenericServlet
    
-> In otherwords  Servlet MUST be an Object 
+> In-other-words  Servlet MUST be an Object 
    of type "javax.servlet.Servlet" interface
 
    
@@ -2151,7 +2150,7 @@ Important Points:
    
    
    
-> Hence, there are 3 ways of creating the Servelt
+> Hence, there are 3 ways of creating the Servlet
 1. By extending javax.servlet.http.HttpServlet
 2. By extending javax.servlet.GenericServlet
 3. By implementing javax.servlet.Servlet Interface 
@@ -2194,13 +2193,13 @@ public class MyAnotherServlet implements Servlet
 
 }//End of Class   
    
-> As shown in the above example Servlet intreface 
+> As shown in the above example Servlet interface 
   has below 5 Methods
 									------
 1. void init(ServletConfig config) 		 |
   throws ServletException				 |
 										 |     Servlet
-2. void service(ServletRequest req, 	 |---> Lifecycle
+2. void service(ServletRequest req, 	 |---> Life-cycle
 			   ServletResponse resp) 	 |     Methods
   throws ServletException, IOException	 |
 										 |
@@ -2224,7 +2223,7 @@ public class MyAnotherServlet implements Servlet
  
 > If a class 
   - extends either HttpServlet or GenericServlet OR
-  - implemets Servlet interface 
+  - implements Servlet interface 
   & a "subclass of that class is also be called as Servlet"     
    
 > Servlets (for which we configure a URL in web.xml)

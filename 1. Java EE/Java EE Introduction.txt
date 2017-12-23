@@ -10,11 +10,6 @@ Computer
 
 
 
-
-
-
-
-
 Smart Phones 
 ================= 
 > It's also a combination of hardware + an Operating 
@@ -44,7 +39,10 @@ Application
   For ex: 
   - Adobe Reader can only understand ".pdf" files
   - Media Player can only understand ".mp3"/".avi" files
-	   
+
+> "Applications acts like an interface between "User" 
+  and an "Operating System"
+  
 > Every Application is "Platform Dependent" including   
   Java Application
 
@@ -52,8 +50,8 @@ Application
   however Java as a "Programming Language" is 
   "Platform Independent"
 	
-> Java as a "Programming Language" is "Platform Independent" 
-  because "JRE / JVM" Platform Dependent
+> Java as a "Programming Language" is "Platform 
+  Independent" because "JRE / JVM" Platform Dependent
 	
 	
 	
@@ -65,8 +63,7 @@ Application
 	
 	
 	
-> "Applications acts like an interface between "User" 
-  and an "Operating System"
+
 
 Operating System
 =================
@@ -143,6 +140,7 @@ Types of Applications
 
 
 
+
   
 Server
 ===========
@@ -204,15 +202,9 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
   - gives it back to the browser
 
 > J2EE helps to develop "Web Applications" whereas 
-  "Andriod / iOS" helps to develop "Mobile Apps" 
+  "Android / iOS" helps to develop "Mobile Apps" 
 
-  
-  
-  
-  
-  
-  
-> "Mobile Apps" are 2-Tier Architectured Applications
+> "Mobile Apps" are 2-Tier Architecture Applications
 
 > However "Web Applications" acts like 
   - 3-Tier architecture application if it is 
@@ -220,10 +212,10 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
   - 2-Tier architecture application if it is 
     accessed using "Mobile Apps"
 
-> From Maintenance Perspective, 3-Tier architectured 
+> From Maintenance Perspective, 3-Tier architecture 
   applications are easy to "maintain" as compared to 2-Tier 
 
-> However from User Perspective, 2-Tier architectured 
+> However from User Perspective, 2-Tier architecture 
   applications (Mobile Apps, Google Drive, Anti-Virus, 
   etc.,) are easy to access as compared to 3-Tier
 
@@ -257,7 +249,7 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
   2. Code/Logic to present the data to User 
      (Front-end Code)
   
-> Using Java, JDBC, Servlets & JSP helps to develop 
+> Using Java, JDBC, Servlet's & JSP helps to develop 
   Back-end Code   
 
 > Using HTML, CSS, Java Script, AngularJS, ExtJS,

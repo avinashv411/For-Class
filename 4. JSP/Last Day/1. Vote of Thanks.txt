@@ -4,7 +4,7 @@
 
 > Recap MVC Architecture
 
-> JDBC is part of JDK & not part of J2EE
+> JDBC is part of J2EE (Show the J2EE Release Notes)
 
 > JDBC is DB Dependent?
 

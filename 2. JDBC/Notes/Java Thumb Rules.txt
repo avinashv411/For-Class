@@ -26,7 +26,16 @@
   
 4. Hence all "final classes" are "Concrete Class"
   
-  
+  Java Class
+   |
+   |---> Abstract Class
+   |
+   |---> Concrete Class
+			|
+			|---> Final Class
+			|
+			|---> Non-Final Class
+			
   
   
   
@@ -35,11 +44,12 @@
   
 
   
-6. Simply having an Interface in Java is of "No Use" 
-   & there MUST be a "Atleast One Implentation Class"  
+5. Simply having an Interface (which has some abstract
+   methods) in Java is of "No Use" & there MUST be a 
+   "At-least One Implementation Class"  
   
-7. Simply having an Abstract Class is of "No Use" & 
-   there MUST be a "Atleast One Sub-Class"  
+6. Simply having an Abstract Class is of "No Use" & 
+   there MUST be a "At-least One Sub-Class"  
   
 
   
@@ -50,7 +60,7 @@
   
   
   
-8. In Java, "Super Class" can be 
+7. In Java, "Super Class" can be 
    - either an "Abstract Class" or 
    - "Concrete Class"
 
@@ -65,21 +75,21 @@
   
 
   
-9. Anything in Java,
-  - which start with Uppercase Letter 
-    & without parantasis 
+8. Anything in Java,
+  - which start with Upper-case Letter 
+    & without parenthesis  
 	is either "Class Name OR Interface Name"  
   
-  - which start with Lowercase Letter 
-    & without parantasis is a "Variable Name"
+  - which start with Lower-case Letter 
+    & without parenthesis is a "Variable Name"
 
-  - which start with Lowercase Letter 
-    & with parantasis is a "Method Name"
+  - which start with Lower-case Letter 
+    & with parenthesis is a "Method Name"
 
-  - which start with Uppercase Letter 
-    & with parantasis is a "Constructor"
+  - which start with Upper-case Letter 
+    & with parenthesis is a "Constructor"
 	
-10. In Java, anything apart from Premitive Data 
+9. In Java, anything apart from Primitive Data 
     Types are called as "Object References"  
   
   For Ex:
@@ -89,7 +99,7 @@
   Abc ref;
    
   Where,  
-  - "i" &  "isTrue" are Premitive Data Types
+  - "i" &  "isTrue" are Primitive Data Types
   - "ref" is a Object Reference Variable
 	where "Abc" can be 
 	an Interface OR
@@ -102,43 +112,37 @@
 	
 
 	
-11. If a method/contructor input argument is other 
+10. If a method/constructor input argument is other 
     than primitive data type, then it can be 
 	"Interface / Concrete Class / Abstract Class"
 
-  For Ex:
-  ------------
-  public void myMethod(Abc ref)
-  {
-	//Some Business Logic
-  }
-
-  Where 
-  - "ref" is a Object Reference Variable
-  - "Abc" can be 
-			an Interface OR
-			an Abstract Class OR
-			Concrete Class
-
-
-			
-			
-12. If a method return type is other than primitive 
+11. If a method return type is other than primitive 
     data type, then it can be "Interface / Concrete 
 	Class / Abstract Class"
 
   For Example:
   ------------
-  public Abc myMethod()
+  public Xyz myMethod(Abc ref)
   {
 	//Some Business Logic
   }
 
-  Where "Abc" can be 
+  Where  
+  - "ref" is a Object Reference Variable
+  - "Abc / Xyz" can be 
 	an Interface OR
 	an Abstract Class OR
 	Concrete Class
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -149,14 +153,17 @@
     2. Non-Marker Interface
   
 14. If a Class implements an interface & we are 
-    getting the compilation error means it must be a Non-Marker Interface & this interface SHOULD have One/More Abstract Methods
+    getting the compilation error means it must be 
+	a Non-Marker Interface & this interface SHOULD 
+	have One/More Abstract Methods
   
 15. If a Class implements an interface & we are NOT 
     getting any compilation error means it can be a 
     Non-Marker / Marker Interface.
   
 16. If it is a Non-Marker interface then it SHOULD 
-    NOT consist of ANY Abstract Methods but it will consist of only Variables
+    NOT consist of ANY Abstract Methods but it will 
+	consist of only Variables
   
 Method Overloading
 ===================
@@ -175,13 +182,13 @@ Method Overriding
 > Hence Sub-Class should have same method signature 
   as Super-Class however,
   - We can increase the Visibility of the methods 
-  - return type SHOULD be same for Premitive Data-Types
-  - return type can be of "covarient type" for 
-    Non Premitive Data-Types
+  - return type SHOULD be same for Primitive Data-Types
+  - return type can be of "covariant type" for 
+    Non Primitive Data-Types
   - Method name should be same
   - Method input arguments should be same. 
     If not, then it becomes "Method Overloading"
-  - Wen can decrease the visibility of the Exceptions
+  - We can decrease the visibility of the Exceptions
   
   
   
