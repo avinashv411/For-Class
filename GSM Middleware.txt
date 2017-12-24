@@ -1,0 +1,21 @@
+Global Sanctions Manager (GSM) Middleware
+===========================================
+
+> Its a Middleware application developed using Mule framework and runs on Mule ESB Container
+> Its receives messages from various LOB's, process them & sends it to FircoSoft (third party) Application for screening. Messages are received in below ways,
+- via Web Sphere MQ
+- via Files
+- via Emails
+- via DB
+
+> Firco consumes the messages in the form of Swift Format
+> GSM screening application (developed using Pega Technology & it has UI & its a Work-flow based application) it could able to consume XML messages only
+> GSM MW application acts like a bridge between LOB, FircoSoft and GSM Screening applications
+
+	LOB <-----> GSM MW <----> FircoSoft
+				  /\
+				  |
+				  |
+				  |
+				  V
+				  GSM Screening Application
