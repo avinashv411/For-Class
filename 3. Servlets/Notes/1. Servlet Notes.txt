@@ -2266,7 +2266,7 @@ public class MyAnotherServlet implements Servlet
 > Servlets can have
 	1. Local Variables (Static / Non-Static)
 	2. Block of Code (Static / Non-Static)
-	3. Innner Classes
+	3. Inner Classes
 	4. It's own Methods (Static / Non-Static 
 							but non-abstract)
 Note: 
@@ -2290,7 +2290,7 @@ Note:
 > We can have "main() method" in the servlet but its
   of "no use". Servlets are directly under the 
   control of Container & Container will not execute 
-  main method in any phases of Servlet Lifecycle
+  main method in any phases of Servlet Life-cycle
 
 
 
@@ -2317,7 +2317,7 @@ Note:
   
 > Hence by default servlets are Multi Threaded in 
   Nature. In other words Dynamic Web Applications 
-  are "Multi Threaded envionmemnt"
+  are "Multi Threaded environment"
 
 
 
