@@ -315,6 +315,28 @@ JDBC Step 1 Summary:-
 
 
 
+
+
+
+
+URL Examples:-
+=====================
+
+ftp://ftp.is.co.za/rfc/rfc1808.txt
+
+http://www.ietf.org/rfc/rfc2396.txt
+
+ldap://[2001:db8::7]/c=GB?objectClass?one
+
+telnet://192.0.2.16:80/
+
+
+
+
+
+
+
+
 Uniform Resource Locator (URL)
 ================================
 > As the name implies, it uniquely identifies
@@ -332,7 +354,7 @@ DataBase Uniform Resource Locator (DB URL)
   in the Network
 
 > The structure of DB URL is
-  <Protocol>:<Subprotocol>:<Subname>
+  <Protocol>:<Sub-protocol>:<Sub-name>
 
   
   
@@ -362,7 +384,7 @@ DataBase Uniform Resource Locator (DB URL)
 
 
 
-2. Subprotocol
+2. Sub-protocol
 ==============
 > It's a Mandatory Information
 
