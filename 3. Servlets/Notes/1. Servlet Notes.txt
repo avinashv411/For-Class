@@ -2406,17 +2406,17 @@ Differences between ServletContext & ServletConfig
    information to a particular Servlet 
    
 2. ServletContext Object is 
-   - Created @ Server Startup & 
-   - Destroyed @ server shutdown
+   - Created @ Server Start-up & 
+   - Destroyed @ server shut-down
 
    ServletConfig Object is 
    - Created @ "Initialization Phase" 
    - Destroyed @ "Destruction Phase"
    
-3. So there will be "ONLY ONE Instnace of 
-   ServletContext object exists per webapplication"
+3. So there will be "ONLY ONE Instance of 
+   ServletContext object exists per web application"
 
-   There will be "ONLY ONE Instnace of 
+   There will be "ONLY ONE Instance of 
    ServletConfig object exists per Servlet"
 
 4. Hence "Singleton" in Nature
@@ -2442,7 +2442,7 @@ Differences between ServletContext & ServletConfig
 
    In web.xml, servlet config parameters are 
    declared under <init-param> tag (one / more) 
-   which is a subtag of <servlet> tag
+   which is a sub-tag of <servlet> tag
 
 7. ServletContext object "does not" holds the 
    object reference of ServletConfig
@@ -2535,13 +2535,13 @@ Image:
     the URL as a response
 
 3. "Browser makes a New Request to this URL". 
-   Incase of redirected request, HTTP Method present
+   In case of redirected request, HTTP Method present
    in that request will always be a "GET" 
   
 4. Browser displays the whatever the response given 
    by new URL
   
-> Redirect happens at Browser side & incase of 
+> Redirect happens at Browser side & in-case of 
   Redirect "URL in the browser changes"
   
 > To redirect the request call sendRedirect() on 
@@ -2606,11 +2606,6 @@ throws ServletException, IOException
   1. "Request" Object
   2. "ServletContext" Object
 
-  
-  
-  
-  
-  
 1. RequestDispatcher  
           ServletRequest.getRequestDispatcher(String url)
 	
@@ -2715,7 +2710,7 @@ NOTE:
 4. For External URL we left with no choice we MUST make 
    use of Redirect
 
-5. In otherwords, If one web application wants to 
+5. In other-words, If one web application wants to 
    communicate with another "via Web Browser without 
    any user intervention", then Redirect is the ONLY Way. 
    In this case both the web applications can transfer 

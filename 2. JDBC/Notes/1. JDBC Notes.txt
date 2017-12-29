@@ -372,7 +372,7 @@ DataBase Uniform Resource Locator (DB URL)
 > It's a Mandatory Information
 > In case of Java / Java EE, Protocol 
   is always "jdbc"
-> Protocol is "Case In-sensitive"
+
 
 
 
@@ -388,16 +388,15 @@ DataBase Uniform Resource Locator (DB URL)
 ==============
 > It's a Mandatory Information
 
-> It identifies the "DB Connectivity Mechanisam"
+> It identifies the "DB Connectivity Mechanism"
   used to Connect to DB
   
 > This information is provided by DB Vendor & we 
   have to refer the Driver Manual to get this info
 
-> In case of MySQL, Subprotocol is "mysql" but,
-  incase of Oracle or DB2 its different
+> In case of MySQL, Sub-protocol is "mysql" but,
+  in-case of Oracle or DB2 its different
   
-> Subprotocol is also "Case In-sensitive"
 
 
 
@@ -407,25 +406,18 @@ DataBase Uniform Resource Locator (DB URL)
 
 
 
-3. Subname
+
+3. Sub-name
 ===========
 > It's a Mandatory Information
 
 > It Consists of,
-
-1. Host Name 
-  (Computer Name/IP Address and Case In-sensitive) 
-  
-2. Port Number 
-  (should be Digits)
-  
+1. Host Name (Computer Name/IP Address) 
+2. Port Number (should be Digits)
 3. Database Name / Schema Name 
-  (Case In-sensitive)
-  
-4. User Name & Password 
-   (Optional and Case Sensitive)
+4. User Name & Password (Optional)
 	
-> Arrangement of Subname varies from driver to driver, 
+> Arrangement of Sub-name varies from driver to driver, 
   we have to refer the manual & arrange accordingly
   
 > Port Number:
@@ -512,9 +504,24 @@ java.sql.DriverManager
   - returns an object of "Connection" if it is able 
     to establish the connection to DB
   
+  
+  
+  
+  
+  
+  
+  
+  
 > "java.sql.Connection" is an interface & It's an
   "Object representation of Physical DB Connection" 
   that is used by Java program to communicate with DB
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -535,11 +542,13 @@ java.sql.DriverManager
   
   
   
+  
+  
 > DriverManager has overloaded versions of 
   getConnection() methods. They are,
 
 --------------------------------------------------------
-1. Connection getConnection(String dbUrl) 
+1. public static Connection getConnection(String dbUrl) 
    throws SQLException
 --------------------------------------------------------
  String dbUrl = 
@@ -549,9 +558,9 @@ java.sql.DriverManager
  Connection con = DriverManager.getConnection(dbUrl);
 
 --------------------------------------------------------
-2. Connection getConnection(String dbUrl, 
-							String userNM, 
-							String password) 
+2. public static Connection getConnection(String dbUrl, 
+										  String userNM, 
+										 String password) 
   throws SQLException
 --------------------------------------------------------
 String dbUrl = "jdbc:mysql://localhost:3306/BECM19_DB";
@@ -561,8 +570,16 @@ String pass   = "root";
 Connection con 
      = DriverManager.getConnection(dbUrl, userNM, pass);
 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 -----------------------------------------------------------
-3. Connection getConnection (String url, Properties info) 
+3. public static Connection getConnection (String url, 
+										Properties info) 
    throws SQLException
 -----------------------------------------------------------
 	 
@@ -589,7 +606,7 @@ NOTE:-
   method to establish connection to RDBMS application	 
 
 > But "getConnection (String url, Properties info)"
-  helps us to take out the hardcoded credentials from
+  helps us to take out the hard-coded credentials from
   program & keep it outside of the application
   
 > Hence this method is widely used because it helps 
