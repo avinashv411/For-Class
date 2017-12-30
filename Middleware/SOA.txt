@@ -1,0 +1,181 @@
+Service-Oriented Architecture (SOA)
+======================================
+> A service-oriented architecture (SOA) is a "style of software design" where 
+  - is an evolution of distributed computing based on the request/response design model for   
+    synchronous and asynchronous applications
+  - An application's business logic or individual functions are modularized and presented as 
+    services for consumer/client applications
+  - These services are loosely coupled nature
+  - Application developers can build applications by composing one or more services without 
+    knowing the services' underlying implementations
+  - SOA is independent of vendors, products and technologies
+
+> SOA could be regarded as an architectural evolution rather than as a revolution
+  
+> SOA talks more about how to compose an application by integrating 
+  - distributed, 
+  - separately-maintained and 
+  - deployed software components
+  
+> The main advantages of SOA are 
+  - it promotes loose coupling between services
+  - it helps to reuse the services
+  - it helps to easily maintain the enterprise application
+  - lets you create applications that can be built on top of new/existing applications
+  
+> SOA can be seen as part of the continuum which ranges from 
+  - the older concept of distributed computing and 
+  - modular programming, through SOA, and 
+  - on to current practices of mashups, SaaS, and cloud computing 
+    (which some see as the offspring of SOA)
+
+  [continuum:- something that changes in character gradually or in very slight stages without any clear dividing points]
+
+> Other predecessors of SOA are
+  - Component-based software engineering (components are as same as services in SOA)
+  - Object-Oriented Analysis and Design (OOAD) of remote objects, for instance, in CORBA
+  - Modular Programming (Packages in Java)
+  
+  [predecessors:- something that comes before another thing in time]
+  
+> Open Services Gateway initiative (OSGi) is based out of SOA however its Technology dependent 
+  i.e. it meant for ONLY Java Technology. OSGi (Open Service Gateway Initiative) is a Java framework for developing and deploying modular software programs and libraries. 
+  
+  
+Services
+=========
+> A service is a 
+  - discrete unit of functionality that can be accessed remotely and 
+  - updated independently, such as payment gateway services
+
+> A service has 4 properties (according to many definitions of SOA)
+  1. It has dedicated functionality 
+  2. It is self-contained (i.e. having everything that is needed within itself)
+     (self-contained ex:- The apartment is small, but completely self-contained, 
+	  with its own bathroom, kitchen, and living area.)
+  3. It is a black box for its consumers
+  4. It may consist of other underlying services
+  
+
+SOA Principles
+===============
+There are no industry standards relating to the exact composition of a service-oriented architecture, although many industry sources have published their own principles. Some of these are:
+
+1. Standardized service contract
+----------------------------------
+Services adhere to a standard communications agreements (such as communication protocol, input and output data format, etc.,)
+
+2. Service reference autonomy (an aspect of loose coupling)
+---------------------------------------------------------------
+The relationship between services is minimized to the level that they are only aware of their existence
+
+3. Service location transparency (an aspect of loose coupling)
+----------------------------------------------------------------
+Services can be called from anywhere within the network that it is located no matter where it is present
+
+4. Service longevity
+----------------------
+Services should be designed to be long lived. Where possible services should avoid forcing consumers to change if they do not require new features, if you call a service today you should be able to call the same service tomorrow
+
+5. Service abstraction
+------------------------
+The services act as black boxes, that is their inner logic is hidden from the consumers.
+
+6. Service autonomy
+----------------------
+Services are independent and control the functionality they encapsulate, from a Design-time and a run-time perspective.
+
+7. Service statelessness
+--------------------------
+Services are stateless, that is either return the requested value or give an exception hence minimizing resource use
+
+8. Service granularity
+------------------------
+A principle to ensure services have an adequate size and scope. The functionality provided by the service to the user must be relevant
+
+9. Service normalization
+-------------------------
+Services are decomposed or consolidated (normalized) to minimize redundancy. In some, this may not be done, These are the cases where performance optimization, access, and aggregation are required.
+
+[redundancy = a situation in which someone loses their job because their employer does not need them]
+
+10. Service composability
+--------------------------
+Services can be used to compose other services
+
+11. Service discovery
+----------------------
+Services are supplemented with communicative meta data by which they can be effectively discovered and interpreted
+
+12. Service re-usability
+-------------------------
+Logic is divided into various services, to promote reuse of code.
+
+13. Service encapsulation
+---------------------------
+Many services which were not initially planned under SOA, may get encapsulated or become a part of SOA
+
+SOA  Patterns / SOA Service Roles
+===================================
+Each SOA Service can play any of the three roles
+1. Service Provider
+2. Service Registry / Service Broker / Service Repository (like UUDI, kind of outdated)
+3. Service Consumer/requester
+
+
+Conclusion
+==============
+> SOA is not Web services. SOA often has been confused with Web services. However, Web services 
+  are only one option to implement the patterns that comprise the SOA style. 
+
+Micro-services
+-----------------
+> Micro-services are a modern interpretation of SOA used to build distributed software systems. 
+
+> Services in a micro-service architecture are processes that communicate with each other over the network in order to fulfill a goal. These services use technology agnostic protocols,[42] which aid in encapsulating choice of language and frameworks, making their choice a concern internal to the service. Microservices are a new realisation and implementation approach to SOA, which have become popular since 2014 (and after the introduction of DevOps), and which also emphasize continuous deployment and other agile practices.[43]
+
+There is no single commonly agreed definition of microservices. The following characteristics and principles can be found in the literature:
+
+fine-grained interfaces (to independently deployable services),
+business-driven development (e.g. domain-driven design),
+IDEAL cloud application architectures,
+polyglot programming and persistence,
+lightweight container deployment,
+decentralized continuous delivery, and
+DevOps with holistic service monitoring.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
