@@ -636,6 +636,11 @@ Results of RDBMS Application
   
   
   
+  
+  
+  
+  
+  
 > Image:-   
 	 
 
@@ -645,7 +650,7 @@ Static SQL Queries
 ===================
 > ANY SQL queries 
   - "without conditions" OR 
-  - "ALL Conditions with harcoded values" 
+  - "ALL Conditions with hard-coded values" 
   are called as "Static SQL Queries"
  
 > Example :
@@ -818,7 +823,7 @@ where "con" is the Object reference of
 
 Syntax: 
 -------
-void setXXX( Postiton of ? as Int Value, Runtime Value ) 
+void setXXX( Postiton of ? as int Value, Runtime Value ) 
 throws SQLException
 		
 - where XXX = Java Data Type corresponding to 

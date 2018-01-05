@@ -1,0 +1,23 @@
+Scenario I :-
+=================
+- Type a Login Page URL in the Browser & we get Login Page
+- Submit the Login Form "without" checking 
+  "Remember username" check-box
+- We get the Response (Home Page/Login Page with Error Info)
+- Next time when we type Login Page in Browser
+  We get Login Page which is "as same as Previous Case"
+  
+Scenario II :-
+=================  
+- Type a Login Page URL in the Browser
+- We get Login Page
+- Submit the Login Form "by checking Remember username 
+  check-box"
+- We get Home Page 
+  (assuming we provided valid credentials) 
+- Next time when we type Login Page in Browser
+  "We get Login Page with auto-populated User Name"
+  
+  
+  
+  

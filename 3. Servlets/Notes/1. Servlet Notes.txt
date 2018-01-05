@@ -2881,7 +2881,7 @@ Cookie nameCookie = new Cookie("myName","Praveen");
 ------------------------------------------
 > Non-Persistent Cookie lives as long as Browser
   is kept open. Once the Browser is closed, 
-  cookie disapears
+  cookie disappears
   
 2. Persistent Cookie :-
 -------------------------
@@ -2894,7 +2894,7 @@ Cookie Related Methods :-
 
 1. public Cookie(String name, String value)
 --------------------------------------------------- 
-> It's the ONE & ONLY constructor avilable in 
+> It's the ONE & ONLY constructor available in 
   "javax.servlet.http.Cookie" Concrete Class
   
 > It creates the Cookie Object with specified name  
@@ -2966,6 +2966,15 @@ Cookie Related Methods :-
 > 0 Value makes Cookie (Persistent / Non-Persistent) 
   to be "Deleted Immediately" from Browser 
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 Examples :
 =============
 1. Create Cookie Example
@@ -2977,7 +2986,7 @@ Cookie myNameCookie
 //Persistent Cookie
 Cookie myLocationCookie 
 		= new Cookie("myLocation", "Bangalore");
-//Time in Seconds		
+//Time in Seconds as int value		
 myLocationCookie.setMaxAge(7*24*60*60);
 
 //Send the above Cookies in the Response
@@ -3115,7 +3124,7 @@ Attributes Summarized :-
 | 1. Instance      | One Per Application              | One Per Request & Response Cycle  | One Per User OR Login/Logout |
 --------------------------------------------------------------------------------------------------------------------------
 | 2. Lifespan      | Created during Server Start up   | Create When Request Comes         | Create When User Login       |
-|                  | Destroyed during Server shutdown | Destroyed When Response is Given  | Destroyed When User Logout   |
+|                  | Destroyed during Server shut-down| Destroyed When Response is Given  | Destroyed When User Logout   |
 --------------------------------------------------------------------------------------------------------------------------
 | 3. Scope         | Application                      | Request & Response Cycle          | Session                      |
 --------------------------------------------------------------------------------------------------------------------------
@@ -3213,7 +3222,7 @@ if(str==null){
    
 Tomcat Web Server Config Changes :-
 ========================================
-1. Goto <Apache Tomcat Location>\webapps\ROOT
+1. Go to <Apache Tomcat Location>\webapps\ROOT
 
 2. Open "index.jsp"
 
@@ -3268,11 +3277,11 @@ Session Introduction
 ----------------------------------------------
 > These are the Web Applications where "Response Data 
   is specific to a User"
-  Ex:- Gamil, Facebook, Twitter, Linked-In, etc.,
+  Ex:- Gmail, Facebook, Twitter, Linked-In, etc.,
 
 > Login & Logout is "Must" for these Web Applications
 
-> Also these webapplications MUST know "from which 
+> Also these web applications MUST know "from which 
   User it's getting the request"
   
 2. User Independent Dynamic Web Applications :-
@@ -3286,7 +3295,7 @@ Session Introduction
 > Login & Logout is "Optional" for these Web 
   Applications
 
-> Also these webapplications Need Not know "from 
+> Also these web applications Need Not know "from 
   which User it's getting the request"		   
 
 Thumb Rule :-
@@ -3309,7 +3318,7 @@ Why HttpSession (a.k.a Session) Functionality ?
 ===============================================
 > HTTP is a "Stateless Protocol" i.e. it doesn't 
   maintain a relationship/state between requests.
-  Each request is un-related to any previous 
+  Each request is not related to any previous 
   requests
   
 > Also HTTP don't help web application to uniquely 
@@ -3345,7 +3354,7 @@ HttpSession
   1. Uniquely identify the user
   2. It maintain "State / Relationship" between 
      requests with the help of "Session Attributes"
-  3. Avoids Authenticattion for each Request
+  3. Avoids Authentication for each Request
   4. Tightly couples the different pages of the 
      web application
 	 
