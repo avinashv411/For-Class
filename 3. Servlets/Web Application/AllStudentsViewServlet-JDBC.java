@@ -60,7 +60,7 @@ public class AllStudentsViewServlet extends HttpServlet
 			out.println("<html> ");
 			out.println("<body> ");
 			out.println("<table>");
-			out.println("<tr bgcolor=\"orange\">");
+			out.println("<tr bgcolor=\"green\">");
 			out.println("<td>Reg. No.</td>     ");
 			out.println("<td>First Name</td>   ");
 			out.println("<td>Middle Name</td>  ");

@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet
 			DriverManager.registerDriver(driverRef);
 			
 			//2. Get the DB Connection via Driver 
-			String dbUrl = "jdbc:mysql://localhost:3306/BECM6_DB?user=j2ee&password=j2ee";
+			String dbUrl = "jdbc:mysql://localhost:3306/studentsapp_db?user=j2ee&password=j2ee";
 			con = DriverManager.getConnection(dbUrl);
 			
 			//3. Issue SQL Queries via Connection 

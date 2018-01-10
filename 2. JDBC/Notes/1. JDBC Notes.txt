@@ -1007,7 +1007,7 @@ JDBC Summary:
 > JDBC Steps 1 to 4 will be in "try block" and 
   step 5 will be in "finally block"
 
-> While makeing use of JDBC we MUST follow 5 steps
+> While making use of JDBC we MUST follow 5 steps
   and out of 5, ONLY Once 
   - We need to load the Driver (Step 1)
   - We have to get the DB Connection (Step 2)
@@ -1057,8 +1057,10 @@ SELECT TOP 5 * FROM ABC;
 
 		  
 ******************* END of JDBC ************************		  
-		  
-	Google Search :- t2bot.ru/en/nod32key	  
+
+
+
+Google Search :- t2bot.ru/en/nod32key	  
 		  
 https://t2bot.ru/en/esetkeys/		  
 		  

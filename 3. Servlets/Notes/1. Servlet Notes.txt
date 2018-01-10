@@ -1482,7 +1482,7 @@ NOTE :
   
 > Between "print()" & "println()" methods print()
   reduces the size of the Actual Content there by
-  increases the Performance
+  increases the performance
 
 > Apart from the above, there are many more Methods,
   which helps to send information in Response Object  
@@ -2861,8 +2861,8 @@ Cookie nameCookie = new Cookie("myName","Praveen");
   Browser" 
   
 > There are two types of cookies,
-  1. Non-Persistent Cookie
-  2. Persistent Cookie
+  1. Non-persistent Cookie
+  2. persistent Cookie
 
   
   
@@ -2877,15 +2877,15 @@ Cookie nameCookie = new Cookie("myName","Praveen");
 
 
 
-1. Non-Persistent Cookie (it's default) :-
+1. Non-persistent Cookie (it's default) :-
 ------------------------------------------
-> Non-Persistent Cookie lives as long as Browser
+> Non-persistent Cookie lives as long as Browser
   is kept open. Once the Browser is closed, 
   cookie disappears
   
-2. Persistent Cookie :-
+2. persistent Cookie :-
 -------------------------
-> Persistent Cookie will be present in Browser 
+> persistent Cookie will be present in Browser 
   even after Browser is Closed till it meets the
   expiry time
 
@@ -2961,9 +2961,9 @@ Cookie Related Methods :-
 6. public void Cookie.setMaxAge(int expiry)
 =====================================================
 > set's the max age of the Cookie in "Seconds" 
-> Any +ve Value makes Cookie "Persistent" 
-> Any -ve Value makes Cookie "Non-Persistent"
-> 0 Value makes Cookie (Persistent / Non-Persistent) 
+> Any +ve Value makes Cookie "persistent" 
+> Any -ve Value makes Cookie "Non-persistent"
+> 0 Value makes Cookie (persistent / Non-persistent) 
   to be "Deleted Immediately" from Browser 
  
  
@@ -2979,11 +2979,11 @@ Examples :
 =============
 1. Create Cookie Example
 --------------------------
-//Non-Persistent Cookie
+//Non-persistent Cookie
 Cookie myNameCookie 
 		= new Cookie("myName", "Praveen");
 
-//Persistent Cookie
+//persistent Cookie
 Cookie myLocationCookie 
 		= new Cookie("myLocation", "Bangalore");
 //Time in Seconds as int value		
@@ -3121,13 +3121,19 @@ Attributes Summarized :-
 ==========================================================================================================================
 |	 No.           | ServletContext                   | ServletRequest                    | HttpSession                  |
 ==========================================================================================================================
-| 1. Instance      | One Per Application              | One Per Request & Response Cycle  | One Per User OR Login/Logout |
+| 1. Instance      | One per Application              | One per Request & Response Cycle  | One per Login/Logout         |
 --------------------------------------------------------------------------------------------------------------------------
 | 2. Lifespan      | Created during Server Start up   | Create When Request Comes         | Create When User Login       |
 |                  | Destroyed during Server shut-down| Destroyed When Response is Given  | Destroyed When User Logout   |
 --------------------------------------------------------------------------------------------------------------------------
 | 3. Scope         | Application                      | Request & Response Cycle          | Session                      |
 --------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
 |		           | All the Above 3 Objects has                                                                         |
 |				   | private HashMap<String, Object>                                                                     |
 | 4. Functionality | & 3 Public Methods to Operate                                                                       |
@@ -3220,6 +3226,19 @@ if(str==null){
 }  
   
    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 Tomcat Web Server Config Changes :-
 ========================================
 1. Go to <Apache Tomcat Location>\webapps\ROOT
@@ -3238,7 +3257,7 @@ response.sendRedirect(url);
 
 %>  
   
-   
+4. Learn about "Relative URL & Absolute URL"  
    
    
    
@@ -3565,7 +3584,7 @@ Part 5 - Summary
 	- How to Create Cookies
 	- How to Send Cookies to Browser
 	- Types of Cookies
-	- How to Create Persistent Cookie
+	- How to Create persistent Cookie
 > HttpSession
 	- Types of Dynamic Web Applications
 	- Limitations of HTTP Protocol
