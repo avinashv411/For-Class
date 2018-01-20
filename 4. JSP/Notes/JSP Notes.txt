@@ -443,7 +443,7 @@ in Java)
 
 > Once Session is Invalidated, this object get
   Garbage Collected
-  
+
 4. Application Scope : 
 ======================
 > JSP Object with "Application Scope" can be accessed
