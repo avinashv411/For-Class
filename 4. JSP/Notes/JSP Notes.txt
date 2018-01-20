@@ -435,7 +435,7 @@ in Java)
 
 > Once Response is given back this object get Garbage
   Collected
-  
+   
 3. Session Scope :
 ==================
 > JSP Object with "Session Scope" can be accessed in 
