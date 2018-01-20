@@ -57,8 +57,8 @@ behind the scene at runtime
   2. By configuring URL for a JSP in "web.xml" 
      & using this configured URL in Web URL
 
-> Second Approch helps us to achieve "Security" 
-  & "Maintainablity" 
+> Second Approach helps us to achieve "Security" 
+  & "Maintainability" 
 
 > "javax.servlet.jsp.*" is the package representation
   of JSP API
@@ -91,8 +91,8 @@ Configuring URL for JSP in web.xml :-
 	<servlet-name>myFirstJsp</servlet-name>
 	<!-- if JSP Directly Present under WebContent -->
 	<jsp-file>/MyFirstJSP.jsp</jsp-file>
-	
-<!-- If JSP Present under sub-folder (jsp) of WebContent 
+<!-- 
+    If JSP Present under sub-folder (jsp) of WebContent 
 	<jsp-file>/jsp/MyFirstJSP.jsp</jsp-file>
    
     If JSP Directly Present under WEB-INF
@@ -116,11 +116,11 @@ URL's to Access JSP :
 > If JSP Directly Present under WebContent
   http://localhost:8080/studentsApp/MyFirstJSP.jsp
 
-> If JSP Present under Sub-floder (jsp) of WebContent
+> If JSP Present under Sub-folder (jsp) of WebContent
   http://localhost:8080/studentsApp/jsp/MyFirstJSP.jsp
 
 > If JSP Present under "WEB-INF" then we cannot access
-  using the filename. In such cases we get 404 Response  
+  using the file name. In such cases we get 404 Response  
 
 2. Using Configured URL
 -----------------------
@@ -150,9 +150,9 @@ NOTE:-
 
 
 
-JSP Lifecycle
+JSP Life cycle
 ==============
-Lifecycle of a JSP is controlled by Servlet Container
+Life cycle of a JSP is controlled by Servlet Container
 and it has following phases
 
 1. Translation & Instantiation Phase
@@ -169,7 +169,7 @@ and it has following phases
 
 > Once Translation & Compilation is successful, 
   Container creates an instance of the Translated 
-  Servlet by invokeing "Public Default Constructor" 
+  Servlet by invoking "Public Default Constructor" 
   ONLY
   
 2. Initialization Phase
@@ -181,11 +181,11 @@ public void jspInit() {
 }
 
 > After successful Instantiation, container invokes 
-  "init(ServletConfig)" method which inturn invokes 
+  "init(ServletConfig)" method which in turn invokes 
   "jspInit()" Method
 
 > jspInit() Method is called ONLY ONCE in JSP 
-  Lifecycle
+  Life cycle
 
 > We May / May Not override this method. If we don't 
   override then default implementation from 
@@ -203,11 +203,11 @@ public void _jspService(HttpServletRequest request,
 throws ServletException, IOException
 	
 > Whenever request comes, container invokes 
-  "service(SR, SR)" Method which inturn inovkes 
+  "service(SR, SR)" Method which in turn invokes 
   "_jspService(HSR, HSR)"
   
 > This method is called One / More times in JSP 
-  Lifecycle i.e. equal to number of requests
+  Life cycle i.e. equal to number of requests
 
 > This method is also responsible for generating 
   response for HTTP methods
@@ -226,10 +226,10 @@ public void jspDestroy() {
 
 > If container wants to remove the cached servlet 
   instance, then it invokes destroy() Method which 
-  inturn invokes jspDestroy() Method
+  in turn invokes jspDestroy() Method
 
 > jspDestroy() Method is called ONLY ONCE in JSP 
-  Lifecycle
+  Life cycle
 
 > We May / May Not override this method. If we don't 
   override then default implementation from 
@@ -244,7 +244,7 @@ NOTE:
   4. Got created because of the JSP
      
 > No Matter how Servlet get created, container always 
-  invokes below Lifecycle Methods in that Servlet
+  invokes below Life cycle Methods in that Servlet
   1. public default constructor
   
   2. public void init(ServletConfig)
@@ -260,7 +260,7 @@ NOTE:
 
 > However from "Developer Perspective" LifeCycle 
   methods are different depending on what we are 
-  creating i.e. Servelt / JSP
+  creating i.e. Servlet / JSP
 
 MyFirstJSP.jsp with LifeCycle Methods :-
 ========================================
@@ -322,12 +322,12 @@ Differences Between Servlets & JSP
    In case of JSP, Business Logic is kept separate 
    from Presentation Logic i.e "Java inside the HTML"
    
-3. In case of Servlets, Already compiled ".class" 
+3. In case of Servlets, already compiled ".class" 
    files are used to generate the response 
    
    In case of JSP, it get converted into Servlet, it 
-   get compiled & the compiled ".class" file is used 
-   to generate the response
+   get compiled & that ".class" file is used to 
+   generate the response
 
 4. Hence time to take generate the response for 1st 
    Request is Less (as compared to JSP)
@@ -342,24 +342,29 @@ Differences Between Servlets & JSP
   - either by using the file name directly in the URL
   or 
   - using the configured URL present in web.xml	   
+
+6. Servlets are created by Developer
+	
+   In case of JSP, translated Servlet is created by 
+   Container	 
    
-6. Servlets extends either "GenericServlet" or 
+7. Servlets extends either "GenericServlet" or 
    "HttpServlet"
 	
    In case of JSP, "Translated Servlet extends 
    HttpJspBase" which in turn extends "HttpServlet"	 
 
-7. Servelts has "*.java" file extension
+8. Servlets has "*.java" file extension
 
    JSP has "*.jsp" file extension
 
-8. Servelts are created under "src" folder of 
+9. Servlets are created under "src" folder of 
    Dynamic Web Project
 
    JSPs are created under "WebContent" folder 
    
-9. Implicit Objects are NOT avilable & we have to
-   explicitly define them
+10. Implicit Objects are NOT available & we have to
+    explicitly define them
 	
    Implicit Objects are available	
 	
@@ -371,7 +376,7 @@ Differences Between Servlets & JSP
 	
 Comments in JSP :-
 ==================
-> There is only one type of Comment avilable in JSP 
+> There is only one type of Comment available in JSP 
   API
 
 > Container ignores whatever we write inside this tag
@@ -400,7 +405,7 @@ JSP Objects:
   
 > Also, JSP's are handled by 2 parties
   1. Developer who creates the JSP
-  2. Container who translates JSP into Servelt
+  2. Container who translates JSP into Servlet
   
 > Hence Developer as well as Container can create 
   Objects in JSP 
@@ -512,7 +517,7 @@ Servlet Objects
 
 > Functionality wise its similar to 
   "java.io.PrintWriter" Object which we use in
-  Servelts to print the data in Browser
+  Servlets to print the data in Browser
 
   
   
@@ -590,7 +595,7 @@ JSP Tags:-
   cannot make use of one tag inside an another tag 
   (excluding Action Tag)
   
-> JSP comes with set of "Pre-defind" tags & 
+> JSP comes with set of "Pre-defined" tags & 
   they are grouped into 5 groups 
   1. Declaration Tag 
   2. Expression Tag 
@@ -621,8 +626,8 @@ Code Word :  DEADS
   Tag & Declaration Tag can be present "Anywhere 
   inside a JSP"
   
-> Preferred approch is to have ONLY ONE Declaration 
-  tag & present at begining of the JSP
+> Preferred approach is to have ONLY ONE Declaration 
+  tag & present at beginning of the JSP
 
 > Code present inside this tag will be kept as a 
   first lines of translated servlet at the time of 
@@ -649,7 +654,7 @@ Code Word :  DEADS
   - will be present inside _jspService(HSR, HSR) method
     [ that too inside out.print() ]
   
-> Functionality of this tag is similler to  printing 
+> Functionality of this tag is similar to  printing 
   the dynamic data using out.print() in case of 
   Servlets
 
@@ -678,7 +683,7 @@ Code Word :  DEADS
   executed for every request
   
 > If we declare a variable using this tag then it 
-  becomes "Method Level Variable" and accessable only
+  becomes "Method Level Variable" and accessible only
   within _jspService() Method
 
 Example for Declaration, Expression & Scriptlet 
@@ -759,7 +764,7 @@ Note :
 ------
 > We can Forward the request to ONLY ONE resource at a 
   time
-> Only incase of Action Tag, we can make use of other 
+> Only in case of Action Tag, we can make use of other 
   JSP Tag i.e Expression Tag inside Action Tag
 
 For Example :
@@ -833,11 +838,11 @@ Syntax:
 	  Constructor"  & 
 	* set that object to the corresponding scope
 
-> We know that, Java Bean helps us to tranfer the data 
+> We know that, Java Bean helps us to transfer the data 
   in the form of Object from one Java program to other 
 
 > Hence using this tag "we can ONLY create an instance 
-  of Java Bean" & for noraml Java Classes we should use 
+  of Java Bean" & for normal Java Classes we should use 
   "Scriptlet Tag"
   
 Example:

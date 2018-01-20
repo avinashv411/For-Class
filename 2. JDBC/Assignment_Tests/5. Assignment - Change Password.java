@@ -7,8 +7,7 @@
 > This Program first check whether Reg No. & 
   Current Password is matching
   
-> If NO, then print the "Error Message" 
-  in Console
+> If NO, then print the "Error Message" in Console
   
 > If YES, then print the "Success Message" in
   Console along with updating the password for 

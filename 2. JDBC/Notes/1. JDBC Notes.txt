@@ -1033,6 +1033,7 @@ JDBC Summary:
 		  
 		  
 		  
+		  
 > Though JDBC claims that it is "DB Independent" but,
   because of "SQL Queries (step 3)", it is actually
   "DB Dependent"

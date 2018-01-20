@@ -13,7 +13,7 @@ Web Browser :
 > Browser is capable of Displaying "Text/HTML" data
 
 > Browser is the One & Only application which 
-  understands contetnt/data present in HTML and 
+  understands content/data present in HTML and 
   display accordingly
 
 
@@ -43,12 +43,12 @@ I.	Static Web Resources:
 - Content/Response of these resources "does not 
   change" for every request (Static Response)
 
-- In otherwords, resources which generates "static 
+- In other-words, resources which generates "static 
   response" is called as Static Web Resources
   
 - Few Examples:
   1. Any Songs/Video/Movie files Download
-  2. Any Softwares Download
+  2. Any Software's Download
   3. Any Books(PDF, MS-Word, etc.,) Download
  
 II.	Dynamic Web Resources:	
@@ -60,7 +60,7 @@ II.	Dynamic Web Resources:
 - Content/Response of these resources "May Change" 
   for every request (Dynamic Response)
 
-- In otherwords, resources which generates "dynamic 
+- In other-words, resources which generates "dynamic 
   response" is called as Dynamic Web Resources
   
 - Few Examples:
@@ -72,7 +72,7 @@ II.	Dynamic Web Resources:
 3. Google Search Page (HTML Page)
 4. Gmail Inbox Page (HTML Page)
 5. Facebook Home Page (HTML Page)
-6. Gmail "Download All Attachements" (ZIP File)
+6. Gmail "Download All Attachments" (ZIP File)
 
 NOTE:
 =====
@@ -100,7 +100,7 @@ Web Application :
 > If a web application consists of "one / more
   dynamic web resources" then it is called as 
   "Dynamic Web Application"	
-  Ex: Gmail, Facebook, Twiter, FlipKart, etc., 
+  Ex: Gmail, Facebook, Twitter, FlipKart, etc., 
 			 
 > J2EE/Java EE (Servlets & JSP) helps us to develop
  "Dynamic Web Applications"
@@ -117,26 +117,28 @@ Web Application :
 Web Server :
 ==============
 > Like any other application (Adobe Reader, Media 
-  Player, etc.,), Webserver is also an application 
+  Player, etc.,), Web server is also an application 
   which runs on Operating System
   
-> Webserver as the name implies “Serves requests 
+> Web server as the name implies “Serves requests 
   to a Web Applications”. 
   
-> In otherwords, it helps both web browser & 
+> In other-words, it helps both web browser & 
   web application to interact with each other 
   
 > Hence every web application (Static / Dynamic)
-  is directly under the control of webserver
+  is directly under the control of web server
   
-> Few Examples of Webservers :
+> Few Examples of Web servers :
 	1. Apache Tomcat
 	2. Redhat JBOSS
 	3. IBM WebSphere
 	4. Oracle WebLogic
 	5. Oracle GlassFish & Many More ...
 
-> Webserver Image:-	
+	
+	
+> Web server Image:-	
 	
 	
 	
@@ -148,12 +150,12 @@ Steps to Install Apache Tomcat Web Server:
 > Download the Apache Tomcat (ZIP version) & extract
   it into some directory
   
-> Set the Following 2 Environment Varibales
+> Set the Following 2 Environment Variables
   1. JAVA_HOME 
   2. CATALINA_HOME 
 
-  For Example :
-  =============
+  Ex:
+  ---
   JAVA_HOME = C:\Program Files\Java\jdk1.6.0_27
   CATALINA_HOME = C:\Praveen\apache-tomcat-6.0.26
     
@@ -173,14 +175,13 @@ Steps to Install Apache Tomcat Web Server:
   server started in "Exception Mode"
   
 > In this case most likely there is a problem in 
-  setting up the Environment Variables 
-  (i.e. Point #2)
+  setting up the Environment Variables (i.e. Point #2)
 
-> To Shutdown the Web Server
+> To Shut down the Web Server
   - Close the Console Window OR
   - Use "Ctrl + C" OR
   - Go to "<Tomcat_Location>\bin" folder & 
-    double click on "shutdown.bat" OR "shutdown" file
+    double click on "shutdown.bat" file
   
   
   
@@ -190,8 +191,8 @@ Steps to Install Apache Tomcat Web Server:
 Different ways to interact with Web Applications :
 ==================================================== 
 1. By Typing an URL in Browser
-2. By Clicking on the Hyperlink 
-3. By Submiting the HTML Form
+2. By Clicking on the Hyper-link 
+3. By Submitting the HTML Form
 
 NOTE:-
 ======
@@ -206,10 +207,10 @@ NOTE:-
 
 Web URL
 ========
-> Web URL, uniquely identifies a perticular web 
+> Web URL, uniquely identifies a particular web 
   resource inside a web application 
   
-> In otherwords, every web resource (Static/Dynamic)
+> In other-words, every web resource (Static/Dynamic)
   must have its unique address in the form of 
   "Web URL" 
 
@@ -223,15 +224,15 @@ Resource File Name
 index.html
 ==========
 <html>
-<body>
-	<h1>
-		Current Date & Time is :
-		<BR>
-		<font color="red">
-			3-May-2017 10:57 AM
-		</font>
-	</h1>
-</body>
+	<body>
+		<h1>
+			Current Date & Time is :
+			<BR>
+			<font color="red"> 
+				16-Jan-2018 12:02 AM
+			</font>
+		</h1>
+	</body>
 </html>
 
 
@@ -264,8 +265,8 @@ Servlets
   Resources" 
   
 > Since, J2EE helps us to develop Dynamic web 
-  applications & hence web applications, incase of 
-  J2EE, should consist of atleast ONE Servlet/JSP 
+  applications & hence web applications, in case of 
+  J2EE, should consist of at least ONE Servlet/JSP 
 
 > The Dynamic Response, may be a "HTML response" or
   "Non-HTML Response"
@@ -275,7 +276,7 @@ For Example:
 1. Any NetBanking Web Application, Transaction 
    Statement Download(PDF file) is Non-HTML Response
 2. Google Search Page (HTML Page) is a HTML Response
-3. Gmail "Download All Attachements" (ZIP File)
+3. Gmail "Download All Attachments" (ZIP File)
    is a Non-HTML Response
 
 > However HTML helps to generate "Static Response"
@@ -419,6 +420,7 @@ In both the cases "1" represents "Time in Sec."
 
 
 
+	 
 	 
 	 
 Part 1 - Summary 
@@ -3269,7 +3271,7 @@ response.sendRedirect(url);
 
 Application
 |
-|------> Desktop
+|------> Standalone
 |
 |------> Web Application
 			|
@@ -3411,6 +3413,9 @@ HttpSession Related Methods
  
  
  
+ 
+ 
+ 
 Creating a New Session Object Means:
 --------------------------------------
 > Container generates "Unique ID" 
@@ -3451,7 +3456,7 @@ NOTE:
 > Specifies the valid session time, in seconds 
 
 > A negative time indicates the session should 
-  never timeout
+  never time out
  
 > This method helps us to set different Session 
   Time Out for different types of users
@@ -3468,7 +3473,7 @@ Steps to Handle HttpSession
 ============================ 
 1. Create the Session :-
 ------------------------
-Whenever user login & after sucessfull authentication,
+Whenever user login & after successful authentication,
 create session for the First Time.
 
 HttpSession session = req.getSession(true);
@@ -3483,7 +3488,7 @@ validate the session
 Note: 
 ======
 Any Servlet/JSP which get the request from Browser, 
-after successful login, then it shoud have "Session 
+after successful login, then it should have "Session 
 validation logic"  
 
 //Get the Current Session Object
@@ -3545,9 +3550,9 @@ URL Rewriting
 > If we encode the URL's, then Container ALWAYS 
   first attempt to use the Cookies to get Session
   ID & fall back to URL Rewriting only if Cookie 
-  approch fails
+  approach fails
   
-> In real time scenerios we will not make use of 
+> In real time scenarios we will not make use of 
   URL Rewriting to handle session (because of 
   "Session Hijacking" issue)
   
