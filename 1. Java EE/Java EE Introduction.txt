@@ -10,6 +10,10 @@ Computer
 
 
 
+
+
+
+
 Smart Phones 
 ================= 
 > It's also a combination of hardware + an Operating 
@@ -142,6 +146,7 @@ Types of Applications
 
 
   
+  
 Server
 ===========
 > Server is also a computer, but they are not dedicated
@@ -167,6 +172,12 @@ RDBMS Application / DataBase / DB
   store and maintain Giga-Bytes to Tera-Bytes of data 
 
 > RDBMS Application is represented as shown below
+
+
+
+
+
+
 
 
 
@@ -204,6 +215,17 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
 > J2EE helps to develop "Web Applications" whereas 
   "Android / iOS" helps to develop "Mobile Apps" 
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 > "Mobile Apps" are 2-Tier Architecture Applications
 
 > However "Web Applications" acts like 
@@ -213,11 +235,12 @@ Java 2 Enterprise Edition / J2EE / JEE / Java EE
     accessed using "Mobile Apps"
 
 > From Maintenance Perspective, 3-Tier architecture 
-  applications are easy to "maintain" as compared to 2-Tier 
+  applications are easy to "maintain" as compared 
+  to 2-Tier 
 
 > However from User Perspective, 2-Tier architecture 
   applications (Mobile Apps, Google Drive, Anti-Virus, 
-  etc.,) are easy to access as compared to 3-Tier
+  etc.,) are "user friendly" as compared to 3-Tier
 
   
   
@@ -282,13 +305,29 @@ Java EE 2-Tier Architecture:-
 
 
 
+
+Option 1 :-
+==============
+
 JDBC					:	20 Hours 
 Servlets				:	60 Hours 
 JSP					    :	10 Hours 
-==============================================									 
+------------------------------------------------									 
 Grand Total			    :	90 Hours
 No. of Hours / day 	    :	2 Hours
 No. of Classes for J2EE	:  (90/2) = 45 Classes
+
+
+Option 2 :-
+==============
+
+JDBC					:	5 Hours 
+Servlets				:	20 Hours 
+JSP					    :	5 Hours 
+------------------------------------------------									 
+Grand Total			    :	30 Hours
+No. of Hours / day 	    :	2 Hours
+No. of Classes for J2EE	:  (30/2) = 15 Classes
 
 
 

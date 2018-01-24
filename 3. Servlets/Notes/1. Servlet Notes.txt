@@ -495,7 +495,7 @@ Protocol:
 > This common language is known as “Protocol” where 
   protocol is a "Set of Rules"
   
-> Web Browser & Web Server applicatins communicate 
+> Web Browser & Web Server applications communicate 
   using 
   1. Hyper Text Transfer Protocol (HTTP) 
   2. Hyper Text Transfer Protocol Secure (HTTPS)
@@ -592,13 +592,13 @@ Path:
 	    Configured URL in case of Dynamic Resource )
 
 > "Web Application Name" uniquely identifies One
-  web applciation inside webserver
+  web application inside web server
   
 > "File Name" uniquely identifies Static web resource 
-  inside that web applciation 
+  inside that web application 
 
 > "Configured URL" uniquely identifies Dynamic web 
-  resource inside that web applciation 
+  resource inside that web application 
   
 > In URL, 
   - it’s an optional Information and
@@ -683,15 +683,15 @@ http://tomcat.apache.org/tomcat-6.0-doc/manager-howto.html
 
 
 
-> Create Servelt by name "StudentSearchServlet", 
+> Create Servlet by name "StudentSearchServlet", 
   which gets the request by typing the URL (with the
   Query String as "?regno=<register_number>") in 
   the Browser and this Servlet,
 1. Needs to Get the "Register Number" from Query String   
-2. Check this Reg. No. exists in BECE14_DB DataBase 
+2. Check this Reg. No. exists in BECM19_DB DataBase 
 3. If No, Print the Error Message in the Browser
 4. If Yes, Get the corresponding Reg. No. Data from 
-   BECE14_DB DataBase 
+   BECM19_DB DataBase 
    ( Combination of Data Present in 
      students_info & 
 	 guardian_info Tables), 
@@ -702,14 +702,17 @@ http://tomcat.apache.org/tomcat-6.0-doc/manager-howto.html
   
   
   
+  
 Note:-
 ======
 > Create "StudentSearchServlet"	by extending 
-  "HttpServlet" & Override doGet() Method
+  "HttpServlet" under "src" folder & Override 
+  doGet() Method
 
 > In doGet() Method perform the below Operations
 1. Get the "Register Number" from Query String 
-2. Get the Data from DB using JDBC for this "Register Number" 
+2. Get the Data from DB using JDBC for this 
+   "Register Number" 
 3. Generate the Success / Error Response
   
 > After creating the Servlet configure URL for that
@@ -717,9 +720,9 @@ Note:-
   
 > URL to Access:
 -----------------
-http://localhost:8080/studentsApp/studentSearch
+http://localhost:8080/studentsApp/studentSearch?regno=1
 
-> Since this Servelt needs to interact with DB, it 
+> Since this Servlet needs to interact with DB, it 
   MUST make use of JDBC & JDBC requires Driver JAR file
   
 > Copy & Paste Driver JAR file into 
@@ -733,7 +736,7 @@ http://localhost:8080/studentsApp/studentSearch
 
 
 *************************************************
-* Ask Students to Observe Attendence Tracking 
+* Ask Students to Observe Attendance Tracking 
 * Web Application
 *************************************************
 

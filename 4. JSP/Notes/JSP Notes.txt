@@ -655,8 +655,7 @@ Code Word :  DEADS
     [ that too inside out.print() ]
   
 > Functionality of this tag is similar to  printing 
-  the dynamic data using out.print() in case of 
-  Servlets
+  the dynamic data using out.print() in case of Servlets
 
 
 
@@ -708,7 +707,7 @@ Tags :
 	Name 1 : <%= name %>
 	Name 2 : <%= getName() %>
 	Name 3 : <%= getName("Praveen")%>
-	Name 4 : <%= getName()+getName("Praveen")%>
+	Name 4 : <%= name+getName()+getName("Praveen")%>
 	Age 1 : <%= age %>
 	Age 2 : <%= getAge() %>
 	<%
@@ -738,7 +737,7 @@ III. UseBean Action
 I. Forward Action [<jsp:forward  page="relativeURL" />]
 -------------------------------------------------------	
 This tag helps us to Forward the Request to an another
-Intenal Resource (static / dynamic i.e Servlet or JSP)
+Internal Resource (static / dynamic i.e Servlet or JSP)
 
 Example :
 ---------
@@ -910,7 +909,7 @@ Syntax:
 > TagLib Directive helps us to make use of "Custom Tags" 
   in JSP
 
-> The functionality of these custom tags are defind in 
+> The functionality of these custom tags are defined in 
   "Tag Library Descriptor (TLD)" file	   
 	
 > Tag Library Descriptor file will have ".tld"	file
