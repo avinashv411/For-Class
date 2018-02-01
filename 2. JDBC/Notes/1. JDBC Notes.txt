@@ -14,10 +14,10 @@ Java DataBase Connectivity (JDBC)
   JDBC is the "One & Only API" that helps to 
   interact ONLY with RDBMS (DB) Application
   
-> Also JDBC is "DB Independent" i.e. using JDBC 
-  we can interact with any RDBMS Applications 
-  exist in the world (like Oracle, MySQL, DB2, 
-  MS-SQL, SyBase, etc.,)
+> Also JDBC is "RDBMS application Independent" 
+  i.e. using JDBC we can interact with any 
+  RDBMS Applications exist in the world like 
+  Oracle, MySQL, DB2, MS-SQL, SyBase, etc.,
   
 NOTE: 
 ------
@@ -30,22 +30,22 @@ are not RDBMS Applications
   
   
   
+ '  
   
   
-  
-  
+ 
 JDBC Pre-requirements:
 =========================
 1.	Install an RDBMS Application (MySQL 5.5)
 2.	Create a "Database (Schema)" by name 
-    "BECM19_DB"
+    "BECME1820_DB"
 3.	Create a table by name "STUDENTS_INFO"
     in the above "Database"
 4.	Insert some data into the above table
 
 SQL Queries for MySQL RDBMS Application:-
 ==========================================
-create database BECM19_DB;
+create database BECME1820_DB;
 
 create table students_info
 ( regno int(10) not null,
@@ -62,7 +62,7 @@ Some Useful Queries:
 ========================
 1. To connect to database:-
 ----------------------------
-   use BECM19_DB;
+   use BECME1820_DB;
    
 2. To get the list of databases:-
 ---------------------------------
@@ -79,6 +79,116 @@ Some Useful Queries:
    
    
    
+   
+   
+   
+   
+   
+************************   
+*    Assignment        *
+************************   
+> Create 
+	"guardian_info", 
+	"students_otherinfo" and
+	“course_details”
+  tables in "BECME1820_DB" database whith the 
+  following structure
+
+	"guardian_info"
+	==============================
+	1. regno 		int(10)(PK)
+	2. gfirstname	varchar(50)
+	3. gmiddlename	varchar(50)
+	4. glastname	varchar(50)
+
+	"students_otherinfo"
+	==============================
+	1. regno 		int(10)(PK)
+	2. isadmin		varchar(1)
+	3. password		varchar(50)
+
+	"course_details"
+	==============================
+	1. course_id	int(10)(PK)
+	2. course_name	varchar(25)
+	
+> Insert regno 1 to 5 data into "guardian_info"& 
+  "students_otherinfo" tables
+
+> While inserting data into "students_otherinfo" 
+  table make regno 1 "isadmin" value as "Y" 
+  and rest as "N"
+  
+> Insert following data into “course_details”
+  ===============================
+  | course_id	|	course_name	|
+  ===============================
+		1			Core Java
+		2			Java EE
+		3			SQL
+		4			HTML
+		5			Hibernate
+		6			Springs
+		7			AngularJS
+		8			Web Services
+		9			General Aptitude
+		10			Java Programming Aptitude  
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Queries :
+===========
+create table guardian_info
+( regno int(10) not null,
+  gfirstname varchar(50),
+  gmiddlename varchar(50),
+  glastname varchar(50),
+  primary key(regno)
+);
+
+create table students_otherinfo
+( regno int(10) not null,
+  isadmin varchar(1),
+  password varchar(50),
+  primary key(regno)
+);
+
+create table course_details
+( course_id int(10) not null,
+  course_name varchar(50),
+  primary key(course_id)
+);
+
+insert into guardian_info values (1, 'AAA', 'NA', 'BBB');
+insert into guardian_info values (2, 'BBB', 'NA', 'DDD');
+insert into guardian_info values (3, 'ABC', 'NA', 'XYZ');
+insert into guardian_info values (4, 'XYZ', 'NA', 'ABC');
+insert into guardian_info values (5, 'DEF', 'NA', 'GHI');
+
+insert into students_otherinfo values (1, 'Y', 'qwerty');
+insert into students_otherinfo values (2, 'N', 'qwerty');
+insert into students_otherinfo values (3, 'N', 'qwerty');
+insert into students_otherinfo values (4, 'N', 'qwerty');
+insert into students_otherinfo values (5, 'N', 'qwerty');
+
+insert into course_details values (1, 'Core Java');
+insert into course_details values (2, 'Java EE');
+insert into course_details values (3, 'SQL');
+insert into course_details values (4, 'HTML');
+insert into course_details values (5, 'Hibernate');
+insert into course_details values (6, 'Springs');
+insert into course_details values (7, 'AngularJS');
+insert into course_details values (8, 'Web Services');
+insert into course_details values (9, 'General Aptitude');
+insert into course_details values (10, 'Java Programming Aptitude');
+
    
    
 Necessary Steps to Work with JDBC
@@ -106,6 +216,7 @@ Necessary Steps to Work with JDBC
 My First JDBC Program :-
 =======================
 
+
 Note:-
 ------
 > "java.sql.*" is the Package Representation of JDBC
@@ -123,18 +234,16 @@ Note:-
   
   
   
-IP Address 		: 	192.168.1.40
-Computer Name 	: 	QSP-SHMUTT-PC
-Port Number		:	3306
-User Name 		:	root / j2ee
-Password 		: 	root / j2ee
-DB Name 		: 	BECM19_DB
-Table			:	students_info
+IP Address 		: 192.168.0.4
+Computer Name 	: QSP-SHMUTT-PC
+Port Number 	: 3306
+User Name 		: root / j2ee
+Password 		: root / j2ee
 
-jdbc:mysql://192.168.1.40:3306/BECM19_DB?user=j2ee&password=j2ee
+DB Name 		: BECME1820_DB
+Table Name		: Students_info
 
-
-
+jdbc:mysql://192.168.0.4:3306/BECME1820_DB?user=j2ee&password=j2ee
 
 
 
@@ -180,7 +289,9 @@ Image:
 
 JAR (Java ARchieve) File:
 ==========================
-> It's a Collection of Packages & ".class" files
+> It's a 
+  Collection of Packages 
+  + corresponding ".class" files
   + Other Necessary Resources 
     (Text File, XML, Property Files, etc.,)
 
@@ -292,10 +403,10 @@ Driver Types
 ===============
 There are 4 types of Drivers
 
-1. Type 1 : JDBC-ODBC Bridge
-2. Type 2 : Native-API Driver
-3. Type 3 : Network-Protocol Driver
-4. Type 4 : Native-Protocol Driver
+Type 1 : JDBC-ODBC Bridge
+Type 2 : Native-API Driver
+Type 3 : Network-Protocol Driver
+Type 4 : Native-Protocol Driver
 
 ODBC = Open DataBase Connectivity
 
@@ -552,7 +663,7 @@ java.sql.DriverManager
    throws SQLException
 --------------------------------------------------------
  String dbUrl = 
- "jdbc:mysql://localhost:3306/BECM19_DB
+ "jdbc:mysql://localhost:3306/BECME1820_DB
  			         ?user=root&password=root";
  			
  Connection con = DriverManager.getConnection(dbUrl);
@@ -563,7 +674,7 @@ java.sql.DriverManager
 										 String password) 
   throws SQLException
 --------------------------------------------------------
-String dbUrl = "jdbc:mysql://localhost:3306/BECM19_DB";
+String dbUrl = "jdbc:mysql://localhost:3306/BECME1820_DB";
 String userNM = "root";
 String pass   = "root";
 				
@@ -583,7 +694,7 @@ Connection con
    throws SQLException
 -----------------------------------------------------------
 	 
-String dbUrl="jdbc:mysql://localhost:3306/BECM19_DB";
+String dbUrl="jdbc:mysql://localhost:3306/BECME1820_DB";
 		
 String filePath = "C:\\db.properties";
 FileReader reader = new FileReader(filePath);
@@ -1058,6 +1169,7 @@ SELECT TOP 5 * FROM ABC;
 
 		  
 ******************* END of JDBC ************************		  
+
 
 
 

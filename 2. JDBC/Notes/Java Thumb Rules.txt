@@ -1,31 +1,52 @@
 ***************************
 *    Java Thumb Rules     *
 ***************************
-1. If L.H.S "Equal to" R.H.S, then L.H.S is always 
-   "Concrete Class"
+> Anything in Java,
+  - which start with Upper-case Letter 
+    & without parenthesis  
+	is either "Class Name OR Interface Name"  
   
-   A ref = new A();
-  
-2. If L.H.S "Not Equal to" R.H.S, then L.H.S can be 
-   "an Interface / Concrete Class / an Abstract Class"
+  - which start with Lower-case Letter 
+    & without parenthesis is a "Variable Name"
 
-   B ref = new A();
+  - which start with Lower-case Letter 
+    & with parenthesis is a "Method Name"
+
+  - which start with Upper-case Letter 
+    & with parenthesis is a "Constructor"
+	
+> In Java, anything apart from Primitive Data 
+    Types are called as "Object References"  
   
+  For Ex:
+  ---------
+  int i;
+  boolean isTrue;
+  Abc ref;
+   
+  Where,  
+  - "i" &  "isTrue" are Primitive Data Types
+  - "ref" is a Object Reference Variable
+	where "Abc" can be 
+	an Interface OR
+	an Abstract Class OR
+	Concrete Class  
   
-  
-  
-  
-  
-  
-3. A Class which is declared 
+> A Class which is declared 
    - with "abstract" keyword is called as an 
      "Abstract Class"
 
    - "without abstract" keyword is called as 
      "Concrete Class"
   
-4. Hence all "final classes" are "Concrete Class"
+> Hence all "final classes" are "Concrete Class"
   
+
+  
+  
+  
+  
+
   Java Class
    |
    |---> Abstract Class
@@ -44,12 +65,13 @@
   
 
   
-5. Simply having an Interface (which has some abstract
-   methods) in Java is of "No Use" & there MUST be a 
-   "At-least One Implementation Class"  
+> Simply having an Interface (which has more than 
+  one abstract methods) in Java is of "No Use" & 
+  there MUST be a "At-least One Implementation Class"  
   
-6. Simply having an Abstract Class is of "No Use" & 
-   there MUST be a "At-least One Sub-Class"  
+> Simply having an Abstract Class (which has min. 
+  one non-static methods)is of "No Use" & 
+  there MUST be a "At-least One Sub-Class"  
   
 
   
@@ -60,7 +82,7 @@
   
   
   
-7. In Java, "Super Class" can be 
+> In Java, "Super Class" can be 
    - either an "Abstract Class" or 
    - "Concrete Class"
 
@@ -75,61 +97,34 @@
   
 
   
-8. Anything in Java,
-  - which start with Upper-case Letter 
-    & without parenthesis  
-	is either "Class Name OR Interface Name"  
-  
-  - which start with Lower-case Letter 
-    & without parenthesis is a "Variable Name"
 
-  - which start with Lower-case Letter 
-    & with parenthesis is a "Method Name"
 
-  - which start with Upper-case Letter 
-    & with parenthesis is a "Constructor"
+
 	
-9. In Java, anything apart from Primitive Data 
-    Types are called as "Object References"  
+	
+	
+
+	
+> If a method/constructor input argument is other 
+  than primitive data type 
   
+  AND/OR
+  
+  If a method return type is other than primitive 
+  data type,
+  
+  then it can be 
+  "Interface / Concrete Class / Abstract Class"
+
   For Ex:
-  ---------
-  int i;
-  boolean isTrue;
-  Abc ref;
-   
-  Where,  
-  - "i" &  "isTrue" are Primitive Data Types
-  - "ref" is a Object Reference Variable
-	where "Abc" can be 
-	an Interface OR
-	an Abstract Class OR
-	Concrete Class
-
-
-	
-	
-	
-
-	
-10. If a method/constructor input argument is other 
-    than primitive data type, then it can be 
-	"Interface / Concrete Class / Abstract Class"
-
-11. If a method return type is other than primitive 
-    data type, then it can be "Interface / Concrete 
-	Class / Abstract Class"
-
-  For Example:
-  ------------
-  public Xyz myMethod(Abc ref)
-  {
+  -------
+  public Xyz myMethod(Abc ref) {
 	//Some Business Logic
   }
 
   Where  
   - "ref" is a Object Reference Variable
-  - "Abc / Xyz" can be 
+  - "Abc & Xyz" can be 
 	an Interface OR
 	an Abstract Class OR
 	Concrete Class
@@ -186,7 +181,7 @@ Method Overriding
   - return type can be of "covariant type" for 
     Non Primitive Data-Types
   - Method name should be same
-  - Method input arguments should be same. 
+  - Method input arguments should be same.
     If not, then it becomes "Method Overloading"
   - We can decrease the visibility of the Exceptions
   

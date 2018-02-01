@@ -729,8 +729,19 @@ http://localhost:8080/studentsApp/studentSearch?regno=1
   “WebContent/WEB-INF/lib” folder
   
 
-  
-  
+URL Configuration in web.xml:
+-------------------------------  
+<servlet>
+ <servlet-name>studentSearch</servlet-name>
+ <servlet-class>
+  com.jspiders.studentsapp.servlets.StudentSearchServlet
+ </servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>studentSearch</servlet-name>
+<url-pattern>/studentSearch</url-pattern>
+</servlet-mapping>   
 
 
 
@@ -846,8 +857,8 @@ Status Code:
 > It’s a Mandatory information & it will be present 
   in Header of HTTP Response
   
-> Generally Webserver provides "Status Code" info in 
-  HTTP Response
+> Generally Web server provides "Status Code" info 
+  in HTTP Response
   
 
 
@@ -867,7 +878,7 @@ Actual Content:
 > In case of dynamic resource, content present in 
   servlets / JSP becomes the “Actual Content”
   
-> In case of Error Scenarios webserver generates  
+> In case of Error Scenarios web server generates  
   error information & it becomes the “Actual Content”  
 
   
@@ -878,7 +889,7 @@ Actual Content:
   
 Content Type OR MIME Type:
 ===========================
-> Content Type OR Multipurpose Internet Mail 
+> Content Type OR Multi-purpose Internet Mail 
   Extensions (MIME) Type, tells the browser that 
   what "type of Actual Content" it’s going to 
   receive so that it can prepare itself to handle 
@@ -889,10 +900,10 @@ Content Type OR MIME Type:
   - Open Media Player to handle media content etc.,
 
 > It’s 
-  - an Optional Information, 
-  - if present, then its present in Header part 
-    of HTTP Response and
-  - case in-sensitive
+- an Optional Information but depends on Actual Content, 
+- if present, then its present in Header part 
+  of HTTP Response and
+- case in-sensitive
 
 > The default content type is “text/html”
 
@@ -950,6 +961,22 @@ Form Data:
   Body of the HTTP Request which depends on HTTP 
   Method present in the Request  
 	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 Cookies :
 =============
 > Cookies are present in Both Request & Response
@@ -970,7 +997,7 @@ Cookies :
 
 
 *******************************************************
-Give the background of Thread & also exlain how server
+Give the background of Thread & also explain how server
 handles the request i.e. invoking doXXX() method as
 well as sending the response at this point of time
 Also list down the differences between GET & POST
@@ -1000,8 +1027,9 @@ HTTP Method:
   
 NOTE:- 
 ======
-- HTTP Methods SHOULD be written in "Uppercase"
+- HTTP Methods SHOULD be written in "Upper-case"
 - Code Word : HTPP DOG C
+  
   
   
   
@@ -1013,6 +1041,15 @@ NOTE:-
   the Servlet API class by name
   “javax.servlet.http.HttpServlet”
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
 ===============================================================
 | HTTP       |     Related Servlet Method                     |
 | Method     |                                                |
@@ -1073,10 +1110,10 @@ these methods in general called as doXXX(HSR, HSR) methods
 	
 	
 > Depending on the HTTP method present in the 
-  request, Webserver invokes the corresponding 
+  request, Web server invokes the corresponding 
   doXXX(HSR, HSR) method 
   
-> In otherwords, HTTP method indicates the desired 
+> In other words, HTTP method indicates the desired 
   action to be performed on the Dynamic Web Resource 
   i.e. Servlet
 
@@ -1093,15 +1130,20 @@ these methods in general called as doXXX(HSR, HSR) methods
 Questions We have So Far:-
 ==============================
 > There are 8 HTTP Methods (out of 8, two methods are 
-  important from Web Application perspective) & Request 
-  can consists of any ONE of them.
-  In what case, request consists of HTTP Method GET / POST ?
+  important from Web Application perspective) 
+  & Request can consists of any ONE of them.
+  In what case, request consists of HTTP Method 
+  GET / POST ?
   
 > Whenever we create a Servlet by extending HttpServlet 
-  we get 3 Choices. So when to override doGet() / doPost() ?
+  we get 3 Choices. So when to override 
+  doGet() / doPost() ?
   
-> Servlet API takes care of 7 HTTP Methods out of 8.
-  What happens if request consist CONNECT?
+> Servlet API takes care of 7 HTTP Methods (out of 8).
+  What happens if request consists CONNECT?
+  
+  
+  
   
   
   
@@ -1111,7 +1153,7 @@ Questions We have So Far:-
 * Practical Exercise  *
 *********************** 
 
-> Create a HTML Form as shown below
+> Create a Login Page as shown below
   
   Login.html
   ---------- 
@@ -1124,6 +1166,18 @@ Questions We have So Far:-
 
  
 
+> Create a Student Search Page as shown below
+  
+  Search.html
+  ------------  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  
@@ -1167,8 +1221,8 @@ NOTE :
   then that form "SHOULD" use method="post"
   
 > If a form collects "In-Sensitive and Less Amount of 
-  Data" like search 
-  that form may use 
+  Data" like "Google/FlipKart/Amazon search" then that 
+  form may use 
   - method="post" or 
   - method="get" (preferred)
   
@@ -1178,6 +1232,12 @@ NOTE :
 
 > For rest of the cases, we have to override doGet() 
   method
+  
+  
+  
+  
+  
+  
   
 Differences between GET/doGet() &  POST/doPost()
 ------------------------------------------------
@@ -1193,10 +1253,10 @@ Differences between GET/doGet() &  POST/doPost()
 
    POST requests "have Non-Empty Body"
 
-3. Hence incase of GET, Form Data will be present 
+3. Hence in case of GET, Form Data will be present 
    in Header in the form of Query String
 
-   Incase of POST, Form Data will be present in Body
+   In case of POST, Form Data will be present in Body
 
 4. Insecure; because form data get exposed to the 
    outside world
@@ -1205,7 +1265,7 @@ Differences between GET/doGet() &  POST/doPost()
    hence it will not be exposed to the outside world
 
 5. The amount of data sent using GET is restricted 
-   becuase URL can contain around 2000 characters
+   because URL can contain around 2000 characters
 
    There is no restriction on the amount of data 
    sent using the POST
@@ -1223,15 +1283,62 @@ Differences between GET/doGet() &  POST/doPost()
 
 
 
+*********************** 
+* Assignment          *
+*********************** 
+> Modify the index.html to have an "Click Here" 
+  Hyper Link as shown below
+  
+  "Click Here" to View All Students Info
+  ------------
+  
+> Create a Servlet by name "AllStudentsViewServlet" which 
+gets the request whenever user clicks on this hyper-link 
+- interact with BECM19_DB database
+- get all the data from students_info & guardian_info tables and
+- display it in the browser as shown below
 
 
-Part 2 - Summary 
--------------------
+  
+  
+  
+  
+  
+Tips:-
+---------
+> Create "AllStudentsViewServlet" by extending 
+  "HttpServlet" & Override doGet() Method
+
+> In doGet() Method perform below Operations
+  1. Get the Data from DB using JDBC
+  2. Generate HTML Response
+
+> SQL Query:-
+  -----------
+   select * from students_info si, guardian_info gi 
+   where si.regno=gi.regno
+
+> After creating the Servlet configure URL for that
+  servlet in web.xml (/allStudentsView)
+
+<servlet>
+  <servlet-name>allStudentsView</servlet-name>
+  <servlet-class>
+com.jspiders.studentsapp.servlets.AllStudentsViewServlet
+  </servlet-class>
+</servlet>
+
+<servlet-mapping>
+  <servlet-name>allStudentsView</servlet-name>
+  <url-pattern>/allStudentsView</url-pattern>
+</servlet-mapping>   
+
+> Provide the below url in href attribute of index.html
+  http://localhost:8080/studentsApp/allStudentsView
 
 
 
-
-
+  
 Servlet Container :
 ===================
 > Servlet Container is a sub-component of web 
@@ -1242,6 +1349,12 @@ Servlet Container :
   web application are directly under the control
   of Servlet Container
 
+  
+  
+  
+  
+  
+  
 How Servlet Container Works :
 ==============================
 1. Whenever request comes, web server hand over 
@@ -1266,8 +1379,7 @@ How Servlet Container Works :
    
 6. Once doXXX() method execution is over, 
    container converts the response object to 
-   "Raw HTTP Response" & gives it back to web 
-   server
+   "Raw HTTP Response" & gives it back to web server
    
 7. Once the response has been give back, Servlet
    Container garbage collects the request & 
@@ -1278,11 +1390,11 @@ How Servlet Container Works :
 
    
    
-8. In otherwords for every request, container 
+8. In other words for every request, container 
    creates new request & response objects 
    
 9. i.e. the Life Span of these Objects is 
-   Created:  once request comes to Servelt
+   Created:  once request comes to Servlet
    Destroyed: once response is given back
    
 Advantages of Servlet Container
@@ -1324,6 +1436,35 @@ Container manages/controls the "Life Cycle of a Servlet"
 5. JSP Support :
 ----------------
 Container takes care of converting JSP into a Servlet
+
+
+
+*********************** 
+* Assignment          *
+*********************** 
+
+> Modify the response of "AllStudentsViewServlet" in such 
+  a way that, display "regno" as hyper-link
+  
+> whenever user clicks on the hyper-link, request should
+  go to "StudentSearchServlet" & it should print the 
+  corresponding "regno" data in the browser
+
+
+*********************** 
+* Assignment          *
+*********************** 
+> Insert regno 6 to 20 data into below tables
+  1. Students_info
+  2. guardian_info
+  3. students_oteherinfo
+
+
+
+
+
+
+
 
 
 
