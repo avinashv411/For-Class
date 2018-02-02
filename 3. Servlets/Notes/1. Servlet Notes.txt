@@ -1559,8 +1559,89 @@ which helps to get information from Request Object
 			
 
 
+*************			
+Assignment :
+*************
 
+> Create a HTML Form as shown below
+  
+  CreateProfile.html
+  -------------------
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+> Create Servelt by name "CreateProfileServlet", 
+  which gets the request from this form,
+1. Get the Form Data
+2. Store the Form Data into Corresponding Tables
+3. generate Proper Response(Success / Error Message)
+	
+	
+	
+	
+	
+	
+	
+	
+Tips:-
+======
+> Since this form collects sensitive info, it should
+  have method="post"
+  
+> Create "CreateProfileServlet"	by extending 
+  "HttpServlet" & Override doPost() Method
 
+> In doPost() Method perform the below Operations
+  1. Get the Form Data
+  2. Store the Form Data into DB using JDBC
+  3. Generate the Success / Error Response
+  
+> After creating the Servlet configure URL for that
+  servlet in web.xml (/createProfile)
+
+<servlet>
+ <servlet-name>createProfile</servlet-name>
+ <servlet-class>
+com.jspiders.studentsapp.servlets.CreateProfileServlet
+</servlet-class>
+</servlet>
+
+<servlet-mapping>
+ <servlet-name>createProfile</servlet-name>
+ <url-pattern>/createProfile</url-pattern>
+</servlet-mapping>
+  
+> URL to Access:
+==================
+HTML :- 
+------------
+http://localhost:8080/studentsApp/CreateProfile.html
+
+Servlet:- 
+------------
+http://localhost:8080/studentsApp/createProfile
+
+> Provide Servlet URL in <form> tag "action" attribute
+action=
+    "http://localhost:8080/studentsApp/createProfile"
+
+> First we should access the HTML form using HTML URL,
+  fill out the form & 
+  submit the form to make request to Servlet
+
+ 
+
+ 
+ 
+ 
+ 
 			
 			
 javax.servlet.http.HttpServletResponse	
@@ -1582,8 +1663,11 @@ javax.servlet.http.HttpServletResponse
 
   
   
-  
-  
+
+
+
+
+
   
   
   
@@ -1667,13 +1751,13 @@ NOTE :
   
   
   
-***********************			
-* Practical Exercise  *
-***********************
+*************			
+Assignment 4:
+*************
 
 > Create a HTML Form as shown below
   
-  CreateProfile.html
+  ChangePassword.html
   -------------------
   
   
@@ -1684,65 +1768,65 @@ NOTE :
   
   
   
+> Create Servelt by name "ChangePasswordServlet" 
+which gets the request from this form,
+1. Gets the Form Data
+2. Checks "New Password" & "Retype New Password"
+ are matching
+3. If NO, then display Error Message in the Browser
+4. If YES, then check Reg. No. & Current Password 
+ are valid by interacting with BECME91011_DB DataBase
+5. If In-Valid, then display 
+ "Invalid Reg. No. & Current Password" 
+ Error Message in the Browser
+6. If Valid, update the "Current Password" with 
+ "New Password" and Print Success Message in the 
+ Browser
+ 	  
   
-  
-  
-  
-> Create Servlet by name "CreateProfileServlet", 
-  which gets the request from this form,
-1. Get the Form Data
-2. Store the Form Data into Corresponding Tables
-3. generate Proper Response(Success / Error Message)
-	
-	  
-  
-  
-  
-  
-  
-  
-  
-  
-	
-Note:-
-======
-> Since this form collects sensitive info, it should
-  have method="post"
-  
-> Create "CreateProfileServlet"	by extending 
-  "HttpServlet" & Override doPost() Method
+*************			
+Assignment 5:
+*************	
 
-> In doPost() Method perform the below Operations
-  1. Get the Form Data
-  2. Store the Form Data into DB using JDBC
-  3. Generate the Success / Error Response
+> Create a HTML Form as shown below
   
-> After creating the Servlet configure URL for that
-  servlet in web.xml (/createProfile)
+  Login.html
+  ----------
+
+
+
   
-> URL to Access:
-==================
-HTML :- 
-------------
-http://localhost:8080/studentsApp/CreateProfile.html
-
-Servlet:- 
-------------
-http://localhost:8080/studentsApp/createProfile
-
-> Provide Servlet URL in <form> tag "action" attribute
-action=
-    "http://localhost:8080/studentsApp/createProfile"
-
-> Since this Servelt needs to interact with DB, it 
-  MUST make use of JDBC & JDBC requires Driver JAR file
   
-> Copy & Paste Driver JAR file into 
-  “WebContent/WEB-INF/lib” folder
   
-> First access the HTML form using HTML URL, fillout 
-  the form & submit the form to make request to Servlet
+  
 
+
+> Create Servelt by name "LoginServlet" which gets 
+  the request from this form,
+  1. Gets the Form Data
+  2. Authenticate the Credentials by interacting 
+     with BECME91011_DB DataBase
+  3. If In-Valid Credentials, then display "In-Valid 
+     User Name / Password" Error Message in Browser
+  4. If Valid, then display corresponding Reg. No. 
+     Data ( Combination of Data Present in 
+            students_info & 
+	        guardian_info Tables), 
+     in the Browser as shown below
+	 
+
+
+
+SQL Query:-
+-----------
+select * from 
+students_info si, 
+guardian_info gi,
+students_otherinfo soi
+where si.regno = gi.regno 
+and si.regno = soi.regno 
+and soi.regno = ?	
+and soi.password = ?
 
 
 
