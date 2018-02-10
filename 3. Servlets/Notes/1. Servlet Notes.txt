@@ -1695,7 +1695,7 @@ Methods in Response Object :-
 -----------------------------------------------
 
 > These methods helps us to provide "Actual Content"
-  info in Reponse Object
+  info in Response Object
 
 > First we should get "java.io.PrintWriter" Object 
   from Response Object by invoking a method by name 
@@ -1706,7 +1706,7 @@ Methods in Response Object :-
   
 NOTE : 
 ------
-> PrintWriter is a "Concreate Class" but we SHOULD 
+> PrintWriter is a "Concrete Class" but we SHOULD 
   NOT create our own instance of this class, instead
   we SHOULD get it from Response Object
   
@@ -1714,11 +1714,12 @@ NOTE :
   reduces the size of the Actual Content there by
   increases the performance
 
-> Apart from the above, there are many more Methods,
-  which helps to send information in Response Object  
-  
-  
-  
+*************			
+Assignment :
+*************
+> Replace all "String concatenation" / "StringBuffer"
+  code to PrintWriter 
+    
   
   
   
@@ -1742,8 +1743,11 @@ NOTE :
 
  
   
-  
-  
+Note:-
+=======  
+> Apart from the above, there are many more Methods,
+  which helps to send information in Response Object  
+    
   
   
   
@@ -1752,7 +1756,7 @@ NOTE :
   
   
 *************			
-Assignment 4:
+Assignment :
 *************
 
 > Create a HTML Form as shown below
@@ -1768,24 +1772,97 @@ Assignment 4:
   
   
   
-> Create Servelt by name "ChangePasswordServlet" 
-which gets the request from this form,
+  
+  
+  
+> Create Servlet by name "ChangePasswordServlet" 
+  which gets the request from this form,
+
 1. Gets the Form Data
+
 2. Checks "New Password" & "Retype New Password"
- are matching
+   are matching
+   
 3. If NO, then display Error Message in the Browser
+
 4. If YES, then check Reg. No. & Current Password 
- are valid by interacting with BECME91011_DB DataBase
-5. If In-Valid, then display 
- "Invalid Reg. No. & Current Password" 
- Error Message in the Browser
+   are valid by interacting with BECME91011_DB DataBase
+   
+5. If In-Valid, then display "Invalid Reg. No. & 
+   Current Password" Error Message in the Browser
+   
 6. If Valid, update the "Current Password" with 
- "New Password" and Print Success Message in the 
- Browser
+   "New Password" and Print Success Message in the 
+   Browser
  	  
   
+  
+  
+  
+  
+  
+  
+Tips:-
+======
+> Since this form collects sensitive info, it should
+  have method="post"
+  
+> Create "ChangePasswordServlet" by extending "HttpServlet"
+  & Override doPost() Method
+
+> In doPost() Method perform the below Operations
+  1. Get the Form Data
+  2. Interact with DB using JDBC
+  3. Generate the Success / Error Response
+ 
+	Query:-
+	============
+	update students_otherinfo
+	set password = ?
+	where regno = ?
+	and password = ?
+ 
+> After creating the Servlet configure URL for that
+  servlet in web.xml (/changePassword)
+
+<servlet>
+ <servlet-name>changePassword</servlet-name>
+ <servlet-class>
+com.jspiders.studentsapp.servlets.ChangePasswordServlet
+</servlet-class>
+</servlet>
+
+<servlet-mapping>
+ <servlet-name>changePassword</servlet-name>
+ <url-pattern>/changePassword</url-pattern>
+</servlet-mapping>
+  
+> URL to Access:
+==================
+HTML :- 
+------------
+http://localhost:8080/studentsApp/ChangePassword.html
+
+Servlet:- 
+------------
+http://localhost:8080/studentsApp/changePassword
+
+> Provide Servlet URL in <form> tag "action" attribute
+action=
+    "http://localhost:8080/studentsApp/changePassword"
+
+> First we should access the HTML form using HTML URL,
+  fill out the form & 
+  submit the form to make request to Servlet
+  
+  
+  
+  
+  
+  
+  
 *************			
-Assignment 5:
+Assignment :
 *************	
 
 > Create a HTML Form as shown below
@@ -1801,7 +1878,7 @@ Assignment 5:
   
 
 
-> Create Servelt by name "LoginServlet" which gets 
+> Create Servlet by name "LoginServlet" which gets 
   the request from this form,
   1. Gets the Form Data
   2. Authenticate the Credentials by interacting 
@@ -1838,15 +1915,15 @@ and soi.password = ?
 
 
   
-eXtensible Markup Language (XML) Introduction :-
+eXtensible Mark-up Language (XML) Introduction :-
 ==================================================
-> As the name implies it's an extension of Markup
+> As the name implies it's an extension of Mark-up
   Language & this Language helps to Transfer the 
-  Data between different Applications
+  data between different Applications
   
 > XML looks similar to HTML but it’s not a HTML
 
-Comparision Between HTML & XML
+Comparison Between HTML & XML
 ====================================================
 |   HTML 				|			 XML           |
 ====================================================							
@@ -1855,9 +1932,9 @@ Comparision Between HTML & XML
    XML helps to Transfer/Exchange the Data between 
    Applications   						
 						
-2. HTML has Pre-defind Tags
+2. HTML has Pre-defined Tags
 
-   XML has User-defind Tags 
+   XML has User-defined Tags 
    (also called as "Elements")
 
 3. HTML Tags are "Case In-Sensitive"   
@@ -1869,7 +1946,7 @@ Comparision Between HTML & XML
    
    First Line of XML is 
    <?xml version="1.0" encoding="UTF-8" ?>
-   (It's called as "XML Prolog" & its Optional)
+   (It's called as "XML Pro-log" & its Optional)
    
 5. HTML is "Not Strictly Typed" Language
    
@@ -1885,29 +1962,46 @@ Comparision Between HTML & XML
 
 NOTE:
 -----
-> Since XML consist of User-defind Tags, these
-  tags information is defind in an another file 
+> Since XML consist of User-defined Tags, these
+  tags information is defined in an another file 
   by name "XML Schema Document (XSD)"  
 
 > XSD file will have ".xsd" as a file extension
 
 > Hence every application must obey the rules
-  defind in XSD file while constructing the XML
+  defined in XSD file while constructing the XML
   file & reading the data from XSD file
 
 
   
+************			
+Assignment :
+*************	
+
+> Create a "Header Page" as shown below
   
+  Header.html
+  ------------  
 
 
+> Provide the "href" for 
+  - Create Profile
+  - Search
+  - Change Password
+  
+> Don't Provide "href" for "Home" & "Logout"
 
+> Create a "Footer Page" as shown below
+  
+  Footer.html
+  ------------
 
   
 Deployment Descriptor (DD)  :-
 ==============================
 > It’s kind of "instruction sheet" to a Servlet 
   Container & container always refer this to handle
-  imcoming requests 
+  incoming requests 
   
 > It MUST 
   - be a XML file 
@@ -1951,11 +2045,11 @@ Example:-
 > Container uses this information to identify a 
   specific servlet to handle a given request 
 
-> There must be a atleast ONE URL configured for a 
+> There must be a at least ONE URL configured for a 
   Servlet. Also Servlet can have "More than One" URL
   
 > Below are the different ways to configure the URL
-  for a Servelt
+  for a Servlet
   1. Exact Matching
   2. Directory Matching
   3. Extension/Pattern Matching
@@ -2029,7 +2123,7 @@ public abstract void service(ServletRequest req,
 						     ServletResponse res)
 throws ServletException, IOException;
 
-> Hence whenever we create a Servelt by extending
+> Hence whenever we create a Servlet by extending
   GenericServlet we MUST provide an implementation
   for service(SR, SR) method
 

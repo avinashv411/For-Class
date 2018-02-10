@@ -263,7 +263,7 @@ Assignment 6:
   
   
 *************			
-Assignment 6:
+Assignment :
 *************	
 
 > Create a "Header Page" as shown below
@@ -271,6 +271,10 @@ Assignment 6:
   Header.html
   ------------
 
+  
+  
+  
+  
   
   
   
@@ -286,6 +290,11 @@ Assignment 6:
   
   Footer.html
   ------------
+  
+  
+  
+  
+  
   
   
 

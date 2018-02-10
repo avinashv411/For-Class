@@ -630,6 +630,17 @@ java.sql.DriverManager
   
   
   
+> "DriverManager" is not an implementation class of 
+  "Connection" interface, instead it acts like "Helper 
+  Class" to get an Object of implementation class of
+  Connection interface
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -655,8 +666,8 @@ java.sql.DriverManager
   
   
   
-> DriverManager has overloaded versions of 
-  getConnection() methods. They are,
+> DriverManager has 3 overloaded versions of getConnection()
+  methods. They are,
 
 --------------------------------------------------------
 1. public static Connection getConnection(String dbUrl) 
@@ -704,7 +715,7 @@ props.load(reader);
 		
 Connection con = DriverManager.getConnection(dbUrl, props);
 
-=============================================
+============================================================
 Data Present in "db.properties" File is:- 
 =============================================	
 #DB Credentials
@@ -795,17 +806,17 @@ NOTE :
 ------
 1. ABC = Table Name
 2. Dynamic SQL Query MUST Contain One/More "?"
-3. Static SQL Queries
+3. "Select" SQL Queries
     	|
-    	|----> Select
+    	|----> Static
     	|
-    	|----> Other Than Select
+    	|----> Dynamic
     
-    Dynamic SQL Queries
+    "Other Than Select" SQL Queries
     	|
-    	|----> Select
+    	|----> Static
     	|
-    	|----> Other Than Select
+    	|----> Dynamic
     
 	
 
@@ -934,7 +945,8 @@ where "con" is the Object reference of
 
 Syntax: 
 -------
-void setXXX( Postiton of ? as int Value, Runtime Value ) 
+public void setXXX( Postiton of ? as int Value, 
+					Runtime Value ) 
 throws SQLException
 		
 - where XXX = Java Data Type corresponding to 
