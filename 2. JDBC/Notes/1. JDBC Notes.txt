@@ -965,8 +965,155 @@ throws SQLException
   
   
   
+**********************  
+*    Assignment      *
+**********************  
+> Write a Java Program which updates Reg. No. 1 
+  data with following information
+  First Name: XXX 
+  Middle Name: YYY
+  Last Name: ZZZ  
 
+  
+  
+  
+  
+  
+Tips:-
+=======  
+- Query to be Used:
 
+	update students_info
+	set firstname='XXX', 
+		middlename='YYY', 
+		lastname='ZZZ'
+	where regno=1
+	
+- Since the Query is Static, create "Statement" Object
+- Once, Statement Object is created invoke "executeUpdate()"
+  method (because Query is "Other than Select")
+- Print the count value in Console (as part of JDBC 4th Step) 
+ 
+ 
+**************			
+* Assignment *
+**************
+> Write a Java Program which deletes Reg. No. 5 
+  data from "students_info" table 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Tips:-
+=======  
+- Query to be Used:
+
+	delete from students_info
+	where regno=5
+	
+- Since the Query is Static, create "Statement" Object
+- Once, Statement Object is created invoke "executeUpdate()"
+  method (because Query is "Other than Select")
+- Print the count value in Console (as part of JDBC 4th Step)
+
+***************			
+* Assignment  *
+***************
+> Write a Java Program which takes following input 
+  arguments via Command Line in the "same order" & 
+  insert the data into corresponding tables
+	1. Reg No. 
+	2. First Name
+	3. Middle Name
+	4. Last Name
+	5. Guardian First Name 
+	6. Guardian Middle Name 
+	7. Guardian Last Name 
+	8. isadmin & 
+	9. Password
+	
+ 
+ 
+Tips:-
+========
+- Queries to be used:
+  
+  insert into students_info values(?, ?, ?, ?)
+  insert into guardian_info values(?, ?, ?, ?)
+  insert into students_otherinfo values(?, ?, ?)
+
+- In the 3rd Step create 3 PreparedStatement as shown below
+PreparedStatement pstmt1 = con.prepareStatement(query1);
+PreparedStatement pstmt2 = con.prepareStatement(query2);
+PreparedStatement pstmt3 = con.prepareStatement(query3);
+
+- In the 5th Step we need to Close 4 Objects 
+  1 Connection Object & 
+  3 PreparedStatement Objects
+
+  
+***************			
+* Assignment  *
+***************
+> create a CSV (Comma Separated Values) file, which
+  should have data as shown below
+
+Register_Number, First_NM, Middle_NM, Last_NM,
+Guardian_First_NM,Guardian_Middle_NM,Guardian_Last_NM,
+Is_Admin, Password
+
+Ex:- 
+-----
+1,AAA,BBB,CCC,XXX,YYY,ZZZ,Y,qwerty
+2,ABC,DEF,GHI,JKL,MNO,PQR,N,qwerty
+  
+> Write a Java Program which reads the data from this
+  CSV file (line-by-line) & insert it into 
+  corresponding tables
+
+  
+  
+  
+  
+  
+Tips:-
+=======    
+- Create a CSV File with 5 rows of data  
+- Write a Java Program to read the data from this 
+  file & print it in console 
+- Modify the above program to print each & every values
+  using String Class "split()" method
+  
+  Ex:-
+  String val = "abc,def,xyz";
+  String[] values = val.split(",");
+  
+- Modify the above program, rather than printing the
+  data, insert the data into tables (refer the previous
+  assignment)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+***************			
+* Assignment  *
+***************
+> Write a Java Program to insert regno 1 to 5 data 
+  into "students_otherinfo" table
+  
+  
 
 Processing the Results returned by SQL Queries :-
 ================================================
@@ -975,10 +1122,14 @@ Processing the Results returned by SQL Queries :-
   out of RDBMS Application
 	1. No. of Rows Affected Count 
 	2. DB Results 
-	
-> JDBC returns 
+
+> Since Java Program is directly interacting JDBC,
+  JDBC returns 
   - "No. of Rows Affected Count" as "Integer Value" 
   - "DB Results" in the form of "ResultSet Object" 
+  
+  
+  
   
 java.sql.ResultSet
 ===================
@@ -992,10 +1143,10 @@ java.sql.ResultSet
   
   Example:-
   ----------
-  - ResultSet rs = stmt.executeQuery();
+  - ResultSet rs = stmt.executeQuery("SQL_Query");
     where "stmt" is a Object reference of Statement
   
-  - ResultSet rs = pstmt.executeQuery("SQL_Query");
+  - ResultSet rs = pstmt.executeQuery();
     where "pstmt" is a Object reference of 
     PreparedStatement
   
@@ -1032,8 +1183,7 @@ java.sql.ResultSet
   can be extracted as follows
 
 1. Move to desired Row by calling necessary ResultSet
-   methods
-   For Ex : next(), first(), last(), etc
+   methods. For Ex : next(), first(), last(), etc.,
 
    Syntax of next()
    ====================
@@ -1074,20 +1224,22 @@ Why we need to Close Necessary JDBC Objects:-
   - ResultSet 
   make use of memory 
  
-> In case of Connection Object, further RDBMS Application
-  resources are consumed
+> In case of Connection Object, further RDBMS 
+  Application resources are consumed
 
-> Also memory consumed by ResultSet object is comparatively
-  more compared to other JDBC Objects
+> Also memory consumed by ResultSet object is 
+  comparatively more compared to other JDBC Objects
   
-> Hence forgetting to close any of the JDBC objects "will 
-  heavily impact Java as well as RDBMS application performance" 
+> Hence forgetting to close any of the JDBC objects 
+  "will heavily impact Java as well as RDBMS 
+  application performance" 
   & Garbage Collection should not be relied upon
   
-> So it's important to close any of the JDBC Object as soon as 
-  their job is done
+> So it's important to close any of the JDBC Object
+  as soon as their job is done
 
-> To close any of the JDBC Objects invoke "close()" method
+> To close any of the JDBC Objects invoke "close()" 
+  method
 
 Syntax:
 ----------		  
