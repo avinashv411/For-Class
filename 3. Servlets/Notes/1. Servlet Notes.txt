@@ -169,13 +169,14 @@ Steps to Install Apache Tomcat Web Server:
   on "startup.bat" OR "startup" file
   
 > After the above step, Server should start without 
-  throwing any exception in the Console
+  throwing any exception in Console
   
 > If Server throws an exception, then it means that 
   server started in "Exception Mode"
   
 > In this case most likely there is a problem in 
-  setting up the Environment Variables (i.e. Point #2)
+  setting up the Environment Variables 
+  (i.e. Point #2)
 
 > To Shut down the Web Server
   - Close the Console Window OR
@@ -218,6 +219,7 @@ NOTE:
 ------
 In case of Static Web Resources, URL Consist of 
 Resource File Name
+
 
 
 
@@ -2901,9 +2903,58 @@ resp.sendRedirect(url);
 
 
 
+**************			
+* Assignment *
+**************	
+
+> Create a HTML Form as shown below
+  
+  GraingerSearch.html
+  --------------------
+
+  
+  
+  
+> Create a Servlet which gets the request from this 
+  form, takes the "keyword" & display the results 
+  for that keyword in "www.grainger.com" in Browser
 
 
-	  
+
+
+  
+  
+*************			
+*Assignment *
+*************	
+
+> Create a HTML Form as shown below
+  
+  AdvanceSearch.html
+  --------------------  
+  
+  
+  
+  
+  
+  
+  
+  
+> Create a Servlet 
+  - which gets the request from this form,
+  - takes the "keyword" & 
+  - display the results for that keyword in 
+    the corresponding Website    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 Forward :
 ==========
 Image:
@@ -2912,8 +2963,8 @@ Image:
 1. Using Browser, user makes a request to a servlet
 
 2. Servlet internally forwards that request to another 
-   Internal Resource (Static/Dynamic) by passing Request 
-   & Response objects
+  Internal Resource (Static/Dynamic) by passing Request 
+  & Response objects
 
 3. This internal resource handles that request & gives 
    back the response
@@ -2965,6 +3016,11 @@ throws ServletException, IOException
 			
    dispatcher.forward(req, resp);
 	
+	
+	
+	
+	
+	
 Differences between Redirect & Forward :-
 ----------------------------------------
 =============================================
@@ -2997,8 +3053,9 @@ Differences between Redirect & Forward :-
 6. Slower in operation	
    Faster in operation
 
-7. Redirect makes request to contain GET  method & hence
-   it ALWAYS invokes doGet() method at destination 	
+7. Redirect makes request to contain GET  method 
+   & hence it ALWAYS invokes doGet() method 
+   at destination 	
 
   When we forward the request, it will invoke the 
   corresponding doXXX() method at destination
@@ -3129,11 +3186,53 @@ NOTE:
   with that its "easy to maintain the Web Application"
   
   
+  
+  
+  
+  
+  
+  
+************************
+* Assignment           *
+************************
+> "LoginServlet" assignment error response 
+  i.e. "Invalid User Name / Password" to include 
+  "Login.html" 
+  
+> Modify all the assignment responses to include 
+  "Header.html" and "Footer.html"
+  
 
 
 
-
-
+**************	  
+* Assignment *	  
+**************
+> Implement "Age Calculator" in StudentsApp web application
+  i.e. user should provide 
+  - "Date of Birth" & 
+  - "Age at the Date"	  
+  as input
+  
+> StudentsApp will calculate his Age & display his age in
+  - years months days
+  - or months days
+  - or weeks days
+  - or days
+  - or hours
+  - or minutes
+  - or seconds
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 
 
 

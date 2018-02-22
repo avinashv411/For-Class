@@ -312,7 +312,7 @@ Assignment :
   
   
 *************			
-Assignment 7:
+Assignment :
 *************	
 
 > Create a HTML Form as shown below

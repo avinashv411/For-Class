@@ -1310,8 +1310,8 @@ JDBC Summary:
 		  
 		  
 > Though JDBC claims that it is "DB Independent" but,
-  because of "SQL Queries (step 3)", it is actually
-  "DB Dependent"
+  because of "SQL Queries (step 3)", it is "partially
+  In-Dependent"
   
 Note:
 ======
@@ -1332,7 +1332,38 @@ MSSQL Server:
 SELECT TOP 5 * FROM ABC;
 
 		  
-******************* END of JDBC ************************		  
+--******************* END of JDBC ************************		  
+
+
+
+
+**************
+* Assignment *
+**************
+> Write a Java Program which accepts following input 
+  arguments @ Runtime in the same order 
+  1. Reg No. 
+  2. Current Password
+  3. New Password
+  
+> This Program first check whether Reg No. & 
+  Current Password is matching
+  
+> If NO, then print the "Error Message" in Console
+  
+> If YES, then print the "Success Message" in Console 
+  along with updating the password for that Reg No.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
